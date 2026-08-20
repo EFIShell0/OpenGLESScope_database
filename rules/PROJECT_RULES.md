@@ -92,3 +92,15 @@
 - Wrangler is pinned to 4.124.0 for this release.
 - No D1 schema migration is introduced by 0.1.8.
 - Frontend cache-busted assets remain v017 because their bytes and behavior are unchanged.
+
+
+## Release 0.1.9
+- Database version is 0.1.9.
+- Every main navigation destination has a local semantic SVG icon in addition to its text label; text remains authoritative and icons are presentation-only.
+- Top-level custom filters use the same compact control geometry as the quality reference: 36 px minimum control height, 34 px option height, compact 14 px local semantic icons and selected-option checkmarks.
+- Filter iconography is local SVG path data with no remote dependency and never changes report semantics.
+- Filter listboxes retain the hidden native select as authoritative state and support keyboard, mouse and touch input, Home/End navigation, Escape close and viewport-aware drop-up behavior.
+- Mobile filters use a responsive two-column layout and collapse to one column on narrow displays.
+- Navigation, detail tabs, pagination, table scrolling, focus-visible indication and reduced-motion behavior are audited together so presentation parity cannot regress one input modality.
+- OpenGL ES/EGL terminology and Available/Unavailable/Not applicable/Unknown semantics remain unchanged by visual parity work.
+- Production Cloudflare account and D1 identity remain pinned to the OpenGLESScope account and database.
