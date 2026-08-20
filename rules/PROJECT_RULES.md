@@ -80,3 +80,15 @@
 - State-semantic coverage uses colored progress fills; non-dominant coverage containers remain neutral and only a uniquely dominant state receives additional emphasis.
 - Active horizontal navigation remains visible through edge affordances and bring-into-view behavior.
 - Release assets use v017 cache-busted filenames.
+
+
+## Release 0.1.8
+- Database version is 0.1.8.
+- Production Wrangler configuration pins Cloudflare account ID 6881527e6e0b9bc4a0c009473428d1bc and D1 database ID 2c945dda-e320-4b3a-9fac-a086373db17c.
+- The `openglesscope` Wrangler auth profile is directory-local operational state and is never committed.
+- The committed account ID is mandatory fail-closed protection against deployment to an unrelated authenticated Cloudflare account.
+- Repository ignore rules exclude node_modules, Wrangler local state, environment/secret files, logs, Python caches and OS metadata.
+- `node_modules` is never committed. A locally generated package-lock may be committed for reproducibility.
+- Wrangler is pinned to 4.124.0 for this release.
+- No D1 schema migration is introduced by 0.1.8.
+- Frontend cache-busted assets remain v017 because their bytes and behavior are unchanged.

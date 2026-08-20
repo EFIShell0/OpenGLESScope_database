@@ -25,10 +25,10 @@ for f in [root/'assets/app.v017.js',root/'assets/site.v017.css',root/'worker/src
 idx=(root/'index.html').read_text(encoding='utf-8')
 for ref in ['assets/app.js','assets/site.css','assets/openglesscope_logo_horizontal.png','assets/favicon.png','v015']:
     if ref in idx: errors.append(f'stale-or-unversioned-index-ref {ref}')
-for token in ['displayOrderFilter','nav-edge-left','nav-edge-right','OpenGLESScope Database <strong>0.1.7</strong>']:
+for token in ['displayOrderFilter','nav-edge-left','nav-edge-right','OpenGLESScope Database <strong>0.1.8</strong>']:
     if token not in idx: errors.append(f'missing-ui-token {token}')
 worker=(root/'worker/src/index.js').read_text(encoding='utf-8')
-for token in ["databaseVersion:'0.1.7'","normalizerVersion:3",'application_version','application_version_code','MAX_BODY=2*1024*1024']:
+for token in ["databaseVersion:'0.1.8'","normalizerVersion:3",'application_version','application_version_code','MAX_BODY=2*1024*1024']:
     if token not in worker: errors.append(f'missing-worker-token {token}')
 if errors:
     print('\n'.join(errors));sys.exit(1)

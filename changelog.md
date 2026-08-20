@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.8
+
+- Added repository `.gitignore` coverage for Node dependencies, Wrangler local state, environment files, logs, Python caches and OS metadata.
+- Pinned the production Worker to the dedicated OpenGLESScope Cloudflare `account_id` so an unrelated authenticated account cannot be used accidentally.
+- Pinned the production D1 binding to the dedicated OpenGLESScope D1 UUID.
+- Added Wrangler auth-profile helper scripts to `worker/package.json` for one-time profile creation/activation and normal status/deploy/migration workflows.
+- Pinned Wrangler to 4.124.0 for reproducible local behavior matching the deployed environment.
+- Updated the Worker health response to database version 0.1.8.
+- Removed Python bytecode/cache artifacts from the release package.
+- Frontend behavior, report schema, D1 schema, title behavior and logo assets are unchanged from 0.1.7.
+
 ## 0.1.7
 
 - Audited compatibility against OpenGLESScope 0.1.17 while retaining independent database versioning.
