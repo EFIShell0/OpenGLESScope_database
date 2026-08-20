@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: 0.1.9
+- Database: 0.1.10
 - Compatible producer line: OpenGLESScope 0.1.x
 - Compatibility audit target: OpenGLESScope 0.1.17
 - Submission schema: 2
@@ -64,7 +64,7 @@ npm run deploy
 `auth:create` is needed only once per machine/profile. Normal future deployments use the directory-bound profile automatically.
 
 
-## 0.1.9 UI parity
+## 0.1.10 UI parity
 - Added semantic local SVG icons to every main navigation destination.
 - Added compact icon-bearing custom filters with selected-option checkmarks and viewport-aware listboxes.
 - Matched filter height, spacing, mobile layout, focus visibility, detail tabs, pagination and table-scroll affordances to the project quality baseline.

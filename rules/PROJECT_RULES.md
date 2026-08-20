@@ -94,8 +94,8 @@
 - Frontend cache-busted assets remain v017 because their bytes and behavior are unchanged.
 
 
-## Release 0.1.9
-- Database version is 0.1.9.
+## Release 0.1.10
+- Database version is 0.1.10.
 - Every main navigation destination has a local semantic SVG icon in addition to its text label; text remains authoritative and icons are presentation-only.
 - Top-level custom filters use the same compact control geometry as the quality reference: 36 px minimum control height, 34 px option height, compact 14 px local semantic icons and selected-option checkmarks.
 - Filter iconography is local SVG path data with no remote dependency and never changes report semantics.
@@ -104,3 +104,12 @@
 - Navigation, detail tabs, pagination, table scrolling, focus-visible indication and reduced-motion behavior are audited together so presentation parity cannot regress one input modality.
 - OpenGL ES/EGL terminology and Available/Unavailable/Not applicable/Unknown semantics remain unchanged by visual parity work.
 - Production Cloudflare account and D1 identity remain pinned to the OpenGLESScope account and database.
+
+
+## Release 0.1.10
+- Database version is 0.1.10.
+- The hero repository card uses a local inline GitHub mark, dedicated icon container and chevron while retaining authoritative text and accessible labeling.
+- Root document horizontal overflow is prohibited; only intentional navigation/table containers may scroll horizontally.
+- Footer geometry follows the reference-quality compact footer without creating a page-level horizontal scrollbar.
+- Hero copy and repository action remain responsive and collapse vertically on narrow layouts.
+- Existing navigation/filter iconography, keyboard behavior, report semantics, account pinning and D1 identity remain unchanged.
