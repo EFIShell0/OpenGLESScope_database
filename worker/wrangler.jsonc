@@ -1,0 +1,1 @@
+{"name":"openglesscope-database-api","main":"src/index.js","compatibility_date":"2026-08-20","d1_databases":[{"binding":"DB","database_name":"openglesscope-database","database_id":"REPLACE_WITH_D1_DATABASE_ID","migrations_dir":"migrations"}],"vars":{"ALLOWED_ORIGIN":"https://efishell0.github.io"}}

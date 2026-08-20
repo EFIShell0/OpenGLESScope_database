@@ -1,0 +1,13 @@
+{
+  "name": "openglesscope-database-api",
+  "version": "0.1.7",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
