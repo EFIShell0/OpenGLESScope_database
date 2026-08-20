@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.11
+- Added GPU vendor artwork parity and dominant-percentage coverage styling based on the VulkanScope Database reference.
+- Preserved OpenGL ES/EGL runtime-evidence semantics.
+
 ## 0.1.10
 - Added the full GitHub repository mark/icon treatment to the hero repository action.
 - Matched repository-card geometry, hover treatment and chevron behavior to the reference-quality database UI.

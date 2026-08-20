@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: 0.1.10
+- Database: 0.1.11
 - Compatible producer line: OpenGLESScope 0.1.x
 - Compatibility audit target: OpenGLESScope 0.1.17
 - Submission schema: 2

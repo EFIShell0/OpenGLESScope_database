@@ -113,3 +113,13 @@
 - Footer geometry follows the reference-quality compact footer without creating a page-level horizontal scrollbar.
 - Hero copy and repository action remain responsive and collapse vertically on narrow layouts.
 - Existing navigation/filter iconography, keyboard behavior, report semantics, account pinning and D1 identity remain unchanged.
+
+
+## Release 0.1.11 GPU artwork and coverage parity
+- Database version is 0.1.11.
+- Report-backed GPU rows use only bundled local vendor artwork selected from submitted GL vendor/renderer text; artwork is presentation-only and never creates capability evidence.
+- Unknown or unmapped vendors retain submitted text unchanged and use the bundled unknown artwork.
+- Recent reports, Reports, EGL Configs and report-detail hero expose GPU artwork at the same compact presentation quality as the reference database.
+- Coverage progress fills always retain semantic state colors. Percentage text receives semantic color only for the unique dominant state in the same distribution; tied highest and non-dominant percentages remain neutral.
+- Extension and runtime-format absence remains Not listed/Unknown evidence and is never converted to Unsupported.
+- Visual parity work must not alter counts, denominators, filters, report schema, D1 contents or OpenGL ES/EGL state semantics.
