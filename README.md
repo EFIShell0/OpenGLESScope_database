@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: 0.1.11
+- Database: 0.1.14
 - Compatible producer line: OpenGLESScope 0.1.x
 - Compatibility audit target: OpenGLESScope 0.1.17
 - Submission schema: 2
@@ -69,3 +69,8 @@ npm run deploy
 - Added compact icon-bearing custom filters with selected-option checkmarks and viewport-aware listboxes.
 - Matched filter height, spacing, mobile layout, focus visibility, detail tabs, pagination and table-scroll affordances to the project quality baseline.
 - Added Windows-safe fail-closed Cloudflare account verification before production D1 and deploy operations.
+
+
+## 0.1.14 navigation and report index
+
+Reports is now the database home destination. The former Overview tab has been removed. The index follows all 500-row server cursor pages, while visible report rendering remains user-selectable at 10, 25, or 50 rows per page after filtering and sorting.

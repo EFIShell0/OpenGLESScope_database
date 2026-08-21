@@ -123,3 +123,40 @@
 - Coverage progress fills always retain semantic state colors. Percentage text receives semantic color only for the unique dominant state in the same distribution; tied highest and non-dominant percentages remain neutral.
 - Extension and runtime-format absence remains Not listed/Unknown evidence and is never converted to Unsupported.
 - Visual parity work must not alter counts, denominators, filters, report schema, D1 contents or OpenGL ES/EGL state semantics.
+
+
+## Release 0.1.12 Compare and coverage parity
+- Database version is 0.1.12.
+- Compare report selectors emphasize the submitted GPU name with the same bold hierarchy as the VulkanScope Database quality reference while keeping device/model tail text secondary.
+- The GPU filter uses the same bold GPU-name hierarchy without changing its native-select authoritative value.
+- Compare uses the compact custom differences-only checkbox, summary metrics, section density, table spacing and responsive picker geometry used by the quality reference.
+- Coverage meters use the same compact bar-plus-percentage visual hierarchy as the quality reference while preserving explicit OpenGLESScope labels and visible count/denominator evidence.
+- Coverage fill color always follows the semantic state. Percentage text receives semantic color only when that state is the unique numerical maximum within the same distribution; ties remain neutral.
+- Diagnostic coverage uses the same unique-dominant rule as extension, limit and format coverage; tied maxima never receive dominant emphasis.
+- Compare and coverage parity must not change report values, counts, denominators, filtering, OpenGL ES/EGL evidence semantics, D1 schema or stored payloads.
+- Browser-visible frontend assets changed by this release use v022 cache-busted filenames.
+
+
+## Release 0.1.13 filter, report-index and footer parity
+- Database version is 0.1.13.
+- Reports use the same compact sort/per-page toolbar hierarchy as the VulkanScope Database quality reference, with submission timestamp first, deterministic sorting and no more than 50 rendered rows per page.
+- Submission timestamps remain server-authored D1 values and are rendered through a locale-aware formatter that includes date, time, seconds and time-zone information; sorting continues to use the exact timestamp value.
+- Top-level status options are view-specific and expose only states that the corresponding OpenGL ES/EGL evidence can justify. Extensions and runtime formats expose Reported/Not listed rather than inventing Unsupported. Limits and diagnostics preserve Available/Unavailable/Not applicable/Unknown. Display exposes only availability of submitted display evidence.
+- Display/HDR hides vendor, GPU and OpenGL ES-version filters because Android display evidence is a separate evidence domain; hidden stale graphics filters must not suppress Display/HDR rows.
+- Extensions expose an Extension scope selector for OpenGL ES, EGL display and EGL client tokens. Formats expose a runtime-format family selector. Precision exposes a shader-stage selector. These controls are presentation/filtering only and never alter normalized report data.
+- Coverage geometry, neutral non-dominant treatment and unique-dominant percentage coloring follow the VulkanScope Database quality reference while retaining the additional OpenGLESScope Not applicable state.
+- The footer has the same compact top divider and 72 px alignment geometry as the quality reference and must not create page-level horizontal overflow.
+- Browser-visible frontend assets changed by this release use v023 cache-busted filenames.
+
+## Release 0.1.14 Reports-as-home parity
+- Database version is 0.1.14.
+- The Overview destination is removed from primary navigation. Reports is the first destination and the default database home view for the root URL, invalid/empty hashes and Back/Forward restoration.
+- Reports uses the same listing hierarchy as the VulkanScope Database quality reference: server-authored Submitted timestamp first, bold GPU name with secondary device text, local GPU artwork, runtime/vendor/version metadata and report ID remain visible without collapsing technical identity.
+- The report index API fetch batch is explicitly 500 rows per cursor page. The frontend follows every returned cursor page until the server returns no next cursor; a repeated cursor is an explicit error rather than a silent partial listing.
+- Report rendering remains independently bounded to at most 50 rows per visible page. The user-facing Per page selector offers exactly 10, 25 and 50 rows, defaults to 25, and applies after search/filter/sort so page boundaries remain deterministic.
+- Reports sorting retains submission newest/oldest, OpenGL ES newest/oldest, EGL newest/oldest, GPU A/Z, vendor A/Z, Android version newest/oldest and OpenGLESScope version newest/oldest options.
+- The report toolbar, range indicator, pagination buttons and responsive mobile layout follow the same density and interaction quality as the VulkanScope Database reference while preserving OpenGLESScope terminology.
+- Reports remains the bare browser title `OpenGLESScope Database`; other main destinations continue to prefix their visible destination label.
+- Removing Overview is presentation/navigation only and must not alter normalized report data, D1 schema, capability-state semantics, filtering evidence, report-detail access or raw canonical TXT access.
+- Browser-visible changed frontend assets use v024 cache-busted filenames.
+

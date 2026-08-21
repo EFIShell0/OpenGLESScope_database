@@ -1,4 +1,23 @@
+# 0.1.14
+
+- Removed the Overview destination and made Reports the default/root database view.
+- Matched VulkanScope Database report-list hierarchy and responsive toolbar behavior.
+- Kept the report-index cursor batch at 500 rows and now follows all returned cursor pages without an arbitrary 200-page truncation cap.
+- Added repeated-cursor detection so a broken pagination chain fails explicitly instead of silently presenting a partial database.
+- Kept user-selectable visible page sizes at exactly 10, 25, and 50 rows with a hard 50-row maximum.
+- Preserved deterministic filter/sort-before-pagination behavior and exact server-authored submission timestamps.
+- Added v024 cache-busted frontend assets.
+- No D1 migration or report-schema change.
+
 # Changelog
+
+## 0.1.13
+
+- Report-index sort/per-page/date parity.
+- View-specific state filters.
+- Extension, format and precision subfilters.
+- Display/HDR filter isolation.
+- Coverage and footer visual parity.
 
 ## 0.1.11
 - Added GPU vendor artwork parity and dominant-percentage coverage styling based on the VulkanScope Database reference.
@@ -53,3 +72,10 @@ Branding/title parity in 0.1.7:
 - Added compact icon-bearing custom filters with selected-option checkmarks and viewport-aware listboxes.
 - Matched filter height, spacing, mobile layout, focus visibility, detail tabs, pagination and table-scroll affordances to the project quality baseline.
 - Added Windows-safe fail-closed Cloudflare account verification before production D1 and deploy operations.
+
+
+## 0.1.13
+- Matched Compare control density, GPU-name emphasis and differences-only control to the VulkanScope Database quality reference.
+- Matched coverage bar/percentage hierarchy while preserving explicit OpenGL ES/EGL state labels and count denominators.
+- Fixed diagnostic dominant-percentage coloring so only a unique maximum is emphasized and ties remain neutral.
+- Added v022 cache-busted frontend assets.
