@@ -309,3 +309,15 @@
 - OpenGL ES and EGL version chips keep VulkanScope geometry while using the OpenGLESScope magenta interface accent family.
 - The synchronized horizontal scrollbar thumb must clamp exactly to the beginning and end of its track when the underlying table is at its minimum or maximum horizontal scroll position.
 - Browser-visible changed frontend assets use cache-busted `site.v035.css` and `app.v035.js`.
+
+## Release 0.1.26 full UI, security and specification audit
+- Database version is 0.1.26 and remains independent from the current OpenGLESScope producer version, which remains 0.1.25 for this database release.
+- Every database table uses the same neutral sticky header geometry as the VulkanScope reference: 12 px header text, the reference header foreground, the reference `#151518` header surface and consistent cell geometry across Reports, Display/HDR, OpenGL ES, EGL and all other tabular destinations.
+- The custom horizontal table scrollbar uses a real HTML track and thumb. Thumb width is derived from `clientWidth / scrollWidth`, thumb travel is derived from the exact track width minus thumb width, and the thumb is explicitly clamped to the track start/end when the table is at its left/right boundary.
+- Native table scrollbars remain visually hidden while touch, trackpad, wheel-with-Shift, keyboard, pointer dragging and edge buttons retain access to the same native scroll position.
+- OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 remain the current Khronos core specification baselines. Published specification dates remain OpenGL ES 3.2 May 5 2022, GLSL ES 3.20 August 14 2023 and EGL 1.5 August 27 2014.
+- Runtime OpenGL ES, GLSL ES and EGL version strings remain implementation evidence and are never rewritten to match the engineering baseline.
+- Vendor IDs, GPU names and display metadata remain presentation/index data and are never promoted into unsupported capability inference.
+- Frontend rendering remains escaped/same-origin, CSP-restricted and free of third-party script, analytics, remote font and remote presentation dependencies.
+- Worker request bounds, recursive sensitive-field rejection, parameterized D1 access, strict report-ID/cursor validation, CORS restriction, no-store/nosniff/no-referrer/frame denial/Permissions-Policy protections and fail-closed Cloudflare account pinning remain mandatory.
+- Browser-visible changed frontend assets use v036 cache-busted filenames.

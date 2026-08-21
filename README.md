@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.25`
+- Database: `0.1.26`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
@@ -61,6 +61,13 @@ npm run deploy
 `auth:create` is normally needed only once for the local profile.
 
 
+
+
+## 0.1.26 full audit and table parity correction
+
+0.1.26 fixes the custom horizontal table scrollbar at its root by replacing the previous SVG track/thumb model with the HTML track/thumb geometry used by the VulkanScope reference. The thumb now reaches the exact left and right endpoints of the rendered track. The neutral sticky table-header geometry and `#151518` header surface are also applied to every tabular destination, including Display/HDR, OpenGL ES, EGL and report-detail tables rather than only Reports.
+
+This release also removes a source-CSS comment and accidental escaped newline that violated the project source rules, reruns the Worker contract/static audits, and rechecks the current Khronos baselines: OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5. Database version 0.1.26 remains independent from the current producer target, OpenGLESScope 0.1.25.
 
 ## 0.1.25 UI parity corrections
 

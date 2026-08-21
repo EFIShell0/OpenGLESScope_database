@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.26
+
+- Fixed the remaining custom horizontal scrollbar endpoint defect by replacing the SVG scrollbar track with an HTML track/thumb mapped in CSS pixels.
+- The thumb now clamps to the exact right edge when native table scrolling reaches its maximum.
+- Applied the VulkanScope-compatible sticky table header geometry and neutral header surface globally across every tabular destination.
+- Removed the source CSS comment and accidental literal escaped newline that violated project source rules in 0.1.25.
+- Refreshed the full static security/correctness audit and Khronos OpenGL ES/EGL specification audit.
+- Updated frontend cache-busting to `app.v036.js` and `site.v036.css`.
+- Database version is 0.1.26; current producer target intentionally remains OpenGLESScope 0.1.25.
+
 ## 0.1.25
 
 - Matched navigation and Reports filter control geometry to VulkanScope Database 0.35.8.
