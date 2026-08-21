@@ -1,13 +1,42 @@
 # Security
 
-OpenGLESScope Database accepts only complete OpenGLESScope report submissions over HTTPS.
+OpenGLESScope Database accepts only complete OpenGLESScope technical report submissions over HTTPS.
 
-The Worker enforces the official application/package identity, compatible 0.1.x producer versions, schema versions, bounded arrays/strings, exact extension-count consistency, EGL/display field types, complete collection status and the canonical TXT report structure. Duplicate structured extension sets must match the corresponding top-level runtime sets.
+## Submission validation
 
-Request bodies are bounded to 2 MiB before JSON materialization. Excessive recursive depth and forbidden sensitive field names are rejected. Stored report IDs use SHA-256 over stable canonical JSON. D1 submission timestamps are server-authored.
+The Worker enforces:
 
-CORS is restricted to the configured GitHub Pages origin. Responses use no-store, nosniff, no-referrer, restrictive Permissions-Policy, frame denial, same-origin opener policy and a deny-by-default API Content Security Policy.
+- Application identity `OpenGLESScope` / `com.efishell.openglesscope`.
+- Compatible OpenGLESScope `0.1.17+` producers within the `0.1.x` line.
+- Submission schema `2` and technicalReport schema `1`.
+- Exact top-level and nested object shapes.
+- Bounded arrays, strings and numeric/scalar fields.
+- Exact OpenGL ES/EGL extension counts and duplicated extension-set consistency.
+- Complete top-level and technical-report display objects with exact duplicate consistency.
+- Canonical diagnostic states: Available, Unavailable, Not applicable and Unknown.
+- Complete collection state.
+- Current and compatible legacy canonical TXT header/section structure.
 
-The frontend uses only same-origin presentation assets and the configured HTTPS API. API JSON materialization is timeout-bounded and capped at 4 MiB per response. Detail fetching is concurrency-bounded.
+Current `OpenGLESScope report` TXT metadata is cross-checked against structured version, versionCode and package identity.
 
-Do not add analytics, remote fonts, third-party JavaScript, automatic/background report submission, personal identifiers, authentication data or private file paths to report payloads.
+## Privacy
+
+Request payload field names are recursively inspected after JSON parsing. Sensitive-name canonicalization removes punctuation and separators before matching, so variants such as `user_id`, `account-id` and `access.token` do not bypass the guard.
+
+IMEI, Android ID, device serial, MAC/account/authentication identifiers, request IP fields and private-path fields are forbidden. Request IP addresses are not copied into report payloads or D1 report records.
+
+The public submission endpoint is intentionally accountless so the Android application can submit without a user account. Schema validation and CORS are not cryptographic proof that a non-browser caller is the official APK. Production operators should apply Cloudflare edge/rate-limit abuse controls when appropriate without persisting request IP data as report content.
+
+## Resource bounds and storage
+
+Request bodies are streamed and rejected above 2 MiB before JSON materialization completes. Recursive canonicalization has a depth bound. Stored report IDs use SHA-256 over stable key-sorted canonical JSON, so JSON key reordering cannot bypass deduplication. D1 statements remain parameter-bound and submission timestamps are server-authored.
+
+Malformed stored JSON returns a generic 500 response without stack disclosure. Structured technical reports are returned without a duplicated normalized copy; compatibility normalization is only materialized for legacy rows that lack structured technicalReport data.
+
+## HTTP and browser policy
+
+CORS is restricted to the configured GitHub Pages origin. Worker responses use no-store, nosniff, no-referrer, restrictive Permissions-Policy, frame denial, same-origin opener policy and a deny-by-default API Content Security Policy. Unsupported API methods return 405 with an Allow header.
+
+The frontend uses only same-origin presentation assets and the configured HTTPS Worker API. It contains no third-party JavaScript, analytics, remote fonts or advertising. API JSON reads are timeout-bounded and capped at 4 MiB before parsing. Detail requests are concurrency-bounded, and failures are surfaced instead of silently removed from the apparent loaded set.
+
+Production Wrangler configuration is pinned to the intended Cloudflare account and D1 database. Production npm operations fail closed through the account verifier when account identity cannot be confirmed.

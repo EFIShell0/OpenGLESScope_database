@@ -34,7 +34,7 @@
 - Complete reports are all-or-nothing submissions.
 - Stored report IDs are SHA-256 hashes of stable canonical JSON.
 - Pagination uses server-authored submitted_at/id ordering and the submitted_at/id database index.
-- Stored payloads are normalized on read so frontend/parser fixes apply without rewriting D1 rows.
+- Stored payloads remain canonical; compatibility normalization is applied on read when structured technical data is unavailable, so parser fixes do not require rewriting D1 rows.
 - The frontend retains a canonical TXT compatibility fallback when structured normalization is unavailable, without inventing state semantics.
 - Worker response bodies use no-store, nosniff, no-referrer, restrictive Permissions-Policy and frame denial headers.
 - CORS is restricted to the configured GitHub Pages origin.
@@ -45,7 +45,7 @@
 - Main navigation, report tables and comparison controls are keyboard accessible.
 - Long navigation and tables provide horizontal overflow controls and preserve touch/trackpad scrolling.
 - Reduced-motion preference disables nonessential transitions.
-- Global search covers GPU, vendor, device, OpenGL ES and EGL summary metadata.
+- Global search covers GPU, vendor, device, driver, OpenGL ES, EGL and loaded technical report fields without scanning or executing raw report text as markup.
 - Vendor, GPU and OpenGL ES version filters operate before 50-row pagination.
 - Report detail tabs remain visible even when the selected category is empty.
 - Detail tabs include Summary, OpenGL ES, EGL, Extensions, Limits, Formats, Precision, EGL Configs, Display/HDR, Diagnostics and Raw report.
@@ -204,3 +204,26 @@
 - Brand artwork is local-only, keeps its source aspect ratio, is decorative for accessibility, and never replaces the authoritative visible text label.
 - Branding changes are presentation-only and must not alter OpenGL ES/EGL evidence, counts, filters, report payloads, canonical TXT data, D1 schema or stored records.
 - Browser-visible changed frontend assets use v028 cache-busted filenames.
+
+## Release 0.1.19 full database audit and hardening
+- Database version is 0.1.19 and the compatibility floor remains OpenGLESScope 0.1.17 with schema version 2 and technicalReport schema version 1.
+- The current OpenGLESScope TXT header beginning with `OpenGLESScope report` is accepted and cross-checked against structured application version, versionCode and package identity; the legacy `OpenGLESScope <version>` header remains accepted for compatible 0.1.17+ stored/submitted reports.
+- Submission objects use exact schema shapes. Unknown top-level or nested JSON fields are rejected rather than silently persisted.
+- Sensitive field-name canonicalization removes separators and punctuation before matching, so forms such as `user_id`, `account-id` and `access.token` cannot bypass the forbidden-identifier guard.
+- Query diagnostic status is restricted to Available, Unavailable, Not applicable and Unknown.
+- Top-level and technicalReport display objects must be complete and exactly equivalent; duplicated display evidence is not allowed to disagree.
+- Structured technicalReport detail responses are not duplicated into a second normalized copy. Worker normalization is materialized only as a compatibility fallback when structured technicalReport data is absent.
+- A live API failure is an explicit unavailable/error state. An empty static index must never be used to make an API outage appear to be a valid zero-report database.
+- Failed detail loads are surfaced through a visible report-load-failure metric; aggregate results describe only successfully loaded reports.
+- Global search includes loaded application, device, GPU, driver, OpenGL ES, EGL and normalized technical fields in addition to summary metadata.
+- Limit aggregates use query diagnostics as authoritative state evidence, use every successfully loaded report in the denominator and count missing query evidence as Unknown. A value is shown in aggregate value distribution only when the authoritative state is Available.
+- Diagnostic aggregates use every successfully loaded report in the denominator and count absent diagnostic evidence as Unknown.
+- An explicitly reported empty Android HDR type list is Unavailable, not Unknown and never Unsupported. A missing/non-array HDR list remains Unknown.
+- Display/HDR state filtering exposes Available, Unavailable and Unknown only; it does not invent OpenGL ES/EGL support semantics from Android display evidence.
+- Main-view transitions use cancellation, `aria-busy`, GPU-friendly transforms and reduced-motion handling consistent with report-detail transition quality.
+- The parsed OpenGL ES core version is rendered canonically as `<major>.<minor>` with no presentation separator error.
+- Repeated report-detail membership checks use report-ID sets rather than quadratic scans on OpenGL ES/EGL overview aggregation.
+- Worker contract tests cover current 0.1.23 submission compatibility, legacy 0.1.17 header compatibility, schema-floor rejection, exact-object rejection, duplicated-display consistency, diagnostic-state validation, media type validation, CORS, report ID validation, 405 Allow behavior and the 2 MiB streamed-body bound.
+- No D1 schema migration is introduced by 0.1.19; existing D1 rows remain unchanged.
+- Browser-visible changed JavaScript uses `app.v029.js`; unchanged current CSS remains `site.v028.css`; the white EGL artwork uses `egl-logo-white-v029.png` generated from the current application EGL asset while preserving its alpha geometry exactly.
+- GitHub Pages deployment uses a separate validated build job, runs the static-index validator and full repository audit before artifact upload, uses the current Pages action family, and does not cancel an in-progress production Pages deployment.

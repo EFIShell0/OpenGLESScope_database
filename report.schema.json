@@ -36,12 +36,12 @@
         },
         "version": {
           "type": "string",
-          "pattern": "^0\\.1\\.[0-9]+$",
+          "pattern": "^0\\.1\\.(?:1[7-9]|[2-9][0-9]|[1-9][0-9]{2,})$",
           "maxLength": 32
         },
         "versionCode": {
           "type": "integer",
-          "minimum": 100
+          "minimum": 117
         }
       },
       "additionalProperties": false
@@ -330,7 +330,8 @@
         },
         "source": {
           "type": "string",
-          "maxLength": 512
+          "maxLength": 512,
+          "minLength": 1
         }
       },
       "additionalProperties": false
@@ -366,7 +367,8 @@
             "properties": {
               "name": {
                 "type": "string",
-                "maxLength": 256
+                "maxLength": 256,
+                "minLength": 1
               },
               "value": {
                 "type": "string",
@@ -374,7 +376,8 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "maxItems": 8192
         },
         "extensions": {
           "type": "array",
@@ -439,31 +442,57 @@
             "properties": {
               "shader": {
                 "type": "string",
-                "maxLength": 64
+                "maxLength": 64,
+                "minLength": 1
               },
               "type": {
                 "type": "string",
-                "maxLength": 64
+                "maxLength": 64,
+                "minLength": 1
               },
               "rangeMin": {
-                "type": [
-                  "integer",
-                  "number",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
                 ]
               },
               "rangeMax": {
-                "type": [
-                  "integer",
-                  "number",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
                 ]
               },
               "precision": {
-                "type": [
-                  "integer",
-                  "number",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
                 ]
               }
             },
@@ -482,11 +511,17 @@
             "properties": {
               "name": {
                 "type": "string",
-                "maxLength": 256
+                "maxLength": 256,
+                "minLength": 1
               },
               "status": {
                 "type": "string",
-                "maxLength": 64
+                "enum": [
+                  "Available",
+                  "Unavailable",
+                  "Not applicable",
+                  "Unknown"
+                ]
               },
               "detail": {
                 "type": "string",
@@ -494,7 +529,8 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "maxItems": 16384
         },
         "eglConfigs": {
           "type": "array",
@@ -506,10 +542,18 @@
             ],
             "properties": {
               "id": {
-                "type": [
-                  "integer",
-                  "number",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
                 ]
               },
               "configCaveat": {
@@ -784,7 +828,20 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "modeId",
+            "width",
+            "height",
+            "refreshRate",
+            "supportedModes",
+            "wideColor",
+            "hdrTypes",
+            "desiredMaxLuminance",
+            "desiredMaxAverageLuminance",
+            "desiredMinLuminance"
+          ]
         }
       },
       "additionalProperties": false

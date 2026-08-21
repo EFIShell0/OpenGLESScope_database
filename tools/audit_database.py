@@ -1,11 +1,11 @@
 from pathlib import Path
-import json,re,sys
+import json,re,subprocess,sys,shutil
 root=Path(__file__).resolve().parents[1]
-required=['index.html','config.js','report.schema.json','assets/app.v027.js','assets/site.v027.css','assets/egl-logo-v027.png','assets/openglesscope_logo_horizontal-v017.png','assets/favicon-v017.png','assets/favicon-v017.ico','assets/apple-touch-icon-v017.png','worker/src/index.js','worker/migrations/0002_report_cursor_index.sql','worker/migrations/0003_application_version_summary.sql','rules/PROJECT_RULES.md']
 errors=[]
+required=['index.html','config.js','report.schema.json','assets/app.v029.js','assets/site.v028.css','assets/egl-logo-white-v029.png','assets/opengles-gl-es-v028.png','assets/openglesscope_logo_horizontal-v017.png','assets/favicon-v017.png','assets/favicon-v017.ico','assets/apple-touch-icon-v017.png','worker/src/index.js','worker/tests/contract.mjs','worker/migrations/0001_init.sql','worker/migrations/0002_report_cursor_index.sql','worker/migrations/0003_application_version_summary.sql','worker/scripts/verify-cloudflare-account.mjs','worker/wrangler.jsonc','worker/package.json','rules/PROJECT_RULES.md','rules/0.1.19_FULL_DATABASE_AUDIT.md','SECURITY.md','README.md','release.md','BUILD_AUDIT.md','.github/workflows/pages.yml']
 for x in required:
     if not (root/x).is_file(): errors.append(f'missing {x}')
-for x in ['report.schema.json','worker/package.json']:
+for x in ['report.schema.json','worker/package.json','data/index.json']:
     try: json.loads((root/x).read_text(encoding='utf-8'))
     except Exception as e: errors.append(f'json {x}: {e}')
 try: json.loads(re.sub(r'(?m)^\s*//.*$','',(root/'worker/wrangler.jsonc').read_text(encoding='utf-8')))
@@ -19,31 +19,66 @@ for f in root.glob('*.html'):
         try: target.relative_to(root.resolve())
         except ValueError: errors.append(f'outside-ref {f.name} {ref}');continue
         if not target.exists(): errors.append(f'broken-ref {f.name} {ref}')
-for f in [root/'assets/app.v027.js',root/'assets/site.v027.css',root/'worker/src/index.js',root/'tools/build_index.py']:
+source_files=[root/'assets/app.v029.js',root/'assets/site.v028.css',root/'worker/src/index.js',root/'worker/tests/contract.mjs',root/'worker/scripts/verify-cloudflare-account.mjs',root/'tools/build_index.py']
+for f in source_files:
     t=f.read_text(encoding='utf-8')
-    bad='/*' in t or re.search(r'(?m)^\s*//',t)
+    bad='/*' in t or bool(re.search(r'(?m)^\s*//',t))
     if f.suffix=='.py': bad=bool(bad or re.search(r'(?m)^\s*#(?!\!)',t))
     if bad: errors.append(f'source-comment {f.relative_to(root)}')
 idx=(root/'index.html').read_text(encoding='utf-8')
-for ref in ['assets/app.js','assets/site.css','assets/openglesscope_logo_horizontal.png','assets/favicon.png','v015','app.v024.js','site.v024.css','app.v025.js','site.v025.css']:
-    if ref in idx: errors.append(f'stale-or-unversioned-index-ref {ref}')
-for token in ['displayOrderFilter','nav-edge-left','nav-edge-right','repo-icon','repo-arrow','OpenGLESScope Database <strong>0.1.18</strong>']:
-    if token not in idx: errors.append(f'missing-ui-token {token}')
+for token in ['assets/site.v028.css','assets/app.v029.js','config.js?v=029','OpenGLESScope Database <strong>0.1.19</strong>','displayOrderFilter','nav-edge-left','nav-edge-right','repo-icon','repo-arrow']:
+    if token not in idx: errors.append(f'missing-index-token {token}')
+for token in ['assets/app.js','assets/site.css','app.v028.js" defer','config.js?v=028','OpenGLESScope Database <strong>0.1.18</strong>']:
+    if token in idx: errors.append(f'stale-index-token {token}')
+for f in root.glob('*.html'):
+    if f.name!='index.html' and 'site.v027.css' in f.read_text(encoding='utf-8'): errors.append(f'stale-error-style {f.name}')
 worker=(root/'worker/src/index.js').read_text(encoding='utf-8')
-for token in ["databaseVersion:'0.1.18'","normalizerVersion:3",'application_version','application_version_code','MAX_BODY=2*1024*1024']:
+worker_tokens=["databaseVersion:'0.1.19'","compatibleProducer:'OpenGLESScope 0.1.17+'","normalizerVersion:3",'MAX_BODY=2*1024*1024','replace(/[^a-z0-9]/g','const TOP_KEYS=new Set','const DIAGNOSTIC_STATES=new Set',"DIAGNOSTIC_STATES.has(x.status)",'sameDisplay(t.display,p.display)',"text.startsWith('OpenGLESScope report\\n')","text.startsWith(`OpenGLESScope ${p.application.version}\\n`)",'if(!object(p.technicalReport))p.normalized=normalize(p)','Submission JSON nesting is too deep','Content-Type must be application/json','Stored report payload is invalid','Both cursor fields are required','Method not allowed']
+for token in worker_tokens:
     if token not in worker: errors.append(f'missing-worker-token {token}')
+js=(root/'assets/app.v029.js').read_text(encoding='utf-8')
+js_tokens=['egl-logo-white-v029.png','opengles-gl-es-v028.png','failedReportLoads','Report load failures','reportSearchText','Repeated report cursor','Response exceeds 4 MiB','Database request timed out','aria-busy','translate3d(0,-4px,0)','duration:90','duration:150','detailTransitionToken','duration:105','duration:180','hdr===null?\'unknown\':hdr.length?\'available\':\'unavailable\'',"display:[['available','HDR available'],['unavailable','HDR unavailable'],['unknown','HDR unknown']]",'const total=rs.length','No capability state is inferred while report data is unavailable.','`${p.opengles?.major??\'?\'}.${p.opengles?.minor??\'?\'}`']
+for token in js_tokens:
+    if token not in js: errors.append(f'missing-frontend-token {token}')
+for token in ['./data/index.json','state.summaries=staticIndex','fetch(\'./data/index.json']:
+    if token in js: errors.append(f'forbidden-silent-fallback {token}')
+for token in ['eval(', 'new Function', 'document.write(', 'javascript:']:
+    if token in js: errors.append(f'forbidden-dynamic-browser-code {token}')
+css=(root/'assets/site.v028.css').read_text(encoding='utf-8')
+for token in ['.nav-egl-logo{','.nav-gles-logo{','.view-title-egl-logo{','.view-title-gles-logo{','.detail-tab-egl-logo{','.detail-tab-gles-logo{','.raw{','max-height:68vh']:
+    if token not in css: errors.append(f'missing-style-token {token}')
+schema=json.loads((root/'report.schema.json').read_text(encoding='utf-8'))
+sp=schema.get('properties',{})
+app_props=sp.get('application',{}).get('properties',{})
+if app_props.get('versionCode',{}).get('minimum')!=117: errors.append('schema-version-floor')
+if app_props.get('version',{}).get('pattern')!=r'^0\.1\.(?:1[7-9]|[2-9][0-9]|[1-9][0-9]{2,})$': errors.append('schema-version-pattern')
+tr=sp.get('technicalReport',{}).get('properties',{})
+if tr.get('limits',{}).get('maxItems')!=8192: errors.append('schema-limit-bound')
+if tr.get('queryDiagnostics',{}).get('maxItems')!=16384: errors.append('schema-diagnostic-bound')
+expected_display=['name','modeId','width','height','refreshRate','supportedModes','wideColor','hdrTypes','desiredMaxLuminance','desiredMaxAverageLuminance','desiredMinLuminance']
+if tr.get('display',{}).get('required')!=expected_display: errors.append('schema-technical-display-required')
+if set(tr.get('queryDiagnostics',{}).get('items',{}).get('properties',{}).get('status',{}).get('enum',[]))!={'Available','Unavailable','Not applicable','Unknown'}: errors.append('schema-diagnostic-states')
+wr=json.loads((root/'worker/wrangler.jsonc').read_text(encoding='utf-8'))
+if wr.get('account_id')!='6881527e6e0b9bc4a0c009473428d1bc': errors.append('cloudflare-account-pin')
+dbs=wr.get('d1_databases',[])
+if not dbs or dbs[0].get('binding')!='DB' or dbs[0].get('database_id')!='2c945dda-e320-4b3a-9fac-a086373db17c': errors.append('d1-pin')
+pkg=json.loads((root/'worker/package.json').read_text(encoding='utf-8'))
+if pkg.get('version')!='0.1.19': errors.append('worker-package-version')
+if pkg.get('devDependencies',{}).get('wrangler')!='4.124.0': errors.append('wrangler-pin')
+for key in ['predeploy','premigrate','premigrations:list','pred1:count']:
+    if 'verify:account' not in pkg.get('scripts',{}).get(key,''): errors.append(f'account-guard {key}')
 
-js=(root/'assets/app.v027.js').read_text(encoding='utf-8')
-css=(root/'assets/site.v027.css').read_text(encoding='utf-8')
-for token in ['egl-logo-v027.png',"k==='egl'?eglLogo('nav-egl-logo')","state.view==='egl'","id==='egl'?eglLogo('detail-tab-egl-logo')"]:
-    if token not in js: errors.append(f'missing-egl-branding-token {token}')
-for token in ['.nav-egl-logo{','.view-title-egl-logo{','.detail-tab-egl-logo{']:
-    if token not in css: errors.append(f'missing-egl-branding-style {token}')
-for token in ['primitiveFieldCount',"metric('GPU models'","metric('OpenGL ES extensions'","metric('Normalized fields'","metric('Producer/query baseline'",'detailTransitionToken','switchDetailTab','detailTabBody',"role=\"tablist\"","role=\"tab\"","duration:105","duration:180"]:
-    if token not in js: errors.append(f'missing-detail-parity-token {token}')
-for token in ['#detailTabBody{min-height:48px','gap:8px','padding:7px 8px','font-size:12px','font-weight:750','.raw{','max-height:68vh']:
-    if token not in css: errors.append(f'missing-detail-style-token {token}')
+workflow=(root/'.github/workflows/pages.yml').read_text(encoding='utf-8')
+for token in ['actions/checkout@v6','actions/setup-python@v6','python tools/build_index.py','python tools/audit_database.py','actions/configure-pages@v5','actions/upload-pages-artifact@v4','actions/deploy-pages@v4','cancel-in-progress: false']:
+    if token not in workflow: errors.append(f'workflow-quality {token}')
 
+node=shutil.which('node')
+if node:
+    for f in [root/'assets/app.v029.js',root/'worker/src/index.js',root/'worker/tests/contract.mjs']:
+        r=subprocess.run([node,'--check',str(f)],capture_output=True,text=True)
+        if r.returncode: errors.append(f'node-check {f.relative_to(root)}: {r.stderr.strip()}')
+    r=subprocess.run([node,str(root/'worker/tests/contract.mjs')],capture_output=True,text=True,cwd=root/'worker')
+    if r.returncode: errors.append(f'worker-contract: {r.stdout.strip()} {r.stderr.strip()}')
 if errors:
     print('\n'.join(errors));sys.exit(1)
-print('OpenGLESScope Database audit PASS')
+print('OpenGLESScope Database 0.1.19 audit PASS')

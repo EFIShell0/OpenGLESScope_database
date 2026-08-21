@@ -4,12 +4,14 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: 0.1.18
-- Compatible producer line: OpenGLESScope 0.1.x
-- Compatibility audit target: OpenGLESScope 0.1.18
-- Submission schema: 2
-- Technical report schema: 1
-- Worker normalizer: 3
+- Database: `0.1.19`
+- Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
+- Current compatibility audit target: OpenGLESScope `0.1.23`
+- Submission schema: `2`
+- Technical report schema: `1`
+- Worker normalizer: `3`
+- Frontend JavaScript: `app.v029.js`
+- Frontend CSS: `site.v028.css`
 
 Application and database versions are intentionally independent.
 
@@ -22,33 +24,27 @@ Application and database versions are intentionally independent.
 
 ## Data model
 
-The database preserves the complete structured report and canonical TXT snapshot submitted by the application. OpenGL ES, GLSL ES, EGL and Android platform/display evidence remain separate. Runtime extension tokens are preserved verbatim. Query state keeps Available, Unavailable, Not applicable and Unknown distinct.
+The database preserves the complete structured report and canonical TXT snapshot submitted by the application. OpenGL ES, GLSL ES, EGL and Android platform/display evidence remain separate. Runtime extension tokens are preserved verbatim. Query diagnostics preserve Available, Unavailable, Not applicable and Unknown as distinct states.
 
-Structured detail includes OpenGL ES/EGL identity, exact GL/EGL extension sets, implementation limits, compressed and binary formats, shader precision, query diagnostics, complete EGL configuration attributes and Android Display/HDR evidence.
+Structured detail includes OpenGL ES/EGL identity, exact GL/EGL extension sets, implementation limits, compressed and binary formats, shader precision, query diagnostics, complete EGL configuration attributes and Android Display/HDR evidence. Top-level and technical-report display objects are validated as complete duplicate evidence and must agree.
 
 ## Frontend quality floor
 
-The frontend uses no third-party scripts, analytics, remote fonts or advertising dependencies. It provides keyboard-accessible navigation and controls, cache-busted local assets, responsive table/navigation overflow controls, deterministic 50-row report pagination, exact comparison, explicit state-semantic coverage, Display/HDR ordering and canonical raw-report access.
+The frontend uses no third-party scripts, analytics, remote fonts or advertising dependencies. It provides keyboard-accessible navigation and controls, local application-derived brand/HDR/GPU artwork, responsive horizontal overflow controls, deterministic 10/25/50-row report pagination, exact report comparison, explicit state-semantic coverage and canonical raw-report access.
+
+Live API failures are explicit error states and are never replaced by an empty static index. Detail-fetch failures are surfaced in the hero metrics. Global search covers loaded structured technical fields in addition to report summary metadata. API responses are timeout-bounded and capped at 4 MiB before JSON materialization.
 
 ## Submission and privacy
 
-Reports are uploaded only after an explicit application action. Request bodies are bounded to 2 MiB and are never truncated. Personal identifiers, account/authentication fields, request IP data and private paths are forbidden report fields. IDs are SHA-256 hashes of stable canonical JSON and submission time is authored by the server-side database.
+Reports are uploaded only after an explicit application action. Request bodies are streamed with a 2 MiB hard bound and are never truncated. Exact schema shapes are enforced. Personal identifiers, account/authentication fields, request IP data and private paths are forbidden report fields. Sensitive field-name matching canonicalizes punctuation/separators before comparison.
 
-See `SECURITY.md` and `rules/PROJECT_RULES.md` for the security and correctness contract.
-
-
-Branding/title parity in 0.1.7:
-- The web header horizontal logo is copied directly from the OpenGLESScope application asset with identical bytes.
-- Browser icons use the application GL|ES artwork centered on opaque black.
-- Reports uses the base browser title; every other main destination prefixes its navigation label.
-- Report detail titles use GPU name, active detail-tab label, then OpenGLESScope Database.
-
+Stored IDs are SHA-256 hashes of stable key-sorted canonical JSON, and submission time is authored only by the server-side D1 database. Current `OpenGLESScope report` TXT headers are cross-checked against structured application version/versionCode/package identity; the compatible legacy producer header is retained for 0.1.17+ reports.
 
 ## Cloudflare account isolation
 
-This release pins the production Worker to Cloudflare account `6881527e6e0b9bc4a0c009473428d1bc` and D1 database `2c945dda-e320-4b3a-9fac-a086373db17c` in `worker/wrangler.jsonc`. Keep the `openglesscope` Wrangler auth profile bound to the `worker` directory. The `account_id` pin is the fail-closed guard that prevents an authenticated profile for another Cloudflare account from deploying this Worker into that account.
+Production Worker configuration is pinned to Cloudflare account `6881527e6e0b9bc4a0c009473428d1bc` and D1 database `2c945dda-e320-4b3a-9fac-a086373db17c`. Production deploy, migration, migration-list and D1 diagnostic npm commands fail closed through the account verifier. Wrangler is pinned to `4.124.0`.
 
-Local setup files, credentials, caches and dependencies are excluded by the repository `.gitignore`. `node_modules` must never be committed. `package-lock.json` may be committed after `npm install` generates it locally.
+Local credentials, Wrangler state, environment files, dependencies, logs, caches and build output are excluded by `.gitignore`.
 
 Recommended local commands from `worker/`:
 
@@ -57,28 +53,17 @@ npm install
 npm run auth:create
 npm run auth:activate
 npm run auth:status
+npm run test:contract
 npm run migrate
 npm run deploy
 ```
 
-`auth:create` is needed only once per machine/profile. Normal future deployments use the directory-bound profile automatically.
+`auth:create` is normally needed only once for the local profile.
 
+## 0.1.19 full audit
 
-## 0.1.10 UI parity
-- Added semantic local SVG icons to every main navigation destination.
-- Added compact icon-bearing custom filters with selected-option checkmarks and viewport-aware listboxes.
-- Matched filter height, spacing, mobile layout, focus visibility, detail tabs, pagination and table-scroll affordances to the project quality baseline.
-- Added Windows-safe fail-closed Cloudflare account verification before production D1 and deploy operations.
+The 0.1.19 audit corrected current OpenGLESScope 0.1.23 TXT-header compatibility, exact-object validation, separator-safe sensitive-key matching, duplicated display consistency, diagnostic-state validation, limit/diagnostic denominators, HDR empty-list semantics, technical global search, live-API failure handling, detail-load visibility and response duplication. It also adds a repeatable Worker contract suite and refreshes the static audit to the actual live cache-busted assets.
 
+No D1 migration or stored-report rewrite is introduced by 0.1.19. The Pages workflow validates the static index and runs the full repository audit before uploading the deployment artifact.
 
-## 0.1.14 navigation and report index
-
-Reports is now the database home destination. The former Overview tab has been removed. The index follows all 500-row server cursor pages, while visible report rendering remains user-selectable at 10, 25, or 50 rows per page after filtering and sorting.
-
-## 0.1.18 report detail interaction parity
-
-- Report detail tabs now use the VulkanScope Database interaction geometry and animated content transition while preserving OpenGL ES branding.
-- Tab controls expose tablist/tab semantics, roving keyboard focus, Arrow/Home/End navigation and active-tab bring-into-view behavior.
-- Raw report presentation now matches the VulkanScope monospace raw-view geometry, sizing, scrolling and containment.
-- Reduced-motion preference disables nonessential detail-tab animation.
-- Frontend assets are cache-busted as v025.
+See `SECURITY.md`, `rules/PROJECT_RULES.md` and `rules/0.1.19_FULL_DATABASE_AUDIT.md` for the security/correctness contract and detailed audit result.

@@ -1,6 +1,6 @@
 {
   "name": "openglesscope-database-api",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,7 +17,8 @@
     "migrations:list": "wrangler d1 migrations list openglesscope-database --remote",
     "pred1:count": "npm run verify:account",
     "d1:count": "wrangler d1 execute openglesscope-database --remote --command \"SELECT COUNT(*) AS report_count FROM reports;\"",
-    "dev": "wrangler dev"
+    "dev": "wrangler dev",
+    "test:contract": "node tests/contract.mjs"
   },
   "devDependencies": {
     "wrangler": "4.124.0"
