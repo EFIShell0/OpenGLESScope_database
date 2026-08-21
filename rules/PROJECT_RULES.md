@@ -346,3 +346,12 @@
 - Security-patch data is device/platform metadata only and must not affect OpenGL ES, EGL, Display/HDR or extension capability inference.
 - Existing report-ID hashing, body-size bounds, sensitive-field rejection, CORS/CSP/security headers, D1 identity pinning, pagination and no-background-upload behavior remain unchanged.
 - Browser-visible changed JavaScript uses `app.v038.js`; unchanged CSS remains `site.v036.css`; config cache key is `v=038`.
+
+
+## Release 0.2.2 Android security-patch producer enforcement
+- Database version is 0.2.2 and current validated producer is OpenGLESScope 0.2.2 with versionCode 202.
+- OpenGLESScope 0.2.2 and newer compatible producers must submit canonical `device.securityPatch` in `YYYY-MM-DD` form and matching canonical TXT lines `Android security patch:` and `Security patch:`.
+- Older compatible reports remain backward compatible and are not assigned fabricated patch evidence.
+- Reports renders explicit patch evidence as `Patch YYYY-MM-DD` beneath Android release/SDK using the established VulkanScope parity treatment.
+- Patch metadata is Android platform evidence only and never participates in graphics capability inference.
+- Existing schema, canonical hashing, report-size bounds, recursive sensitive-field rejection, CORS/CSP/security headers, D1 parameterization and origin restrictions remain mandatory.

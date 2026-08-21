@@ -1,4 +1,4 @@
-# OpenGLESScope Database 0.2.1 build audit
+# OpenGLESScope Database 0.2.2 build audit
 
 Release focus: Reports Android security-patch presentation parity with VulkanScope, backwards-compatible schema handling, and preservation of existing security/capability semantics.
 

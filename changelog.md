@@ -1,3 +1,11 @@
+## 0.2.2
+
+- Updated current producer to OpenGLESScope 0.2.2 / versionCode 202.
+- Requires canonical Android security-patch structured/TXT parity for producer 0.2.2 and newer.
+- Keeps the field optional for compatible historical producers that never collected it.
+- Normalizer version is 8.
+- Retains VulkanScope-style `Patch YYYY-MM-DD` Reports presentation.
+
 # Changelog
 
 ## 0.2.1
