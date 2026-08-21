@@ -27,7 +27,7 @@
 
 ## Submission and Worker
 - Application identity is OpenGLESScope with package com.efishell.openglesscope.
-- Application and database versions are independent. The database accepts compatible OpenGLESScope 0.1.x producers rather than requiring version equality.
+- Application and database versions are independent. The database accepts compatible OpenGLESScope producers from the 0.1.17 compatibility floor through compatible 0.x releases that preserve schema version 2 and technicalReport schema version 1; database/application version equality is never required.
 - Public web URL is https://efishell0.github.io/OpenGLESScope_database/.
 - API base is https://openglesscope-database-api.openglesscope.workers.dev.
 - Request body is bounded to 2 MiB and is never truncated.
@@ -321,3 +321,17 @@
 - Frontend rendering remains escaped/same-origin, CSP-restricted and free of third-party script, analytics, remote font and remote presentation dependencies.
 - Worker request bounds, recursive sensitive-field rejection, parameterized D1 access, strict report-ID/cursor validation, CORS restriction, no-store/nosniff/no-referrer/frame denial/Permissions-Policy protections and fail-closed Cloudflare account pinning remain mandatory.
 - Browser-visible changed frontend assets use v036 cache-busted filenames.
+
+
+## Release 0.2.0
+- Database version is 0.2.0 and remains independent from the OpenGLESScope application version.
+- Current validated producer is OpenGLESScope 0.2.1 with versionCode 201.
+- Producer parsing is semantic across compatible 0.x releases instead of being hard-coded to 0.1.x patch versions.
+- The compatibility floor remains OpenGLESScope 0.1.17; major-version 1.x and malformed/prerelease producer strings are rejected until a future schema compatibility decision is made explicitly.
+- OpenGLESScope 0.2.1 submissions must retain schema version 2, technicalReport schema version 1, complete structured/TXT parity, current ABI metadata, runtime identity evidence, enumeration counts and query diagnostics.
+- For OpenGLESScope 0.2.1 and newer compatible 0.x producers, Android desired maximum, maximum-average and minimum luminance values in canonical TXT evidence must either be Unavailable or include the cd/m² unit and numerically match structured display evidence.
+- Display/HDR luminance values remain Android-reported metadata and are never reinterpreted as measured panel luminance or OpenGL ES capability.
+- Current Khronos registry baselines remain OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5; registry audit date is 2026-08-21.
+- Frontend health/metrics expose the compatible-producer contract so a producer-version rejection is diagnosable instead of appearing as an unexplained generic schema failure.
+- Superseded JavaScript and CSS release assets are removed from the packaged release after reference validation; only browser-referenced current assets remain.
+- Existing HTTPS, CORS, CSP, body-size, nesting-depth, sensitive-field, D1 identity, pagination, canonical hashing and no-background-upload protections remain mandatory.

@@ -1,9 +1,3 @@
-# OpenGLESScope Database 0.1.26 Build Audit
+# OpenGLESScope Database 0.2.0 build audit
 
-The 0.1.26 source is derived from OpenGLESScope Database 0.1.25 and is compared against VulkanScope Database 0.35.8 for the shared table-header and custom-scroll interaction model.
-
-Validation covers JSON/JSONC parsing, local asset references, CSP presence, source-comment prohibition, frontend and Worker JavaScript syntax, Worker contract tests, schema compatibility invariants, production Cloudflare/D1 pinning, cache-busted asset references, static index metadata, report-table/header parity and ZIP integrity.
-
-The specification audit was refreshed against the Khronos OpenGL ES and EGL registries on 2026-08-21. Current published core baselines remain OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5.
-
-No dynamic production deployment or live D1 mutation is performed by this build audit.
+Release validation is performed by `tools/build_index.py`, `tools/audit_database.py`, JavaScript syntax checks and Worker contract tests. The audit covers producer 0.2.1 acceptance, legacy 0.1.17+ compatibility, schema/technical-report parity, luminance unit parity, security headers, request bounds, CORS, D1 pins and frontend asset references.

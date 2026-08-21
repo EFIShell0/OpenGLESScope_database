@@ -31,3 +31,7 @@ The frontend avoids report-derived HTML execution, dynamic code evaluation and s
 ## Deployment isolation
 
 Production Wrangler configuration is pinned to Cloudflare account `6881527e6e0b9bc4a0c009473428d1bc` and D1 database `2c945dda-e320-4b3a-9fac-a086373db17c`. Production deploy/migration/diagnostic operations fail closed through the account verifier.
+
+
+## 0.2.0 producer validation
+OpenGLESScope 0.2.1 is accepted only through the compatible 0.x schema-2 contract. Current-producer TXT/structured evidence, versionCode 201 and cd/m² luminance text parity are validated before storage.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+- Added OpenGLESScope 0.2.1 producer support without weakening the schema 2 / technicalReport 1 contract.
+- Fixed 0.1.x-only producer parsing that rejected 0.2.1 and bypassed strict current-producer validation logic for non-0.1 versions.
+- Added current producer versionCode and cd/m² TXT/structured luminance parity validation.
+- Added explicit unsupported producer errors and compatible-producer visibility.
+- Updated current producer metadata to OpenGLESScope 0.2.1 and normalizer version to 6.
+- Retained current OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 specification baselines.
+
+
 ## 0.1.26
 
 - Fixed the remaining custom horizontal scrollbar endpoint defect by replacing the SVG scrollbar track with an HTML track/thumb mapped in CSS pixels.

@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.26`
+- Database: `0.2.0`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
@@ -63,11 +63,11 @@ npm run deploy
 
 
 
-## 0.1.26 full audit and table parity correction
+## 0.2.0 full audit and table parity correction
 
-0.1.26 fixes the custom horizontal table scrollbar at its root by replacing the previous SVG track/thumb model with the HTML track/thumb geometry used by the VulkanScope reference. The thumb now reaches the exact left and right endpoints of the rendered track. The neutral sticky table-header geometry and `#151518` header surface are also applied to every tabular destination, including Display/HDR, OpenGL ES, EGL and report-detail tables rather than only Reports.
+0.2.0 fixes the custom horizontal table scrollbar at its root by replacing the previous SVG track/thumb model with the HTML track/thumb geometry used by the VulkanScope reference. The thumb now reaches the exact left and right endpoints of the rendered track. The neutral sticky table-header geometry and `#151518` header surface are also applied to every tabular destination, including Display/HDR, OpenGL ES, EGL and report-detail tables rather than only Reports.
 
-This release also removes a source-CSS comment and accidental escaped newline that violated the project source rules, reruns the Worker contract/static audits, and rechecks the current Khronos baselines: OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5. Database version 0.1.26 remains independent from the current producer target, OpenGLESScope 0.1.25.
+This release also removes a source-CSS comment and accidental escaped newline that violated the project source rules, reruns the Worker contract/static audits, and rechecks the current Khronos baselines: OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5. Database version 0.2.0 remains independent from the current producer target, OpenGLESScope 0.2.1.
 
 ## 0.1.25 UI parity corrections
 
@@ -77,9 +77,9 @@ This release also removes a source-CSS comment and accidental escaped newline th
 
 0.1.23 aligns the Reports table presentation with VulkanScope Database 0.35.8 without changing OpenGL ES/EGL evidence semantics or the submission schema. The GPU column label is now Device, complete OpenGL ES and EGL runtime version strings use the same compact version-chip geometry as VulkanScope API versions, Report ID uses matching monospace sizing and normal weight, and Reports header typography follows the VulkanScope reference. Version chips remain single-line so EGL and OpenGL ES version values do not wrap vertically; horizontal overflow remains handled by the synchronized table scroller.
 
-## 0.1.22 OpenGLESScope 0.1.25 and full tab parity audit
+## 0.1.22 OpenGLESScope 0.2.1 and full tab parity audit
 
-0.1.22 aligns the database with OpenGLESScope 0.1.25 query evidence and closes the remaining shared UI-quality gaps found against VulkanScope Database 0.35.8. Reports now include Driver identity; report-detail tabs expose counts and evidence-aware category views; Extensions and Formats distinguish successful empty/not-listed enumeration from unavailable enumeration; Limits aggregate only actual GL limit queries; Precision uses all loaded reports in its denominator; Display/HDR exposes mode count and luminance evidence. Responsive table geometry and coverage meters are CSP-safe while preserving the 0.1.20 scroll/thumb/shadow interaction contract.
+0.1.22 aligns the database with OpenGLESScope 0.2.1 query evidence and closes the remaining shared UI-quality gaps found against VulkanScope Database 0.35.8. Reports now include Driver identity; report-detail tabs expose counts and evidence-aware category views; Extensions and Formats distinguish successful empty/not-listed enumeration from unavailable enumeration; Limits aggregate only actual GL limit queries; Precision uses all loaded reports in its denominator; Display/HDR exposes mode count and luminance evidence. Responsive table geometry and coverage meters are CSP-safe while preserving the 0.1.20 scroll/thumb/shadow interaction contract.
 
 The Worker normalizer is version 5. Current 0.1.25 submissions receive duplicate-evidence checks, section-count cross-checks, Available-diagnostic requirements for structured limits/precision, enumeration-evidence consistency, and KHR_debug / EXT_disjoint_timer_query diagnostic validation. The compatibility floor remains 0.1.17+ and no D1 migration is introduced.
 
