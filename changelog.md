@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.17
+## 0.1.18
 
 - Added official EGL branding to the EGL navigation destination, EGL view heading and report-detail EGL tab.
 - Kept EGL Configs configuration-specific rather than misusing the EGL brand mark as a capability/state indicator.
@@ -64,7 +64,7 @@
 
 ## 0.1.7
 
-- Audited compatibility against OpenGLESScope 0.1.17 while retaining independent database versioning.
+- Audited compatibility against OpenGLESScope 0.1.18 while retaining independent database versioning.
 - Added application version and versionCode to server-side report summaries through a forward D1 migration.
 - Hardened Worker validation for device, OpenGL ES, EGL, display, EGL config, diagnostic and report-text structure.
 - Added cross-consistency checks between top-level runtime extension sets and the structured technical report.

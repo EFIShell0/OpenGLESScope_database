@@ -193,3 +193,14 @@
 - Text labels remain authoritative for accessibility and navigation semantics; the EGL artwork is decorative and uses empty alternative text.
 - EGL branding changes are presentation-only and must not alter report values, extension/config evidence, filters, counts, D1 schema, stored payloads or canonical TXT data.
 - Browser-visible frontend assets changed by this release use v027 cache-busted filenames.
+
+
+## Release 0.1.18 OpenGL ES and EGL brand-mark parity
+- Database version is 0.1.18.
+- Every branded EGL runtime surface uses the bundled official EGL silhouette rendered as a white monochrome mark on the dark database UI; the previous red EGL presentation is forbidden.
+- The OpenGL ES runtime destination uses the exact bundled white `GL|ES` artwork from the OpenGLESScope application rather than a generic OpenGL ES glyph.
+- Brand marks are used consistently in the primary navigation, corresponding main-view heading, report-detail tab button and matching runtime section heading.
+- EGL Configs remains a separate technical configuration destination and retains its semantic configuration icon rather than the EGL product mark.
+- Brand artwork is local-only, keeps its source aspect ratio, is decorative for accessibility, and never replaces the authoritative visible text label.
+- Branding changes are presentation-only and must not alter OpenGL ES/EGL evidence, counts, filters, report payloads, canonical TXT data, D1 schema or stored records.
+- Browser-visible changed frontend assets use v028 cache-busted filenames.
