@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: 0.1.15
+- Database: 0.1.16
 - Compatible producer line: OpenGLESScope 0.1.x
 - Compatibility audit target: OpenGLESScope 0.1.17
 - Submission schema: 2
@@ -75,7 +75,7 @@ npm run deploy
 
 Reports is now the database home destination. The former Overview tab has been removed. The index follows all 500-row server cursor pages, while visible report rendering remains user-selectable at 10, 25, or 50 rows per page after filtering and sorting.
 
-## 0.1.15 report detail interaction parity
+## 0.1.16 report detail interaction parity
 
 - Report detail tabs now use the VulkanScope Database interaction geometry and animated content transition while preserving OpenGL ES branding.
 - Tab controls expose tablist/tab semantics, roving keyboard focus, Arrow/Home/End navigation and active-tab bring-into-view behavior.

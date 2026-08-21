@@ -172,3 +172,15 @@
 - OpenGL ES branding and capability semantics remain authoritative; Vulkan-specific terminology or driver semantics are not introduced.
 - No D1 schema migration or report-payload rewrite is introduced.
 - Browser-visible changed frontend assets use v025 cache-busted filenames.
+
+
+## Release 0.1.16 hero information parity
+- Database version is 0.1.16.
+- The hero follows the VulkanScope Database information hierarchy while preserving OpenGL ES terminology: eyebrow `OPENGL ES CAPABILITY INTELLIGENCE`, title `OpenGL ES Hardware Database`, and the deep report-backed implementation description.
+- Hero search copy follows the compact reference wording but only names query domains actually present in OpenGLESScope data.
+- The five hero metrics are Reports, GPU models, OpenGL ES extensions, Normalized fields and Producer/query baseline. Vulkan-specific `Device extensions` terminology is forbidden.
+- GPU models are counted from report summaries; OpenGL ES extensions are unique exact runtime tokens from loaded canonical report detail; normalized fields count primitive values in the normalized technical-report view without inventing missing data.
+- Producer/query baseline is server-authored by the health endpoint and states the OpenGLESScope/OpenGL ES/GLSL ES/EGL query baseline.
+- Hero metric population may fetch report detail only through the existing concurrency-bounded detail loader; no unbounded fetch fan-out is introduced.
+- Existing Available, Unavailable, Not applicable and Unknown semantics, D1 schema, canonical TXT access, report-detail behavior and OpenGL ES branding remain unchanged.
+- Browser-visible changed frontend assets use v026 cache-busted filenames.

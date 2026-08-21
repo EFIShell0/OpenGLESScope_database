@@ -1,3 +1,11 @@
+# 0.1.16
+
+- Matched the VulkanScope Database hero information hierarchy with OpenGL ES-native wording.
+- Renamed the hero to **OpenGL ES Hardware Database** and aligned its implementation-data description and search copy.
+- Replaced the previous generic hero cards with **Reports**, **GPU models**, **OpenGL ES extensions**, **Normalized fields**, and **Producer/query baseline**.
+- Added a server-authored OpenGLESScope/OpenGL ES/GLSL ES/EGL query baseline and retained bounded detail loading for aggregate metrics.
+- Preserved report semantics, D1 schema, raw canonical report access, and the 0.1.15 report-detail interaction parity work.
+
 # 0.1.15
 - Matched VulkanScope report-detail tab animation, control geometry, keyboard behavior and Raw report presentation.
 - Added v025 frontend cache busting without schema or D1 changes.
