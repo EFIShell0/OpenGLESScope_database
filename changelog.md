@@ -1,3 +1,7 @@
+# 0.1.15
+- Matched VulkanScope report-detail tab animation, control geometry, keyboard behavior and Raw report presentation.
+- Added v025 frontend cache busting without schema or D1 changes.
+
 # 0.1.14
 
 - Removed the Overview destination and made Reports the default/root database view.

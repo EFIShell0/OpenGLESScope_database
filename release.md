@@ -1,22 +1,15 @@
-# OpenGLESScope Database 0.1.14
+# OpenGLESScope Database 0.1.15
 
-OpenGLESScope Database 0.1.14 makes Reports the database home view and aligns report-list pagination/loading behavior with the VulkanScope Database quality reference.
+OpenGLESScope Database 0.1.15 aligns report-detail tab interaction and the Raw report presentation with the VulkanScope Database quality reference while preserving OpenGL ES-specific semantics and branding.
 
 ## Changes
 
-- Removed the Overview navigation destination.
-- Reports is now the first navigation item and the root/default view.
-- Report index requests use a 500-row server cursor batch and follow every returned cursor until completion.
-- Repeated cursors fail explicitly rather than silently truncating the visible database.
-- Visible report pages remain capped at 50 rows.
-- Per-page choices are 10, 25 and 50, with 25 as the default.
-- Search, filters and sorting are applied before visible pagination.
-- Submission timestamps remain server-authored and include seconds/timezone in presentation.
-- Report toolbar and mobile behavior are aligned with the VulkanScope Database reference.
-- No schema or D1 migration change.
+- Report-detail tabs now match the reference control sizing, spacing, sticky container treatment and active-state geometry.
+- Switching report tabs uses the same two-stage content transition: a short 105 ms exit followed by a 180 ms eased entrance.
+- Active tabs are brought into view inside horizontally scrollable tab strips.
+- Keyboard interaction now supports Arrow Left/Right, Home and End with roving tab focus and ARIA tab semantics.
+- Raw report now uses the same contained 12 px monospace layout, 1.55 line height, 68 vh maximum height and overflow behavior as the reference database.
+- `prefers-reduced-motion` disables nonessential tab transitions.
+- Browser-visible frontend assets are cache-busted to v025.
 
-## Compatibility
-
-- Schema: 2
-- Technical report schema: 1
-- Compatible producer: OpenGLESScope 0.1.x
+No report schema, D1 migration, submission semantics, OpenGL ES/EGL state semantics, API endpoint, Cloudflare account binding or stored report data is changed.

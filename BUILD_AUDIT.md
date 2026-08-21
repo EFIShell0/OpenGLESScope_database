@@ -1,4 +1,4 @@
-# OpenGLESScope Database 0.1.14 Build Audit
+# OpenGLESScope Database 0.1.15 Build Audit
 
 - Frontend JavaScript syntax: PASS
 - Worker JavaScript syntax: PASS
@@ -28,3 +28,13 @@
 - Visible page sizes 10/25/50 and max 50: PASS
 - Sort/filter before pagination: PASS
 - v024 cache-busting: PASS
+
+## 0.1.15 report-detail parity audit
+
+- VulkanScope 0.35.6 detail-tab transition parity: PASS
+- Detail-tab control geometry parity: PASS
+- Raw report presentation parity: PASS
+- Keyboard/ARIA tab interaction: PASS
+- Reduced-motion handling: PASS
+- v025 cache-busting: PASS
+- Schema/D1 migration changes: NONE

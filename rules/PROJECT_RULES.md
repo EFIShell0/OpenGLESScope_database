@@ -160,3 +160,15 @@
 - Removing Overview is presentation/navigation only and must not alter normalized report data, D1 schema, capability-state semantics, filtering evidence, report-detail access or raw canonical TXT access.
 - Browser-visible changed frontend assets use v024 cache-busted filenames.
 
+
+
+## Release 0.1.15 report-detail interaction parity
+- Database version is 0.1.15.
+- Report-detail tabs use the VulkanScope Database reference geometry: 8 px gap, 7 px tab-strip padding, 7 px by 8 px tab-button padding, 12 px text and 750 font weight.
+- Report-detail tab changes preserve one persistent detail body and use a 105 ms exit plus 180 ms entrance transition with the reference easing curves.
+- Active detail tabs use roving tabindex, ARIA tab state, keyboard Arrow/Home/End navigation and scroll-into-view behavior.
+- Reduced-motion preference disables nonessential detail-tab transitions.
+- Raw report uses a contained 12 px / 1.55 monospace presentation, 16 px padding, 16 px radius, 68 vh maximum height and internal scrolling.
+- OpenGL ES branding and capability semantics remain authoritative; Vulkan-specific terminology or driver semantics are not introduced.
+- No D1 schema migration or report-payload rewrite is introduced.
+- Browser-visible changed frontend assets use v025 cache-busted filenames.
