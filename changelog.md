@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+- Added VulkanScope-parity Android security-patch sublines to Reports OS cells when explicit evidence exists.
+- Added backward-compatible optional schema-2 `device.securityPatch` validation in canonical `YYYY-MM-DD` form.
+- Added runtime TXT fallback for explicit `Android security patch` / `Security patch` lines without guessing missing values.
+- Bumped Worker normalizer to 7 and frontend cache-busting to `app.v038.js`.
+
+
 ## 0.2.0
 - Added OpenGLESScope 0.2.1 producer support without weakening the schema 2 / technicalReport 1 contract.
 - Fixed 0.1.x-only producer parsing that rejected 0.2.1 and bypassed strict current-producer validation logic for non-0.1 versions.

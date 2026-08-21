@@ -335,3 +335,14 @@
 - Frontend health/metrics expose the compatible-producer contract so a producer-version rejection is diagnosable instead of appearing as an unexplained generic schema failure.
 - Superseded JavaScript and CSS release assets are removed from the packaged release after reference validation; only browser-referenced current assets remain.
 - Existing HTTPS, CORS, CSP, body-size, nesting-depth, sensitive-field, D1 identity, pagination, canonical hashing and no-background-upload protections remain mandatory.
+
+
+## Release 0.2.1 Android security-patch Reports parity
+- Database version is 0.2.1 and remains independent from the OpenGLESScope application version.
+- The Reports Android column uses the VulkanScope presentation contract: the Android release/SDK remains the primary value and an available Android security patch is rendered directly below as `Patch YYYY-MM-DD` using the existing `table-sub` typography.
+- Android security-patch evidence is optional for backwards compatibility. Reports that did not submit a security patch remain without a patch subline; the Database must never infer, synthesize or guess a patch level from Android release, SDK, GPU, device model or submission date.
+- Submission schema 2 may carry optional `device.securityPatch` in canonical `YYYY-MM-DD` form. Existing schema-2 producers without the field remain valid.
+- Runtime metadata may also recover an explicitly reported `Android security patch` or `Security patch` TXT line, but only as display metadata; conflicting or malformed submitted structured fields are rejected rather than normalized into fabricated evidence.
+- Security-patch data is device/platform metadata only and must not affect OpenGL ES, EGL, Display/HDR or extension capability inference.
+- Existing report-ID hashing, body-size bounds, sensitive-field rejection, CORS/CSP/security headers, D1 identity pinning, pagination and no-background-upload behavior remain unchanged.
+- Browser-visible changed JavaScript uses `app.v038.js`; unchanged CSS remains `site.v036.css`; config cache key is `v=038`.

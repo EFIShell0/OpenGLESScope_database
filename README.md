@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.2.0`
+- Database: `0.2.1`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
@@ -62,6 +62,10 @@ npm run deploy
 
 
 
+
+## 0.2.1 Reports Android security-patch parity
+
+0.2.1 adds VulkanScope-style Android security-patch presentation to the Reports OS column when explicit patch evidence is present. Schema 2 now accepts an optional canonical `device.securityPatch` (`YYYY-MM-DD`) while remaining backward-compatible with older reports that never submitted a patch. Missing patch evidence is intentionally left blank rather than inferred.
 
 ## 0.2.0 full audit and table parity correction
 

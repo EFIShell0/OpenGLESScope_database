@@ -1,5 +1,7 @@
-# OpenGLESScope Database 0.2.0
+# OpenGLESScope Database 0.2.1
 
-OpenGLESScope Database 0.2.0 adds compatible OpenGLESScope 0.2.1 producer support, fixes the 0.1.x-only version gate, preserves strict current-producer evidence validation, validates HDR luminance TXT units against structured values, exposes producer compatibility in the UI, and retains the existing security and bounded-processing model.
+OpenGLESScope Database 0.2.1 aligns the Reports Android column with VulkanScope: explicit Android security-patch evidence is shown below the Android release/SDK as `Patch YYYY-MM-DD` using the same secondary text treatment.
 
-Current specification baselines: OpenGL ES 3.2, GLSL ES 3.20, EGL 1.5.
+The schema-2 device object now permits an optional canonical `securityPatch` field. Existing reports and producers that do not contain this field remain valid. The Database never derives or guesses a patch level from SDK, Android version, device identity or submission date.
+
+No OpenGL ES/EGL capability semantics, D1 schema, report-ID hashing or stored-report rewrite is introduced.
