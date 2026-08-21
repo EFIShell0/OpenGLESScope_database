@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.24
+
+- Matched navigation and Reports filter control geometry to VulkanScope Database 0.35.8.
+- Prevented Driver mode labels such as `System driver` from breaking inside the Reports table.
+- Added `cd/m²` to available Display/HDR luminance values.
+- Hid the native table horizontal scrollbar so only the synchronized custom scrollbar is visible.
+- Cache-busted changed frontend assets to v034.
+
 ## 0.1.23
 - Renamed the Reports table GPU header to Device to match VulkanScope presentation.
 - Added VulkanScope-style single-line version chips for complete OpenGL ES and EGL runtime version strings.

@@ -290,3 +290,13 @@
 - These are presentation-only changes. OpenGL ES, EGL, Display/HDR, query diagnostics, complete-report gating, filtering, sorting, pagination, canonical TXT access, Worker validation and submission semantics remain unchanged.
 - No D1 schema migration or stored-report rewrite is introduced.
 - Browser-visible changed frontend assets use `app.v033.js` and `site.v033.css`; config cache key is `v=033`.
+
+## Release 0.1.24 navigation, filters, HDR units and table-scroll parity
+- Database version is 0.1.24.
+- The main navigation control geometry matches the VulkanScope Database 0.35.8 reference while retaining OpenGLESScope branding and OpenGL ES/EGL semantics.
+- Reports toolbar custom-select geometry matches the VulkanScope Database 0.35.8 reference.
+- Reports Driver mode text remains single-line where the reference presentation keeps the corresponding system-driver label intact; table overflow is handled horizontally rather than breaking that label.
+- Android Display/HDR luminance values show the physical unit cd/m² when a luminance value is available; unavailable evidence remains unavailable and no value is inferred.
+- Horizontally overflowing tables expose one custom synchronized horizontal scrollbar; the native table scrollbar is visually hidden while touch, trackpad, wheel and programmatic horizontal scrolling remain functional.
+- Browser-visible changed frontend assets use v034 cache-busted filenames.
+- No report schema, Worker normalization, D1 schema, capability semantics or canonical report evidence is changed by this release.

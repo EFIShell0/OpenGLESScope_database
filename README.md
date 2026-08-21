@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.23`
+- Database: `0.1.24`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
@@ -61,6 +61,10 @@ npm run deploy
 `auth:create` is normally needed only once for the local profile.
 
 
+
+## 0.1.24 UI parity corrections
+
+0.1.24 aligns main navigation and Reports filter geometry with VulkanScope Database 0.35.8, prevents the Reports Driver mode label from breaking unnecessarily, adds cd/m² to available Display/HDR luminance values, and hides the table's native horizontal scrollbar so the synchronized custom scrollbar is the single visible horizontal control. Capability and evidence semantics are unchanged.
 
 ## 0.1.23 Reports table visual parity
 
