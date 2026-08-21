@@ -259,3 +259,22 @@
 - Main-navigation and detail-tab bring-into-view scrolling honors reduced-motion preference.
 - No D1 schema migration or stored-report rewrite is introduced.
 - Browser-visible changed JavaScript uses `app.v031.js`; unchanged CSS remains `site.v030.css`.
+
+## Release 0.1.22 OpenGLESScope 0.1.25 and full tab parity audit
+- Database version is 0.1.22 and the compatible producer floor remains OpenGLESScope 0.1.17+ with submission schema 2 and technicalReport schema 1.
+- OpenGLESScope 0.1.25 is the current producer audit target and Worker normalizer version is 5.
+- Current 0.1.25 canonical TXT identity must agree with structured application, GPU, driver, OpenGL ES, EGL and Android evidence, and canonical technical-section counts must agree with structured array lengths.
+- Current-producer limit names, diagnostic names, runtime extension tokens, runtime-format tokens, shader-precision keys and EGL config IDs are duplicate-free.
+- Every available structured limit and shader-precision value has matching Available query-diagnostic evidence.
+- Non-empty OpenGL ES/EGL extension and runtime-format enumerations require Available enumeration-query evidence; an unavailable enumeration is never translated to Not listed or Unsupported.
+- OpenGL ES 3.2 or GL_KHR_debug evidence requires the debug-limit diagnostics emitted by the producer. GL_EXT_disjoint_timer_query evidence requires both query-counter-bit diagnostics emitted by OpenGLESScope 0.1.25.
+- Reports expose Driver alongside GPU/vendor/OpenGL ES/EGL/Android/application/ABI identity and preserve deterministic sort/filter/pagination behavior.
+- Extensions, Limits, Formats and Precision aggregate every successfully loaded report with diagnostic-authoritative Available, Unavailable, Not applicable and Unknown semantics where applicable.
+- Limits aggregates contain actual GL implementation-limit query names only; GL/EGL identity, enumeration and shader-precision diagnostic names do not contaminate the limit universe.
+- Report-detail tabs expose natural category counts and retain query evidence next to Extensions, Formats, Limits and Precision values.
+- Display/HDR exposes current mode, refresh, supported-mode count, wide-color evidence, HDR types and Android luminance metadata without reinterpreting those fields as GL/EGL capability.
+- Coverage meters and custom horizontal-scroll geometry use CSP-safe primitives and retain the 0.1.20 synchronized pointer/keyboard/touch/trackpad/resize/edge-shadow contract.
+- CORS preflight responses receive the normal hardened API response headers.
+- Shared Reports, OpenGL ES/EGL overview, Extensions, Limits, Formats, report detail, Display/HDR, Diagnostics, Compare, responsive, title, search/filter/sort, error and Worker-security behavior is audited against VulkanScope Database 0.35.8; Vulkan-specific categories are not copied into OpenGLESScope.
+- No D1 migration or stored-report rewrite is introduced.
+- Browser-visible changed frontend assets use `app.v032.js` and `site.v032.css`; config cache key is `v=032`.

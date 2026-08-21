@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.22
+- Audited every OpenGLESScope Database destination against OpenGLESScope 0.1.25 and VulkanScope Database 0.35.8 shared quality behavior.
+- Added Driver identity to Reports and driver sorting.
+- Added report-detail tab counts and richer report hero metrics.
+- Made Extensions and runtime Formats enumeration-diagnostic aware so unavailable enumeration is not mislabeled Not listed.
+- Restricted Limits aggregation to real GL implementation-limit queries and preserved diagnostic state per loaded report.
+- Made Precision aggregation use all loaded reports and retain failed/missing query evidence.
+- Expanded Display/HDR aggregate evidence with mode count and luminance values.
+- Replaced CSP-sensitive inline coverage widths with semantic progress elements.
+- Moved custom horizontal scrollbar geometry to SVG attributes while preserving drag, keyboard, touch/trackpad, edge-shadow and resize behavior.
+- Raised Worker normalizer to 5 and current producer target to OpenGLESScope 0.1.25.
+- Added current-producer duplicate/evidence consistency checks for limits, diagnostics, runtime enumerations, precision, EGL configs, KHR_debug and EXT_disjoint_timer_query.
+- Hardened CORS preflight with the normal API security-header set.
+- Retained OpenGLESScope 0.1.24 current-header and 0.1.17 legacy compatibility.
+- No D1 migration or stored-report rewrite.
+
 ## 0.1.21
 - Added Android release/API and application ABI to the Reports table using loaded report detail instead of nonexistent summary columns.
 - Fixed Android-version sorting to use authoritative loaded device metadata.

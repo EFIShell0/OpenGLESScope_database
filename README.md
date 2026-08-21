@@ -4,14 +4,14 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.21`
+- Database: `0.1.22`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
-- Current compatibility audit target: OpenGLESScope `0.1.24`
+- Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
 - Technical report schema: `1`
-- Worker normalizer: `4`
-- Frontend JavaScript: `app.v031.js`
-- Frontend CSS: `site.v030.css`
+- Worker normalizer: `5`
+- Frontend JavaScript: `app.v032.js`
+- Frontend CSS: `site.v032.css`
 
 Application and database versions are intentionally independent.
 
@@ -60,6 +60,12 @@ npm run deploy
 
 `auth:create` is normally needed only once for the local profile.
 
+
+## 0.1.22 OpenGLESScope 0.1.25 and full tab parity audit
+
+0.1.22 aligns the database with OpenGLESScope 0.1.25 query evidence and closes the remaining shared UI-quality gaps found against VulkanScope Database 0.35.8. Reports now include Driver identity; report-detail tabs expose counts and evidence-aware category views; Extensions and Formats distinguish successful empty/not-listed enumeration from unavailable enumeration; Limits aggregate only actual GL limit queries; Precision uses all loaded reports in its denominator; Display/HDR exposes mode count and luminance evidence. Responsive table geometry and coverage meters are CSP-safe while preserving the 0.1.20 scroll/thumb/shadow interaction contract.
+
+The Worker normalizer is version 5. Current 0.1.25 submissions receive duplicate-evidence checks, section-count cross-checks, Available-diagnostic requirements for structured limits/precision, enumeration-evidence consistency, and KHR_debug / EXT_disjoint_timer_query diagnostic validation. The compatibility floor remains 0.1.17+ and no D1 migration is introduced.
 
 ## 0.1.21 platform metadata, parity and full audit
 
