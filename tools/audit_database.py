@@ -1,7 +1,7 @@
 from pathlib import Path
 import json,re,sys
 root=Path(__file__).resolve().parents[1]
-required=['index.html','config.js','report.schema.json','assets/app.v026.js','assets/site.v026.css','assets/openglesscope_logo_horizontal-v017.png','assets/favicon-v017.png','assets/favicon-v017.ico','assets/apple-touch-icon-v017.png','worker/src/index.js','worker/migrations/0002_report_cursor_index.sql','worker/migrations/0003_application_version_summary.sql','rules/PROJECT_RULES.md']
+required=['index.html','config.js','report.schema.json','assets/app.v027.js','assets/site.v027.css','assets/egl-logo-v027.png','assets/openglesscope_logo_horizontal-v017.png','assets/favicon-v017.png','assets/favicon-v017.ico','assets/apple-touch-icon-v017.png','worker/src/index.js','worker/migrations/0002_report_cursor_index.sql','worker/migrations/0003_application_version_summary.sql','rules/PROJECT_RULES.md']
 errors=[]
 for x in required:
     if not (root/x).is_file(): errors.append(f'missing {x}')
@@ -19,7 +19,7 @@ for f in root.glob('*.html'):
         try: target.relative_to(root.resolve())
         except ValueError: errors.append(f'outside-ref {f.name} {ref}');continue
         if not target.exists(): errors.append(f'broken-ref {f.name} {ref}')
-for f in [root/'assets/app.v026.js',root/'assets/site.v026.css',root/'worker/src/index.js',root/'tools/build_index.py']:
+for f in [root/'assets/app.v027.js',root/'assets/site.v027.css',root/'worker/src/index.js',root/'tools/build_index.py']:
     t=f.read_text(encoding='utf-8')
     bad='/*' in t or re.search(r'(?m)^\s*//',t)
     if f.suffix=='.py': bad=bool(bad or re.search(r'(?m)^\s*#(?!\!)',t))
@@ -27,14 +27,18 @@ for f in [root/'assets/app.v026.js',root/'assets/site.v026.css',root/'worker/src
 idx=(root/'index.html').read_text(encoding='utf-8')
 for ref in ['assets/app.js','assets/site.css','assets/openglesscope_logo_horizontal.png','assets/favicon.png','v015','app.v024.js','site.v024.css','app.v025.js','site.v025.css']:
     if ref in idx: errors.append(f'stale-or-unversioned-index-ref {ref}')
-for token in ['displayOrderFilter','nav-edge-left','nav-edge-right','repo-icon','repo-arrow','OpenGLESScope Database <strong>0.1.16</strong>']:
+for token in ['displayOrderFilter','nav-edge-left','nav-edge-right','repo-icon','repo-arrow','OpenGLESScope Database <strong>0.1.17</strong>']:
     if token not in idx: errors.append(f'missing-ui-token {token}')
 worker=(root/'worker/src/index.js').read_text(encoding='utf-8')
-for token in ["databaseVersion:'0.1.16'","normalizerVersion:3",'application_version','application_version_code','MAX_BODY=2*1024*1024']:
+for token in ["databaseVersion:'0.1.17'","normalizerVersion:3",'application_version','application_version_code','MAX_BODY=2*1024*1024']:
     if token not in worker: errors.append(f'missing-worker-token {token}')
 
-js=(root/'assets/app.v026.js').read_text(encoding='utf-8')
-css=(root/'assets/site.v026.css').read_text(encoding='utf-8')
+js=(root/'assets/app.v027.js').read_text(encoding='utf-8')
+css=(root/'assets/site.v027.css').read_text(encoding='utf-8')
+for token in ['egl-logo-v027.png',"k==='egl'?eglLogo('nav-egl-logo')","state.view==='egl'","id==='egl'?eglLogo('detail-tab-egl-logo')"]:
+    if token not in js: errors.append(f'missing-egl-branding-token {token}')
+for token in ['.nav-egl-logo{','.view-title-egl-logo{','.detail-tab-egl-logo{']:
+    if token not in css: errors.append(f'missing-egl-branding-style {token}')
 for token in ['primitiveFieldCount',"metric('GPU models'","metric('OpenGL ES extensions'","metric('Normalized fields'","metric('Producer/query baseline'",'detailTransitionToken','switchDetailTab','detailTabBody',"role=\"tablist\"","role=\"tab\"","duration:105","duration:180"]:
     if token not in js: errors.append(f'missing-detail-parity-token {token}')
 for token in ['#detailTabBody{min-height:48px','gap:8px','padding:7px 8px','font-size:12px','font-weight:750','.raw{','max-height:68vh']:

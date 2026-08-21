@@ -1,16 +1,16 @@
-# OpenGLESScope Database 0.1.16
+# OpenGLESScope Database 0.1.17
 
 ## Changes
 
-- Hero information now mirrors the VulkanScope Database reference structure using OpenGL ES-correct terminology.
-- The main heading is now **OpenGL ES Hardware Database**.
-- The hero description and search prompt use the same compact information style as the reference.
-- Hero metrics now show Reports, GPU models, unique OpenGL ES extensions, normalized fields, and the producer/query baseline.
-- The producer/query baseline is supplied by the Worker health response.
-- Existing report-detail tab animations, geometry, Raw report styling, keyboard support, and reduced-motion support are retained.
+- Added the official EGL logo as a bundled local transparent asset.
+- Replaced the generic EGL navigation icon with the official EGL artwork.
+- Added the same EGL artwork to the EGL main-view heading and the report-detail EGL tab for consistent visual identity.
+- Kept EGL Configs visually distinct with its configuration-specific icon.
+- Preserved all existing report-detail animations, Raw report styling, keyboard behavior and reduced-motion support.
 
 ## Compatibility
 
 - No D1 migration.
 - No submitted report rewrite.
+- No OpenGL ES/EGL evidence or normalization changes.
 - OpenGLESScope 0.1.x compatibility remains unchanged.

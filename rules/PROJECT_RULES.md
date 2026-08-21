@@ -184,3 +184,12 @@
 - Hero metric population may fetch report detail only through the existing concurrency-bounded detail loader; no unbounded fetch fan-out is introduced.
 - Existing Available, Unavailable, Not applicable and Unknown semantics, D1 schema, canonical TXT access, report-detail behavior and OpenGL ES branding remain unchanged.
 - Browser-visible changed frontend assets use v026 cache-busted filenames.
+
+## Release 0.1.17 EGL branding
+- Database version is 0.1.17.
+- The official bundled EGL logo asset is used wherever the database presents the EGL runtime destination as branded navigation: the primary EGL navigation button, the EGL main-view heading and the report-detail EGL tab.
+- EGL Configs remains a distinct technical configuration destination and keeps its semantic configuration icon; the official EGL brand mark is not used to imply that configuration enumeration is a separate EGL product or capability.
+- EGL logo presentation is local-only, transparent-background, aspect-ratio preserving and sized to the same compact visual hierarchy as the existing navigation and detail-tab artwork.
+- Text labels remain authoritative for accessibility and navigation semantics; the EGL artwork is decorative and uses empty alternative text.
+- EGL branding changes are presentation-only and must not alter report values, extension/config evidence, filters, counts, D1 schema, stored payloads or canonical TXT data.
+- Browser-visible frontend assets changed by this release use v027 cache-busted filenames.

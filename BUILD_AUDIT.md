@@ -1,4 +1,4 @@
-# OpenGLESScope Database 0.1.16 Build Audit
+# OpenGLESScope Database 0.1.17 Build Audit
 
 - Hero information hierarchy aligned with VulkanScope Database reference.
 - OpenGL ES terminology retained; Vulkan-only Device extensions wording not introduced.

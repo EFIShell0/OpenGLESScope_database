@@ -1,3 +1,12 @@
+# Changelog
+
+## 0.1.17
+
+- Added official EGL branding to the EGL navigation destination, EGL view heading and report-detail EGL tab.
+- Kept EGL Configs configuration-specific rather than misusing the EGL brand mark as a capability/state indicator.
+- Added v027 cache-busted frontend assets.
+- No D1, report-schema or report-semantic changes.
+
 # 0.1.16
 
 - Matched the VulkanScope Database hero information hierarchy with OpenGL ES-native wording.
