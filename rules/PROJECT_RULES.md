@@ -300,3 +300,12 @@
 - Horizontally overflowing tables expose one custom synchronized horizontal scrollbar; the native table scrollbar is visually hidden while touch, trackpad, wheel and programmatic horizontal scrolling remain functional.
 - Browser-visible changed frontend assets use v034 cache-busted filenames.
 - No report schema, Worker normalization, D1 schema, capability semantics or canonical report evidence is changed by this release.
+
+
+## Release 0.1.25 VulkanScope presentation parity
+- Database version is 0.1.25.
+- Table header typography, weight, sizing, sticky behavior and surface treatment use the VulkanScope Database table-header geometry across all database tables.
+- Reports vendor presentation may add a UI-only canonical vendor/family identifier such as `Qualcomm / Adreno (0x5143)` when the runtime GL vendor/renderer text unambiguously matches the maintained display mapping. This is presentation metadata only: it must not be stored as queried OpenGL ES evidence, used to infer capabilities, or alter the submitted report.
+- OpenGL ES and EGL version chips keep VulkanScope geometry while using the OpenGLESScope magenta interface accent family.
+- The synchronized horizontal scrollbar thumb must clamp exactly to the beginning and end of its track when the underlying table is at its minimum or maximum horizontal scroll position.
+- Browser-visible changed frontend assets use cache-busted `site.v035.css` and `app.v035.js`.

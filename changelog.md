@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.24
+## 0.1.25
 
 - Matched navigation and Reports filter control geometry to VulkanScope Database 0.35.8.
 - Prevented Driver mode labels such as `System driver` from breaking inside the Reports table.
@@ -29,7 +29,7 @@
 - Raised Worker normalizer to 5 and current producer target to OpenGLESScope 0.1.25.
 - Added current-producer duplicate/evidence consistency checks for limits, diagnostics, runtime enumerations, precision, EGL configs, KHR_debug and EXT_disjoint_timer_query.
 - Hardened CORS preflight with the normal API security-header set.
-- Retained OpenGLESScope 0.1.24 current-header and 0.1.17 legacy compatibility.
+- Retained OpenGLESScope 0.1.25 current-header and 0.1.17 legacy compatibility.
 - No D1 migration or stored-report rewrite.
 
 ## 0.1.21
@@ -37,7 +37,7 @@
 - Fixed Android-version sorting to use authoritative loaded device metadata.
 - Added Application ABI and Supported device ABIs to report Summary, hero context, Compare and global search.
 - Added read-time `runtimeMetadata` extraction for current and historical stored reports without rewriting D1 rows.
-- Hardened current 0.1.24 TXT/structured cross-checks for GPU, driver mode, OpenGL ES, Android and ABI evidence.
+- Hardened current 0.1.25 TXT/structured cross-checks for GPU, driver mode, OpenGL ES, Android and ABI evidence.
 - Raised the canonical complete-report TXT minimum to 1000 bytes.
 - Added explicit Khronos OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 provenance metadata to Worker health/list responses and the live footer.
 - Fixed reduced-motion behavior for main navigation and report detail-tab bring-into-view scrolling.

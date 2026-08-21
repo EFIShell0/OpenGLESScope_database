@@ -4,7 +4,7 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.24`
+- Database: `0.1.25`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
@@ -62,9 +62,9 @@ npm run deploy
 
 
 
-## 0.1.24 UI parity corrections
+## 0.1.25 UI parity corrections
 
-0.1.24 aligns main navigation and Reports filter geometry with VulkanScope Database 0.35.8, prevents the Reports Driver mode label from breaking unnecessarily, adds cd/m² to available Display/HDR luminance values, and hides the table's native horizontal scrollbar so the synchronized custom scrollbar is the single visible horizontal control. Capability and evidence semantics are unchanged.
+0.1.25 aligns main navigation and Reports filter geometry with VulkanScope Database 0.35.8, prevents the Reports Driver mode label from breaking unnecessarily, adds cd/m² to available Display/HDR luminance values, and hides the table's native horizontal scrollbar so the synchronized custom scrollbar is the single visible horizontal control. Capability and evidence semantics are unchanged.
 
 ## 0.1.23 Reports table visual parity
 
@@ -78,9 +78,9 @@ The Worker normalizer is version 5. Current 0.1.25 submissions receive duplicate
 
 ## 0.1.21 platform metadata, parity and full audit
 
-0.1.21 closes the remaining shared-quality gap with VulkanScope Database for report identity and platform metadata. Reports now expose the Android release/API level and the installed OpenGLESScope ABI in the main report table, report Summary, report hero context, global search and Compare. Supported device ABIs are also surfaced without changing canonical stored reports. For current 0.1.24 reports the Worker derives ABI evidence from the canonical TXT snapshot because the producer's schema-v2 application object does not yet carry ABI fields; structured Android release/API remains authoritative from the device object. Older compatible reports retain Unknown rather than guessed ABI values.
+0.1.21 closes the remaining shared-quality gap with VulkanScope Database for report identity and platform metadata. Reports now expose the Android release/API level and the installed OpenGLESScope ABI in the main report table, report Summary, report hero context, global search and Compare. Supported device ABIs are also surfaced without changing canonical stored reports. For current 0.1.25 reports the Worker derives ABI evidence from the canonical TXT snapshot because the producer's schema-v2 application object does not yet carry ABI fields; structured Android release/API remains authoritative from the device object. Older compatible reports retain Unknown rather than guessed ABI values.
 
-The Worker read normalizer is version 4. Current 0.1.24 canonical TXT snapshots are cross-checked against structured GPU, driver mode, OpenGL ES and Android identity, require explicit Application ABI and Supported device ABIs lines, and keep the 2 MiB submission bound, exact schema shapes, recursive sensitive-key rejection, origin restriction and hardened response headers. Stored payloads and D1 schema are unchanged.
+The Worker read normalizer is version 4. Current 0.1.25 canonical TXT snapshots are cross-checked against structured GPU, driver mode, OpenGL ES and Android identity, require explicit Application ABI and Supported device ABIs lines, and keep the 2 MiB submission bound, exact schema shapes, recursive sensitive-key rejection, origin restriction and hardened response headers. Stored payloads and D1 schema are unchanged.
 
 The published specification provenance is explicit: OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 remain the current Khronos core specifications. Runtime extension names continue to be displayed exactly as reported by the implementation; registry freshness never causes an unreported extension to be inferred as supported or unsupported.
 
