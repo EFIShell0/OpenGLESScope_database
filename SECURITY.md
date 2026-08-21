@@ -40,3 +40,6 @@ CORS is restricted to the configured GitHub Pages origin. Worker responses use n
 The frontend uses only same-origin presentation assets and the configured HTTPS Worker API. It contains no third-party JavaScript, analytics, remote fonts or advertising. API JSON reads are timeout-bounded and capped at 4 MiB before parsing. Detail requests are concurrency-bounded, and failures are surfaced instead of silently removed from the apparent loaded set.
 
 Production Wrangler configuration is pinned to the intended Cloudflare account and D1 database. Production npm operations fail closed through the account verifier when account identity cannot be confirmed.
+
+## 0.1.21 platform metadata handling
+Android release/API values are read from the submitted structured device object. Application ABI and supported device ABIs are derived from the canonical TXT snapshot only when structured ABI fields are absent. The database does not infer ABI from GPU names, Android model names or CPU marketing data. Derived runtime metadata is added only to API read responses and does not mutate canonical stored payloads. Current 0.1.24 TXT identity lines are cross-checked with structured GPU, driver mode, OpenGL ES and Android fields before acceptance.

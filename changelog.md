@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.21
+- Added Android release/API and application ABI to the Reports table using loaded report detail instead of nonexistent summary columns.
+- Fixed Android-version sorting to use authoritative loaded device metadata.
+- Added Application ABI and Supported device ABIs to report Summary, hero context, Compare and global search.
+- Added read-time `runtimeMetadata` extraction for current and historical stored reports without rewriting D1 rows.
+- Hardened current 0.1.24 TXT/structured cross-checks for GPU, driver mode, OpenGL ES, Android and ABI evidence.
+- Raised the canonical complete-report TXT minimum to 1000 bytes.
+- Added explicit Khronos OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 provenance metadata to Worker health/list responses and the live footer.
+- Fixed reduced-motion behavior for main navigation and report detail-tab bring-into-view scrolling.
+- Audited shared frontend, Worker, security, report, responsive and error-state behavior against VulkanScope Database 0.35.8.
+- No D1 schema migration or stored-report rewrite.
+- Active frontend JavaScript is `assets/app.v031.js`; CSS remains `assets/site.v030.css` because no stylesheet semantics changed.
+
+
+
+## 0.1.20
+
+- Fixed the custom horizontal table scrollbar so its thumb width and position track the real table viewport and scroll offset.
+- Added pointer dragging and keyboard Arrow/Home/End control to the table scrollbar track.
+- Added animated left/right table edge shadows that reflect hidden content and update while scrolling.
+- Synchronized table scroll affordances across touch, trackpad, native scrolling, arrow buttons, resize changes and dynamically rendered report-detail tables.
+- Hide custom table controls when no horizontal overflow exists.
+- Preserved reduced-motion behavior and all OpenGL ES/EGL report semantics.
+- Added v030 cache-busted JavaScript and CSS assets.
+- No D1 migration or stored-report rewrite.
+
 ## 0.1.19
 
 - Full database correctness/security/performance audit against OpenGLESScope 0.1.23 and the VulkanScope Database quality reference.

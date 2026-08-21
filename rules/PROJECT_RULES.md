@@ -227,3 +227,35 @@
 - No D1 schema migration is introduced by 0.1.19; existing D1 rows remain unchanged.
 - Browser-visible changed JavaScript uses `app.v029.js`; unchanged current CSS remains `site.v028.css`; the white EGL artwork uses `egl-logo-white-v029.png` generated from the current application EGL asset while preserving its alpha geometry exactly.
 - GitHub Pages deployment uses a separate validated build job, runs the static-index validator and full repository audit before artifact upload, uses the current Pages action family, and does not cancel an in-progress production Pages deployment.
+
+
+## Release 0.1.20 responsive table interaction parity
+- Database version is 0.1.20.
+- Every horizontally overflowing report, aggregate, compare and detail table uses one synchronized horizontal-scroll state for native scrolling, arrow controls, the custom track/thumb and edge affordances.
+- The custom table thumb position must reflect the actual horizontal table offset and its width must reflect the visible fraction of table content. A decorative fixed thumb is forbidden.
+- The table-scroll track supports pointer dragging and keyboard Left/Right Arrow, Home and End operation.
+- Left and right table edge shadows are derived from actual hidden content and animate only as a presentation affordance; they never cover or change report semantics.
+- Custom table controls are hidden when the table does not horizontally overflow.
+- Dynamically rendered report-detail tables receive the same scrolling behavior as main-view tables and no table is enhanced more than once.
+- Resize changes recalculate scrollbar geometry, overflow state, button state and edge-shadow state.
+- Reduced-motion preference disables nonessential table-edge/thumb/button transitions while preserving immediate scrolling and keyboard operation.
+- OpenGL ES, EGL, Display/HDR, query-diagnostic, aggregate, compare, canonical TXT and submission semantics are unchanged by this UI release.
+- No D1 schema migration or stored-report rewrite is introduced.
+- Browser-visible changed frontend assets use v030 cache-busted filenames.
+
+
+## Release 0.1.21 platform metadata and full parity audit
+- Database version is 0.1.21.
+- Reports, Summary, Compare and global search expose Android release/API, application ABI and supported device ABIs when evidence exists.
+- Android release/API is authoritative from the structured device object.
+- For current schema-v2 producers that do not structurally carry ABI, application ABI and supported device ABIs may be derived only from exact canonical TXT header lines; missing evidence is Unknown and is never inferred from hardware identity.
+- Android-version sorting uses loaded authoritative report detail and must not depend on nonexistent summary columns.
+- Current OpenGLESScope 0.1.24 canonical TXT identity lines are cross-checked against structured GPU, driver mode, OpenGL ES and Android identity, and bounded ABI evidence is required for 0.1.24+ current-header submissions.
+- Current-header complete canonical TXT reports use a 1000-byte minimum; the legacy 0.1.17+ compatibility header retains its historical lower bound.
+- Worker normalizer version is 4 and derived runtime metadata never mutates the stored canonical payload.
+- Published specification provenance is OpenGL ES 3.2 (May 5, 2022), GLSL ES 3.20 (August 14, 2023) and EGL 1.5 (August 27, 2014), audited against the Khronos registries on 2026-08-21.
+- Runtime extension tokens remain implementation-reported evidence and are never inferred from registry presence.
+- Shared frontend, Worker, security, error, responsive-table, keyboard, reduced-motion, title, pagination and Cloudflare deployment behavior is audited against VulkanScope Database 0.35.8; Vulkan-only technical categories are not copied into OpenGLESScope.
+- Main-navigation and detail-tab bring-into-view scrolling honors reduced-motion preference.
+- No D1 schema migration or stored-report rewrite is introduced.
+- Browser-visible changed JavaScript uses `app.v031.js`; unchanged CSS remains `site.v030.css`.

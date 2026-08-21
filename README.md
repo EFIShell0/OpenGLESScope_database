@@ -4,14 +4,14 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.19`
+- Database: `0.1.21`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
-- Current compatibility audit target: OpenGLESScope `0.1.23`
+- Current compatibility audit target: OpenGLESScope `0.1.24`
 - Submission schema: `2`
 - Technical report schema: `1`
-- Worker normalizer: `3`
-- Frontend JavaScript: `app.v029.js`
-- Frontend CSS: `site.v028.css`
+- Worker normalizer: `4`
+- Frontend JavaScript: `app.v031.js`
+- Frontend CSS: `site.v030.css`
 
 Application and database versions are intentionally independent.
 
@@ -59,6 +59,19 @@ npm run deploy
 ```
 
 `auth:create` is normally needed only once for the local profile.
+
+
+## 0.1.21 platform metadata, parity and full audit
+
+0.1.21 closes the remaining shared-quality gap with VulkanScope Database for report identity and platform metadata. Reports now expose the Android release/API level and the installed OpenGLESScope ABI in the main report table, report Summary, report hero context, global search and Compare. Supported device ABIs are also surfaced without changing canonical stored reports. For current 0.1.24 reports the Worker derives ABI evidence from the canonical TXT snapshot because the producer's schema-v2 application object does not yet carry ABI fields; structured Android release/API remains authoritative from the device object. Older compatible reports retain Unknown rather than guessed ABI values.
+
+The Worker read normalizer is version 4. Current 0.1.24 canonical TXT snapshots are cross-checked against structured GPU, driver mode, OpenGL ES and Android identity, require explicit Application ABI and Supported device ABIs lines, and keep the 2 MiB submission bound, exact schema shapes, recursive sensitive-key rejection, origin restriction and hardened response headers. Stored payloads and D1 schema are unchanged.
+
+The published specification provenance is explicit: OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5 remain the current Khronos core specifications. Runtime extension names continue to be displayed exactly as reported by the implementation; registry freshness never causes an unreported extension to be inferred as supported or unsupported.
+
+## 0.1.20 responsive table interaction parity
+
+0.1.20 repairs the horizontal table affordance across Reports and every other wide table. The custom thumb now reflects the real viewport/content ratio and moves with the table scroll position; it can be dragged with pointer input, controlled with Arrow/Home/End keys, and remains synchronized with touch/trackpad/native horizontal scrolling and resize changes. Left/right edge shadows fade according to the actual hidden content so mobile portrait layouts expose scroll direction without obscuring table data. Controls are hidden when a table does not overflow. Reduced-motion behavior disables nonessential transitions while preserving direct scrolling. No report semantics, Worker schema, D1 schema or stored payload is changed.
 
 ## 0.1.19 full audit
 

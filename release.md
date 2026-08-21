@@ -1,42 +1,41 @@
-# OpenGLESScope Database 0.1.19
+# OpenGLESScope Database 0.1.21
 
-OpenGLESScope Database 0.1.19 is a full correctness, security, compatibility and performance audit release.
+OpenGLESScope Database 0.1.21 is a platform-metadata, security, correctness and VulkanScope Database parity audit release.
 
-## Highlights
+## Report metadata
+- Reports table now shows Android release/API and Platform / ABI.
+- Report Summary now shows Android, Application ABI and Supported device ABIs.
+- Report hero context, Compare and global search include the same platform evidence.
+- Android values come from the structured `device` object.
+- ABI values are derived read-time from the canonical TXT report for current 0.1.24 submissions because the current producer schema does not yet include ABI in the structured application object.
+- Missing historical ABI evidence remains Unknown; it is never guessed from CPU/GPU/device names.
+- Android-version sorting now uses the loaded authoritative report detail rather than nonexistent summary fields.
 
-- Fixed submission compatibility with the current OpenGLESScope 0.1.23 TXT report header while retaining the 0.1.17+ compatible legacy header.
-- Hardened Worker validation to exact JSON object shapes and complete duplicated display evidence.
-- Fixed sensitive field-name normalization so punctuation/separators cannot bypass forbidden identifier matching.
-- Restricted query diagnostics to canonical Available / Unavailable / Not applicable / Unknown states.
-- Fixed limit and diagnostic aggregate denominators and authoritative diagnostic-state handling.
-- Fixed Android HDR empty-list semantics: explicit empty is Unavailable; missing evidence is Unknown.
-- Removed the misleading empty-static-index fallback for live API outages.
-- Added visible report-detail load failure metrics.
-- Expanded global search to loaded structured technical data.
-- Avoided duplicating structured technicalReport data into a second normalized detail response.
-- Improved main-view transition cancellation/accessibility and removed quadratic OpenGL ES/EGL overview membership scans.
-- Corrected parsed core-version display to canonical `major.minor` formatting.
-- Added repeatable Worker contract tests and refreshed the repository audit for the actual active cache-busted assets.
-- Hardened the GitHub Pages pipeline so static-index validation and the full repository audit run before artifact upload, with current Pages action versions and non-cancelling production deployment concurrency.
+## Producer contract and safety
+- Worker normalizer version is 4.
+- Current OpenGLESScope 0.1.24 canonical TXT reports must match structured GPU, driver mode, OpenGL ES and Android identity.
+- Current reports must contain bounded `Application ABI` and `Supported device ABIs` evidence.
+- Current-header complete canonical TXT reports are required to be at least 1000 bytes; legacy compatibility headers retain their historical lower bound.
+- Exact schema-shape validation, 2 MiB streaming request bounds, recursive sensitive-key rejection, SHA-256 canonical IDs, server-authored timestamps, CORS restriction, no-store/nosniff/no-referrer/frame denial and restrictive Permissions-Policy/CSP remain enforced.
 
-## Compatibility
+## Khronos specification provenance
+- Current OpenGL ES core specification: OpenGL ES 3.2.
+- Current OpenGL ES shading-language specification: GLSL ES 3.20.
+- Current EGL core specification: EGL 1.5.
+- Worker health/list responses expose the published-spec provenance and the 2026-08-21 registry audit date.
+- Runtime extension names remain report evidence, not inferred registry support.
 
-- Compatible producer floor: OpenGLESScope 0.1.17+
-- Current audit target: OpenGLESScope 0.1.23
-- Submission schema: 2
-- Technical report schema: 1
-- Worker normalizer: 3
-- No D1 migration
-- No stored-report rewrite
+## VulkanScope Database parity audit
+Shared behavior was compared against VulkanScope Database 0.35.8. OpenGLESScope now matches the reference-quality behavior for bounded detail loading, report identity/platform presentation, global-search coverage, report sorting, responsive horizontal table controls, edge shadows, keyboard/pointer/touch scrolling, title semantics, error states, live API failure behavior, cache-busted JavaScript, hardened Worker responses and Cloudflare account/D1 pinning. Vulkan-only categories are intentionally not copied into an OpenGL ES/EGL database.
 
-## Validation
+## Accessibility and motion
+- Main-navigation and detail-tab scroll-into-view behavior now respects `prefers-reduced-motion`.
+- Existing table keyboard, pointer, touch and trackpad behavior remains unchanged.
 
-- Frontend JavaScript syntax: PASS
-- Worker JavaScript syntax: PASS
-- Worker contract suite: PASS
-- JSON/JSONC parse checks: PASS
-- CSP/local asset reference audit: PASS
-- Cloudflare account and D1 pin audit: PASS
-- Repository audit: PASS
+## Assets
+- JavaScript: `assets/app.v031.js`
+- CSS: `assets/site.v030.css` (unchanged)
+- Config cache key: `v=031`
 
-No live production deployment or remote D1 mutation is performed by this release package.
+## Storage
+No D1 migration and no stored-report rewrite are introduced by 0.1.21.
