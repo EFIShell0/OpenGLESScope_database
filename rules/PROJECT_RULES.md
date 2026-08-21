@@ -278,3 +278,15 @@
 - Shared Reports, OpenGL ES/EGL overview, Extensions, Limits, Formats, report detail, Display/HDR, Diagnostics, Compare, responsive, title, search/filter/sort, error and Worker-security behavior is audited against VulkanScope Database 0.35.8; Vulkan-specific categories are not copied into OpenGLESScope.
 - No D1 migration or stored-report rewrite is introduced.
 - Browser-visible changed frontend assets use `app.v032.js` and `site.v032.css`; config cache key is `v=032`.
+
+
+## Release 0.1.23 Reports table visual parity
+- Database version is 0.1.23.
+- The Reports table labels its GPU/device identity column Device, matching the VulkanScope Database reference without changing the underlying GPU/device evidence.
+- Complete OpenGL ES and EGL runtime version strings are rendered in compact version chips matching VulkanScope API-version geometry.
+- Reports version chips remain single-line; long values use the existing synchronized horizontal table overflow path rather than vertical character wrapping.
+- Reports table header color, size and weight match the VulkanScope Database 0.35.8 reference.
+- Report ID values match the VulkanScope monospace size and normal font weight.
+- These are presentation-only changes. OpenGL ES, EGL, Display/HDR, query diagnostics, complete-report gating, filtering, sorting, pagination, canonical TXT access, Worker validation and submission semantics remain unchanged.
+- No D1 schema migration or stored-report rewrite is introduced.
+- Browser-visible changed frontend assets use `app.v033.js` and `site.v033.css`; config cache key is `v=033`.

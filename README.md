@@ -4,14 +4,14 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.1.22`
+- Database: `0.1.23`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within the `0.1.x` producer line
 - Current compatibility audit target: OpenGLESScope `0.1.25`
 - Submission schema: `2`
 - Technical report schema: `1`
 - Worker normalizer: `5`
-- Frontend JavaScript: `app.v032.js`
-- Frontend CSS: `site.v032.css`
+- Frontend JavaScript: `app.v033.js`
+- Frontend CSS: `site.v033.css`
 
 Application and database versions are intentionally independent.
 
@@ -60,6 +60,11 @@ npm run deploy
 
 `auth:create` is normally needed only once for the local profile.
 
+
+
+## 0.1.23 Reports table visual parity
+
+0.1.23 aligns the Reports table presentation with VulkanScope Database 0.35.8 without changing OpenGL ES/EGL evidence semantics or the submission schema. The GPU column label is now Device, complete OpenGL ES and EGL runtime version strings use the same compact version-chip geometry as VulkanScope API versions, Report ID uses matching monospace sizing and normal weight, and Reports header typography follows the VulkanScope reference. Version chips remain single-line so EGL and OpenGL ES version values do not wrap vertically; horizontal overflow remains handled by the synchronized table scroller.
 
 ## 0.1.22 OpenGLESScope 0.1.25 and full tab parity audit
 

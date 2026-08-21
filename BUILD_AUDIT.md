@@ -1,4 +1,4 @@
-# OpenGLESScope Database 0.1.22 Build Audit
+# OpenGLESScope Database 0.1.23 Build Audit
 
 ## Inputs
 - OpenGLESScope Database 0.1.21
@@ -7,9 +7,9 @@
 - Khronos OpenGL ES and EGL registries checked 2026-08-21
 
 ## Active assets
-- `assets/app.v032.js`
-- `assets/site.v032.css`
-- `config.js?v=032`
+- `assets/app.v033.js`
+- `assets/site.v033.css`
+- `config.js?v=033`
 
 ## Audit scope
 Reports, OpenGL ES, EGL, Extensions, Limits, Formats, Precision, EGL Configs, Display/HDR, Diagnostics, Compare, every report-detail tab, global search, filters, sorting, pagination, responsive table controls, keyboard/pointer/touch behavior, reduced motion, browser titles, error pages, Worker validation, privacy controls, CORS/security headers, Cloudflare account pinning and D1 identity were checked.

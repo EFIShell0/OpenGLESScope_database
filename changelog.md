@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.23
+- Renamed the Reports table GPU header to Device to match VulkanScope presentation.
+- Added VulkanScope-style single-line version chips for complete OpenGL ES and EGL runtime version strings.
+- Matched Reports header color, size and weight to the VulkanScope reference.
+- Matched Report ID monospace size and normal weight to VulkanScope.
+- Preserved synchronized horizontal table scrolling so long complete version strings remain readable without vertical wrapping.
+- Kept capability evidence, filtering, sorting, pagination, report detail, Worker schema and D1 storage semantics unchanged.
+
 ## 0.1.22
 - Audited every OpenGLESScope Database destination against OpenGLESScope 0.1.25 and VulkanScope Database 0.35.8 shared quality behavior.
 - Added Driver identity to Reports and driver sorting.
