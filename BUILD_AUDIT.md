@@ -1,11 +1,12 @@
-# OpenGLESScope Database 0.2.2 build audit
+# OpenGLESScope Database 0.2.3 build audit
 
-Release focus: Reports Android security-patch presentation parity with VulkanScope, backwards-compatible schema handling, and preservation of existing security/capability semantics.
+Release focus: VulkanScope-parity technical Compare filtering with no report-schema or evidence changes.
 
 Release gates:
 - Static database audit
 - Frontend JavaScript syntax
 - Worker JavaScript syntax
-- Worker contract tests including optional/malformed security-patch cases
+- Worker contract tests
+- Technical Compare filter regression checks
 - Static index build
 - ZIP integrity

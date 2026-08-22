@@ -355,3 +355,12 @@
 - Reports renders explicit patch evidence as `Patch YYYY-MM-DD` beneath Android release/SDK using the established VulkanScope parity treatment.
 - Patch metadata is Android platform evidence only and never participates in graphics capability inference.
 - Existing schema, canonical hashing, report-size bounds, recursive sensitive-field rejection, CORS/CSP/security headers, D1 parameterization and origin restrictions remain mandatory.
+
+
+## Release 0.2.3 technical-differences compare filter
+- Compare retains `Differences only` and adds `Technical differences only` with the same existing compare-toggle geometry, interaction and brand-state treatment.
+- `Technical differences only` is enabled by default and removes producer/report-generation metadata noise while retaining graphics, Android platform and implementation evidence.
+- Application version/versionCode and Collection status/complete/source are non-technical Compare metadata. Application ABI and supported-device ABI are technical platform evidence and remain visible.
+- Device manufacturer/model/product, Android release/API/security patch, driver mode/version, GL/EGL identity, extensions, limits, formats, precision, EGL Configs, diagnostics and Display/HDR evidence remain technical.
+- Filtering is presentation-only and must not mutate schema 2, technical report 1, stored payloads, report text, SHA-256 report identity or Worker normalization.
+- Compare A/B field counts, difference count and section count follow the active technical field universe.

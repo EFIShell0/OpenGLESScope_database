@@ -1,3 +1,12 @@
+## 0.2.3
+
+- Added VulkanScope-parity `Technical differences only` to Compare using the existing toggle design.
+- Enabled the technical filter by default.
+- Excluded Application Version / Version code and Collection Status / Complete / Source only from the technical comparison universe.
+- Preserved ABI, Android/device, driver, GL/EGL and all capability/query evidence as technical.
+- Compare metrics now follow the active technical field universe.
+- Bumped frontend cache asset to `app.v040.js`; Worker normalizer remains 8 and current producer remains OpenGLESScope 0.2.2.
+
 ## 0.2.2
 
 - Updated current producer to OpenGLESScope 0.2.2 / versionCode 202.
