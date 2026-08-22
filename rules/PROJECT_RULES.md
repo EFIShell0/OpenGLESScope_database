@@ -364,3 +364,15 @@
 - Device manufacturer/model/product, Android release/API/security patch, driver mode/version, GL/EGL identity, extensions, limits, formats, precision, EGL Configs, diagnostics and Display/HDR evidence remain technical.
 - Filtering is presentation-only and must not mutate schema 2, technical report 1, stored payloads, report text, SHA-256 report identity or Worker normalization.
 - Compare A/B field counts, difference count and section count follow the active technical field universe.
+
+## Release 0.2.4 Compare semantic-state cleanup
+- Database version is 0.2.4 and remains independent from the OpenGLESScope producer version.
+- Compare does not decorate ordinary identity, metadata or scalar values with an Available badge merely because a value exists.
+- Application version/versionCode, ABI strings, device identity, Android release/API, driver identity, GL/EGL identity, EGL Config scalar attributes, runtime enumerant text and ordinary Display/HDR scalar metadata render as values without synthetic availability decoration.
+- Missing Compare-side evidence remains explicit Unknown / Not reported and is never silently replaced with an empty value.
+- Query-diagnostic state remains authoritative and visible for Limits, Shader precision and Diagnostics rows.
+- Display/HDR support-state fields retain semantic badges where the field itself represents support or availability, including wide-color support and HDR-type availability.
+- Compare status badges therefore communicate actual support/query/availability semantics rather than simple object presence.
+- Technical differences filtering from 0.2.3 remains presentation-only and its field/difference/section counts continue to follow the active field universe.
+- No report schema, Worker normalizer, stored payload, canonical TXT, SHA-256 report identity, D1 schema or capability inference changes are introduced.
+- Browser-visible changed JavaScript uses `app.v041.js`; unchanged CSS remains `site.v036.css`.

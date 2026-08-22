@@ -4,13 +4,13 @@ OpenGLESScope Database is the public, report-backed browser for OpenGLESScope Op
 
 ## Current database release
 
-- Database: `0.2.3`
+- Database: `0.2.4`
 - Compatible producer floor: OpenGLESScope `0.1.17+` within compatible `0.x` schema-2 / technical-report-1 releases
 - Current producer: OpenGLESScope `0.2.2`
 - Submission schema: `2`
 - Technical report schema: `1`
 - Worker normalizer: `8`
-- Frontend JavaScript: `app.v040.js`
+- Frontend JavaScript: `app.v041.js`
 - Frontend CSS: `site.v036.css`
 
 Application and database versions are intentionally independent.

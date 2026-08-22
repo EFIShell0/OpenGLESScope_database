@@ -1,11 +1,20 @@
-## 0.2.3
+# 0.2.4
+
+- Compare plain metadata/scalar rows no longer show redundant Available badges.
+- Missing report-side evidence remains Unknown / Not reported.
+- Limits, shader precision and Diagnostics retain diagnostic-authoritative state badges.
+- Wide-color and HDR-type state badges remain because they represent actual support/availability semantics.
+- Technical-differences filtering from 0.2.3 is preserved.
+- No schema, normalizer, stored-payload or D1 migration change.
+
+## 0.2.4
 
 - Added VulkanScope-parity `Technical differences only` to Compare using the existing toggle design.
 - Enabled the technical filter by default.
 - Excluded Application Version / Version code and Collection Status / Complete / Source only from the technical comparison universe.
 - Preserved ABI, Android/device, driver, GL/EGL and all capability/query evidence as technical.
 - Compare metrics now follow the active technical field universe.
-- Bumped frontend cache asset to `app.v040.js`; Worker normalizer remains 8 and current producer remains OpenGLESScope 0.2.2.
+- Bumped frontend cache asset to `app.v041.js`; Worker normalizer remains 8 and current producer remains OpenGLESScope 0.2.2.
 
 ## 0.2.2
 

@@ -1,12 +1,13 @@
-# OpenGLESScope Database 0.2.3 build audit
+# OpenGLESScope Database 0.2.4 Build Audit
 
-Release focus: VulkanScope-parity technical Compare filtering with no report-schema or evidence changes.
+- Compare semantic-state presentation audited against PROJECT_RULES.md.
+- Plain metadata/scalar values do not receive synthetic Available badges.
+- Missing evidence remains Unknown / Not reported.
+- Limits, shader precision and Diagnostics preserve query-state evidence.
+- Wide-color/HDR support-state rows retain semantic badges.
+- Technical differences filter preserved.
+- Schema 2 / technicalReport 1 unchanged.
+- Normalizer remains 8.
+- No D1 migration.
 
-Release gates:
-- Static database audit
-- Frontend JavaScript syntax
-- Worker JavaScript syntax
-- Worker contract tests
-- Technical Compare filter regression checks
-- Static index build
-- ZIP integrity
+Validation commands are run as part of release packaging.
