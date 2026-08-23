@@ -376,3 +376,25 @@
 - Technical differences filtering from 0.2.3 remains presentation-only and its field/difference/section counts continue to follow the active field universe.
 - No report schema, Worker normalizer, stored payload, canonical TXT, SHA-256 report identity, D1 schema or capability inference changes are introduced.
 - Browser-visible changed JavaScript uses `app.v041.js`; unchanged CSS remains `site.v036.css`.
+
+
+## Release 0.2.5
+- Database version is 0.2.5.
+- Current producer audit target is OpenGLESScope 0.3.2 / versionCode 302.
+- Compatible producer floor remains OpenGLESScope 0.1.17+ within compatible 0.x schema-2 / technical-report-1 releases.
+- Registry audit date is 2026-08-23.
+- Production Worker compatibility date is 2026-08-23.
+- No D1 migration or stored-report rewrite is introduced.
+- Runtime format strings, including compressed texture, shader binary and program binary formats, remain submitted evidence and are never inferred by the Database.
+
+
+## Release 0.2.6 OpenGLESScope 0.3.3 complete-report compatibility
+- Database version is 0.2.6 and remains independent from the OpenGLESScope application version.
+- Current producer audit target is OpenGLESScope 0.3.3 / versionCode 303.
+- OpenGLESScope 0.3.3 canonical TXT evidence uses `Core version:` plus `Core version provenance:`; provenance must identify either the direct GL_MAJOR_VERSION / GL_MINOR_VERSION query or parsing from GL_VERSION exactly as emitted by the producer.
+- Older compatible producers retain the historical `Parsed core version:` validation path; backward compatibility must not require fabricated new provenance lines.
+- OpenGLESScope 0.3.3 versionCode must be 303. A mismatched current producer identity is rejected fail-closed.
+- Submission schema 2 and technicalReport schema 1 remain unchanged. The expanded 0.3.3 queryDiagnostics array is accepted as explicit evidence and must not be silently truncated.
+- Current Khronos baselines remain OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5; registry audit date is 2026-08-24.
+- Production Worker compatibility date is 2026-08-24.
+- No D1 migration, report rewrite, hash rewrite or capability inference is permitted for this release.

@@ -1,13 +1,23 @@
-# OpenGLESScope Database 0.2.4 Build Audit
+# OpenGLESScope Database 0.2.6 Build Audit
 
-- Compare semantic-state presentation audited against PROJECT_RULES.md.
-- Plain metadata/scalar values do not receive synthetic Available badges.
-- Missing evidence remains Unknown / Not reported.
-- Limits, shader precision and Diagnostics preserve query-state evidence.
-- Wide-color/HDR support-state rows retain semantic badges.
-- Technical differences filter preserved.
-- Schema 2 / technicalReport 1 unchanged.
-- Normalizer remains 8.
-- No D1 migration.
+Date: 2026-08-24
 
-Validation commands are run as part of release packaging.
+## Release gates
+
+- Database identity: 0.2.6.
+- Current producer: OpenGLESScope 0.3.3 / versionCode 303.
+- Submission schema 2 / technicalReport schema 1 unchanged.
+- OpenGLESScope 0.3.3 direct submission contract: PASS (HTTP 201).
+- Missing 0.3.3 core-version provenance: rejected (HTTP 400).
+- Incorrect 0.3.3 versionCode: rejected (HTTP 400).
+- OpenGLESScope 0.3.2 backward-compatibility contract: PASS (HTTP 201).
+- Historical compatible producer contracts: PASS.
+- Expanded queryDiagnostics remains bounded and schema-compatible.
+- Canonical TXT is retained together with structured technical evidence.
+- Static database audit: PASS after release packaging validation.
+- Worker JavaScript syntax and contract suite: PASS after release packaging validation.
+- Frontend JavaScript syntax: PASS after release packaging validation.
+- Cloudflare Worker compatibility date: 2026-08-24.
+- D1 migration required: no.
+
+The release changes validation/provenance metadata only. Existing D1 rows and canonical stored payloads are not rewritten.

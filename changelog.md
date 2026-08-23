@@ -1,3 +1,18 @@
+# 0.2.6
+
+- Restored canonical TXT compatibility with OpenGLESScope 0.3.3 after its core-version provenance reporting change.
+- Updated current producer metadata and direct contract tests to OpenGLESScope 0.3.3 / versionCode 303.
+- Kept older compatible `Parsed core version:` producer evidence valid while requiring the new 0.3.3 `Core version:` and `Core version provenance:` evidence.
+- Bumped Worker normalizer metadata to 9 and compatibility date to 2026-08-24.
+- Preserved schema 2 / technicalReport 1, stored reports and D1 schema without migration.
+
+# 0.2.5
+
+- Updated current producer audit metadata to OpenGLESScope 0.3.2 / versionCode 302.
+- Added explicit 0.3.2 submission and versionCode-mismatch contract coverage.
+- Updated registry audit date and Cloudflare Worker compatibility date to 2026-08-23.
+- Kept schema 2, technicalReport schema 1, normalizer 8, 0.1.17+ compatible 0.x producer floor, and D1 schema unchanged.
+
 # 0.2.4
 
 - Compare plain metadata/scalar rows no longer show redundant Available badges.
