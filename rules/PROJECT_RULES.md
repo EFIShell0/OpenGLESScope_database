@@ -388,8 +388,8 @@
 - Runtime format strings, including compressed texture, shader binary and program binary formats, remain submitted evidence and are never inferred by the Database.
 
 
-## Release 0.2.7 OpenGLESScope 0.3.3 complete-report compatibility
-- Database version is 0.2.7 and remains independent from the OpenGLESScope application version.
+## Release 0.2.6 OpenGLESScope 0.3.3 complete-report compatibility
+- Database version is 0.2.6 and remains independent from the OpenGLESScope application version.
 - Current producer audit target is OpenGLESScope 0.3.3 / versionCode 303.
 - OpenGLESScope 0.3.3 canonical TXT evidence uses `Core version:` plus `Core version provenance:`; provenance must identify either the direct GL_MAJOR_VERSION / GL_MINOR_VERSION query or parsing from GL_VERSION exactly as emitted by the producer.
 - Older compatible producers retain the historical `Parsed core version:` validation path; backward compatibility must not require fabricated new provenance lines.
@@ -398,9 +398,3 @@
 - Current Khronos baselines remain OpenGL ES 3.2, GLSL ES 3.20 and EGL 1.5; registry audit date is 2026-08-24.
 - Production Worker compatibility date is 2026-08-24.
 - No D1 migration, report rewrite, hash rewrite or capability inference is permitted for this release.
-## Release 0.2.7 Cloudflare compatibility-date deploy correctness
-- Database version is 0.2.7.
-- `worker/wrangler.jsonc` compatibility_date must never be later than the date accepted by the Cloudflare Workers API at deployment time.
-- Local timezone rollover must not be used to advance compatibility_date before Cloudflare accepts that date.
-- When the local calendar is ahead of Cloudflare/API UTC acceptance, use the latest non-future accepted compatibility date and update it later only after deployment validation.
-- Release verification must fail if compatibility_date is the known rejected future date for the audited deployment window.

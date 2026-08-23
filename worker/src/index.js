@@ -1,6 +1,6 @@
 const MAX_BODY=2*1024*1024;
 const MAX_REPORT_TEXT=2*1024*1024;
-const DATABASE_VERSION='0.2.7';
+const DATABASE_VERSION='0.2.6';
 const NORMALIZER_VERSION=9;
 const SENSITIVE_KEYS=new Set(['imei','androidid','serial','serialnumber','mac','macaddress','account','accountid','accountname','email','emailaddress','phone','phonenumber','username','userid','token','authtoken','authenticationtoken','accesstoken','refreshtoken','sessiontoken','sessionid','password','passwd','authorization','cookie','clientip','ipaddress','requestip','privatepath','privatefilepath','advertisingid','gaid']);
 const TOP_KEYS=new Set(['schemaVersion','application','device','gpu','driver','opengles','egl','display','collection','technicalReport','reportText']);

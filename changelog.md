@@ -1,11 +1,4 @@
-# 0.2.7
-
-- Fixed Cloudflare Worker deployment failure caused by a future compatibility date.
-- Set compatibility_date to 2026-08-23 for the observed deploy window.
-- Added release-rule protection against local-timezone future-date regressions.
-- Producer/schema/D1 contracts are unchanged.
-
-# 0.2.7
+# 0.2.6
 
 - Restored canonical TXT compatibility with OpenGLESScope 0.3.3 after its core-version provenance reporting change.
 - Updated current producer metadata and direct contract tests to OpenGLESScope 0.3.3 / versionCode 303.

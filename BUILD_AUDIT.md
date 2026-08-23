@@ -1,10 +1,10 @@
-# OpenGLESScope Database 0.2.7 Build Audit
+# OpenGLESScope Database 0.2.6 Build Audit
 
 Date: 2026-08-24
 
 ## Release gates
 
-- Database identity: 0.2.7.
+- Database identity: 0.2.6.
 - Current producer: OpenGLESScope 0.3.3 / versionCode 303.
 - Submission schema 2 / technicalReport schema 1 unchanged.
 - OpenGLESScope 0.3.3 direct submission contract: PASS (HTTP 201).
@@ -21,5 +21,3 @@ Date: 2026-08-24
 - D1 migration required: no.
 
 The release changes validation/provenance metadata only. Existing D1 rows and canonical stored payloads are not rewritten.
-
-- Cloudflare compatibility date deployability: 2026-08-23, non-future for observed API window.
