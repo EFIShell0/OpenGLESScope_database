@@ -1,6 +1,6 @@
-# OpenGLESScope Database 0.2.6
+# OpenGLESScope Database 0.2.7
 
-OpenGLESScope Database 0.2.6 restores exact compatibility with OpenGLESScope 0.3.3 while preserving the schema-2 / technicalReport-1 storage contract and existing report corpus.
+OpenGLESScope Database 0.2.7 restores exact compatibility with OpenGLESScope 0.3.3 while preserving the schema-2 / technicalReport-1 storage contract and existing report corpus.
 
 ## Changes
 
@@ -15,10 +15,15 @@ OpenGLESScope Database 0.2.6 restores exact compatibility with OpenGLESScope 0.3
 
 ## Version
 
-- Database: 0.2.6
+- Database: 0.2.7
 - Submission schema: 2
 - Technical report schema: 1
 - Current producer: OpenGLESScope 0.3.3 / versionCode 303
 - OpenGL ES baseline: 3.2
 - GLSL ES baseline: 3.20
 - EGL baseline: 1.5
+
+
+## 0.2.7 deployment correction
+
+Cloudflare compatibility_date is 2026-08-23 so the Worker can deploy without API error 10021 during the audited deployment window. No schema or D1 migration change is required.
