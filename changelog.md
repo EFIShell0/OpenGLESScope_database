@@ -1,3 +1,10 @@
+# 0.2.8
+
+- Audited against OpenGLESScope 0.3.4 / versionCode 304.
+- Fixed stale `/v1/reports` currentProducer metadata that still reported 0.3.2.
+- Retains strict duplicate diagnostic rejection; 0.3.4 fixes the producer-side duplicate diagnostic regression instead of weakening Database evidence rules.
+- No D1 migration or stored-report rewrite.
+
 # 0.2.7
 
 - Fixed Cloudflare Worker deployment failure caused by a future compatibility date.

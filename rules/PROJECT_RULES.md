@@ -404,3 +404,13 @@
 - Local timezone rollover must not be used to advance compatibility_date before Cloudflare accepts that date.
 - When the local calendar is ahead of Cloudflare/API UTC acceptance, use the latest non-future accepted compatibility date and update it later only after deployment validation.
 - Release verification must fail if compatibility_date is the known rejected future date for the audited deployment window.
+
+
+## Release 0.2.8
+
+- Database version is 0.2.8.
+- Current audited producer is OpenGLESScope 0.3.4 / versionCode 304.
+- Duplicate query diagnostic names remain invalid and must be rejected.
+- `/v1/health` and `/v1/reports` must report the same current producer metadata.
+- No D1 migration or stored-report rewrite is required.
+- Compatibility exception for producer 0.3.3 only: duplicate diagnostics are permitted only for GL_NUM_EXTENSIONS, GL_NUM_COMPRESSED_TEXTURE_FORMATS, GL_NUM_SHADER_BINARY_FORMATS, and GL_NUM_PROGRAM_BINARY_FORMATS, exactly twice, with identical status and detail. This bridges the released 0.3.3 producer regression without weakening 0.3.4+ uniqueness.

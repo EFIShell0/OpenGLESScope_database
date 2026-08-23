@@ -1,13 +1,13 @@
-# OpenGLESScope Database 0.2.7 Build Audit
+# OpenGLESScope Database 0.2.8 Build Audit
 
 Date: 2026-08-24
 
 ## Release gates
 
-- Database identity: 0.2.7.
-- Current producer: OpenGLESScope 0.3.3 / versionCode 303.
+- Database identity: 0.2.8.
+- Current producer: OpenGLESScope 0.3.4 / versionCode 303.
 - Submission schema 2 / technicalReport schema 1 unchanged.
-- OpenGLESScope 0.3.3 direct submission contract: PASS (HTTP 201).
+- OpenGLESScope 0.3.4 direct submission contract: PASS (HTTP 201).
 - Missing 0.3.3 core-version provenance: rejected (HTTP 400).
 - Incorrect 0.3.3 versionCode: rejected (HTTP 400).
 - OpenGLESScope 0.3.2 backward-compatibility contract: PASS (HTTP 201).
