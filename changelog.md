@@ -1,11 +1,3 @@
-# 0.7.3
-
-- Fixed the Compare workspace layout regression where checkbox toggles inherited generic form-control styles and expanded into tall vertical cards.
-- Restored VulkanScope-quality Compare control hierarchy: report selectors and compact toggles on the primary row, section/field filters on a dedicated secondary row, and the share action outside the picker group.
-- Added dedicated compact/responsive Compare CSS, keyboard-visible toggle states and mobile grid behavior while preserving exact comparison semantics.
-- Added OpenGLESScope 0.7.2 / versionCode 702 producer support; schema 2, technicalReport 2, normalizer 10 and D1 storage remain unchanged.
-- Source archive policy continues to exclude README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming.
-
 # 0.7.2
 
 - Added the OpenGLESScope 0.7.1 / 701 producer contract.

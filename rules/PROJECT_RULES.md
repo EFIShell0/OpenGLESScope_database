@@ -472,15 +472,4 @@
 - Browser-visible current assets are app.v072.js and site.v072.css; stale versioned frontend assets are forbidden.
 - README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming are absent from the source release archive.
 - Source audit, repository-state, route, Compare, Statistics/filter, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
-## Release 0.7.3 Compare layout correctness and OpenGLESScope 0.7.2 producer parity
-- Database version is 0.7.3 and current audited producer is OpenGLESScope 0.7.2 / versionCode 702.
-- Compare control layout follows the shared VulkanScope interaction hierarchy: report A/B selectors and boolean comparison toggles occupy the primary compact picker row; Section and Field search occupy a separate subfilter row; Share comparison link is a separate action.
-- Compare checkbox inputs must never inherit generic search/text-input sizing, padding, border or column-label styles. The native checkbox remains visually hidden and its dedicated visible check control owns the interactive presentation.
-- Compare toggles remain compact inline controls at desktop widths and become bounded responsive grid rows on narrow screens; they must never stretch into tall empty cards.
-- Differences only, Technical differences only and Common evidence only retain their existing semantics. Layout corrections must not alter evidence state, missing-value handling, field identity or canonical comparison routing.
-- Current producer 0.7.2 uses the same schema 2 / technicalReport 2 application and ABI contract as 0.7.1, with exact versionCode 702. Historical compatible producers retain their released contracts.
-- D1 schema, normalizer 10, stored report IDs/hashes and existing payloads remain unchanged; no migration is required.
-- Browser-visible current assets are app.v073.js and site.v073.css; stale versioned frontend assets are forbidden.
-- README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming remain absent from the source release archive.
-- Source audit, repository-state, routing, Compare, Statistics/filter, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
 
