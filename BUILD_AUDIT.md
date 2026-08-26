@@ -1,25 +1,41 @@
-# OpenGLESScope Database 0.2.8 Build Audit
+# OpenGLESScope Database 0.7.0 Build / Release Audit
 
-Date: 2026-08-24
+## Release identity
 
-## Release gates
+- Database version: 0.7.0
+- Current producer: OpenGLESScope 0.7.0 / versionCode 700
+- Submission schema: 2
+- Current technicalReport schema: 2
+- Historical compatible technicalReport schema: 1
+- Normalizer: 10
+- Current browser assets: app.v070.js / site.v070.css
+- D1 migration: none
 
-- Database identity: 0.2.8.
-- Current producer: OpenGLESScope 0.3.4 / versionCode 303.
-- Submission schema 2 / technicalReport schema 1 unchanged.
-- OpenGLESScope 0.3.4 direct submission contract: PASS (HTTP 201).
-- Missing 0.3.3 core-version provenance: rejected (HTTP 400).
-- Incorrect 0.3.3 versionCode: rejected (HTTP 400).
-- OpenGLESScope 0.3.2 backward-compatibility contract: PASS (HTTP 201).
-- Historical compatible producer contracts: PASS.
-- Expanded queryDiagnostics remains bounded and schema-compatible.
-- Canonical TXT is retained together with structured technical evidence.
-- Static database audit: PASS after release packaging validation.
-- Worker JavaScript syntax and contract suite: PASS after release packaging validation.
-- Frontend JavaScript syntax: PASS after release packaging validation.
-- Cloudflare Worker compatibility date: 2026-08-24.
-- D1 migration required: no.
+## Executed source gates
 
-The release changes validation/provenance metadata only. Existing D1 rows and canonical stored payloads are not rewritten.
+- `python3 tools/audit_database.py --source-tree .`: PASS
+- `python3 tools/repair_repository.py --check`: CLEAN
+- `python3 tools/test_audit_hygiene.py`: ALL PASS
+- `node --check assets/app.v070.js`: PASS
+- `node --check worker/src/index.js`: PASS
+- `node tools/test_routes.mjs`: ALL PASS
+- `node tools/test_compare_contract.mjs`: ALL PASS
+- `node worker/tests/contract.mjs`: ALL PASS
 
-- Cloudflare compatibility date deployability: 2026-08-23, non-future for observed API window.
+The Worker contract suite verifies the current 0.7.0/700 submission path, historical compatible producers, technicalReport-2 enforcement, required EGL runtime evidence, EGL binding consistency, duplicate rejection, extension-prerequisite validation, producer/version rejection, 2 MiB body bounds, CORS/media-type behavior, sensitive-field rejection, canonical schema behavior and existing report/detail routes.
+
+## Pages artifact gate
+
+A fresh allow-listed Pages artifact was generated with `tools/build_pages_artifact.py` and audited with `python3 tools/audit_database.py --artifact-tree <artifact>`. Result: PASS.
+
+The staged artifact contains only the approved Pages HTML/config/schema/data/assets. Worker source, tools, rules, workflows, dependency trees and repository transients are excluded.
+
+## Security and provenance
+
+- GL_VENDOR / GL_RENDERER remain submitted runtime evidence; synthetic PCI/Vulkan-style vendor identifiers are not used.
+- D1 access remains parameterized and canonical report identity remains SHA-256 based.
+- Existing 2 MiB bounds, recursive sensitive-field rejection, CORS/CSP and fail-closed current-producer validation remain active.
+- One-sided Compare absence remains Unknown / Not reported and is not fabricated as Unsupported.
+- No D1 migration, stored-report rewrite or report-hash rewrite is introduced.
+
+All Database release gates required by the 0.7.0 project rules passed on the source tree before packaging.

@@ -414,3 +414,28 @@
 - `/v1/health` and `/v1/reports` must report the same current producer metadata.
 - No D1 migration or stored-report rewrite is required.
 - Compatibility exception for producer 0.3.3 only: duplicate diagnostics are permitted only for GL_NUM_EXTENSIONS, GL_NUM_COMPRESSED_TEXTURE_FORMATS, GL_NUM_SHADER_BINARY_FORMATS, and GL_NUM_PROGRAM_BINARY_FORMATS, exactly twice, with identical status and detail. This bridges the released 0.3.3 producer regression without weakening 0.3.4+ uniqueness.
+
+## Release 0.2.9 VulkanScope-quality OpenGLESScope 0.4.1 parity
+- Database version is 0.2.9 and current audited producer is OpenGLESScope 0.4.1 / versionCode 401.
+- Compatible producer floor remains OpenGLESScope 0.1.17+ within compatible 0.x schema-2 / technical-report-1 releases.
+- Compare includes Common evidence only in addition to Differences only and Technical differences only.
+- Cross-producer detection uses both application version and versionCode. One-sided absence remains Unknown / Not reported and is never inferred Unsupported.
+- Compare metrics expose A fields, B fields, Common fields, One-sided fields, Visible differences and Visible sections.
+- Canonical report hash route is `#reports/<64-hex-id>/Overview`; validated section routes and canonical two-report Compare routes are first-class navigation contracts.
+- Browser-visible current assets are `app.v042.js` and `site.v042.css`; stale versioned app/CSS assets are forbidden in release packages.
+- Source audit, repository-state, route, Compare, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
+- GitHub Pages deploys only an explicit allow-listed `_site` artifact. Worker source, tools, rules, workflows and transient files must not leak into Pages.
+- Schema 2, technicalReport 1, normalizer 9, D1 schema, stored report IDs/hashes and the 2 MiB submission limit remain unchanged.
+- Production Worker compatibility date remains 2026-08-23 until a newer date is deployment-validated by Cloudflare.
+
+## Release 0.7.0 full correctness, security, EGL and reporting audit
+- Database version is 0.7.0 and current audited producer is OpenGLESScope 0.7.0 / versionCode 700.
+- Submission schema remains 2. Current producer technicalReport schema is 2; compatible historical producers retain technicalReport schema 1.
+- Normalizer version is 10 and existing D1 schema/report IDs/hashes remain unchanged.
+- Current technicalReport 2 requires bounded EGL runtime/context/surface evidence and expanded EGL Config evidence.
+- EGL extension-specific config values require exact prerequisite extension tokens; absence must not be inferred as Unsupported.
+- Compare retains Common evidence only, technical-differences filtering, cross-producer warnings and Unknown / Not reported one-sided semantics.
+- Raw GL_VENDOR / GL_RENDERER evidence is authoritative; synthetic PCI/Vulkan-style vendor identifiers are forbidden.
+- Browser-visible current assets are app.v070.js and site.v070.css; stale versioned frontend assets are forbidden.
+- Source audit, repository-state, routes, Compare, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
+- Existing HTTPS/CORS/CSP, 2 MiB bounds, sensitive-field rejection, canonical hashing, D1 parameterization, pagination and no-background-upload protections remain mandatory.

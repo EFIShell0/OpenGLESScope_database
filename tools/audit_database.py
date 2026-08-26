@@ -1,101 +1,165 @@
 from pathlib import Path
-import json,re,subprocess,sys,shutil
-root=Path(__file__).resolve().parents[1]
+import argparse
+import json
+import re
+import shutil
+import subprocess
+import sys
+from urllib.parse import urlsplit
+
+parser=argparse.ArgumentParser(description='Audit OpenGLESScope Database source or staged Pages artifact')
+parser.add_argument('--source-tree',type=Path)
+parser.add_argument('--artifact-tree',type=Path)
+parser.add_argument('--version',action='store_true')
+args=parser.parse_args()
+AUDIT_VERSION='0.7.0'
+print(f'OpenGLESScope Database audit tool {AUDIT_VERSION}')
+if args.version: sys.exit(0)
+
+public_files={'.nojekyll','index.html','config.js','report.schema.json','400.html','401.html','403.html','404.html','405.html','408.html','409.html','413.html','415.html','429.html','500.html','502.html','503.html','504.html','error.html'}
+public_assets={'app.v070.js','site.v070.css','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v029.png','opengles-gl-es-v028.png','openglesscope_logo_horizontal-v017.png','gpu-vendors/gpu_vendor_amd.png','gpu-vendors/gpu_vendor_arm.png','gpu-vendors/gpu_vendor_broadcom.png','gpu-vendors/gpu_vendor_huawei.png','gpu-vendors/gpu_vendor_imagination.png','gpu-vendors/gpu_vendor_intel.png','gpu-vendors/gpu_vendor_nvidia.png','gpu-vendors/gpu_vendor_qualcomm.png','gpu-vendors/gpu_vendor_samsung.png','gpu-vendors/gpu_vendor_unknown.png','gpu-vendors/gpu_vendor_vivante.png','gpu-vendors/gpu_vendor_vsi.png','hdr/dolby_vision.png','hdr/dolby_vision_2.png','hdr/hdr10.svg','hdr/hdr10_plus.png','hdr/hdr10_plus_advanced.png','hdr/hdr_vivid.webp'}
+
+def local_ref_errors(root):
+    out=[]
+    pattern=re.compile(r'(?:href|src)=["\']([^"\']+)["\']',re.I)
+    for html in root.glob('*.html'):
+        body=html.read_text(encoding='utf-8')
+        for ref in pattern.findall(body):
+            if ref.startswith(('http://','https://','data:','#','mailto:','javascript:')): continue
+            clean=urlsplit(ref).path
+            if not clean or clean in {'.','./','/','/OpenGLESScope_database/'} or clean.endswith('/'): continue
+            if clean.startswith('/OpenGLESScope_database/'):
+                target=(root/clean[len('/OpenGLESScope_database/'):]).resolve()
+            else:
+                target=(html.parent/clean).resolve()
+            try: target.relative_to(root.resolve())
+            except ValueError:
+                out.append(f'local asset escapes tree {html.name}: {ref}')
+                continue
+            if not target.is_file(): out.append(f'broken local asset {html.name}: {ref}')
+    return out
+
+def audit_artifact(root):
+    root=root.resolve(); errors=[]
+    if not root.is_dir(): errors.append(f'artifact tree missing: {root}')
+    if errors:
+        print('\n'.join(errors)); sys.exit(1)
+    top={p.name for p in root.iterdir()}
+    allowed=public_files|{'assets','data'}
+    for x in sorted(top-allowed): errors.append(f'forbidden Pages artifact top-level entry {x}')
+    for x in public_files: 
+        if not (root/x).is_file(): errors.append(f'missing Pages artifact entry {x}')
+    assets=root/'assets'
+    data=root/'data'
+    if not assets.is_dir(): errors.append('missing Pages artifact entry assets')
+    if not data.is_dir(): errors.append('missing Pages artifact entry data')
+    forbidden={'.git','.github','worker','tools','rules','.gradle','build','__pycache__','.idea','node_modules','.wrangler'}
+    for p in root.rglob('*'):
+        rel=p.relative_to(root)
+        if any(part in forbidden for part in rel.parts): errors.append(f'forbidden Pages artifact {rel}')
+        if rel.as_posix()!='.nojekyll' and any(part.startswith('.') for part in rel.parts): errors.append(f'forbidden hidden Pages artifact {rel}')
+        if p.is_symlink(): errors.append(f'symlink not permitted in Pages artifact {rel}')
+        if p.is_file() and rel.parts and rel.parts[0]=='assets':
+            asset_rel=Path(*rel.parts[1:]).as_posix()
+            if asset_rel not in public_assets: errors.append(f'unexpected/stale Pages asset {rel}')
+        if p.is_file() and rel.parts and rel.parts[0]=='data' and p.suffix.lower()!='.json': errors.append(f'non-JSON Pages data {rel}')
+    idx=root/'index.html'
+    if idx.is_file():
+        body=idx.read_text(encoding='utf-8')
+        for token in ['OpenGLESScope Database <strong>0.7.0</strong>','site.v070.css','app.v070.js','config.js?v=070']:
+            if token not in body: errors.append(f'Pages artifact current reference missing {token}')
+    errors.extend(local_ref_errors(root))
+    if errors:
+        print('\n'.join(errors)); sys.exit(1)
+    print('OpenGLESScope Database 0.7.0 Pages artifact audit: PASS')
+    sys.exit(0)
+
+if args.artifact_tree: audit_artifact(args.artifact_tree)
+root=(args.source_tree or Path(__file__).resolve().parents[1]).resolve()
 errors=[]
-required=['index.html','config.js','report.schema.json','assets/app.v041.js','assets/site.v036.css','assets/egl-logo-white-v029.png','assets/opengles-gl-es-v028.png','assets/openglesscope_logo_horizontal-v017.png','assets/favicon-v017.png','assets/favicon-v017.ico','assets/apple-touch-icon-v017.png','worker/src/index.js','worker/tests/contract.mjs','worker/migrations/0001_init.sql','worker/migrations/0002_report_cursor_index.sql','worker/migrations/0003_application_version_summary.sql','worker/scripts/verify-cloudflare-account.mjs','worker/wrangler.jsonc','worker/package.json','rules/PROJECT_RULES.md','rules/0.1.20_RESPONSIVE_TABLE_AUDIT.md','rules/0.1.21_FULL_PARITY_SECURITY_SPEC_AUDIT.md','rules/0.1.22_FULL_PRODUCER_TAB_PARITY_AUDIT.md','rules/0.1.23_REPORTS_TABLE_PARITY_AUDIT.md','rules/0.1.24_UI_PARITY_FIX_AUDIT.md','rules/0.1.25_REPORT_VENDOR_TABLE_SCROLL_PARITY_AUDIT.md','rules/0.1.26_FULL_UI_SECURITY_SPEC_AUDIT.md','rules/0.2.0_FULL_DATABASE_COMPATIBILITY_SECURITY_SPEC_AUDIT.md','rules/0.2.2_ANDROID_SECURITY_PATCH_END_TO_END_AUDIT.md','rules/0.2.4_TECHNICAL_COMPARE_FILTER_AUDIT.md','rules/0.2.5_OPENGLESSCOPE_0.3.2_COMPATIBILITY_AUDIT.md','rules/0.2.7_OPENGLESSCOPE_0.3.3_FULL_DATABASE_AUDIT.md','rules/0.2.8_OPENGLESSCOPE_0.3.4_DIAGNOSTIC_CONTRACT.md','SECURITY.md','README.md','release.md','BUILD_AUDIT.md','.github/workflows/pages.yml']
-for x in required:
-    if not (root/x).is_file(): errors.append(f'missing {x}')
-for x in ['report.schema.json','worker/package.json','data/index.json']:
-    try: json.loads((root/x).read_text(encoding='utf-8'))
-    except Exception as e: errors.append(f'json {x}: {e}')
-try: json.loads(re.sub(r'(?m)^\s*//.*$','',(root/'worker/wrangler.jsonc').read_text(encoding='utf-8')))
-except Exception as e: errors.append(f'jsonc worker/wrangler.jsonc: {e}')
-for f in root.glob('*.html'):
-    text=f.read_text(encoding='utf-8')
-    if 'Content-Security-Policy' not in text: errors.append(f'csp {f.name}')
-    for ref in re.findall(r'(?:src|href)="([^"]+)"',text):
-        if ref.startswith(('http://','https://','#')): continue
-        target=(f.parent/ref.split('?',1)[0]).resolve()
-        try: target.relative_to(root.resolve())
-        except ValueError: errors.append(f'outside-ref {f.name} {ref}');continue
-        if not target.exists(): errors.append(f'broken-ref {f.name} {ref}')
-source_files=[root/'assets/app.v041.js',root/'assets/site.v036.css',root/'worker/src/index.js',root/'worker/tests/contract.mjs',root/'worker/scripts/verify-cloudflare-account.mjs',root/'tools/build_index.py',root/'tools/audit_database.py']
-for f in source_files:
-    t=f.read_text(encoding='utf-8')
-    block='/'+'*'
-    bad=block in t or bool(re.search(r'(?m)^\s*//',t))
-    if f.suffix=='.py': bad=bool(bad or re.search(r'(?m)^\s*#(?!\!)',t))
-    if bad: errors.append(f'source-comment {f.relative_to(root)}')
-idx=(root/'index.html').read_text(encoding='utf-8')
-for token in ['assets/site.v036.css','assets/app.v041.js','config.js?v=040','OpenGLESScope Database <strong>0.2.8</strong>','displayOrderFilter','nav-edge-left','nav-edge-right','repo-icon','repo-arrow']:
-    if token not in idx: errors.append(f'missing-index-token {token}')
-for token in ['assets/app.js','assets/site.css','app.v035.js" defer','config.js?v=035','OpenGLESScope Database <strong>0.1.25</strong>']:
-    if token in idx: errors.append(f'stale-index-token {token}')
-for f in root.glob('*.html'):
-    if f.name!='index.html' and 'assets/site.v036.css' not in f.read_text(encoding='utf-8'): errors.append(f'error-css {f.name}')
-worker=(root/'worker/src/index.js').read_text(encoding='utf-8')
-worker_tokens=["DATABASE_VERSION='0.2.8'","NORMALIZER_VERSION=9","compatibleProducer:'OpenGLESScope 0.1.17+ within 0.x schema 2 / technical report 1'","currentProducer:'OpenGLESScope 0.3.4'","publishedOpenGlesSpec:'OpenGL ES 3.2 (May 5, 2022)'","publishedGlslEsSpec:'GLSL ES 3.20 (August 14, 2023)'","publishedEglSpec:'EGL 1.5 (August 27, 2014)'","registryAuditDate:'2026-08-24'",'MAX_BODY=2*1024*1024','replace(/[^a-z0-9]/g','const TOP_KEYS=new Set','const DIAGNOSTIC_STATES=new Set','sameDisplay(t.display,p.display)',"text.startsWith('OpenGLESScope report\\n')","text.startsWith(`OpenGLESScope ${p.application.version}\\n`)",'runtimeMetadata=p=>','securityPatch','Android security patch','Security patch','Application ABI','Supported device ABIs','text.length<1000','currentProducerEvidence=p=>','unique(t.limits','diagnosticCompatibilityValid(p)','enumerationEvidenceValid','GL_TIME_ELAPSED_EXT_QUERY_COUNTER_BITS','GL_TIMESTAMP_EXT_QUERY_COUNTER_BITS','GL_MAX_DEBUG_MESSAGE_LENGTH','dm.get(x.name)?.status!==\'Available\'','countHeader(text,label,count)','preflight=(origin)=>','content-security-policy','Submission JSON nesting is too deep','Content-Type must be application/json','Stored report payload is invalid','Both cursor fields are required','Method not allowed']
-for token in worker_tokens:
-    if token not in worker: errors.append(f'missing-worker-token {token}')
-for token in ['producerVersion=p=>','producerAtLeast=(p,minor,patch)=>','supportedProducer=p=>','luminanceTextMatches=(text,label,value)=>','Unsupported OpenGLESScope producer version','current producer versionCode mismatch']:
-    if token not in worker and token!='current producer versionCode mismatch': errors.append(f'missing-0.2-worker-token {token}')
-for token in ["p.application.version==='0.3.4'&&p.application.versionCode!==304","`Core version: ${p.opengles.major}.${p.opengles.minor}`","reportLine(text,'Core version provenance')",'Direct GL_MAJOR_VERSION / GL_MINOR_VERSION query','Parsed from GL_VERSION runtime string']:
-    if token not in worker: errors.append(f'missing-0.2.8-worker-token {token}')
+def check(cond,msg):
+    if not cond: errors.append(msg)
+def read(rel): return (root/rel).read_text(encoding='utf-8')
 
-js=(root/'assets/app.v041.js').read_text(encoding='utf-8')
-js_tokens=['updateTableScroller','enhanceTableScroller','thumb.style.width','thumb.style.transform','role="scrollbar"','aria-valuenow','setPointerCapture','ArrowLeft','ArrowRight','table-edge-left','table-edge-right','egl-logo-white-v029.png','opengles-gl-es-v028.png','failedReportLoads','Report load failures','reportSearchText','runtimeMeta','reportPlatform','reportSupportedAbis','reportOs','securityPatch','Patch ${esc(runtimeMeta(p).securityPatch)}','Application ABI','Supported device ABIs','Platform / ABI',"table(['Submitted','Device','Logo','Vendor','Driver','OpenGL ES','EGL','Android','OpenGLESScope','Platform / ABI','Report ID']",'state.details.get(r.id)',"['driver-asc','Driver — A to Z']",'Repeated report cursor','Response exceeds 4 MiB','Database request timed out','aria-busy','detailTransitionToken','prefersReducedMotion()?',"display:[['available','HDR available'],['unavailable','HDR unavailable'],['unknown','HDR unknown']]",'diagnosticIndex','enumEvidence','LIMIT_DIAGNOSTIC_EXCLUSIONS','isLimitDiagnosticName','isPrecisionDiagnosticName','Enumeration query evidence','Not listed','Compressed texture','shaderBinaryFormats','programBinaryFormats','available values','State coverage','detail-metrics','Extensions (${n.extensions.length+n.eglExtensions.length+n.eglClientExtensions.length})','Limits (${n.limits.length})','Formats (${n.compressedFormats.length+n.shaderBinaryFormats.length+n.programBinaryFormats.length})','Precision (${n.precision.length})','EGL Configs (${n.eglConfigs.length})','Diagnostics (${n.diagnostics.length})','Modes','Min luminance','Avg luminance','Max luminance','coverage-progress','value(d.desiredMaxLuminance,\' cd/m²\')','value(d.desiredMaxAverageLuminance,\' cd/m²\')','value(d.desiredMinLuminance,\' cd/m²\')']
-for token in ['glEglVersionChip','class=\"gl-egl-version-chip mono\"','class=\"report-id-cell\"','Device','OpenGL ES','EGL']:
-    if token not in js: errors.append(f'missing-reports-parity-token {token}')
-for token in js_tokens:
-    if token not in js: errors.append(f'missing-frontend-token {token}')
-for token in ['./data/index.json','state.summaries=staticIndex',"fetch('./data/index.json",'eval(', 'new Function', 'document.write(', 'javascript:','style="']:
-    if token in js: errors.append(f'forbidden-frontend-token {token}')
-css=(root/'assets/site.v036.css').read_text(encoding='utf-8')
-if '\\n' in css: errors.append('literal-escaped-newline-css')
-for token in ['th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid #28282c}','th{position:sticky;top:0;background:#151518;color:#cbcad0;font-size:12px;font-weight:700;line-height:1.35;z-index:2}']:
-    if token not in css: errors.append(f'global-table-parity {token}')
-for token in ['.table-edge{','.table-edge.visible{','.table-scroll-shell.scrollable .table-scroll-controls{','.table-scroll-track:focus-visible{','.table-scroll-thumb{','.coverage-progress{','.query-evidence{','.detail-metrics{','.reports-table th{','.gl-egl-version-chip{','.report-id-cell{','@media(prefers-reduced-motion:reduce)']:
-    if token not in css: errors.append(f'missing-style-token {token}')
-schema=json.loads((root/'report.schema.json').read_text(encoding='utf-8'))
-sp=schema.get('properties',{})
-app_props=sp.get('application',{}).get('properties',{})
-if app_props.get('versionCode',{}).get('minimum')!=117: errors.append('schema-version-floor')
-if app_props.get('version',{}).get('pattern')!=r'^0\.(?:1\.(?:1[7-9]|[2-9][0-9]|[1-9][0-9]{2,})|(?:[2-9]|[1-9][0-9]+)\.[0-9]+)$': errors.append('schema-version-pattern')
-tr=sp.get('technicalReport',{}).get('properties',{})
-if tr.get('limits',{}).get('maxItems')!=8192: errors.append('schema-limit-bound')
-if tr.get('queryDiagnostics',{}).get('maxItems')!=16384: errors.append('schema-diagnostic-bound')
-if set(tr.get('queryDiagnostics',{}).get('items',{}).get('properties',{}).get('status',{}).get('enum',[]))!={'Available','Unavailable','Not applicable','Unknown'}: errors.append('schema-diagnostic-states')
-dev=sp.get('device',{});security_patch=dev.get('properties',{}).get('securityPatch',{});
-if security_patch.get('pattern')!=r'^\d{4}-\d{2}-\d{2}$' or 'securityPatch' in dev.get('required',[]): errors.append('schema-security-patch-optional')
-wr=json.loads((root/'worker/wrangler.jsonc').read_text(encoding='utf-8'))
-if wr.get('compatibility_date')!='2026-08-23': errors.append('worker-compatibility-date')
-if wr.get('account_id')!='6881527e6e0b9bc4a0c009473428d1bc': errors.append('cloudflare-account-pin')
+for rel in ['index.html','assets/app.v070.js','assets/site.v070.css','worker/src/index.js','worker/package.json','worker/wrangler.jsonc','report.schema.json','data/index.json','rules/PROJECT_RULES.md','tools/pages.workflow.yml','.github/workflows/pages.yml']:
+    check((root/rel).is_file(),f'missing source file {rel}')
+if errors:
+    print('\n'.join(errors)); sys.exit(1)
+index=read('index.html'); app=read('assets/app.v070.js'); css=read('assets/site.v070.css'); worker=read('worker/src/index.js'); rules=read('rules/PROJECT_RULES.md'); workflow=read('.github/workflows/pages.yml'); template=read('tools/pages.workflow.yml')
+workflow_dir=root/'.github/workflows'
+workflows=sorted(p.name for p in workflow_dir.iterdir() if p.is_file() and p.suffix.lower() in {'.yml','.yaml'})
+check(workflows==['pages.yml'],f'exactly one GitHub Actions workflow is permitted; remove stale workflows: {workflows}')
+check(workflow==template,'pages.yml must exactly match tools/pages.workflow.yml; run python tools/repair_repository.py --apply')
+check('OpenGLESScope Database <strong>0.7.0</strong>' in index,'index version')
+check('site.v070.css' in index and 'app.v070.js' in index and 'config.js?v=070' in index,'0.7.0 cache-busted asset refs')
+check("connect-src 'self' https://openglesscope-database-api.openglesscope.workers.dev" in index,'CSP API pin')
+check('Common evidence only' in app and 'Cross-producer comparison' in app,'compare producer/common-evidence controls')
+for token in ['Common fields','One-sided fields','Visible differences','Visible sections','Unknown / Not reported','av!==bv||ac!==bc','commonOnly?commonKeys:technicalUniverse']:
+    check(token in app,f'compare contract token {token}')
+check("parts.length===2||parts.length===3" in app and "#reports/${id}/${DETAIL_ROUTE" in app,'canonical report hash routes')
+check("#compare/${a}/${b}" in app,'canonical compare hash route')
+check('.notice{' in css and '.notice strong{' in css,'cross-producer notice style')
+check("const DATABASE_VERSION='0.7.0'" in worker,'worker database version')
+check("currentProducer:'OpenGLESScope 0.7.0'" in worker,'worker current producer')
+check("p.application.version==='0.7.0'&&p.application.versionCode!==700" in worker,'worker current producer versionCode gate')
+check('MAX_BODY=2*1024*1024' in worker and 'MAX_REPORT_TEXT=2*1024*1024' in worker,'worker body/report bounds')
+check("schemaVersion:2" in worker and "technicalReportSchema:2" in worker,'worker schema contract')
+check('Unsupported OpenGLESScope producer version' in worker,'worker producer floor diagnostics')
+check('TECH_KEYS_V2' in worker and 'EGL_RUNTIME_KEYS' in worker and 'validEglRuntime' in worker,'worker technical report 2 EGL runtime validation')
+check('recordableAndroid' in worker and 'framebufferTargetAndroid' in worker and 'colorComponentTypeExt' in worker,'worker EGL config extension validation')
+check('OpenGLESScope 0.1.17 through 0.7.0' in worker,'bounded producer compatibility ceiling')
+check('EGL runtime' in app and 'recordableAndroid' in app and 'unavailableAttributes' in app,'frontend EGL runtime/config detail coverage')
+check(not any(x in app for x in ['0x5143','0x13B5','0x10DE','0x8086','0x1002','0x1010','0x14E4','0x19E5']),'frontend must not fabricate PCI/Vulkan-style vendor ids')
+check('hasSensitive' in worker and 'stable(p)' in worker and 'sha(canonical)' in worker,'worker sensitive/canonical hash handling')
+check('2026-08-26' in worker,'worker registry audit date')
+check('## Release 0.7.0 full correctness, security, EGL and reporting audit' in rules,'rules 0.2.9 section')
+check((root/'rules/0.7.0_FULL_DATABASE_CORRECTNESS_SECURITY_EGL_AUDIT.md').is_file(),'0.2.9 audit rule file')
+app_assets=sorted(p.name for p in (root/'assets').glob('app.v*.js'))
+css_assets=sorted(p.name for p in (root/'assets').glob('site.v*.css'))
+check(app_assets==['app.v070.js'],f'exactly one versioned frontend app asset is permitted: {app_assets}')
+check(css_assets==['site.v070.css'],f'exactly one versioned frontend css asset is permitted: {css_assets}')
+static=json.loads(read('data/index.json'))
+check(static.get('databaseVersion')=='0.7.0','static databaseVersion')
+check(static.get('normalizerVersion')==10,'static normalizerVersion')
+check(static.get('currentProducer')=='OpenGLESScope 0.7.0','static currentProducer')
+check(static.get('registryAuditDate')=='2026-08-26','static registry audit date')
+pkg=json.loads(read('worker/package.json'))
+check(pkg.get('version')=='0.7.0','worker package version')
+check(pkg.get('devDependencies',{}).get('wrangler')=='4.124.0','wrangler pin')
+wr=json.loads(read('worker/wrangler.jsonc'))
+check(wr.get('compatibility_date')=='2026-08-23','Cloudflare accepted compatibility date pin')
+check(wr.get('account_id')=='6881527e6e0b9bc4a0c009473428d1bc','Cloudflare account pin')
 dbs=wr.get('d1_databases',[])
-if not dbs or dbs[0].get('binding')!='DB' or dbs[0].get('database_id')!='2c945dda-e320-4b3a-9fac-a086373db17c': errors.append('d1-pin')
-pkg=json.loads((root/'worker/package.json').read_text(encoding='utf-8'))
-if pkg.get('version')!='0.2.8': errors.append('worker-package-version')
-if pkg.get('devDependencies',{}).get('wrangler')!='4.124.0': errors.append('wrangler-pin')
-for key in ['predeploy','premigrate','premigrations:list','pred1:count']:
-    if 'verify:account' not in pkg.get('scripts',{}).get(key,''): errors.append(f'account-guard {key}')
-static=json.loads((root/'data/index.json').read_text(encoding='utf-8'))
-for key,val in [('databaseVersion','0.2.8'),('normalizerVersion',9),('currentProducer','OpenGLESScope 0.3.4')]:
-    if static.get(key)!=val: errors.append(f'static-index-{key}')
-
-for token in ['Technical differences only','technicalCompareEntry','Application/Version','Application/Version code','Collection/Status','Collection/Complete','Collection/Source']:
-    if token not in js: errors.append(f'technical-compare {token}')
-for token in ['function compareCell(x)','showStatus','diagStatus','wideColor','hdrTypes','Not reported']:
-    if token not in js: errors.append(f'compare-semantic-state {token}')
-if "${esc(x?.value??'Unknown')} ${x?badge(x.status,x.status)" in js: errors.append('compare-redundant-badge-renderer')
-workflow=(root/'.github/workflows/pages.yml').read_text(encoding='utf-8')
-for token in ['actions/checkout@v6','actions/setup-python@v6','python tools/build_index.py','python tools/audit_database.py','node --check assets/app.v041.js','node --check worker/src/index.js','node worker/tests/contract.mjs','actions/configure-pages@v5','actions/upload-pages-artifact@v4','actions/deploy-pages@v4','cancel-in-progress: false']:
-    if token not in workflow: errors.append(f'workflow-quality {token}')
+check(bool(dbs) and dbs[0].get('binding')=='DB' and dbs[0].get('database_id')=='2c945dda-e320-4b3a-9fac-a086373db17c','D1 identity pin')
+schema=json.loads(read('report.schema.json'))
+check(schema.get('properties',{}).get('technicalReport',{}).get('properties',{}).get('queryDiagnostics',{}).get('maxItems')==16384,'query diagnostic schema bound')
+tech_props=schema.get('properties',{}).get('technicalReport',{}).get('properties',{})
+check(tech_props.get('schemaVersion',{}).get('enum')==[1,2],'public schema technical report versions')
+check('eglRuntime' in tech_props and 'unavailableAttributes' in tech_props.get('eglRuntime',{}).get('properties',{}),'public schema EGL runtime coverage')
+config_props=tech_props.get('eglConfigs',{}).get('items',{}).get('properties',{})
+check(all(x in config_props for x in ['recordableAndroid','framebufferTargetAndroid','colorComponentTypeExt','unavailableAttributes']),'public schema EGL config extension coverage')
+for token in ['actions/checkout@v7','persist-credentials: false','actions/setup-python@v7','python tools/audit_database.py --source-tree .','python tools/repair_repository.py --check','python tools/test_audit_hygiene.py','node --check assets/app.v070.js','node tools/test_routes.mjs','node tools/test_compare_contract.mjs','node worker/tests/contract.mjs','python tools/build_pages_artifact.py _site','python tools/audit_database.py --artifact-tree _site','actions/upload-pages-artifact@v5','include-hidden-files: true','actions/configure-pages@v6','actions/deploy-pages@v5','path: _site']:
+    check(token in workflow,f'workflow quality token {token}')
+check('pages: write' not in workflow.split('  deploy:',1)[0],'build job must not have Pages write permission')
+check('pages: write' in workflow.split('  deploy:',1)[1] and 'id-token: write' in workflow.split('  deploy:',1)[1],'deploy job write permission')
+errors.extend(local_ref_errors(root))
+for p in root.rglob('*'):
+    if not p.is_file(): continue
+    if p.suffix in {'.js','.mjs'}:
+        text=p.read_text(encoding='utf-8',errors='ignore')
+        if re.search(r'(^|\s)//(?!/)',text,re.M) or '/*' in text: errors.append(f'source-code comments forbidden: {p.relative_to(root)}')
+    if p.suffix=='.py':
+        text=p.read_text(encoding='utf-8',errors='ignore')
+        if re.search(r'^\s*#',text,re.M): errors.append(f'source-code comments forbidden: {p.relative_to(root)}')
+for forbidden in ['.gradle','build','__pycache__','.idea','node_modules','.wrangler']:
+    found=[p.relative_to(root) for p in root.rglob(forbidden)]
+    if found: errors.append(f'transient source entries {forbidden}: {found[:5]}')
 node=shutil.which('node')
 if node:
-    for f in [root/'assets/app.v041.js',root/'worker/src/index.js',root/'worker/tests/contract.mjs']:
-        r=subprocess.run([node,'--check',str(f)],capture_output=True,text=True)
-        if r.returncode: errors.append(f'node-check {f.relative_to(root)}: {r.stderr.strip()}')
-    r=subprocess.run([node,str(root/'worker/tests/contract.mjs')],capture_output=True,text=True,cwd=root/'worker')
-    if r.returncode: errors.append(f'worker-contract: {r.stdout.strip()} {r.stderr.strip()}')
+    for rel in ['assets/app.v070.js','worker/src/index.js','worker/tests/contract.mjs','tools/test_routes.mjs','tools/test_compare_contract.mjs']:
+        r=subprocess.run([node,'--check',str(root/rel)],capture_output=True,text=True)
+        if r.returncode: errors.append(f'node syntax {rel}: {r.stderr.strip()}')
 if errors:
-    print('\n'.join(errors));sys.exit(1)
-print('OpenGLESScope Database 0.2.8 audit PASS')
+    print('\n'.join(errors)); sys.exit(1)
+print('OpenGLESScope Database 0.7.0 source audit: PASS')
+print('producer=OpenGLESScope 0.7.0/700 schema=2 technicalReport=2 normalizer=10')

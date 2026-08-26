@@ -359,7 +359,11 @@
       ],
       "properties": {
         "schemaVersion": {
-          "const": 1
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
         },
         "limits": {
           "type": "array",
@@ -752,6 +756,49 @@
                   "integer",
                   "null"
                 ]
+              },
+              "recordableAndroid": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "framebufferTargetAndroid": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "colorComponentTypeExt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "unavailableAttributes": {
+                "type": "array",
+                "maxItems": 64,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "error"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    }
+                  },
+                  "additionalProperties": false
+                }
               }
             },
             "additionalProperties": false
@@ -847,6 +894,159 @@
             "desiredMaxAverageLuminance",
             "desiredMinLuminance"
           ]
+        },
+        "eglRuntime": {
+          "type": "object",
+          "required": [
+            "boundApi",
+            "configId",
+            "clientType",
+            "clientVersion",
+            "renderBuffer",
+            "currentContext",
+            "currentDisplay",
+            "currentDrawSurface",
+            "currentReadSurface",
+            "surfaceWidth",
+            "surfaceHeight",
+            "surfaceRenderBuffer",
+            "surfaceSwapBehavior",
+            "surfaceTextureFormat",
+            "surfaceTextureTarget",
+            "surfaceMipmapTexture",
+            "surfaceMipmapLevel",
+            "surfaceMultisampleResolve",
+            "unavailableAttributes"
+          ],
+          "properties": {
+            "boundApi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "configId": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "clientType": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "clientVersion": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "renderBuffer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "currentContext": {
+              "type": "boolean"
+            },
+            "currentDisplay": {
+              "type": "boolean"
+            },
+            "currentDrawSurface": {
+              "type": "boolean"
+            },
+            "currentReadSurface": {
+              "type": "boolean"
+            },
+            "surfaceWidth": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceHeight": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceRenderBuffer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceSwapBehavior": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceTextureFormat": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceTextureTarget": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceMipmapTexture": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceMipmapLevel": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceMultisampleResolve": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "unavailableAttributes": {
+              "type": "array",
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "error"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "error": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

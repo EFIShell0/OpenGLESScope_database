@@ -1,3 +1,21 @@
+# 0.7.0
+
+- Added OpenGLESScope 0.7.0 / 700 producer support with current technicalReport schema 2 and normalizer 10.
+- Added fail-closed EGL runtime/config validation and frontend Report Detail/Compare coverage.
+- Removed synthetic vendor-ID presentation and retained raw submitted vendor/renderer provenance.
+- Advanced current Pages assets to app.v070.js / site.v070.css.
+- Preserved historical compatible technicalReport-1 reports, D1 schema/data and canonical report IDs.
+
+# 0.2.9
+
+- Added OpenGLESScope 0.4.1 / versionCode 401 current-producer support without changing schema 2 / technicalReport 1.
+- Added canonical direct report-section and Compare hash routes.
+- Added Common evidence only, cross-producer/versionCode warnings and common/one-sided/visible Compare metrics.
+- Preserved Unknown / Not reported for one-sided absence and diagnostic-authoritative states for queried evidence.
+- Added route, Compare, Worker, source-audit, audit-hygiene and staged Pages artifact release gates.
+- Switched Pages deployment to an exact allow-listed `_site` artifact and current cache-busted app.v042.js / site.v042.css assets.
+- Preserved D1 schema, stored reports, canonical report hashes and Cloudflare identity pins without migration.
+
 # 0.2.8
 
 - Audited against OpenGLESScope 0.3.4 / versionCode 304.
