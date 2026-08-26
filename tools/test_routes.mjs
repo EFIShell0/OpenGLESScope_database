@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
-const source=fs.readFileSync(new URL('../assets/app.v072.js',import.meta.url),'utf8');
+const source=fs.readFileSync(new URL('../assets/app.v073.js',import.meta.url),'utf8');
 const a=source.indexOf('const TABS=');
 const b=source.indexOf('async function openDetail',a);
 if(a<0||b<0)throw new Error('route block missing');
