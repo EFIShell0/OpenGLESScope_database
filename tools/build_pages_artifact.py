@@ -7,7 +7,7 @@ out=(Path(sys.argv[1]) if len(sys.argv)>1 else root/'_site').resolve()
 if out.exists(): shutil.rmtree(out)
 out.mkdir(parents=True)
 files=['.nojekyll','index.html','config.js','report.schema.json','400.html','401.html','403.html','404.html','405.html','408.html','409.html','413.html','415.html','429.html','500.html','502.html','503.html','504.html','error.html']
-assets=['app.v073.js','site.v073.css','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v029.png','opengles-gl-es-v028.png','openglesscope_logo_horizontal-v017.png']
+assets=['app.v074.js','site.v074.css','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v029.png','opengles-gl-es-v028.png','openglesscope_logo_horizontal-v017.png']
 for group in ['gpu-vendors','hdr']:
     for p in sorted((root/'assets'/group).rglob('*')):
         if p.is_file(): assets.append(p.relative_to(root/'assets').as_posix())

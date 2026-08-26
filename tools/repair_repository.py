@@ -9,8 +9,8 @@ g=parser.add_mutually_exclusive_group(required=True)
 g.add_argument('--apply',action='store_true')
 g.add_argument('--check',action='store_true')
 args=parser.parse_args()
-current_app='app.v073.js'
-current_css='site.v073.css'
+current_app='app.v074.js'
+current_css='site.v074.css'
 workflow_template=(root/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 issues=[]
 for p in (root/'assets').glob('app.v*.js'):
@@ -22,18 +22,27 @@ for p in workflow_dir.glob('*'):
     if p.is_file() and p.name!='pages.yml': issues.append(p)
 pages=workflow_dir/'pages.yml'
 workflow_wrong=not pages.is_file() or pages.read_text(encoding='utf-8')!=workflow_template
+transient=[]
+for name in ['node_modules','.wrangler','__pycache__','.gradle','build','.idea']:
+    transient.extend(p for p in root.rglob(name) if p.is_dir())
+for rel in ['README.md','release.md']:
+    p=root/rel
+    if p.exists(): transient.append(p)
 if args.apply:
-    for p in issues: p.unlink(missing_ok=True)
+    for p in issues:
+        if p.is_dir(): shutil.rmtree(p)
+        else: p.unlink(missing_ok=True)
+    for p in sorted(set(transient),key=lambda x:len(x.parts),reverse=True):
+        if p.is_dir(): shutil.rmtree(p,ignore_errors=True)
+        else: p.unlink(missing_ok=True)
     workflow_dir.mkdir(parents=True,exist_ok=True)
     pages.write_text(workflow_template,encoding='utf-8')
-    for name in ['__pycache__']:
-        for p in root.rglob(name):
-            if p.is_dir(): shutil.rmtree(p)
-    print('OpenGLESScope Database 0.7.3 repository repair: APPLIED')
+    print('OpenGLESScope Database 0.7.4 repository repair: APPLIED')
     sys.exit(0)
-if issues or workflow_wrong:
-    print('OpenGLESScope Database 0.7.3 repository repair: CHANGES REQUIRED')
+if issues or workflow_wrong or transient:
+    print('OpenGLESScope Database 0.7.4 repository repair: CHANGES REQUIRED')
     for p in issues: print(p.relative_to(root))
+    for p in transient: print(p.relative_to(root))
     if workflow_wrong: print('.github/workflows/pages.yml')
     sys.exit(1)
-print('OpenGLESScope Database 0.7.3 repository repair: CLEAN')
+print('OpenGLESScope Database 0.7.4 repository repair: CLEAN')

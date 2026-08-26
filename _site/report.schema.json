@@ -1,0 +1,1078 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenGLESScope Database Submission",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "application",
+    "device",
+    "gpu",
+    "driver",
+    "opengles",
+    "egl",
+    "display",
+    "collection",
+    "technicalReport",
+    "reportText"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "application": {
+      "type": "object",
+      "required": [
+        "name",
+        "packageName",
+        "version",
+        "versionCode",
+        "applicationAbi",
+        "supportedDeviceAbis"
+      ],
+      "properties": {
+        "name": {
+          "const": "OpenGLESScope"
+        },
+        "packageName": {
+          "const": "com.efishell.openglesscope"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^0\\.(?:1\\.(?:1[7-9]|[2-9][0-9]|[1-9][0-9]{2,})|(?:[2-9]|[1-9][0-9]+)\\.[0-9]+)$",
+          "maxLength": 32
+        },
+        "versionCode": {
+          "type": "integer",
+          "minimum": 117
+        },
+        "applicationAbi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "supportedDeviceAbis": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "device": {
+      "type": "object",
+      "required": [
+        "manufacturer",
+        "model",
+        "product",
+        "androidRelease",
+        "sdk"
+      ],
+      "properties": {
+        "manufacturer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "product": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "androidRelease": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "sdk": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "securityPatch": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "maxLength": 32
+        }
+      },
+      "additionalProperties": false
+    },
+    "gpu": {
+      "type": "object",
+      "required": [
+        "name",
+        "vendor"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "vendor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "additionalProperties": false
+    },
+    "driver": {
+      "type": "object",
+      "required": [
+        "mode",
+        "version"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        }
+      },
+      "additionalProperties": false
+    },
+    "opengles": {
+      "type": "object",
+      "required": [
+        "version",
+        "major",
+        "minor",
+        "glslVersion",
+        "extensions",
+        "extensionCount"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "major": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "glslVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "extensionCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "egl": {
+      "type": "object",
+      "required": [
+        "vendor",
+        "version",
+        "initializedVersion",
+        "clientApis",
+        "extensions",
+        "clientExtensions",
+        "extensionCount",
+        "clientExtensionCount"
+      ],
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "initializedVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "clientApis": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "clientExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "extensionCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "clientExtensionCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "display": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 512
+        },
+        "modeId": {
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "width": {
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "refreshRate": {
+          "type": [
+            "number",
+            "integer",
+            "null"
+          ]
+        },
+        "supportedModes": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "type": "string",
+            "maxLength": 256
+          }
+        },
+        "wideColor": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "hdrTypes": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "desiredMaxLuminance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "desiredMaxAverageLuminance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "desiredMinLuminance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "modeId",
+        "width",
+        "height",
+        "refreshRate",
+        "supportedModes",
+        "wideColor",
+        "hdrTypes",
+        "desiredMaxLuminance",
+        "desiredMaxAverageLuminance",
+        "desiredMinLuminance"
+      ]
+    },
+    "collection": {
+      "type": "object",
+      "required": [
+        "status",
+        "complete",
+        "source"
+      ],
+      "properties": {
+        "status": {
+          "const": "available"
+        },
+        "complete": {
+          "const": true
+        },
+        "source": {
+          "type": "string",
+          "maxLength": 512,
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "technicalReport": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "limits",
+        "extensions",
+        "eglExtensions",
+        "eglClientExtensions",
+        "compressedFormats",
+        "shaderBinaryFormats",
+        "programBinaryFormats",
+        "precision",
+        "queryDiagnostics",
+        "eglConfigs",
+        "display"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 256,
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 512
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 8192
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "eglExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "eglClientExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "compressedFormats": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "shaderBinaryFormats": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "programBinaryFormats": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "maxItems": 65536
+        },
+        "precision": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "required": [
+              "shader",
+              "type",
+              "rangeMin",
+              "rangeMax",
+              "precision"
+            ],
+            "properties": {
+              "shader": {
+                "type": "string",
+                "maxLength": 64,
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "maxLength": 64,
+                "minLength": 1
+              },
+              "rangeMin": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                ]
+              },
+              "rangeMax": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                ]
+              },
+              "precision": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "queryDiagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "status",
+              "detail"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 256,
+                "minLength": 1
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Available",
+                  "Unavailable",
+                  "Not applicable",
+                  "Unknown"
+                ]
+              },
+              "detail": {
+                "type": "string",
+                "maxLength": 2048
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 16384
+        },
+        "eglConfigs": {
+          "type": "array",
+          "maxItems": 4096,
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                ]
+              },
+              "configCaveat": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "colorBufferType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "bindToTextureRgb": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "bindToTextureRgba": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "nativeRenderable": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "transparentType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "red": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "green": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "blue": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "alpha": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "depth": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "stencil": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "sampleBuffers": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "samples": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "surfaceType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "renderableType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "conformant": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "level": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "nativeVisualId": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "minSwapInterval": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxSwapInterval": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "bufferSize": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "luminanceSize": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "alphaMaskSize": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxPbufferWidth": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxPbufferHeight": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxPbufferPixels": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "nativeVisualType": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "transparentRed": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "transparentGreen": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "transparentBlue": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "recordableAndroid": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "framebufferTargetAndroid": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "colorComponentTypeExt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 512
+              },
+              "unavailableAttributes": {
+                "type": "array",
+                "maxItems": 64,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "error"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "display": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "modeId": {
+              "type": [
+                "integer",
+                "number",
+                "null"
+              ]
+            },
+            "width": {
+              "type": [
+                "integer",
+                "number",
+                "null"
+              ]
+            },
+            "height": {
+              "type": [
+                "integer",
+                "number",
+                "null"
+              ]
+            },
+            "refreshRate": {
+              "type": [
+                "number",
+                "integer",
+                "null"
+              ]
+            },
+            "supportedModes": {
+              "type": "array",
+              "maxItems": 256,
+              "items": {
+                "type": "string",
+                "maxLength": 256
+              }
+            },
+            "wideColor": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "hdrTypes": {
+              "type": "array",
+              "maxItems": 64,
+              "items": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "desiredMaxLuminance": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "desiredMaxAverageLuminance": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "desiredMinLuminance": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "modeId",
+            "width",
+            "height",
+            "refreshRate",
+            "supportedModes",
+            "wideColor",
+            "hdrTypes",
+            "desiredMaxLuminance",
+            "desiredMaxAverageLuminance",
+            "desiredMinLuminance"
+          ]
+        },
+        "eglRuntime": {
+          "type": "object",
+          "required": [
+            "boundApi",
+            "configId",
+            "clientType",
+            "clientVersion",
+            "renderBuffer",
+            "currentContext",
+            "currentDisplay",
+            "currentDrawSurface",
+            "currentReadSurface",
+            "surfaceWidth",
+            "surfaceHeight",
+            "surfaceRenderBuffer",
+            "surfaceSwapBehavior",
+            "surfaceTextureFormat",
+            "surfaceTextureTarget",
+            "surfaceMipmapTexture",
+            "surfaceMipmapLevel",
+            "surfaceMultisampleResolve",
+            "unavailableAttributes"
+          ],
+          "properties": {
+            "boundApi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "configId": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "clientType": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "clientVersion": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "renderBuffer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "currentContext": {
+              "type": "boolean"
+            },
+            "currentDisplay": {
+              "type": "boolean"
+            },
+            "currentDrawSurface": {
+              "type": "boolean"
+            },
+            "currentReadSurface": {
+              "type": "boolean"
+            },
+            "surfaceWidth": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceHeight": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceRenderBuffer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceSwapBehavior": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceTextureFormat": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceTextureTarget": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "surfaceMipmapTexture": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceMipmapLevel": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "surfaceMultisampleResolve": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 128
+            },
+            "unavailableAttributes": {
+              "type": "array",
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "error"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "error": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "reportText": {
+      "type": "string",
+      "minLength": 200,
+      "maxLength": 2097152
+    }
+  },
+  "additionalProperties": false
+}

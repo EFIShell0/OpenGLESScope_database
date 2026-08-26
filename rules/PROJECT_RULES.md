@@ -484,3 +484,17 @@
 - README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming remain absent from the source release archive.
 - Source audit, repository-state, routing, Compare, Statistics/filter, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
 
+
+## Release 0.7.4 full shared presentation parity and release-gate hardening
+- Database version is 0.7.4 and current audited producer remains OpenGLESScope 0.7.2 / versionCode 702. Submission schema 2, technicalReport schema 2, normalizer 10, D1 schema, stored report IDs and report payloads are unchanged.
+- Shared database presentation geometry follows VulkanScope Database 0.39.8 for components that have the same interaction role. OpenGL ES/EGL branding, color accents, labels and API-specific evidence remain OpenGLESScope-specific.
+- Compare uses the same interaction hierarchy as the shared reference: report A/B selectors plus three boolean toggles form the compact primary picker; Section and Field search form one bounded secondary filter row; Share comparison link is a separate action; summary metrics and comparison sections follow immediately without artificial vertical whitespace.
+- Desktop Compare primary and secondary control groups are bounded to 760 CSS px. Narrow viewports use the reference two-column responsive grid and collapse to one column at 430 CSS px without stretching toggles, labels or search fields into empty cards.
+- Compare secondary controls are generated through the shared subfilter-control contract. Generic label/input/select sizing must not override dedicated checkbox or subfilter geometry.
+- Shared navigation, brand sizing, hero spacing, card grid, custom-select geometry, table-scroll controls, page-button interactions and responsive filter behavior must match the corresponding VulkanScope Database interaction geometry unless an OpenGL ES/EGL-specific control requires a documented exception.
+- Clear filters is hidden when no visible cohort filter and no global search query is active. The control appears only when there is something it can clear.
+- Browser-visible current assets are app.v074.js and site.v074.css. Stale versioned frontend assets are forbidden.
+- `tools/build_index.py` must emit databaseVersion 0.7.4 and currentProducer OpenGLESScope 0.7.2. The source audit runs after the static-index build in CI so stale builder metadata cannot pass local source checks and fail only on GitHub Actions.
+- `tools/repair_repository.py --apply` removes stale versioned frontend assets, extra workflows, README.md, root release.md and transient node_modules, .wrangler, __pycache__, .gradle, build and .idea directories. `--check` fails if any of those entries remain.
+- Shared UI parity tests, routes, Compare semantics, Statistics/filter contract, Worker contract, source audit, audit-hygiene, repository-state and staged Pages artifact audit are mandatory release gates.
+- README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming remain absent from the source release archive.

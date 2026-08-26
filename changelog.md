@@ -1,3 +1,14 @@
+# 0.7.4
+
+- Reworked shared database presentation geometry against VulkanScope Database 0.39.8 while preserving OpenGL ES/EGL semantics and branding.
+- Rebuilt Compare control hierarchy to eliminate desktop whitespace/layout regressions and match the shared compact picker/subfilter structure.
+- Unified custom-select, navigation, hero, card-grid, table-scroll, page-button and responsive filter geometry.
+- Clear filters now stays hidden until a visible filter or global search is active.
+- Added shared UI parity release tests.
+- Hardened static-index metadata gating so CI builds 0.7.4 / OpenGLESScope 0.7.2 before source audit.
+- Repository repair now removes transient dependency/cache/build directories plus forbidden root README.md/release.md automatically.
+- No D1 migration or stored-report rewrite.
+
 # 0.7.3
 
 - Fixed the Compare workspace layout regression where checkbox toggles inherited generic form-control styles and expanded into tall vertical cards.
