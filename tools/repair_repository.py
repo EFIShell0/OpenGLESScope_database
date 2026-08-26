@@ -9,8 +9,8 @@ g=parser.add_mutually_exclusive_group(required=True)
 g.add_argument('--apply',action='store_true')
 g.add_argument('--check',action='store_true')
 args=parser.parse_args()
-current_app='app.v070.js'
-current_css='site.v070.css'
+current_app='app.v072.js'
+current_css='site.v072.css'
 workflow_template=(root/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 issues=[]
 for p in (root/'assets').glob('app.v*.js'):
@@ -29,11 +29,11 @@ if args.apply:
     for name in ['__pycache__']:
         for p in root.rglob(name):
             if p.is_dir(): shutil.rmtree(p)
-    print('OpenGLESScope Database 0.7.0 repository repair: APPLIED')
+    print('OpenGLESScope Database 0.7.2 repository repair: APPLIED')
     sys.exit(0)
 if issues or workflow_wrong:
-    print('OpenGLESScope Database 0.7.0 repository repair: CHANGES REQUIRED')
+    print('OpenGLESScope Database 0.7.2 repository repair: CHANGES REQUIRED')
     for p in issues: print(p.relative_to(root))
     if workflow_wrong: print('.github/workflows/pages.yml')
     sys.exit(1)
-print('OpenGLESScope Database 0.7.0 repository repair: CLEAN')
+print('OpenGLESScope Database 0.7.2 repository repair: CLEAN')

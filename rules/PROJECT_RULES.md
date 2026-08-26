@@ -1,6 +1,10 @@
 # OpenGLESScope Database Engineering Rules
 
 ## Non-negotiable
+- Third-party comparison product names are forbidden in every shipped filename, source file, generated artifact, test, audit, UI string, report, database field and metadata. Neutral capability-reference terminology must be used instead.
+- Dedicated packaged app-store metadata directory bundles are forbidden from source release archives.
+- Root release.md files are forbidden from source release archives; release notes, when needed, are distributed separately from the source ZIP.
+- README.md files are forbidden from source release archives; release documentation must use purpose-specific audit, rules or changelog files.
 - Source-code comments are forbidden.
 - Security, correctness, memory safety, performance and usability are never traded away for convenience.
 - No guessed OpenGL ES, EGL, display or HDR capability may be reported.
@@ -439,3 +443,33 @@
 - Browser-visible current assets are app.v070.js and site.v070.css; stale versioned frontend assets are forbidden.
 - Source audit, repository-state, routes, Compare, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
 - Existing HTTPS/CORS/CSP, 2 MiB bounds, sensitive-field rejection, canonical hashing, D1 parameterization, pagination and no-background-upload protections remain mandatory.
+
+## Release 0.7.1 statistics, routing, cohort-filter and permalink parity
+- Database version is 0.7.1. Current audited producer remains OpenGLESScope 0.7.0 / versionCode 700; submission schema 2, technicalReport 2, normalizer 10, D1 schema and stored report identities remain unchanged.
+- Statistics is a first-class main view and uses only loaded report evidence. Percentages describe the loaded and currently filtered submission cohort and must never be described as device-population or market share.
+- Distribution charts use first-party local SVG/CSS only. Remote chart libraries, remote scripts, remote fonts, analytics and trackers remain forbidden.
+- Interactive distribution slices may apply exact cohort filters only for values that exist in submitted report evidence. Missing values remain Unknown and are never inferred Unsupported.
+- Extension statistics rank exact runtime tokens. Because extensions overlap within one report, extension percentages are enumeration prevalence in the loaded cohort and are not exclusive-share charts.
+- Global cohort filters cover GL vendor, GPU renderer, OpenGL ES version, EGL version, driver mode/version, Android version, application ABI, OpenGLESScope version and exact extension token.
+- Display & HDR isolates itself from irrelevant GPU, OpenGL ES, EGL, driver, ABI, application-version and extension-token filters. Android filtering may remain because it is direct platform evidence.
+- Clear filters must reset active global cohort filters and search without mutating any stored report or query evidence.
+- Canonical main-view hash routing includes `#statistics`. The historical `#trends` alias may navigate to Statistics but canonical generated links use `#statistics`.
+- Canonical report links remain `#reports/<64-lowercase-hex-id>/<validated-section>` and canonical comparison links remain `#compare/<64-lowercase-hex-id>/<64-lowercase-hex-id>`.
+- Report and Compare Share/Copy controls generate only canonical first-party permalinks and do not rewrite report IDs, payloads or D1 rows.
+- Compare includes section filtering and field-name search in addition to Differences only, Technical differences only and Common evidence only. These filters are presentation-only and never alter comparison-state semantics.
+- Browser-visible current assets are app.v071.js and site.v071.css; stale versioned frontend assets are forbidden.
+- Source audit, repository-state, route, Compare, Statistics/filter, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
+
+## Release 0.7.2 OpenGLESScope 0.7.1 producer parity and clean archive
+- Database version is 0.7.2 and current audited producer is OpenGLESScope 0.7.1 / versionCode 701.
+- Compatible producer floor remains OpenGLESScope 0.1.17. The accepted ceiling is 0.7.1; 0.7.0 and 0.7.1 use technicalReport schema 2 while compatible historical producers retain their released technicalReport schema 1 contract.
+- OpenGLESScope 0.7.1 application metadata requires installed application ABI and Android-supported device ABIs. Historical producer schemas are not retroactively rewritten.
+- Runtime metadata prefers structured 0.7.1 ABI fields and retains report-text fallback for historical reports.
+- Worker validation must not require mutable state/control values that OpenGLESScope intentionally excludes from implementation capability reporting.
+- The 0.7.1 application ABI fields must exactly agree with the canonical TXT report ABI metadata.
+- Existing Statistics, cohort filters, Display/HDR isolation, canonical routing, sharing, Compare filters and Unknown / Not reported semantics remain unchanged.
+- D1 schema, normalizer 10, stored report hashes/IDs and historical payloads remain unchanged; no migration is required.
+- Browser-visible current assets are app.v072.js and site.v072.css; stale versioned frontend assets are forbidden.
+- README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming are absent from the source release archive.
+- Source audit, repository-state, route, Compare, Statistics/filter, Worker, audit-hygiene and staged Pages artifact tests are mandatory release gates.
+

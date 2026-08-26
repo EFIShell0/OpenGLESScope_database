@@ -1,3 +1,24 @@
+# 0.7.2
+
+- Added the OpenGLESScope 0.7.1 / 701 producer contract.
+- Current submissions carry structured installed ABI and Android-supported ABI metadata with exact TXT agreement checks.
+- Historical 0.7.0 and older compatible producer payloads retain their released schema contracts.
+- Removed invalid Worker requirements for non-capability state/control query names.
+- Preserved Statistics, filtering, routing, Compare and D1 behavior from 0.7.1.
+- Source ZIP policy now excludes README.md in addition to the existing clean-archive restrictions.
+
+# 0.7.1
+
+- Added a first-party Statistics workspace with interactive local SVG/CSS distributions and submission timelines.
+- Added exact cohort filters for EGL version, driver mode/version, Android version, ABI, application version and exact runtime extension token.
+- Added Clear filters and Display/HDR filter isolation so irrelevant GPU/GL/EGL/driver/extension filters do not distort display evidence.
+- Added report and comparison permalinks with Share/Copy controls.
+- Added canonical Statistics hash routing with the historical trends alias accepted for navigation.
+- Added Compare section filtering and field-name search while preserving Differences only, Technical differences only and Common evidence only semantics.
+- Added extension enumeration ranking with GL/EGL scope, namespace, minimum loaded-share and token search controls.
+- Statistics percentages explicitly describe only loaded/filtered submissions and are never presented as market share.
+- Current producer remains OpenGLESScope 0.7.0 / 700; schema 2, technicalReport 2, normalizer 10 and D1 storage remain unchanged.
+
 # 0.7.0
 
 - Added OpenGLESScope 0.7.0 / 700 producer support with current technicalReport schema 2 and normalizer 10.
@@ -269,3 +290,10 @@ Branding/title parity in 0.1.7:
 - Matched coverage bar/percentage hierarchy while preserving explicit OpenGL ES/EGL state labels and count denominators.
 - Fixed diagnostic dominant-percentage coloring so only a unique maximum is emphasized and ties remain neutral.
 - Added v022 cache-busted frontend assets.
+## 0.7.0 source-package cleanup
+
+- Removed all third-party comparison product naming from shipped source, filenames, audits and release tooling.
+- Removed packaged app-store metadata bundles.
+- Removed the root release.md file from the source ZIP.
+- Added permanent project rules preventing these items from returning.
+
