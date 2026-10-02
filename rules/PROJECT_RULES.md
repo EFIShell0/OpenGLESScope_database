@@ -751,7 +751,7 @@
 - Method restriction, cross-origin denial and not-persisted behavior are release-blocking.
 
 
-## Release 2.0.4 exact VulkanScope 1.4.12 shared UI shell contract
+## Release 2.0.5 exact VulkanScope 1.4.12 shared UI shell contract
 - Base the common HTML/CSS/SVG chrome on the actual VulkanScope Database 1.4.12 release, not visual imitation. Preserve identical structural classes, breakpoints, focus and transition rules for header/navigation, hero-v127, Settings categories, database loading, progress, destructive confirmation, and footer.
 - Preserve OpenGLESScope GL/EGL brand identity, authoritative registry, evidence state classes, 16 API-appropriate workspaces, current report identifiers and API schema. Do not render Vulkan-specific fields or fabricated runtime evidence.
 - GL/EGL-specific CSS must precede the exact frozen VulkanScope common CSS; only a bounded tail may adapt accents and existing GL/EGL controls. The common CSS block SHA-256 is a release-blocking invariant.
@@ -762,10 +762,15 @@
 
 - Before publication, run both `python -B tools/test_2_0_4_browser.py` and `python -B tools/test_2_0_4_full_browser_regression.py` with a local Playwright Chromium. Both desktop and mobile passes are release evidence.
 
-## Database 2.0.4
-- Every frontend Worker version check, including health, report index, sync and offline snapshot, uses release 2.0.4 with explicit byte-stamped assertions to prevent stale version literals.
+## Database 2.0.5
+- Every frontend Worker version check, including health, report index, sync and offline snapshot, uses release 2.0.5 with explicit byte-stamped assertions to prevent stale version literals.
 - New POST uploads require exactly OpenGLESScope 2.2.22 (versionCode 2222); existing accepted records remain readable without migration.
 - Official OpenGL® ES™ and EGL™ visual labels and artwork are copied from OpenGLESScope 2.2.22 while raw GL/EGL registry tokens and canonical report data are unchanged.
 - Common shell/hero/Settings/scrollbar components are retained from VulkanScope Database 1.4.12.
 - Never include DEPLOY.md or deployment instructions in source ZIP.
 - Empty local `data/index.json` is a build placeholder and must never be presented as a verified offline dataset during Worker unavailability.
+
+## Database 2.0.5 interface parity
+- Canonical shared visual design must begin with the exact reference stylesheet, not be appended after stale OpenGLESScope common styles.
+- GL/EGL-only CSS is restricted to classes absent from the canonical shared design, and must never redefine common interactive controls.
+- Hero/toolbar/detail structural parity requires executable DOM/browser tests, not stylesheet token presence alone.

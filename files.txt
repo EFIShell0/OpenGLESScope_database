@@ -17,7 +17,7 @@
 504.html
 BUILD_AUDIT.md
 SECURITY.md
-assets/app.v2004.js
+assets/app.v2005.js
 assets/apple-touch-icon-v017.png
 assets/egl-logo-v027.png
 assets/egl-logo-white-v028.png
@@ -44,7 +44,7 @@ assets/hdr/hdr10_plus_advanced.png
 assets/hdr/hdr_vivid.webp
 assets/opengles-gl-es-v030.png
 assets/openglesscope_logo_horizontal-v017.png
-assets/site.v2004.css
+assets/site.v2005.css
 changelog.md
 config.js
 data/index.json
@@ -123,12 +123,12 @@ tools/repair_repository.py
 tools/test_1_1_0_negative_mutations.py
 tools/test_2_0_2_interface.mjs
 tools/test_2_0_2_snapshot_security.py
-tools/test_2_0_4_browser.py
-tools/test_2_0_4_full_browser_regression.py
-tools/test_2_0_4_live_handshake.py
-tools/test_2_0_4_official_brand.py
-tools/test_2_0_4_release_handshake.py
-tools/test_2_0_4_vulkan_ui_parity.py
+tools/test_2_0_5_browser.py
+tools/test_2_0_5_full_browser_regression.py
+tools/test_2_0_5_live_handshake.py
+tools/test_2_0_5_official_brand.py
+tools/test_2_0_5_release_handshake.py
+tools/test_2_0_5_vulkan_ui_parity.py
 tools/test_audit_hygiene.py
 tools/test_compare_contract.mjs
 tools/test_live_index.py
