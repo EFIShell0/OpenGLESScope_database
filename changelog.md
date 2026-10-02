@@ -1,23 +1,33 @@
-# OpenGLESScope Database 3.0.2
+# OpenGLESScope Database 3.0.3
 
-## 3.0.2
+## 3.0.3
 
 ### Added
-- VulkanScope Database 1.4.12 opening/release guard rebranded for OpenGLESScope, foreground-only 3-second live report synchronization, new-report toasts, connection-loss/restoration notices and bounded new-database update dialog.
-- First-visit privacy/cookie/local-storage disclosure with independent session-only and explicit persistent acknowledgement.
-- Same-origin, bounded, text-only local legal notice viewer and seven source-specific license documents, including the actual upstream OpenGLESScope application MIT notice (not a blanket Database license).
-- Browser regression of startup, modal, consent, navigation and privacy on 1440×900 desktop and 390×844 mobile.
+- VulkanScope reference-shaped Compare workspace with A/B identity cards, Swap, pinned header, Minimize, sharing, section/field filters and a real-data differences overview.
+- Report detail workspace with eleven accessible GL/EGL evidence tabs, section introductions, genuine submission-derived metrics and bounded evidence panels.
+- Desktop/mobile Chromium regression for 63-report startup, all eleven detail tabs, Compare interactions and a synthetic 64th live report with synchronized count and toast.
+- Deterministic auto-publication regression covering release readiness, all seven asset probes, preserved report hash, repeat-navigation protection and accepted-report snapshot wiring.
 
 ### Changed
-- Made VulkanScope reference layout geometry the first, SHA-locked common stylesheet with OpenGLESScope magenta color mapping, not the inherited VulkanScope red/maroon palette.
-- Reused reference header/navigation, Reports toolbar, Settings, content/card geometry and responsive transitions while retaining all 16 OpenGL ES/EGL views and official application icon artwork.
-- Updated frontend/Worker/release-bootstrap/staged Pages artifact version handshake to 3.0.2.
+- Opening progress and report count now follow the initial index and bounded detail-fetch completion; later background refreshes cannot reopen the opening panel.
+- Published future database versions are automatically navigated to once the release marker, HTML and versioned assets are available; tabs already running the prior 3.0.2 code still require its one-time existing Update now action.
+- Compare, Report Details and related metric-card hierarchy follow the common VulkanScope 1.4.12 interaction geometry while preserving authentic GL/EGL evidence and OpenGLESScope brand colors.
+- Database, Worker, UI assets and Pages handshake set to 3.0.3; unchanged producer requirement is OpenGLESScope 2.2.22 / versionCode 2222.
 
 ### Fixed
-- Removed the former duplicated generic CSS layer that overrode reference control shapes.
-- Fixed stale asynchronous navigation and missing frontend version parameter in release-bootstrap checks.
-- License viewing from privacy disclosure returns to the notice rather than silently recording consent.
-- New uploads remain restricted to OpenGLESScope 2.2.22 (versionCode 2222); stored historical reports remain readable and unchanged.
+- Prevented release auto-navigation during partial Pages publication or a repeated stale-cache redirect; a guarded manual fallback remains after repeated attempts.
+- Preserved 3-second D1 live synchronization, new-report notifications only after index refresh, D1-first asynchronous GitHub snapshot dispatch and authenticated Pages report publication verification.
+- Prevented initial loading progress and stale navigation listeners from interrupting foreground live report synchronization.
+
+## 3.0.2
+- Reworked Reports table, main destinations, connection messages, statistics presentation and data-specific per-tab structure.
+- Preserved source-locked common viewport/inner scrollbar behavior, neutral semantic colors and table paging with OpenGLESScope-specific visuals.
+
+## 3.0.1
+- Restored reference viewport and inner scrollbar interactions, scrollbar keyboard/drag controls, bounded 10/25/50 evidence pagination and responsive table overflow.
+
+## 3.0.0
+- Introduced reference shared UI shell, OpenGLESScope theme, startup gate, foreground live sync, privacy/cookie notices and local legal documents.
 
 ## 2.0.2
 

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
-const source=fs.readFileSync(new URL('../assets/app.v3002.js',import.meta.url),'utf8');
-const css=fs.readFileSync(new URL('../assets/site.v3002.css',import.meta.url),'utf8');
+const source=fs.readFileSync(new URL('../assets/app.v3003.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../assets/site.v3003.css',import.meta.url),'utf8');
 const extract=name=>{const a=source.indexOf(`function ${name}`);if(a<0)throw new Error(`missing ${name}`);const start=source.indexOf('{',a);let depth=0,quote=null,escape=false;for(let i=start;i<source.length;i++){const c=source[i];if(quote){if(escape)escape=false;else if(c==='\\')escape=true;else if(c===quote)quote=null;continue}if(c==='"'||c==="'"||c==='`'){quote=c;continue}if(c==='{')depth++;else if(c==='}'&&--depth===0)return source.slice(a,i+1)}throw new Error(`unterminated ${name}`)};
 const context={Map,Object,Array,String,JSON,normalized:p=>p.technicalReport||{},diagnosticIndex:n=>new Map((n.diagnostics||[]).map(x=>[x.name,x])),reportPlatform:p=>p.application?.applicationAbi||'Unknown',reportSupportedAbis:p=>(p.application?.supportedDeviceAbis||[]).join(', '),precisionDiagKey:k=>k.replace(' / ','/')} ;
 vm.createContext(context);
@@ -18,9 +18,9 @@ assert.equal(map.get('Display & HDRwideColor').status,'Supported');
 assert.equal(map.get('Display & HDRhdrTypes').status,'Unavailable');
 assert.equal(map.get('EGL runtimeboundApi').value,'EGL_OPENGL_ES_API (0x30A0)');
 assert.equal(map.get('EGL runtime unavailable attributesEGL_MULTISAMPLE_RESOLVE').status,'Unavailable');
-for(const token of ['Common evidence only','Cross-producer comparison','One-sided fields','Common fields','Visible differences','Visible sections','Unknown / Not reported','compareSection','compareFieldSearch','Share comparison link','routeCompareUrl'])assert.equal(source.includes(token),true,`missing ${token}`);
+for(const token of ['Common evidence only','Cross-producer comparison','One-sided fields','Common fields','Visible differences','compare-overview-primary','compareStickySentinel','swapCompare','compareMinimizeToggle','Unknown / Not reported','compareSection','compareFieldSearch','Share comparison link','routeCompareUrl'])assert.equal(source.includes(token),true,`missing ${token}`);
 assert.equal(source.includes("av!==bv||ac!==bc"),true,'cross-producer detection must include versionCode');
-assert.equal(source.includes("commonOnly?commonKeys:technicalUniverse"),true,'common evidence filtering contract');
+assert.equal(source.includes("eligible=universe.filter(k=>!commonOnly||(am.has(k)&&bm.has(k)))"),true,'common evidence filtering contract');
 assert.equal(source.includes("if(!x)return `${badge('Unknown','unknown')} <span class=\"muted\">Not reported</span>`"),true,'missing evidence presentation');
 
 for(const token of ['compare-diff-toggle','compare-diff-input','compare-diff-check','#contentView[data-main-view="compare"] .compare-picker','#compareFilters','.subfilter-control','.compare-share-button'])assert.equal(css.includes(token),true,`missing compare layout CSS ${token}`);

@@ -782,12 +782,12 @@
 - Settings > Information exposes first-party source provenance, source-specific real local third-party license documents and an upstream OpenGLESScope application MIT notice. Do not manufacture a blanket database licensing claim. Documents are allowlisted, same-origin, UTF-8 decoded, byte-bounded and rendered as textContent; viewers must trap focus, dismiss by Escape/backdrop and honor reduced motion.
 - The first-visit privacy notice states that no tracking/analytics cookies are set. A session-only acknowledgement must not write localStorage. Persistent acknowledgment must require explicit choice and remain only in this browser. Optional IP/network diagnostics remain user initiated and request-scoped; no background report uploads.
 - Live Worker sync runs every 3 seconds only while the page is visible and connected; connection-offline, Worker-unavailable, checking and restored messages are distinct. Incoming new-report notices use actual API/loaded counts and must not claim a new report until it is present. Request timeouts, byte bounds and concurrency lock remain mandatory.
-- Periodic published-release checks must validate data/release.json shape, published readiness, exact release asset names, matching frontend version and linked page before showing a refresh modal. Source marker is unpublished; validated Pages artifact marks readiness once all allowlisted assets are staged. No unverified cache-busting reload loops.
+- Periodic published-release checks must validate data/release.json shape, published readiness, exact release asset names, matching frontend version and linked page before allowing a release transition. Source marker is unpublished; validated Pages artifact marks readiness once all allowlisted assets are staged. No unverified cache-busting reload loops.
 - Main navigation retains all 16 GL/EGL semantic destinations, existing report detail tabs, keyboard and responsive controls, page limit 50 and canonical report semantics. Browser, source, negative-mutation, Worker contract, staging, and clean-extract reproducibility tests are release blockers.
 - GitHub snapshot secret and production D1 content must not be embedded in ZIP. DEPLOY.md, DEPLOY_<version>.md and equivalent deployment documents must never ship; commands only in chat.
 
 
-## Database 3.0.2 canonical interaction and semantic-color parity
+## Database 3.0.1 canonical interaction and semantic-color parity
 - Adopt the actual VulkanScope Database 1.4.12 viewport and surface scrollbar algorithms, including thumb dragging, keyboard navigation, arrow endpoints, dynamic content updates and reduced motion. Never hide native root scrollbars unless the custom viewport scrollbar is mounted.
 - The canonical shared CSS geometry and matching non-API SVG path shapes are immutable; only OpenGLESScope brand/accent colors and GL/EGL-specific evidence labels/artwork may differ. Semantic error, unsupported, warning, success and neutral colors follow the VulkanScope reference, not brand pink.
 - Keep all long evidence tables bounded to 10, 25 or 50 visible rows with validated numeric pagination and explicit total counts; never discard or infer report evidence.
@@ -803,3 +803,11 @@
 - Connection state updates Internet Settings without querying IP details. Request-visible network information remains explicit opt-in and never enters report payloads or D1.
 - First-party brand colors may differ from the reference, while semantic success, warning, failure, unknown and neutral colors retain their distinct roles.
 - New cross-page interaction regression tests cover both desktop and mobile layouts, report row action isolation, control geometry and coherent release/Worker handshake.
+
+## Release 3.0.3 publication, details and Compare parity
+- The initial loader reports real initial index and bounded detail-fetch progress; it closes at completion. Later three-second live refreshes must never reopen it. The hero report count derives only from loaded D1-submitted reports.
+- Report detail retains all eleven GL/EGL semantic destinations and canonical TXT, with reference section hierarchy, real submitted evidence, and no invented Vulkan-only fields.
+- Compare A/B identity and summary, Swap, pinned and minimized controls, exact-field filtering and actual difference counts must remain keyboard/touch accessible. Unknown or absent values are never treated as unsupported.
+- Once a future release marker is ready, verify index.html, application, stylesheet, bootstrap, browser compatibility, experience and scrollbar assets with byte/time limits before automatic navigation. Preserve hash and prevent stale-cache navigation loops. Existing already-open older frontend scripts cannot be modified remotely and may need their existing one-time update action.
+- New accepted D1 reports alone trigger the asynchronous authenticated snapshot workflow. The browser sees live changes by a foreground-only three-second /v1/sync probe, loads verified report data, then updates hero counts and notifies. Snapshot publication must verify the expected accepted report ID, without leaking secrets or rewriting historical records.
+- Desktop/mobile browser, Worker contract, deterministic release negative tests and clean-extracted source quality gate are mandatory. No DEPLOY files inside release ZIP.
