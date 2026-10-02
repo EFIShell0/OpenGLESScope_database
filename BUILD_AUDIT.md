@@ -1,4 +1,4 @@
-# OpenGLESScope Database 3.0.3 build audit
+# OpenGLESScope Database 3.0.4 build audit
 
 ## 3.0.3 VulkanScope 1.4.12 UI-shell reuse
 - Chromium browser regression at 1440×900 and 390×844: 16 destinations, country/clock preferences, filtered selects, invalid pagination, Settings toggles, explicit request-only network diagnostics, and clearing after close passed without page errors.
@@ -11,10 +11,10 @@
 - Static snapshot verification accepts the 3.0.3 release identity, preserving the separate accepted-report + Pages publication verification flow.
 
 
-- Database: 3.0.3
+- Database: 3.0.4
 - Current producer: OpenGLESScope 2.2.22 / 2222
 - Submission schema: 2. Technical report schema: 5. Normalizer: 16.
-- UI assets: `app.v3003.js`, `site.v3003.css` and `config.js?v=3003`.
+- UI assets: `app.v3004.js`, `site.v3004.css` and `config.js?v=3004`.
 - Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
 - Worker and Pages versions must match before deployment. Check the existing D1 migration list; migration 0004 is required only on databases that have not applied it. No historical payload rewrite.
 - Release checks: `python -B tools/quality_gate.py` and clean extracted repeat. Real Cloudflare deployment remains separate verification.
@@ -41,12 +41,12 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 ## 3.0.0 native theme/experience release
 - The shared reference's layout geometry is retained with OpenGLESScope #BA2A8D branding rather than VulkanScope red.
 - Adds native startup gate, bounded same-origin version checks, network status notices, 3-second live sync, new-report toast, privacy/local-storage disclosure and actual locally packaged third-party licenses.
-- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.3.
+- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.4.
 - Visual/browser checks must be distinguished from actual Cloudflare deployment, which is a separate operation.
 
 ## 3.0.0 final explicit experience regression
 - `python -B tools/test_3_0_0_live_browser.py`: actual inline runtime of all first-party shipped scripts, desktop and mobile, startup hold release, first-visit privacy, viewing and returning from genuine application MIT license without silently acknowledging, session-only consent, source-bound license viewer, seven legal cards, Settings transitions, all 16 destinations, and no unsolicited network address request; zero JavaScript page exceptions. Production Cloudflare is not simulated as proof of remote deployment.
-- Startup asset URLs include `?v=3003` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
+- Startup asset URLs include `?v=3004` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
 
 ## 3.0.3 publication and interaction verification
 - Actual Chromium at 1440x900 and 390x844: 63 submitted report summaries, five live count metrics, all eleven evidence tabs, reference Compare A/B/swap/search/pin/minimize, and a simulated 64th D1 report updating the count and toast without JavaScript errors.
@@ -54,3 +54,13 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 - Worker D1-first accepted report dispatch and authenticated snapshot workflow remain unchanged, under contract tests; Pages checks expected new accepted report before publication.
 - This release enables automatic future upgrade checks in tabs running 3.0.3 onward. A tab that remains open on 3.0.2 uses the already-loaded old JavaScript and still needs its existing manual Update now action once to enter the new policy.
 - Quality gate is run on original and independently clean-extracted package. Browser tests use only mocked content, with no live D1 insert or claimed external Cloudflare deployment.
+
+## 3.0.4 parity repair and independent source review
+- Fixed first-load database-loading class remaining set after loader dismissal, which had suppressed the transplanted reference scroll UI on every update.
+- Switched Settings Internet and Browser to card/grid row hierarchy rather than single-line/plain-paragraph summaries; network metadata remains gated behind explicit user action.
+- Used official white EGL v028 (pixel-white transparency), reference HDR10+ v1014, and exact reference green Android filter vector.
+- Chart percentages and evidence-state coverage use matching reference geometry without inventing unsupported/available GL/EGL data.
+- Preserved all 3.0.3 report, Compare, snapshot, release auto-navigation and schema/producer contracts.
+
+- All fourteen HTTP status documents retain the 1.4.12 error page geometry, independent OpenGLESScope links and strict scriptless CSP; the Browser compatibility script is source-locked except brand text.
+- Restricted storage API access no longer raises a Settings Information exception; optional Chromium regression checks actual natural overflow with 15 report summaries and correctly loaded first-party inline PNG/CSS/JS at two viewport sizes.

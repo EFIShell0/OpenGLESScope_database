@@ -3,11 +3,11 @@ from html.parser import HTMLParser
 import hashlib,json,re
 root=Path(__file__).resolve().parents[1]
 html=(root/'index.html').read_text()
-css=(root/'assets/site.v3003.css').read_text()
-app=(root/'assets/app.v3003.js').read_text()
-ux=(root/'assets/experience.v3003.js').read_text()
-boot=(root/'assets/release-bootstrap.v3003.js').read_text()
-compat=(root/'assets/browser-compat.v3003.js').read_text()
+css=(root/'assets/site.v3004.css').read_text()
+app=(root/'assets/app.v3004.js').read_text()
+ux=(root/'assets/experience.v3004.js').read_text()
+boot=(root/'assets/release-bootstrap.v3004.js').read_text()
+compat=(root/'assets/browser-compat.v3004.js').read_text()
 ref=(root/'rules/SHARED_UI_1_4_12_REFERENCE.css').read_text()
 source,branded=(root/'rules/SHARED_UI_BASE_SHA256.txt').read_text().splitlines()
 assert hashlib.sha256(ref.encode()).hexdigest()==source
@@ -27,18 +27,18 @@ assert len(i.ids)==len(set(i.ids)),'Duplicate HTML IDs'
 for key in ['browserCompatibilityGate','appRoot','networkStatusShell','databaseLoading','settingsDrawer','settingsInformation','privacyNotice','privacySessionOnly','privacyRemember','licenseViewerDialog','licenseViewerBackdrop','licenseViewerBody','databaseUpdateModal','databaseUpdateRefresh','new-report-toast-title','new-report-toast-copy']:
  if key.startswith('new-report-toast-'):assert key in ux
  else:assert key in i.ids,key
-assert 'startup-layout-hold' in html and 'startup-layout-ready' in app and 'app.v3003.js?v=3003' in html
-for asset in ['app.v3003.js','site.v3003.css','release-bootstrap.v3003.js','browser-compat.v3003.js','experience.v3003.js']:
+assert 'startup-layout-hold' in html and 'startup-layout-ready' in app and 'app.v3004.js?v=3004' in html
+for asset in ['app.v3004.js','site.v3004.css','release-bootstrap.v3004.js','browser-compat.v3004.js','experience.v3004.js']:
  assert asset in html
 assert 'https://openglesscope-database-api.openglesscope.workers.dev' in html
-assert "const VERSION='3.0.3'" in ux and "const DATABASE_VERSION='3.0.3'" in app
-assert "const LOCAL='3.0.3'" in boot and '__OPENGLESSCOPE_BROWSER_INFO__' in compat
+assert "const VERSION='3.0.4'" in ux and "const DATABASE_VERSION='3.0.4'" in app
+assert "const LOCAL='3.0.4'" in boot and '__OPENGLESSCOPE_BROWSER_INFO__' in compat
 for key in ['databaseReleaseVersion!==VERSION','setInterval(()=>void sync(false),3000)','setInterval(()=>void releases(),10000)','releaseReady===true','abortable','lastModalFocus','licenseFocus','licenseToken','ogdb-privacy-session-v1','ogdb-privacy-ack-v1','privacyReturn=true','sessionStorage.setItem','localStorage.setItem',"openLicense('OpenGLESScope application')",'openglesscope:new-reports','openglesscope:connection-error']:
  assert key in ux,key
 assert 'document.cookie' not in ux and 'analytics' not in [x.strip().split('(')[0] for x in re.findall(r'\banalytics\s*\(',ux)]
 assert '.privacy-notice' in css and '.license-viewer-dialog.open' in css and '.database-update-modal' in css
 marker=json.loads((root/'data/release.json').read_text())
-assert marker==dict(schemaVersion=2,databaseVersion='3.0.3',releaseReady=False,appAsset='assets/app.v3003.js',cacheKey='3003')
+assert marker==dict(schemaVersion=2,databaseVersion='3.0.4',releaseReady=False,appAsset='assets/app.v3004.js',cacheKey='3004')
 for name in ['openglesscope-application-mit.md','nodejs.md','python.md','workerd.md','wrangler.md','esbuild.md','sharp.md']:
  assert (root/'licenses'/name).is_file(),name
 assert 'MIT License' in (root/'licenses/openglesscope-application-mit.md').read_text()
@@ -48,4 +48,4 @@ for candidate in [base.replace('--accent:#ba2a8d','--accent:#ff5c66',1),base.rep
  try:assert hashlib.sha256(candidate.encode()).hexdigest()==branded
  except AssertionError:continue
  raise AssertionError('Visual negative mutation escaped')
-print('OpenGLESScope Database 3.0.3 source geometry, brand, privacy, license, startup, live sync and version negative gates: ALL PASS')
+print('OpenGLESScope Database 3.0.4 source geometry, brand, privacy, license, startup, live sync and version negative gates: ALL PASS')

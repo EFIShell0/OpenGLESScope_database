@@ -1,4 +1,16 @@
-# OpenGLESScope Database 3.0.3
+# OpenGLESScope Database 3.0.4
+
+## 3.0.4
+
+### Fixed
+- Removed stale database-loading state after startup so the page and inner scrollbars recover without manual intervention.
+- Restored reference-shaped Settings Internet and detailed Browser panels with explicit-only, masked request metadata.
+- Replaced the red EGL image erroneously labelled white with the bundled official pixel-white transparent EGL mark throughout EGL destinations.
+- Adopted reference HDR10+ versioned logo and the official green Android SVG in Android filters.
+- Aligned circular percentage/legend and per-evidence coverage bars with source reference geometry while retaining GL/EGL evidence denominators.
+- Rechecked local browser compatibility gate and corrected stale third-party brand strings in source UI.
+- Restored 14 reference-shaped HTTP error pages with OpenGLESScope product text, proper primary/secondary actions and scriptless CSP.
+- Prevented Settings Information from throwing when restricted browser contexts block access to sessionStorage; unsupported browser gate now also halts application initialization before it can overwrite the unsupported-page title or start data requests.
 
 ## 3.0.3
 
