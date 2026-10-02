@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS report_payload_chunks (report_id TEXT NOT NULL, chunk_index INTEGER NOT NULL, payload_chunk TEXT NOT NULL, PRIMARY KEY (report_id, chunk_index), FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE);

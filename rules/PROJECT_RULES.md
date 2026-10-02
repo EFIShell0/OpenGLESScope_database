@@ -498,3 +498,259 @@
 - `tools/repair_repository.py --apply` removes stale versioned frontend assets, extra workflows, README.md, root release.md and transient node_modules, .wrangler, __pycache__, .gradle, build and .idea directories. `--check` fails if any of those entries remain.
 - Shared UI parity tests, routes, Compare semantics, Statistics/filter contract, Worker contract, source audit, audit-hygiene, repository-state and staged Pages artifact audit are mandatory release gates.
 - README.md, root release.md, dedicated packaged app-store metadata directories and forbidden third-party comparison product naming remain absent from the source release archive.
+
+
+## Release 0.7.5 current EGL binding evidence compatibility
+- Database version is 0.7.5 and the current audited producer remains OpenGLESScope 0.7.2 / versionCode 702. Submission schema 2, technicalReport schema 2, normalizer 10, D1 schema, stored payloads and report IDs remain unchanged.
+- A complete OpenGLESScope 0.7.0+ report may preserve an explicit EGL current-binding failure as evidence. `currentContext`, `currentDisplay`, `currentDrawSurface` and `currentReadSurface` are evidence booleans, not a requirement that every binding query succeed.
+- The Worker must accept a complete report when one or more current-binding booleans are false only when the canonical `EGL current bindings` diagnostic is `Unavailable`. When all four booleans are true, that diagnostic must be `Available`. Other diagnostic states or contradictory evidence are rejected fail-closed.
+- Canonical TXT `Current EGL bindings:` values must exactly agree with the four structured booleans. A TXT/structured mismatch remains invalid.
+- Explicit binding failures remain visible to Diagnostics, Compare and quality analysis and are never converted to Supported, Not applicable or Unknown.
+- The 2 MiB body bound, exact schemas, sensitive-field rejection, extension/query provenance gates, canonical hashing, CORS/CSP/security headers and all historical producer compatibility remain unchanged.
+- Source archive hygiene remains mandatory: no README.md, root release.md, packaged store-metadata, transient dependency/cache/build directories or forbidden third-party comparison naming.
+
+## Release 0.7.6 OpenGLESScope 0.7.3 HDR provenance compatibility
+- Database version is 0.7.6 and the current audited producer is OpenGLESScope 0.7.3 / versionCode 703.
+- Submission schema remains 2, technicalReport schema remains 2, normalizer remains 10 and D1 storage/report IDs remain unchanged. No migration or stored-report rewrite is permitted or required.
+- Producer 0.7.3 display objects require `hdrCapabilityStatus` with exactly `available`, `unavailable` or `unknown`; historical producers through 0.7.2 remain accepted under their released display shape without this field.
+- For 0.7.3, Available requires at least one HDR type; Unavailable and Unknown require an empty HDR-type list. The Database must not infer Unsupported from an empty list.
+- Top-level and technicalReport display objects remain exact duplicates for the producer contract, and canonical TXT `HDR capability status` must match the structured status.
+- Current Pages assets are app.v076.js and site.v076.css only. Stale versioned frontend assets are forbidden.
+- Current OpenGL ES 3.2 / GLSL ES 3.20 / EGL 1.5 baselines, privacy bounds, exact report hashing, route/Compare/Statistics behavior and Worker security controls remain unchanged.
+
+
+## Release 0.7.7 OpenGLESScope 1.2.1 technicalReport-v3 end-to-end compatibility
+- Database version is 0.7.7 and current audited producer is OpenGLESScope 1.2.1 / versionCode 1201.
+- Top-level report schema remains 2. technicalReport schema 3 is accepted only for the 1.2.1 producer and extends v2 with bounded internal-format sample evidence.
+- Historical compatible producers retain their released v1/v2 validation shape. The Database must not mutate, reinterpret or silently promote old reports to v3.
+- Producer parsing uses canonical three-component semantic versions and enforces the audited floor 0.1.17 and ceiling 1.2.1; unsupported future producers are rejected.
+- Each internal-format row requires exact target, canonical internal-format name, evidence state, bounded detail, at most 64 unique positive sample counts and at most 64 matching NV sample-property rows. Duplicate target/format rows are rejected.
+- Worker validation requires matching `glGetInternalformativ/<target>/<format>` diagnostic state for every v3 internal-format row. Registry/extension presence is never substituted for runtime evidence.
+- The frontend normalizer, Formats view, report detail and Compare map preserve internal-format evidence.
+- Worker body/report bounds, origin pinning, forbidden sensitive-key recursion, canonical stable hashing, D1 identity pin, CSP/security headers, pagination bounds and historical compatibility remain mandatory.
+- Release verification follows the same evidence classes as the application: source syntax, semantic contract tests, negative malformed-evidence tests, UI/route/compare/statistics tests, package hygiene, deterministic archive reproduction and clean-extract rerun.
+- Android/device execution is not a Database evidence class; Cloudflare production deployment is NOT EXECUTED unless separately recorded.
+
+## Release 0.8.0 OpenGLESScope 1.3.0 technicalReport-v4 EGL registry parity
+- Accept OpenGLESScope 1.3.0 only as versionCode 1300 with submission schema 2 and technicalReport schema 4.
+- Preserve v1/v2/v3 historical producer validation; never reinterpret missing historical fields as Unsupported.
+- Validate `eglCapabilities` with a closed bounded schema, canonical evidence states and unique capability names.
+- Preserve v4 EGL evidence end-to-end through Worker storage, detail API, EGL UI, search and Compare.
+- Do not infer EGL/OpenGL ES runtime capability from registry presence, token names, GPU marketing identity or API version alone.
+- Retain the fixed-origin, 2 MiB, sensitive-key, stable-hash, nesting, D1 identity and response-security contracts.
+- Run the complete source + staged Pages + deterministic package gate and repeat it after clean extraction before release.
+
+## Release 0.9.0 OpenGLESScope 1.4.0 technicalReport-v4 EGL registry parity
+- Database version is 0.9.0 and the current audited producer is OpenGLESScope 1.4.0 / versionCode 1400. Submission schema remains 2 and technicalReport schema remains 4.
+- Historical OpenGLESScope 1.3.0 / 1300 technicalReport-v4 and all older version-scoped v1/v2/v3 contracts remain accepted exactly as released; missing historical fields are never reinterpreted as Unsupported.
+- Producer 1.4.0 must preserve the corrected EGL creation/runtime boundary: `EGL context creation request` is explicit evidence and `EGL_CONTEXT_MINOR_VERSION`, `EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY`, `EGL_CONTEXT_FLAGS_KHR` and `EGL_CONTEXT_OPENGL_NO_ERROR_KHR` are `Not applicable` runtime-query evidence rather than fabricated `eglQueryContext` results.
+- OpenGL ES 3.2 producer reports require explicit `GL_RESET_NOTIFICATION_STRATEGY` diagnostic evidence. When `GL_KHR_robustness` is enumerated, robust-access evidence is mandatory and pre-3.2 producers use the registered `_KHR` reset-strategy query name.
+- When OpenGLESScope 1.4.0 enumerates `GL_QCOM_motion_estimation`, `GL_NV_shading_rate_image`, `GL_NV_primitive_shading_rate` or `GL_ARM_shader_framebuffer_fetch`, the corresponding audited query diagnostics must exist; extension enumeration alone is insufficient.
+- Worker and producer limits remain aligned: 2 MiB body/report text, 8,192 limits, 16,384 enumeration items/diagnostics, 256 EGL capabilities, 256 internal-format rows, 64 precision rows and 4,096 EGL configs. Duplicate evidence identities fail closed.
+- Registry/reference presence, GPU/device identity and API version never substitute for runtime evidence. Available/Unavailable/Not applicable/Unknown remain distinct terminal states.
+- Fixed-origin CORS, CSP/security headers, recursive sensitive-key rejection, bounded nesting/body parsing, canonical stable hashing, exact D1 identity, pagination limits and no-redirect producer fetch behavior remain mandatory.
+- Release gates include Worker contract tests for 1.4.0 acceptance and malformed/missing 1.4.0 evidence rejection, historical compatibility, frontend route/Compare/Statistics/UI tests, source/package hygiene, exact staged Pages allow-list, deterministic archive reproduction and clean-extract re-verification.
+- Production Cloudflare deployment is not claimed by local source/package verification.
+
+
+
+## Release 0.9.1 OpenGLESScope 1.4.1 compiler-hotfix producer compatibility
+- Database version is 0.9.1 and current producer is OpenGLESScope 1.4.1 / versionCode 1401. Submission schema remains 2 and technicalReport schema remains 4.
+- OpenGLESScope 1.4.1 is semantically identical to 1.4.0 for report/query/schema purposes; the application release only fixes real C++/Kotlin compiler errors. The Database must therefore accept exact 1.4.1/1401 evidence while preserving exact 1.4.0/1400 as a historical current-schema producer.
+- All 1.4.0 EGL legality, robustness, QCOM/NV/ARM query-evidence, build-metadata, bounds, uniqueness, canonical-state and security requirements apply unchanged to 1.4.1.
+- Future producer versions remain fail-closed until explicitly audited. 1.4.2 and above must not be silently treated as 1.4.1.
+- Pages current-producer metadata, Worker health metadata, static index metadata, versioned assets, contract tests, deterministic packaging and clean-extract quality gate must agree on 0.9.1 / OpenGLESScope 1.4.1.
+
+## Release 1.0.0 OpenGLESScope 1.5.0 full-quality producer compatibility
+- Database version is 1.0.0 and the current audited producer is exact OpenGLESScope 1.5.0 / versionCode 1500. Submission schema remains 2 and technicalReport remains schema 4.
+- Historical OpenGLESScope 1.4.1 / 1401 and all earlier version-scoped report contracts remain accepted exactly as released; future producers remain fail-closed until audited.
+- Current 1.5.0 canonical TXT evidence includes submission/technical schema metadata, complete EGL pbuffer mipmap/multisample evidence and complete EGL Config extension/unavailable-attribute evidence. The Worker rejects a 1.5.0 payload whose text silently drops those structured evidence classes.
+- All 1.4.x EGL legality, GL robustness/QCOM/NV/ARM evidence, bounds, uniqueness, security, canonical hashing and sensitive-field rules remain mandatory.
+- Frontend/static/Worker metadata must agree on Database 1.0.0 and current producer OpenGLESScope 1.5.0. Browser-visible current assets are app.v101.js and site.v101.css only; stale versioned assets are forbidden.
+- Complete source audit, Worker contract tests, route/Compare/Statistics/UI tests, staged Pages audit, deterministic packaging and clean-extract rerun are mandatory before release.
+
+
+
+## Release 1.0.1 OpenGLESScope 1.5.1 compiler-hotfix compatibility
+- Database version is 1.0.1 and the current audited producer is exact OpenGLESScope 1.5.1 / versionCode 1501. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.5.1 is a compiler-only Kotlin syntax correction. Its GL/EGL query, report, security and resource semantics remain those of 1.5.0; the Database must therefore preserve 1.5.0 / 1500 as a separate historical exact producer contract rather than reinterpret it as 1.5.1.
+- Future 1.5.2+ producers remain rejected until explicitly audited. Current health/list/static metadata identify 1.5.1 as current and the bounded compatibility ceiling as 1.5.1.
+- Browser assets are cache-busted as `app.v101.js`, `site.v101.css` and `config.js?v=101`; stale current-version asset references are forbidden.
+- Source and staged Pages audits, Worker contract tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+
+## Release 1.0.2 OpenGLESScope 1.6.0 shared-application parity compatibility
+- Database version is 1.0.2 and the current audited producer is exact OpenGLESScope 1.6.0 / versionCode 1600. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.6.0 changes shared application/network/updater/icon behavior but does not change the GL/EGL report schema. The Database must preserve the complete 1.5.1 evidence requirements for the new exact producer identity rather than weaken validation.
+- OpenGLESScope 1.5.1 / 1501, 1.5.0 / 1500 and all earlier version-scoped producer contracts remain accepted exactly as released. Future 1.6.1+ producers remain fail-closed until explicitly audited.
+- Current health/list/static metadata identify OpenGLESScope 1.6.0 and the bounded compatibility ceiling is 1.6.0. D1 schema, normalizer 12, canonical report hashing and stored report IDs remain unchanged.
+- Browser assets are cache-busted as `app.v102.js`, `site.v102.css` and `config.js?v=102`; stale current-version assets are forbidden.
+- Source and staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+
+## Release 1.0.3 OpenGLESScope 1.7.0 visual-interaction parity compatibility
+- Database version is 1.0.3 and the current audited producer is exact OpenGLESScope 1.7.0 / versionCode 1700. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.7.0 changes application visual/interaction structure and bounds Encyclopedia rendering but does not change GL/EGL report semantics. Database validation for 1.7.0 therefore preserves the complete 1.6.0 evidence contract under a new exact producer identity.
+- OpenGLESScope 1.6.0 / 1600 and all earlier version-scoped producer contracts remain accepted exactly as released. Future 1.7.1+ producers remain fail-closed until explicitly audited.
+- Current health/list/static metadata identify OpenGLESScope 1.7.0 and the bounded compatibility ceiling is 1.7.0. D1 schema, normalizer 12, canonical report hashing and stored report IDs remain unchanged.
+- Browser assets are cache-busted as `app.v103.js`, `site.v103.css` and `config.js?v=103`; stale current-version asset references are forbidden.
+- Source and staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+
+## Release 1.0.4 OpenGLESScope 1.8.0 common dialog and security-behavior parity compatibility
+- Database version is 1.0.4 and the current audited producer is exact OpenGLESScope 1.8.0 / versionCode 1800. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.8.0 changes shared application dialogs, semantic action controls, Info/About presentation and updater/submission failure handling without changing GL/EGL report evidence semantics. Database validation therefore preserves the complete 1.7.0 schema-4 evidence contract under the new exact producer identity.
+- OpenGLESScope 1.7.0 / 1700 and all earlier version-scoped producer contracts remain accepted exactly as released. Future 1.8.1+ producers remain fail-closed until explicitly audited.
+- Current health/list/static metadata identify OpenGLESScope 1.8.0 and the bounded compatibility ceiling is 1.8.0. D1 schema, normalizer 12, canonical report hashing and stored report IDs remain unchanged.
+- Browser assets are cache-busted as `app.v104.js`, `site.v104.css` and `config.js?v=104`; stale current-version asset references are forbidden.
+- Source and staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+## Release 1.0.5 OpenGLESScope 1.9.0 UI/storage parity compatibility
+- Database version is 1.0.5 and the current audited producer is exact OpenGLESScope 1.9.0 / versionCode 1900. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.9.0 changes API-neutral UI/icon and in-app shared-storage import/export behavior without changing GL/EGL report evidence semantics. Database validation therefore preserves the complete 1.8.0 schema-4 evidence contract under the new exact producer identity.
+- OpenGLESScope 1.8.0 / 1800 and all earlier version-scoped producer contracts remain accepted exactly as released. Future 1.9.1+ producers remain fail-closed until explicitly audited.
+- Current health/list/static metadata identify OpenGLESScope 1.9.0 and the bounded compatibility ceiling is 1.9.0. D1 schema, normalizer 12, canonical report hashing and stored report IDs remain unchanged.
+- Browser assets are cache-busted as `app.v105.js`, `site.v105.css` and `config.js?v=105`; stale current-version asset references are forbidden.
+- Source and staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+
+## Release 1.0.6 OpenGLESScope 1.9.1 compiler-hotfix compatibility
+- Database version is 1.0.6 and current producer is exact OpenGLESScope 1.9.1 / versionCode 1901. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.9.1 is a compiler-only correction over 1.9.0; all GL/EGL evidence, bounds, uniqueness, security, storage and report-text validation semantics remain unchanged.
+- Exact OpenGLESScope 1.9.0 / 1900 and all historical producer contracts remain accepted; unsupported 1.9.2+ producers remain fail-closed.
+- Browser assets are cache-busted as `app.v106.js`, `site.v106.css` and `config.js?v=106`. Source, Worker, staged Pages, deterministic package and clean-extract gates are mandatory.
+
+## Release 1.0.7 OpenGLESScope 1.9.2 exact UI/filter/Encyclopedia compatibility
+- Database version is 1.0.7 and current producer is exact OpenGLESScope 1.9.2 / versionCode 1902. Submission schema remains 2 and technicalReport remains schema 4.
+- OpenGLESScope 1.9.2 changes API-neutral filter UI, icon/action mapping and crash-safe local Encyclopedia behavior without changing GL/EGL report evidence semantics. Database validation therefore reuses the complete 1.9.1 schema-4 evidence contract under the new exact producer identity.
+- Exact OpenGLESScope 1.9.1 / 1901 and all historical producer contracts remain accepted as released. Unsupported OpenGLESScope 1.9.3+ producers remain fail-closed until explicitly audited.
+- Current health/list/static metadata identify OpenGLESScope 1.9.2 and the bounded compatibility ceiling is 1.9.2. D1 schema, normalizer 12, canonical report hashing and stored report IDs remain unchanged.
+- Browser assets are cache-busted as `app.v107.js`, `site.v107.css` and `config.js?v=107`; stale current-version asset references are forbidden.
+- Source and staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+## Release 1.0.8 OpenGLESScope 1.9.3 schema-5 query/reporting compatibility
+- Database version is 1.0.8 and current producer is exact OpenGLESScope 1.9.3 / versionCode 1903. Submission schema remains 2; technicalReport schema 5 is required only for 1.9.3.
+- OpenGLESScope 1.9.3 adds GL runtime context/reset/robust-access evidence and expanded EGL pbuffer `eglQuerySurface` evidence. Database validation must preserve value type, query provenance, and Available / Unavailable / Not applicable distinctions without inference.
+- Exact OpenGLESScope 1.9.2 / 1902 remains accepted as technicalReport schema 4; all older audited version-scoped contracts remain unchanged. Future 1.9.4+ producers remain fail-closed.
+- Current Worker/static/list/health metadata must agree on 1.0.8 / OpenGLESScope 1.9.3, technicalReport schema 5 and registry audit date 2026-09-17.
+- Browser assets are cache-busted as `app.v108.js`, `site.v108.css` and `config.js?v=108`; stale current-version assets are forbidden.
+- Source/staged Pages audits, Worker contract tests, route/Compare/Statistics/UI tests, deterministic package reproduction and clean-extract full-gate rerun are mandatory.
+
+## Release 1.0.9 OpenGLESScope 2.0.0 VulkanScope-quality parity compatibility
+- Database version is 1.0.9 and current producer is exact OpenGLESScope 2.0.0 / versionCode 2000. Submission schema remains 2 and technicalReport schema remains 5.
+- Exact OpenGLESScope 1.9.3 / 1903 technicalReport-v5 compatibility remains historical and must not be weakened. Exact 1.9.2 / 1902 schema-4 and all earlier audited contracts remain version-scoped.
+- OpenGLESScope 1.9.4 through 1.x are not implicitly accepted by the 2.0.0 ceiling. They remain fail-closed because no released producer contract exists for those identities. OpenGLESScope 2.0.1+ also remains fail-closed until separately audited.
+- The 2.0.0 application parity work changes UI/lifecycle/release-quality behavior, not GL/EGL evidence semantics. Database validation must not fabricate Vulkan concepts or infer capabilities absent from schema-5 evidence.
+- Worker, health, list, static index and browser metadata must agree on Database 1.0.9, current producer 2.0.0, registry audit date 2026-09-30 and normalizer 12.
+- Browser assets are exactly app.v109.js, site.v109.css and config.js?v=109 for this release. Stale current-version asset references are release-blocking.
+- Worker contract tests must prove current 2.0.0 acceptance, historical 1.9.3 acceptance, exact versionCode binding, schema-5 GL/EGL runtime evidence, malformed evidence rejection, sensitive-field rejection and future-producer rejection.
+
+
+## Release 1.0.10 OpenGLESScope 2.1.0 rules/icons/query/performance/UI parity compatibility
+- Database version is 1.0.10 and current producer is exact OpenGLESScope 2.1.0 / versionCode 2100. Submission schema remains 2 and technicalReport schema remains 5.
+- Historical exact OpenGLESScope 2.0.0 / 2000 schema-5 evidence remains accepted independently; unaudited 1.9.4-1.x identities, 2.0.1-2.0.x identities, and 2.1.1+ remain fail-closed.
+- The 2.1.0 application release changes rules enforcement, semantic-icon parity, canonical registry/query validation, extension lookup performance, shared UI behavior, File Manager, Encyclopedia and Settings architecture without inventing new GL/EGL evidence semantics.
+- Worker, health, report-list metadata, static index and browser metadata must agree on Database 1.0.10, current producer 2.1.0, registry audit date 2026-09-30 and normalizer 12.
+- Browser assets are exactly app.v110.js, site.v110.css and config.js?v=110 for this release. Stale current-version assets are release-blocking.
+- Worker contract tests must prove exact 2.1.0 acceptance, exact 2.0.0 historical acceptance, schema-5 evidence consistency, exact versionCode binding, malformed/sensitive evidence rejection and future-producer rejection.
+## Release 1.0.11 OpenGLESScope 2.1.1 full-report/UI/Analysis evidence compatibility
+- Database version is 1.0.11 and current producer is exact OpenGLESScope 2.1.1 / versionCode 2101. Submission schema remains 2 and technicalReport schema remains 5.
+- Exact OpenGLESScope 2.1.0 / 2100 and 2.0.0 / 2000 remain independently validated historical schema-5 producers. Unsupported identities remain fail-closed; no semantic-version range may imply compatibility.
+- The 2.1.1 application changes Analysis breadth, evidence disclosure, UI detail, semantic icons and local presentation only. Those changes do not authorize new report fields, fabricated query names or inferred capability support.
+- Worker validation remains the source of truth for accepted schema-5 evidence. Registry membership, UI labels, Quality scores, saved minimum profiles, graph relationships and presentation summaries must never be converted into runtime support evidence.
+- Worker, health, report-list metadata, static index and browser metadata must agree on Database 1.0.11, current producer OpenGLESScope 2.1.1, registry audit date 2026-09-30 and normalizer 12.
+- Browser assets are exactly `app.v111.js`, `site.v111.css` and `config.js?v=111`; stale current frontend assets are release-blocking.
+- Contract tests must prove exact 2.1.1 acceptance, exact 2.1.0 and 2.0.0 historical acceptance, schema-5 evidence consistency, exact versionCode binding, malformed/sensitive evidence rejection and 2.1.2+ fail-closed behavior.
+- Source audit, route/Compare/Statistics/UI tests, deterministic package reproduction, clean-extract rerun and staged Pages audit are mandatory release evidence.
+
+## Release 1.0.12 OpenGLESScope 2.1.2 toolchain/spec/query/detail compatibility
+- Database version is 1.0.12 and current producer is exact OpenGLESScope 2.1.2 / versionCode 2102. Submission schema remains 2 and technicalReport schema remains 5.
+- OpenGLESScope 2.1.2 changes Android/build dependencies, platform minimum, splash integration and evidence disclosure only; Database must not invent support from dependency, registry or UI metadata.
+- Exact 2.1.1 / 2101, 2.1.0 / 2100, 2.0.0 / 2000 and 1.9.3 / 1903 remain historical schema-5 producers. Unknown 2.1.3+ identities remain fail-closed.
+- Worker, health, report-list metadata, static index and browser metadata must agree on Database 1.0.12, current producer OpenGLESScope 2.1.2, registry audit date 2026-09-30 and normalizer 12.
+- Browser assets are exactly `app.v112.js`, `site.v112.css` and `config.js?v=112`; stale current frontend assets are release-blocking.
+- Contract tests must prove exact 2.1.2 acceptance, exact 2.1.1/2.1.0/2.0.0 historical acceptance, schema-5 evidence consistency, exact versionCode binding, malformed/sensitive evidence rejection and 2.1.3+ fail-closed behavior.
+
+## Release 1.0.13 OpenGLESScope 2.1.3 native compile-hotfix compatibility
+- Database version is 1.0.13 and current producer is exact OpenGLESScope 2.1.3 / versionCode 2103. Submission schema remains 2 and technicalReport schema remains 5.
+- 2.1.3 is a native compile-correctness hotfix only. Its schema-5 evidence contract is identical to 2.1.2; no capability, registry, report or UI support state may be inferred or rewritten by the Database.
+- Exact audited 2.1.2 / 2102, 2.1.1 / 2101, 2.1.0 / 2100 and 2.0.0 / 2000 schema-5 producers remain historical-compatible.
+- Worker, health/list metadata, static index and browser metadata must agree on Database 1.0.13, current producer OpenGLESScope 2.1.3 and normalizer 13.
+- Contract tests must prove exact 2.1.3 acceptance, exact 2.1.2 historical acceptance, exact versionCode binding, malformed/sensitive evidence rejection and 2.1.4+ fail-closed behavior.
+- Frontend cache-busted assets are exactly `app.v113.js`, `site.v113.css` and `config.js?v=113`; stale v112 application/CSS references are forbidden.
+
+## Release 1.0.14 OpenGLESScope 2.1.4 Kotlin/Compose compile-hotfix compatibility
+- Database version is 1.0.14 and current producer is exact OpenGLESScope 2.1.4 / versionCode 2104. Submission schema remains 2 and technicalReport schema remains 5.
+- OpenGLESScope 2.1.4 is a Kotlin/Compose compile-correctness hotfix only. Its schema-5 evidence contract is identical to 2.1.3; Database normalization must not invent, drop, reclassify or rewrite capability evidence because of the application compile fix.
+- Exact 2.1.3 / 2103 remains an audited historical schema-5 producer. 2.1.5+ and any unaudited producer identity remain fail-closed.
+- Worker, health/list metadata, static index and browser metadata must agree on Database 1.0.14, current producer OpenGLESScope 2.1.4 and normalizer 14.
+- Contract tests must prove exact 2.1.4 acceptance, exact 2.1.3 historical acceptance, exact versionCode binding, schema-5 evidence consistency, malformed/sensitive evidence rejection and 2.1.5+ fail-closed behavior.
+- Frontend cache-busted assets are exactly `app.v114.js`, `site.v114.css` and `config.js?v=114`; stale v113 application/CSS/config references are forbidden from current Pages output.
+## Release 1.0.15 OpenGLESScope 2.2.0 UI/interaction parity compatibility
+- Database version is 1.0.15 and current producer is exact OpenGLESScope 2.2.0 / versionCode 2200. Submission schema remains 2 and technicalReport schema remains 5.
+- OpenGLESScope 2.2.0 changes shared UI/interaction presentation only; Database normalization must not invent, drop, reclassify or rewrite capability evidence because of visual/interaction parity work.
+- Exact 2.1.4 / 2104 remains an audited historical schema-5 producer. 2.2.1+ and any unaudited producer identity remain fail-closed.
+- Worker, health/list metadata, static index and browser metadata must agree on Database 1.0.15, current producer OpenGLESScope 2.2.0 and normalizer 15.
+- Frontend cache-busted assets are exactly `app.v115.js`, `site.v115.css` and `config.js?v=115`; stale v114 references are forbidden from current Pages output.
+
+
+
+## Release 1.0.16 OpenGLESScope 2.2.1 compile-hotfix compatibility
+- Database version is 1.0.16 and current producer is exact OpenGLESScope 2.2.1 / versionCode 2201. Submission schema remains 2 and technicalReport schema remains 5.
+- OpenGLESScope 2.2.1 changes Kotlin/Compose compile correctness only; Database normalization must remain schema-5 equivalent to 2.2.0 and must not invent/drop/reclassify evidence.
+- Exact 2.2.0 / 2200 remains an audited historical producer. 2.2.2+ and any unaudited producer identity remain fail-closed.
+- Worker, health/list metadata, static index, browser metadata and cache-busted assets must agree on Database 1.0.16, current producer 2.2.1 and normalizer 16.
+- Current frontend cache-busted assets are exactly `app.v116.js`, `site.v116.css` and `config.js?v=116`; older v115 assets remain historical evidence only and are not shipped as current Pages assets.
+
+
+## Release 1.1.0 VulkanScope Database 1.4.12 methodology adaptation
+- Historical release identity is OpenGLESScope Database 1.1.0. This section supersedes earlier rules only when they reference old *current* release metadata; historical release contracts are immutable audit history.
+- `rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md` is the exact frozen VulkanScope Database source methodology. Its SHA-256 and all ordered level-2 headings are independently checked against `rules/vulkanscope_database_1_4_12_rule_applicability.json`. No VK-specific runtime support, Profiles, Physical Device, Vulkan queue, VkFormat, layer or Vulkan header fields are invented for OpenGL ES/EGL reports.
+- Every non-Vulkan-specific engineering principle of that reference is binding: canonical evidence preservation, precise provenance, fail-closed submission, responsive and accessible views, lifecycle-safe bounded transport, browser privacy, explicit freshness, safe staged publication, deterministic packaging, negative-mutation regression, historical immutability and clean-extract rerun.
+- The source data model stays OpenGLESScope submission schema 2 / technical report schema 5 / normalizer 16. Actual OpenGL ES and EGL runtime queries, query diagnostics, reported extension token sets, precision, formats, EGL configuration attributes, display/HDR and their Available/Unavailable/Not applicable/Unknown distinctions are authoritative. No Vulkan nomenclature or registry-only support proof is added.
+- New submissions accept only explicitly audited released producers and exact semantic-version/versionCode binding through OpenGLESScope 2.2.22 / 2222. OpenGLESScope 2.2.23+, arbitrary future versions, mismatched versionCodes and unknown schema versions remain rejected before storage. Existing historical rows remain readable, comparable and unchanged.
+- The 2 MiB streaming request bound, fatal UTF-8 validation, JSON nesting bounds, canonical JSON SHA-256 ID, strict schema and sensitive-field checks, CORS/origin and Content-Security-Policy restrictions, 405 Allow headers, D1 pagination and origin-controlled no-store responses remain mandatory. A failed new-report insert is never represented as accepted, and duplicate content retains its existing ID and submitted time.
+- `GET /v1/sync` is a read-only Worker freshness handshake; its latest ID, server timestamp and aggregate count contain public report metadata only. Refresh never mutates an existing detail payload or silently drops a user-selected report/filter. A network failure must be displayed as unknown/offline instead of implying freshness.
+- The optional new-report snapshot dispatch is asynchronous only after a successful D1 INSERT with positive `meta.changes`; duplicate uploads never cause dispatch. The GitHub token is stored only in Cloudflare Worker secret `SNAPSHOT_GITHUB_TOKEN`; it is forbidden in source, Pages artifacts, API responses, logs and error messages. Dispatch failures never convert an accepted report into a failed upload.
+- GitHub Pages release and snapshot jobs share one `concurrency` group, do not cancel in-progress runs, build the source-controlled staged artifact, verify the triggering report against the authoritative Worker, audit the staged Pages allowlist, and verify the accepted ID in published Pages after snapshot-mode deployment. Local snapshot content is public report summaries, not private report bodies.
+- UI live refresh is an explicit user action, with accessible status, disabled duplicate activation, reduced-motion support and separately visible loaded/live counts. Startup uses only validated, public version-matched read-only summaries from `data/index.json` as an explicit offline fallback; a missing report body is never synthesized from a summary. Main navigation, report details, Compare, Statistics, Extensions, GL/EGL disclosure, raw TXT and 50-row maximum report paging retain previously tested behavior. Unknown support is never rewritten as unsupported; temporal identity comes only from the D1 server.
+- Source comments, remote CSS imports, unpinned Worker tools, broad external CSP sources, analytics and remote fonts, private/IP fields, transient build directories and unreviewed GitHub workflows remain forbidden. Dependencies and Worker configurations are checked before deployment; production remote deployments are independent of a locally passing gate.
+- The release gate MUST verify exact rules reference, application admission and versionCode pairs, invalid UTF-8 rejection, `/v1/sync` no-data/data states, duplicate dispatch suppression, missing-secret safety, snapshot indexing negative cases, frontend accessibility, security preflight, staged allowlist, deterministic ZIP and clean-extract full-gate reproducibility. A documented limitation is not evidence of a test pass.
+
+
+## Release 2.0.0 full interface parity adaptation
+- The immutable VulkanScope Database 1.4.12 rules reference and 116-class applicability census remain required.
+- Database release identity is 2.0.0. Submission schema 2, technical-report schema 5 and the audited 2.2.22 / 2222 current producer remain unchanged.
+- Primary navigation includes Reports, Devices, Versions, OpenGL ES, EGL, Extensions, Limits, Formats, Precision, EGL Configs, Display & HDR, Diagnostics, Statistics, Trends, Encyclopedia and Compare.
+- Vulkan-only memory, queue, physical-device properties and Profiles features are not fabricated; existing GL/EGL semantic destinations remain authoritative.
+- Workspace hero, active navigation motion, animated four-tab Settings drawer, startup loader, scroll control, view transitions, table horizontal controls, keyboard accessibility and reduced-motion are mandatory.
+- Favorites are explicit report IDs only, session-only by default, persist only after Remember on this device is enabled and never contain report payloads.
+- Encyclopedia contains the exact locked reference catalog embedded in OpenGLESScope 2.2.22, generated from gl.xml / egl.xml, not inferred runtime support. Limit visible reference records to 50 per page. Search/filter remains bounded and escaped.
+- Devices/Versions/Trends describe the loaded filtered report set only. Trends use server-authored timestamps, never local collection guesses or market-share claims.
+- Settings browser/network information is local and is never included in a database report or automatically uploaded.
+- Browser feature support is checked by concrete standard feature detection, not user-agent sniffing; fail explicitly where necessary. Destructive local-data clearing uses an accessible in-page cancel/confirm dialog, never browser-default confirm. Favorite toggle state must update row and detail buttons immediately, including accessible pressed state.
+- Tests, clean packaging, immutable reference verification, API security and exact producer compatibility are release-blocking.
+
+
+## Release 2.0.1 shared workspace, regional presentation and motion contract
+- VulkanScope Database 1.4.12 is the immutable API-neutral shared interaction methodology reference; GL/EGL identity and canonical evidence remain OpenGLESScope-specific.
+- All 16 primary navigation workspaces remain functional; keyboard arrows/Home/End and scroll-into-view preserve active destination discoverability. Settings retains four categories with dialog focus containment, restoration and reduced-motion compliance.
+- Regional presentation offers Automatic, Country and Manual modes, bounded IANA zone selection, date order, hour cycle and seasonal setting. Presentation never mutates server-authored `submitted_at`, report identity, sorting, age filters or raw TXT.
+- Report column defaults explicitly toggle exact submitted ISO timestamp and raw vendor evidence. Unknown evidence remains unknown; no inferred capability or submission time is generated.
+- Scroll progress and connection state are visually indicated. Browser connectivity is not treated as proof the Worker can be reached; live synchronization remains explicit and fail-closed.
+- Invalid or empty pagination input may not navigate to a non-existent page. Navigation preserves the 50-row upper bound.
+- Release requires static UI contracts, locally reproducible real Chromium desktop/mobile/settings/regional/catalog interactions, Worker contract tests, negative mutation checks, deterministic ZIP reproducibility and clean-extract quality gate.
+
+
+## Release 2.0.2 canonical report and snapshot parity
+- VulkanScope Database 1.4.12 remains an immutable methodology reference, not a mandate to invent Vulkan-only GL/EGL fields. The applicable 116 rule classes are preserved.
+- The existing OpenGLESScope 2.2.22 / 2222 exact producer contract, submission schema 2, technicalReport schema 5, normalizer 16, current immutable data and 16 workspaces remain unchanged.
+- A canonical report is rejected if its UTF-8 representation exceeds a separate 4 MiB retrieval bound. New canonical bodies above the 1,450,000-byte inline threshold are stored in an atomic D1 batch using ordered bounded chunks; the original canonical SHA-256 report identity is retained.
+- A complete legacy inline payload is still readable. A chunk sequence with missing, duplicate or reordered indices, malformed values, oversized reconstruction, or a reconstructed SHA-256 that differs from the report ID is rejected, never silently repaired. Deploy migration 0004 before deploying this Worker.
+- The live sync handshake reads latest report identity and count from one D1 query to avoid a mismatched multi-query observation. Snapshot dispatch is asynchronous after a successful report insertion only, with at most three bounded requests, short fixed retry waits and retries restricted to transient network, 429 and 5xx failures. Permanent 4xx errors do not retry, authorization secrets never enter client responses, and snapshot delivery failures cannot revoke an accepted D1 row.
+- CI snapshot publishing checks the exact triggering ID against the authoritative API, audits the staged artifact and independently checks the published snapshot. Neither Pages freshness nor an absent secret is represented as successful remote publication.
+- New release gates explicitly exercise chunking, reassembly, stored-payload corruption, transient dispatch retry, permanent-failure behavior, duplicate suppression, deterministic packaging and a clean-extract rerun.
+
+## Release 2.0.2 request-scoped Internet Settings
+- The Internet panel adds an explicit, user-activated network-information request; no IP/geographic information is fetched in the background or included in any canonical report, D1 row, static Pages summary, favorite or local setting.
+- The optional Worker `GET /v1/network-info` returns no-store, first-party-CORS request-scoped Cloudflare-observed data; DNS resolvers are explicitly not observable. IP/network fields are only surfaced after an intentional click, inserted through text-only DOM APIs, response-bounded, time-bounded, and cleared when Settings closes.
+- Method restriction, cross-origin denial and not-persisted behavior are release-blocking.
+
+
+## 2.0.2 Wrangler security maintenance
+- The current project-local Wrangler dependency is pinned to 4.146.0. Historical release pin records remain unchanged.
+- Dependency audit and all release gates must pass before deployment.

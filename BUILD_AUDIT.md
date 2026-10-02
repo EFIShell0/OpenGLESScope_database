@@ -1,31 +1,22 @@
-# OpenGLESScope Database 0.7.4 Build / Release Audit
+# OpenGLESScope Database 2.0.2 build audit
 
-- Database version: 0.7.4
-- Current producer: OpenGLESScope 0.7.2 / versionCode 702
-- Submission schema: 2
-- Technical report schema: 2 for OpenGLESScope 0.7.0+
-- Normalizer: 10
-- Browser assets: app.v074.js / site.v074.css
-- D1 migration: not required
+- Database: 2.0.2
+- Current producer: OpenGLESScope 2.2.22 / 2222
+- Submission schema: 2. Technical report schema: 5. Normalizer: 16.
+- UI assets: `app.v2002.js`, `site.v2002.css` and `config.js?v=2002`.
+- Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
+- Worker and Pages versions must match before deployment. D1 migration 0004 required before worker deployment; no historical payload rewrite.
+- Release checks: `python -B tools/quality_gate.py` and clean extracted repeat. Real Cloudflare deployment remains separate verification.
 
-## Presentation audit
-0.7.4 re-audits shared database presentation against VulkanScope Database 0.39.8. Compare now uses a bounded compact primary picker, a single secondary Section / Field search row, a separate share action and immediately adjacent summary/results. Navigation, hero spacing, card-grid sizing, custom-select geometry, table-scroll controls, page-button states and responsive filter geometry use the shared interaction dimensions while OpenGL ES/EGL branding and magenta styling remain product-specific.
+## Browser interaction evidence
+- Optional reproducible offline Chromium harness: `python -B tools/test_2_0_2_browser.py` (requires Python Playwright and installed Chromium, or `CHROMIUM_PATH`). The harness supplies only a local mock response/canonical locked catalog, temporarily removes CSP in its isolated test document to inline the exact shipped assets, and does not change release CSP.
+- Executed headless Chromium at 1440 x 900 and 390 x 844; rechecked request-scoped Internet diagnostics, no-fetch-before-click and drawer-close clearing: 16 views, 50-row Encyclopedia, page bounds, custom searchable country selector (maximum 50 results), country Toronto/Istanbul zones, manual UTC/seasonal preview, settings toggles, close behavior, live connection/progress controls and zero JavaScript page errors passed. No live Cloudflare/production upload/browser matrix has been claimed.
+- Clean-source `python -B tools/quality_gate.py` and clean-extract repeat are independently release-blocking.
 
-Clear filters is hidden when there is no visible active filter or global search. Desktop Compare control groups are bounded to 760 CSS px; tablet and phone layouts use deterministic two-column and one-column fallbacks.
+## 2.0.2 parity changes
+- Single-observation `/v1/sync` consistency, canonical 4 MiB retrieval limit and atomic D1 chunk migration 0004 for oversized inline payloads.
+- SHA-256 checked report reads and rejection of missing/altered chunks.
+- Snapshot retry bounds, isolated release and snapshot jobs with shared deployment serialization, authoritative expected-ID checks and published Pages verification.
+- Release and snapshot workflows execute the clean source gate immediately before staging. Optional snapshot secret is never committed.
 
-## Release-gate audit
-The following gates passed on the source tree:
-- repository repair/check
-- static index rebuild before source audit
-- source audit
-- audit-hygiene regression tests
-- frontend and Worker JavaScript syntax checks
-- route contract
-- Compare semantics contract
-- Statistics/filter contract
-- shared UI parity contract
-- Worker contract
-- allow-listed Pages staging
-- staged Pages artifact audit
-
-`tools/build_index.py` is pinned to databaseVersion 0.7.4 and currentProducer OpenGLESScope 0.7.2. `tools/repair_repository.py --apply` removes stale assets/workflows, README.md, root release.md and transient dependency/cache/build directories so local audit preparation no longer requires separate manual cleanup commands.
+- Privacy: only the user-activated Internet request diagnostics disclose the network address seen by Cloudflare; Settings close clears it, and no report or Pages snapshot stores it.

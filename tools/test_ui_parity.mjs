@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-const app=fs.readFileSync(new URL('../assets/app.v074.js',import.meta.url),'utf8');
-const css=fs.readFileSync(new URL('../assets/site.v074.css',import.meta.url),'utf8');
+const app=fs.readFileSync(new URL('../assets/app.v2002.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../assets/site.v2002.css',import.meta.url),'utf8');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const need=(hay,needle,label=needle)=>assert.equal(hay.includes(needle),true,`missing ${label}`);
-for(const token of ['site.v074.css','app.v074.js','config.js?v=074'])need(html,token);
+for(const token of ['site.v2002.css','app.v2002.js','config.js?v=2002'])need(html,token);
 for(const token of ['.brand img{width:min(226px,36vw)}','.nav-shell{margin-left:34px;gap:6px}','.nav-icon{width:15px;height:15px;flex:0 0 15px;opacity:.88}','.hero-heading-row{gap:28px}','.cards{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}'])need(css,token,`shared presentation geometry ${token}`);
 for(const token of ['.custom-select{min-width:190px;max-width:none;flex:1}','border-radius:13px;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.14)','width:17px;height:17px;flex:0 0 17px','transform:rotate(180deg)','visibility:hidden;pointer-events:none','visibility:visible;pointer-events:auto'])need(css,token,`custom-select parity ${token}`);
 for(const token of ['.filter-clear-button[hidden],#clearFilters[hidden]{display:none!important}','clear.hidden=!(active||String(state.query||\'\').trim())'])need(token.includes('clear.hidden')?app:css,token,'clear-filter state contract');

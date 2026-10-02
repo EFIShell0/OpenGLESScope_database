@@ -1,37 +1,16 @@
-# Security
+# OpenGLESScope Database 2.0.2 Security Contract
 
-OpenGLESScope Database accepts only complete OpenGLESScope technical report submissions over HTTPS.
+The Worker accepts only audited OpenGLESScope producers up to exact 2.2.22 / versionCode 2222, schema 2 and the version-scoped technical report contracts (current technicalReport schema 5). Historical read compatibility is preserved without silently accepting unaudited new producers. Runtime GL/EGL data is validated from submission evidence rather than inferred from registry entries.
 
-## Submission validation
+New submissions have a 2 MiB streaming body limit, fatal UTF-8 decoding, canonical stable JSON SHA-256 identity, 4 MiB canonical retrieval guard, bounded arrays and nesting, strict data-shape and sensitive-key gates, fixed Pages-origin CORS, restrictive no-store/nosniff headers and method-specific 405 Allow responses.
 
-The Worker enforces exact schema-v2 / technicalReport-v1 object shapes, bounded strings and arrays, canonical diagnostic states, exact duplicated extension/display consistency, complete collection state and a compatibility floor of OpenGLESScope 0.1.17+.
+The public Pages artifact contains only audited static assets and first-party public report summaries. New large canonical reports use D1 migration 0004 for ordered, atomic chunks; reads require a contiguous sequence and the original SHA-256 digest. No existing report row is rewritten by the migration. Worker/Pages version checks are fail-closed.
 
-For current OpenGLESScope 0.1.25 reports, canonical TXT identity is cross-checked against structured application, GPU, driver, OpenGL ES, EGL and Android evidence. Canonical section counts must match structured report arrays. Duplicate limit/diagnostic/extension/format/precision/config identities are rejected. Available limits and precision values require matching Available diagnostics, and non-empty enumeration arrays require successful enumeration evidence. KHR_debug/core debug and EXT_disjoint_timer_query evidence is checked when applicable.
+Cloudflare account/D1 identifiers are deployment identity guards, not client secrets. Snapshot dispatch credentials are provided only as Cloudflare Worker secrets, never committed or included in report data. Production deployment, third-party vulnerability advisories and actual Cloudflare responses require independent production verification.
 
-## Privacy
+## 2.0.2 storage and snapshot boundaries
+- Install D1 migration 0004 before Worker deployment to enable large-payload chunks. D1 batch insertion must remain atomic.
+- GitHub snapshot tokens are Worker secrets only. The dispatch path retries only temporary failures, and workflow source always independently verifies both the accepted ID and staged public summary.
+- Public Pages snapshots contain allowlisted summary fields only. Raw canonical report content remains served exclusively by report-ID Worker lookup with no-store and integrity verification.
 
-Payload field names are recursively inspected after JSON parsing. Sensitive-name canonicalization removes punctuation and separators before matching. IMEI, Android ID, device serial, MAC/account/authentication identifiers, request-IP fields, advertising identifiers and private-path fields are forbidden report fields. Request IP addresses are not copied into report payloads or D1 report records.
-
-The submission endpoint is intentionally accountless so the Android application can submit without a user account. CORS is a browser policy rather than caller attestation. Production operators may apply Cloudflare edge/rate-limit abuse controls without persisting request IP data as report content.
-
-## Resource bounds and storage
-
-Request bodies are streamed and rejected above 2 MiB before complete JSON materialization. Recursive canonicalization has a depth bound. Stable key-sorted canonical JSON is hashed with SHA-256 for report IDs. D1 statements remain parameter-bound and submission timestamps are server-authored.
-
-Malformed stored JSON returns a generic 500 response without stack disclosure. Structured technical reports are returned without a duplicated normalized copy; compatibility normalization is materialized only for stored data without structured technicalReport evidence.
-
-## HTTP and browser policy
-
-CORS is restricted to the configured GitHub Pages origin. Native Android requests without an Origin header remain supported. API responses, including preflight, use no-store, nosniff, no-referrer, restrictive Permissions-Policy, frame denial, same-origin opener policy, same-site resource policy and a deny-by-default API Content Security Policy. Unsupported methods return 405 with an Allow header.
-
-The frontend has no third-party JavaScript, analytics, remote fonts or advertising. API reads are timeout-bounded and capped at 4 MiB before JSON parsing. Detail fetching is concurrency-bounded and failures remain visible.
-
-The frontend avoids report-derived HTML execution, dynamic code evaluation and silent static-index fallback. Coverage and custom table-scroll geometry use CSP-safe browser primitives.
-
-## Deployment isolation
-
-Production Wrangler configuration is pinned to Cloudflare account `6881527e6e0b9bc4a0c009473428d1bc` and D1 database `2c945dda-e320-4b3a-9fac-a086373db17c`. Production deploy/migration/diagnostic operations fail closed through the account verifier.
-
-
-## 0.2.0 producer validation
-OpenGLESScope 0.2.1 is accepted only through the compatible 0.x schema-2 contract. Current-producer TXT/structured evidence, versionCode 201 and cd/m² luminance text parity are validated before storage.
+- Internet Settings network diagnostics are requested only on an explicit click and cleared on drawer close. The no-store `/v1/network-info` response is request-scoped, not persisted to reports, favorites, D1 or Pages, and the browser does not use remote geolocation, analytics or IP lookup services.

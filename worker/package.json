@@ -1,6 +1,6 @@
 {
   "name": "openglesscope-database-api",
-  "version": "0.7.4",
+  "version": "2.0.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "auth:list": "wrangler auth list",
     "auth:status": "wrangler whoami",
     "verify:account": "node scripts/verify-cloudflare-account.mjs",
-    "predeploy": "npm run verify:account",
+    "predeploy": "npm run verify:account && npm run security:audit",
     "deploy": "wrangler deploy",
     "premigrate": "npm run verify:account",
     "migrate": "wrangler d1 migrations apply openglesscope-database --remote",
@@ -18,9 +18,10 @@
     "pred1:count": "npm run verify:account",
     "d1:count": "wrangler d1 execute openglesscope-database --remote --command \"SELECT COUNT(*) AS report_count FROM reports;\"",
     "dev": "wrangler dev",
-    "test:contract": "node tests/contract.mjs"
+    "test:contract": "node tests/contract.mjs",
+    "security:audit": "node scripts/security-audit.mjs"
   },
   "devDependencies": {
-    "wrangler": "4.124.0"
+    "wrangler": "4.146.0"
   }
 }

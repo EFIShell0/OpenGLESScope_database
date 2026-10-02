@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
-const source=fs.readFileSync(new URL('../assets/app.v074.js',import.meta.url),'utf8');
+const source=fs.readFileSync(new URL('../assets/app.v2002.js',import.meta.url),'utf8');
 const a=source.indexOf('const TABS=');
 const b=source.indexOf('async function openDetail',a);
 if(a<0||b<0)throw new Error('route block missing');
-const context={location:{hash:'',origin:'https://example.test',pathname:'/db/'},state:{view:'reports',detailId:null,detailTab:'summary',compareIds:[]},META:{reports:1,opengles:1,egl:1,extensions:1,limits:1,formats:1,precision:1,eglconfigs:1,display:1,diagnostics:1,statistics:1,compare:1},decodeURIComponent};
+const context={location:{hash:'',origin:'https://example.test',pathname:'/db/'},state:{view:'reports',detailId:null,detailTab:'summary',compareIds:[]},META:{reports:1,opengles:1,egl:1,extensions:1,limits:1,formats:1,precision:1,eglconfigs:1,display:1,diagnostics:1,statistics:1,devices:1,versions:1,trends:1,encyclopedia:1,compare:1},decodeURIComponent};
 vm.createContext(context);
 vm.runInContext(`${source.slice(a,b)};this.routeReportHash=routeReportHash;this.routeCompareHash=routeCompareHash;this.routeReportUrl=routeReportUrl;this.routeCompareUrl=routeCompareUrl;this.applyHashRoute=applyHashRoute`,context);
 const A='a'.repeat(64),B='b'.repeat(64);
@@ -20,7 +20,7 @@ context.location.hash=`#reports/${A}/Nope`;assert.equal(context.applyHashRoute()
 context.location.hash=`#reports/${'A'.repeat(64)}/Overview`;assert.equal(context.applyHashRoute(),false);
 context.location.hash=`#compare/${A}/${B}`;assert.equal(context.applyHashRoute(),true);assert.deepEqual(Array.from(context.state.compareIds),[A,B]);
 context.location.hash='#statistics';assert.equal(context.applyHashRoute(),true);assert.equal(context.state.view,'statistics');
-context.location.hash='#trends';assert.equal(context.applyHashRoute(),true);assert.equal(context.state.view,'statistics');
+context.location.hash='#trends';assert.equal(context.applyHashRoute(),true);assert.equal(context.state.view,'trends');
 context.location.hash='#opengles';assert.equal(context.applyHashRoute(),true);assert.equal(context.state.view,'opengles');
 for(const token of ['hashchange','popstate','routeReportUrl','routeCompareUrl','Share report','Copy permalink','Share comparison link'])assert.equal(source.includes(token),true,`missing routing/share token ${token}`);
 console.log('OpenGLESScope Database route tests: ALL PASS');
