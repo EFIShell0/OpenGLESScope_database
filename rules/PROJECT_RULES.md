@@ -812,7 +812,7 @@
 - New accepted D1 reports alone trigger the asynchronous authenticated snapshot workflow. The browser sees live changes by a foreground-only three-second /v1/sync probe, loads verified report data, then updates hero counts and notifies. Snapshot publication must verify the expected accepted report ID, without leaking secrets or rewriting historical records.
 - Desktop/mobile browser, Worker contract, deterministic release negative tests and clean-extracted source quality gate are mandatory. No DEPLOY files inside release ZIP.
 
-## Release 3.0.4 common Settings, viewport, evidence-meter and official-asset parity
+## Release 3.0.5 common Settings, viewport, evidence-meter and official-asset parity
 - Completion of the first report/index startup must remove both startup-layout-hold and database-loading classes before dispatching the ready event; the scrolling controller must not suppress page and inner scrollbars after the loader is hidden. Verify the actual rendered 15+ report case, as well as artificially long content, on desktop and mobile.
 - The shared Settings drawer preserves the reference four-tab hierarchy and card/row presentation for Internet and Browser; detailed Worker-visible network identity remains strictly user-initiated, masked by default, bound to a single request and cleared when Settings closes. The GL-specific page-size preference may supplement, not replace, common preferences.
 - Circular distribution percentages use reference 120x120 SVG, 46-radius segments, pathLength percentages, legend-list and selected-filter geometry. Evidence availability percentages use the canonical coverage-bar and coverage-fill structure, with a GL-derived denominator and distinct four-state semantics.
@@ -821,3 +821,10 @@
 - Browser compatibility behavior is byte-for-byte the reference algorithm except OpenGLESScope-specific public names, and all static error pages use the local first-party brand, assets and CSP.
 - Preserve all Worker/D1/report schema, 3-second sync and release-ready controls; no D1 migration or producer-version change. The release must pass deterministic clean ZIP, source gate and a real desktop/mobile Settings-scroll + 15-report browser regression.
 - Never ship deployment documentation inside ZIPs.
+
+## Release 3.0.5 publication, navigation and canonical exports
+- Publishing a newer Worker while the frontend is still propagating is a release transition, not evidence of lost connectivity. The established checking banner is used; the actual unavailable state requires a failed API request.
+- Independent same-origin release checks begin before the full report index becomes ready and navigate automatically only after validating the complete published asset set. Incomplete publication does not trigger a reload; repeated navigation is bounded.
+- The exact stored canonical TXT is exported without normalization or markup. JSON export fetches the report by validated public ID and checks returned identity before writing a UTF-8 file. Both actions use the existing report action-button geometry and transient success/failure feedback.
+- Report mouse text selection and drag never navigate. Click, keyboard and context behavior remain accessible. Browser Back/Forward and in-app detail return restore route-specific scroll position without changing server-authored report ordering.
+- Live report updates must not impersonate a Worker outage during a staged release, nor restart the opening animation. All original producer rules, privacy restrictions, report identity and D1 rows remain unchanged.

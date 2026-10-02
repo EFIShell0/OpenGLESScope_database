@@ -3,13 +3,13 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 const root=new URL('../',import.meta.url);
 const read=name=>fs.readFileSync(new URL(name,root),'utf8');
-const ux=read('assets/experience.v3004.js');
-const app=read('assets/app.v3004.js');
+const ux=read('assets/experience.v3005.js');
+const app=read('assets/app.v3005.js');
 const worker=read('worker/src/index.js');
 const workflow=read('.github/workflows/pages.yml');
 const marker=JSON.parse(read('data/release.json'));
 const block=(first,last)=>{const a=ux.indexOf(first),b=ux.indexOf(last,a+first.length);assert.ok(a>=0&&b>a,first);return ux.slice(a,b)};
-assert.deepEqual(marker,{schemaVersion:2,databaseVersion:'3.0.4',releaseReady:false,appAsset:'assets/app.v3004.js',cacheKey:'3004'});
+assert.deepEqual(marker,{schemaVersion:2,databaseVersion:'3.0.5',releaseReady:false,appAsset:'assets/app.v3005.js',cacheKey:'3005'});
 assert.ok(ux.includes('setInterval(()=>void sync(false),3000)'));
 assert.ok(ux.includes('setInterval(()=>void releases(),10000)'));
 assert.ok(ux.includes("document.addEventListener('openglesscope:new-reports',e=>toast(e.detail?.count))"));
@@ -30,15 +30,15 @@ const publishSource=block('async function published(m){','function updateModal(v
 const navigationSource=block('function navigatePublishedRelease(version){','async function releases(){');
 const releaseSource=block('async function releases(){','const legalFiles=');
 const url='https://efishell0.github.io/OpenGLESScope_database/index.html#report/abcdef';
-const target={schemaVersion:2,releaseReady:true,databaseVersion:'3.0.4',appAsset:'assets/app.v3004.js',cacheKey:'3004'};
+const target={schemaVersion:2,releaseReady:true,databaseVersion:'3.0.5',appAsset:'assets/app.v3005.js',cacheKey:'3005'};
 const docs={
- './index.html':'<html>app.v3004.js site.v3004.css experience.v3004.js scroll-system.v3004.js OpenGLESScope Database <strong>3.0.4</strong></html>',
- './assets/app.v3004.js':"const DATABASE_VERSION='3.0.4'",
- './assets/site.v3004.css':'--accent:#ba2a8d;',
- './assets/release-bootstrap.v3004.js':"const LOCAL='3.0.4'",
- './assets/browser-compat.v3004.js':'__OPENGLESSCOPE_BROWSER_INFO__',
- './assets/experience.v3004.js':"const VERSION='3.0.4'",
- './assets/scroll-system.v3004.js':'viewportScrollbar'
+ './index.html':'<html>app.v3005.js site.v3005.css experience.v3005.js scroll-system.v3005.js OpenGLESScope Database <strong>3.0.5</strong></html>',
+ './assets/app.v3005.js':"const DATABASE_VERSION='3.0.5'",
+ './assets/site.v3005.css':'--accent:#ba2a8d;',
+ './assets/release-bootstrap.v3005.js':"const LOCAL='3.0.5'",
+ './assets/browser-compat.v3005.js':'__OPENGLESSCOPE_BROWSER_INFO__',
+ './assets/experience.v3005.js':"const VERSION='3.0.5'",
+ './assets/scroll-system.v3005.js':'viewportScrollbar'
 };
 const reads=[];
 const store=new Map;
@@ -61,21 +61,21 @@ assert.equal(reads.length,7);
 reads.length=0;
 assert.equal(await vm.runInContext('published(target)',vm.createContext({...context,target:{...target,releaseReady:false}})),false);
 assert.equal(reads.length,0);
-const original=docs['./assets/scroll-system.v3004.js'];docs['./assets/scroll-system.v3004.js']='stale version';
+const original=docs['./assets/scroll-system.v3005.js'];docs['./assets/scroll-system.v3005.js']='stale version';
 assert.equal(await vm.runInContext('published(target)',vm.createContext({...context,target})),false);
-docs['./assets/scroll-system.v3004.js']=original;
-assert.equal(vm.runInContext("navigatePublishedRelease('3.0.4')",context),true);
+docs['./assets/scroll-system.v3005.js']=original;
+assert.equal(vm.runInContext("navigatePublishedRelease('3.0.5')",context),true);
 assert.equal(navigations.length,1);
-assert.equal(new URL(navigations[0]).searchParams.get('_release'),'3.0.4');
+assert.equal(new URL(navigations[0]).searchParams.get('_release'),'3.0.5');
 assert.equal(new URL(navigations[0]).hash,'#report/abcdef');
-assert.equal(vm.runInContext("navigatePublishedRelease('3.0.4')",context),false);
+assert.equal(vm.runInContext("navigatePublishedRelease('3.0.5')",context),false);
 assert.equal(navigations.length,1);
 context.releaseNavigationPending=false;
-assert.equal(vm.runInContext("navigatePublishedRelease('3.0.4')",context),false);
-assert.deepEqual(modals,['3.0.4']);
+assert.equal(vm.runInContext("navigatePublishedRelease('3.0.5')",context),false);
+assert.deepEqual(modals,['3.0.5']);
 const ctx2={...context,releaseNavigationPending:false,releaseBusy:false,ready:true,localText:async()=>JSON.stringify(target),published:async()=>true,navigatePublishedRelease:v=>navigations.push('releases:'+v)};
 vm.createContext(ctx2);
 vm.runInContext(releaseSource,ctx2);
 await vm.runInContext('releases()',ctx2);
-assert.equal(navigations.at(-1),'releases:3.0.4');
-console.log('OpenGLESScope Database 3.0.4 fully published auto-navigation / anti-loop / 3-sec live sync / accepted-report snapshot contracts: ALL PASS');
+assert.equal(navigations.at(-1),'releases:3.0.5');
+console.log('OpenGLESScope Database 3.0.5 fully published auto-navigation / anti-loop / 3-sec live sync / accepted-report snapshot contracts: ALL PASS');

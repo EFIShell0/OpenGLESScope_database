@@ -1,4 +1,11 @@
-# OpenGLESScope Database 3.0.4
+# OpenGLESScope Database 3.0.5
+
+## 3.0.5
+- Fixed staged publication state so the connection banner does not report Worker unavailability solely from a version transition.
+- Made release readiness checks independent of report-index startup and increased bounded asset checks; navigation remains fail-closed until publication is complete.
+- Added official canonical JSON and TXT report downloads with source identity checks, filename sanitization, and existing action-state feedback.
+- Restored route-specific scroll position for report/detail and browser history, and prevented accidental navigation on mouse text selection or drag.
+- Preserved first-party GL/EGL data semantics, report privacy and stored D1 payloads.
 
 ## 3.0.4
 

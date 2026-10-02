@@ -2,9 +2,9 @@ from pathlib import Path
 import hashlib,json,re
 from html.parser import HTMLParser
 root=Path(__file__).resolve().parents[1]
-app=(root/'assets/app.v3004.js').read_text()
-css=(root/'assets/site.v3004.css').read_text()
-scroll=(root/'assets/scroll-system.v3004.js').read_text()
+app=(root/'assets/app.v3005.js').read_text()
+css=(root/'assets/site.v3005.css').read_text()
+scroll=(root/'assets/scroll-system.v3005.js').read_text()
 html=(root/'index.html').read_text()
 vk_scroll=(root/'rules/SHARED_SCROLL_1_4_12_REFERENCE.js').read_text()
 assert hashlib.sha256(vk_scroll.encode()).hexdigest()==(root/'rules/SHARED_SCROLL_1_4_12_SHA256.txt').read_text().strip()
@@ -13,7 +13,7 @@ for key in ['syncViewportScrollbar','initViewportScrollbar','syncSurfaceScrollba
  assert key in scroll,key
 assert "window.OGSScroll301=Object.freeze" in scroll
 assert "const smooth=()=>prefersReducedMotion()?'auto':'smooth';const up=()=>window.scrollTo({top:0" not in app,'conflicting legacy scrollbar handlers returned'
-for token in ['id="navScrollLeft"','id="navScrollRight"','id="viewportScrollbarThumb"','id="pageScrollUp"','id="pageScrollDown"','id="viewportScrollbarTrack"','scroll-system.v3004.js?v=3004']:
+for token in ['id="navScrollLeft"','id="navScrollRight"','id="viewportScrollbarThumb"','id="pageScrollUp"','id="pageScrollDown"','id="viewportScrollbarTrack"','scroll-system.v3005.js?v=3005']:
  assert token in html,token
 assert 'id="navLeft"' not in html and 'id="navRight"' not in html
 for token in ['html.viewport-scrollbar-mounted','surface-scroll-host','.viewport-scrollbar.is-scrollable','.surface-scrollbar.is-scrollable','.table-scroll-shell','.table-scroll-controls','.page-scroll-controls.is-scrollable']:
@@ -39,4 +39,4 @@ def source_ok(value):
 assert source_ok(scroll)
 assert not source_ok(scroll.replace('initViewportScrollbar();','',1))
 assert not source_ok(scroll.replace('const syncViewportScrollbar=','const brokenViewport=',1))
-print('OpenGLESScope Database 3.0.4 exact reference-scroll, neutral-semantic-color, common SVG and bounded-table gates: ALL PASS')
+print('OpenGLESScope Database 3.0.5 exact reference-scroll, neutral-semantic-color, common SVG and bounded-table gates: ALL PASS')

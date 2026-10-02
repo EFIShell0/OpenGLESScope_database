@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 root=Path(__file__).resolve().parents[1]
-required=['data/registry-catalog.v2000.json','tools/verify_1_1_0_rules.py','tools/test_live_index.py','tools/verify_published_snapshot.py','rules/PROJECT_RULES.md','rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md','rules/vulkanscope_database_1_4_12_rule_applicability.json','assets/app.v3004.js','assets/site.v3004.css','index.html','worker/src/index.js','.github/workflows/pages.yml','tools/pages.workflow.yml']
+required=['data/registry-catalog.v2000.json','tools/verify_1_1_0_rules.py','tools/test_live_index.py','tools/verify_published_snapshot.py','rules/PROJECT_RULES.md','rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md','rules/vulkanscope_database_1_4_12_rule_applicability.json','assets/app.v3005.js','assets/site.v3005.css','index.html','worker/src/index.js','.github/workflows/pages.yml','tools/pages.workflow.yml']
 mutations=[
  ('alter immutable reference','rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md',lambda s:s+'\nunauthorized reference mutation\n'),
  ('drop Vulkan methodology heading','rules/vulkanscope_database_1_4_12_rule_applicability.json',lambda s:s.replace('"headingCount": 116','"headingCount": 115',1)),
@@ -33,4 +33,4 @@ with tempfile.TemporaryDirectory(prefix='gl1100-mutations-') as base:
         r=subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
         assert r.returncode!=0,'Negative mutation escaped verifier: '+label
         item.write_text(original,encoding='utf-8')
-    print('OpenGLESScope Database 3.0.4 immutable rules/Worker/UI/publication negative mutations: ALL PASS')
+    print('OpenGLESScope Database 3.0.5 immutable rules/Worker/UI/publication negative mutations: ALL PASS')
