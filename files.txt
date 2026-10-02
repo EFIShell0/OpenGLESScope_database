@@ -17,13 +17,13 @@
 504.html
 BUILD_AUDIT.md
 SECURITY.md
-assets/app.v3000.js
+assets/app.v3001.js
 assets/apple-touch-icon-v017.png
-assets/browser-compat.v3000.js
+assets/browser-compat.v3001.js
 assets/egl-logo-v027.png
 assets/egl-logo-white-v028.png
 assets/egl-logo-white-v030.png
-assets/experience.v3000.js
+assets/experience.v3001.js
 assets/favicon-v017.ico
 assets/favicon-v017.png
 assets/gpu-vendors/gpu_vendor_amd.png
@@ -46,8 +46,9 @@ assets/hdr/hdr10_plus_advanced.png
 assets/hdr/hdr_vivid.webp
 assets/opengles-gl-es-v030.png
 assets/openglesscope_logo_horizontal-v017.png
-assets/release-bootstrap.v3000.js
-assets/site.v3000.css
+assets/release-bootstrap.v3001.js
+assets/scroll-system.v3001.js
+assets/site.v3001.css
 changelog.md
 config.js
 data/index.json
@@ -121,6 +122,9 @@ rules/1.0.8_OPENGLESSCOPE_1.9.3_SCHEMA5_QUERY_REPORTING_COMPATIBILITY_AUDIT.md
 rules/1.0.9_OPENGLESSCOPE_2.0.0_VULKANSCOPE_QUALITY_PARITY_COMPATIBILITY_AUDIT.md
 rules/2.0.2_VULKANSCOPE_SECURITY_SNAPSHOT_PARITY_AUDIT.md
 rules/PROJECT_RULES.md
+rules/SHARED_ICON_1_4_12_REFERENCE.json
+rules/SHARED_SCROLL_1_4_12_REFERENCE.js
+rules/SHARED_SCROLL_1_4_12_SHA256.txt
 rules/SHARED_UI_1_4_12_REFERENCE.css
 rules/SHARED_UI_BASE_SHA256.txt
 rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md
@@ -144,6 +148,8 @@ tools/test_2_0_5_release_handshake.py
 tools/test_2_0_5_vulkan_ui_parity.py
 tools/test_3_0_0_experience.py
 tools/test_3_0_0_live_browser.py
+tools/test_3_0_1_scroll_browser.py
+tools/test_3_0_1_scroll_parity.py
 tools/test_audit_hygiene.py
 tools/test_compare_contract.mjs
 tools/test_live_index.py

@@ -8,7 +8,7 @@ for name,digest in EXPECTED.items():
 h=(r/'index.html').read_text()
 assert 'aria-label="OpenGL® ES™ Hardware Database"' in h
 assert '<h1 aria-label="OpenGL® ES™ Hardware Database" class="hero-v127-brand-heading">OpenGL® ES™ Hardware Database</h1>' in h
-js=(r/'assets/app.v3000.js').read_text()
+js=(r/'assets/app.v3001.js').read_text()
 assert "['opengles','OpenGL® ES™']" in js and "['egl','EGL™']" in js
 assert 'src="./assets/opengles-gl-es-v030.png"' in js and 'src="./assets/egl-logo-white-v030.png"' in js
 assert 'OPENGL® ES™ / EGL™ CAPABILITY INTELLIGENCE' in h

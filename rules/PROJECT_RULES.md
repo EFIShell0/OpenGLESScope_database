@@ -785,3 +785,13 @@
 - Periodic published-release checks must validate data/release.json shape, published readiness, exact release asset names, matching frontend version and linked page before showing a refresh modal. Source marker is unpublished; validated Pages artifact marks readiness once all allowlisted assets are staged. No unverified cache-busting reload loops.
 - Main navigation retains all 16 GL/EGL semantic destinations, existing report detail tabs, keyboard and responsive controls, page limit 50 and canonical report semantics. Browser, source, negative-mutation, Worker contract, staging, and clean-extract reproducibility tests are release blockers.
 - GitHub snapshot secret and production D1 content must not be embedded in ZIP. DEPLOY.md, DEPLOY_<version>.md and equivalent deployment documents must never ship; commands only in chat.
+
+
+## Database 3.0.1 canonical interaction and semantic-color parity
+- Adopt the actual VulkanScope Database 1.4.12 viewport and surface scrollbar algorithms, including thumb dragging, keyboard navigation, arrow endpoints, dynamic content updates and reduced motion. Never hide native root scrollbars unless the custom viewport scrollbar is mounted.
+- The canonical shared CSS geometry and matching non-API SVG path shapes are immutable; only OpenGLESScope brand/accent colors and GL/EGL-specific evidence labels/artwork may differ. Semantic error, unsupported, warning, success and neutral colors follow the VulkanScope reference, not brand pink.
+- Keep all long evidence tables bounded to 10, 25 or 50 visible rows with validated numeric pagination and explicit total counts; never discard or infer report evidence.
+- Horizontal table scrolling must remain accessible by wheel/shift-wheel, scrollbar track, keyboard and mobile touch. The viewport scrollbar is visible for any true vertical overflow; inside settings, select menus, license windows and raw report panes, the reference surface scrollbar is used.
+- Existing D1 migrations and stored historical reports remain untouched. New submissions require exactly OpenGLESScope 2.2.22 / versionCode 2222. Any GL/EGL field must remain backed by submitted evidence.
+- Run the negative static source-reference checks, Chrome desktop and mobile scrollbar interactions, Worker contract and full quality gate on the original source and clean-extracted deterministic package.
+- Never include any DEPLOY*.md document inside a release ZIP.
