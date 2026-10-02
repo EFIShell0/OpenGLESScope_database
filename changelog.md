@@ -1,4 +1,11 @@
-# OpenGLESScope Database 3.0.5
+# OpenGLESScope Database 3.0.6
+
+## 3.0.6
+- Matched Settings Internet with reference-shaped detailed request-scoped network evidence (26 rows) and browser/runtime capability information (34 rows) in two sections; removed duplicate browser panel and extraneous network actions and Settings page-size control. Network details load only after Internet is opened, IPv4/IPv6 start mosaicked and all private observations clear on close.
+- Scoped visible filter families and active values by destination. Removed irrelevant cross-tab filter options, isolated display evidence filters and retained GL/EGL-specific queries only where applicable.
+- Restored top-of-page navigation progress by matching its actual HTML element to the shared visual and scroll contracts. Removed the extra Android icon size override; preserved the identical official green SVG.
+- Bundled the shared 250 local country flag icons used by the Internet view; no extra external flag service.
+- Retained all 3.0.5 download, navigation, publication and snapshot behavior.
 
 ## 3.0.5
 - Fixed staged publication state so the connection banner does not report Worker unavailability solely from a version transition.

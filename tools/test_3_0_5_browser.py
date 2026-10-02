@@ -57,6 +57,6 @@ with sync_playwright() as p:
   page.wait_for_function("document.querySelector('#networkStatusShell')?.dataset.state==='checking'",timeout=3000)
   assert not page.locator('#databaseUpdateModal').is_visible()
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.5 PASS',width,height,'canonical TXT and JSON downloads, route scroll return, selection guard, staged Worker release banner, zero errors',flush=True)
+  print('CHROMIUM 3.0.6 PASS',width,height,'canonical TXT and JSON downloads, route scroll return, selection guard, staged Worker release banner, zero errors',flush=True)
   context.close()
  browser.close()

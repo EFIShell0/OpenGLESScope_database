@@ -1,14 +1,14 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const r=new URL('../',import.meta.url),get=n=>fs.readFileSync(new URL(n,r),'utf8');
-const scroll=get('assets/scroll-system.v3005.js'),app=get('assets/app.v3005.js'),css=get('assets/site.v3005.css'),html=get('index.html'),registry=JSON.parse(get('data/registry-catalog.v2000.json'));
+const scroll=get('assets/scroll-system.v3006.js'),app=get('assets/app.v3006.js'),css=get('assets/site.v3006.css'),html=get('index.html'),registry=JSON.parse(get('data/registry-catalog.v2000.json'));
 const nav=app.match(/const NAV=\[(.+?)\];const ICON_PATHS=/s);assert.ok(nav);
 const unique=[...nav[1].matchAll(/\['([^']+)','([^']+)'\]/g)].map(x=>x[1]);
 assert.equal(unique.length,16);assert.equal(new Set(unique).size,16);
 for(const name of ['reports','devices','versions','opengles','egl','extensions','limits','formats','precision','eglconfigs','display','diagnostics','statistics','trends','encyclopedia','compare'])assert.ok(unique.includes(name),name);
 for(const x of ['renderDevices','renderVersions','renderTrends','renderEncyclopedia','updateFavoritesPanel','settingsTab','updateBrowserInfo','updateInternetPanel','updateHeroWorkspace','finishStartup','fetchRegistry','persistUiSettings'])assert.ok(app.includes(x),x);
 for(const x of ['syncViewportScrollbar','updatePageScrollUi','enhanceKnownSurfaceScrollbars','enhanceBoundedEvidenceTables'])assert.ok(scroll.includes(x),x);
-for(const x of ['settingsButton','settingsDrawer','settingsBackdrop','settingsClose','rememberDevice','settingsPageSize','settingsNetworkInfo','settingsBrowserInfo','globalSearchClear','pageScrollControls','viewportScrollbar','viewportScrollbarThumb','databaseLoading','heroWorkspaceEyebrow','heroWorkspaceTitle','heroWorkspaceDescription'])assert.ok(html.includes(`id="${x}"`),x);
+for(const x of ['settingsButton','settingsDrawer','settingsBackdrop','settingsClose','rememberDevice','settingsNetworkInfo','settingsBrowserInfo','globalSearchClear','pageScrollControls','viewportScrollbar','viewportScrollbarThumb','databaseLoading','heroWorkspaceEyebrow','heroWorkspaceTitle','heroWorkspaceDescription'])assert.ok(html.includes(`id="${x}"`),x);
 for(const x of ['.settings-drawer','.settings-backdrop','.hero-workspace-card','.database-loading-panel','.page-scroll-controls','.viewport-scrollbar','.registry-entry','.registry-filters','.settings-category-button','.nav-button.active','@media(prefers-reduced-motion:reduce)'])assert.ok(css.includes(x),x);
 for(const x of ['favorites','preferences','internet','information'])assert.ok(html.includes(`data-settings-panel="${x}"`),x);
 assert.equal(registry.schema,'OpenGLESScopeRegistryCatalog1');assert.deepEqual(registry.generatedFrom,['registry/gl.xml','registry/egl.xml']);assert.equal(registry.entries.length,5261);assert.equal(registry.entries.filter(x=>x.api==='OpenGL ES').length,4196);assert.equal(registry.entries.filter(x=>x.api==='EGL').length,1065);
@@ -16,10 +16,10 @@ assert.ok(app.includes('size=50,pages=Math.max(1,Math.ceil(entries.length/size))
 for(const id of ['settingsRegionalMode','settingsRegionalCountry','settingsRegionalTimeZone','settingsRegionalDateFormat','settingsRegionalClock','settingsRegionalSeason','settingsRegionalPreview','settingsSubmittedDefault','settingsVendorDefault','pageProgress','pageProgressBar'])assert.ok(html.includes(`id="${id}"`),id);
 for(const token of ['COUNTRY_CODES=Object.freeze','COUNTRY_PRIMARY_TIME_ZONES=Object.freeze','REGIONAL_COUNTRIES','regionalDate','syncRegionalControls','initRegionalControls','custom-select-search','found.slice(0,50)','aria-valuenow','aria-current'])assert.ok(app.includes(token),token);
 assert.ok(css.includes('.custom-select-search-label'));assert.ok(css.includes('.custom-select-hint'));assert.ok(css.includes('.page-progress'));
-assert.ok(html.includes('app.v3005.js')&&html.includes('site.v3005.css'));
+assert.ok(html.includes('app.v3006.js')&&html.includes('site.v3006.css'));
 
 assert.ok(app.includes('Catalog presence does not establish runtime availability'));
 assert.ok(app.includes('Date.parse(row.submitted_at||row.submittedAt||'));assert.ok(app.includes('registryLoading'));assert.ok(app.includes('new TextDecoder(\'utf-8\',{fatal:true})'));assert.ok(app.includes('1800000'));assert.ok(app.includes("persistUiSettings()"));assert.ok(app.includes("if(rememberDevice)"));
 assert.ok(html.includes("connect-src 'self' https://openglesscope-database-api.openglesscope.workers.dev"));
 assert.ok(!css.includes('@import'));assert.ok(!/https?:\/\//.test(css));
-console.log('OpenGLESScope Database 3.0.5 interface, registry, privacy and responsive static tests: ALL PASS');
+console.log('OpenGLESScope Database 3.0.6 interface, registry, privacy and responsive static tests: ALL PASS');

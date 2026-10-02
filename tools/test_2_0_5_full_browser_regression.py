@@ -4,17 +4,17 @@ import tempfile
 import json
 from playwright.sync_api import sync_playwright
 r=Path(__file__).resolve().parents[1]
-health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'3.0.5','compatibleProducer':'OpenGLESScope 2.2.22 (versionCode 2222) for new submissions only'}
-index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.5','currentProducer':'OpenGLESScope 2.2.22','reports':[],'nextCursor':None}
-sync={'databaseReleaseVersion':'3.0.5','workerReleaseVersion':'3.0.5','reportCount':0,'latestReportId':'','latestSubmittedAt':'','syncToken':'0::'}
+health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'3.0.6','compatibleProducer':'OpenGLESScope 2.2.22 (versionCode 2222) for new submissions only'}
+index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.6','currentProducer':'OpenGLESScope 2.2.22','reports':[],'nextCursor':None}
+sync={'databaseReleaseVersion':'3.0.6','workerReleaseVersion':'3.0.6','reportCount':0,'latestReportId':'','latestSubmittedAt':'','syncToken':'0::'}
 import re
 html=(r/'index.html').read_text()
 html=re.sub(r'<meta[^>]*http-equiv="Content-Security-Policy"[^>]*>','',html)
-html=re.sub(r'<link\b[^>]*href="[^"]*site\.v3005\.css(?:\?[^\"]*)?"[^>]*>',lambda x:'<style>'+(r/'assets/site.v3005.css').read_text()+'</style>',html)
+html=re.sub(r'<link\b[^>]*href="[^"]*site\.v3006\.css(?:\?[^\"]*)?"[^>]*>',lambda x:'<style>'+(r/'assets/site.v3006.css').read_text()+'</style>',html)
 mock_script="""<script>window.OPENGLESSCOPE_DATABASE_API='https://openglesscope-database-api.openglesscope.workers.dev';window.__requestNetworkCalls=0;window.fetch=async function(input){const u=String(input);let x;if(u.includes('/v1/network-info')){window.__requestNetworkCalls++;x=MOCK_NETWORK;}else if(u.includes('/v1/health'))x=MOCK_HEALTH;else if(u.includes('/v1/sync'))x=MOCK_SYNC;else if(u.includes('/v1/reports'))x=MOCK_INDEX;else if(u.includes('registry-catalog'))x=MOCK_CATALOG;else if(u.includes('data/index.json'))x=MOCK_INDEX;else x={};return new Response(JSON.stringify(x),{status:200,headers:{'content-type':'application/json'}})}</script>"""
 mock_script=mock_script.replace('MOCK_NETWORK',json.dumps({'networkInfoVersion':1,'accessFamily':'IPv6','activeAddress':'2001:db8::42','ipv4':{'address':'','status':'not_observed'},'ipv6':{'address':'2001:db8::42','status':'observed'},'country':'TR','region':'Istanbul','city':'Istanbul','timezone':'Europe/Istanbul','colo':'IST','asOrganization':'Test Network'})).replace('MOCK_HEALTH',json.dumps(health)).replace('MOCK_INDEX',json.dumps(index)).replace('MOCK_SYNC',json.dumps(sync)).replace('MOCK_CATALOG',(r/'data/registry-catalog.v2000.json').read_text())
 html,n=re.subn(r'<script\b[^>]*src="[^"]*config\.js[^"]*"[^>]*>\s*</script>',lambda x:mock_script,html);assert n==1,n
-html,n=re.subn(r'<script\b[^>]*src="[^"]*app\.v3005\.js[^"]*"[^>]*>\s*</script>',lambda x:'<script>'+(r/'assets/app.v3005.js').read_text()+'</script>',html);assert n==1,n
+html,n=re.subn(r'<script\b[^>]*src="[^"]*app\.v3006\.js[^"]*"[^>]*>\s*</script>',lambda x:'<script>'+(r/'assets/app.v3006.js').read_text()+'</script>',html);assert n==1,n
 with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-gpu'])
  for size in [(1440,900),(390,844)]:
@@ -60,15 +60,13 @@ with sync_playwright() as p:
   assert 'standard display' in page.locator('#settingsRegionalPreview').inner_text()
   page.locator('label:has(#settingsSubmittedDefault)').click();assert page.locator('#settingsSubmittedDefault').is_checked()
   page.locator('label:has(#settingsVendorDefault)').click();assert page.locator('#settingsVendorDefault').is_checked()
-  page.locator('[data-settings-category="internet"]').click()
   assert page.evaluate('window.__requestNetworkCalls')==0
-  page.locator('#settingsRequestNetwork').click()
-  page.wait_for_function('window.__requestNetworkCalls===1')
-  page.wait_for_function("document.querySelector('#settingsRequestNetworkResult').textContent.includes('2001:db8::42')",timeout=6000)
-  assert '2001:db8::42' in page.locator('#settingsRequestNetworkResult').inner_text()
+  page.locator('[data-settings-category="internet"]').click()
+  page.wait_for_function("window.__requestNetworkCalls>=1 && document.querySelectorAll('#settingsNetworkInfo .settings-info-row').length>=20 && document.querySelectorAll('#settingsBrowserInfo .settings-info-row').length>=25",timeout=8000)
+  assert page.locator('#settingsNetworkInfo .network-address-mosaic').count()>=1
+  assert page.locator('[data-settings-panel="information"] #settingsBrowserInfo').count()==0
   page.locator('#settingsClose').click()
-  assert page.locator('#settingsRequestNetworkResult').get_attribute('hidden') is not None
-  assert '2001:db8::42' not in page.locator('#settingsRequestNetworkResult').inner_text()
+  assert '2001:db8::42' not in page.locator('#settingsNetworkInfo').inner_text()
 
   assert page.locator('#settingsDrawer').get_attribute('aria-hidden')=='true'
   page.locator('#mainNav button[data-view="reports"]').click()
@@ -78,6 +76,6 @@ with sync_playwright() as p:
   if os.environ.get('BROWSER_PREVIEW_DIR'):
    dest=Path(os.environ['BROWSER_PREVIEW_DIR']);dest.mkdir(parents=True,exist_ok=True)
    page.screenshot(path=str(dest/('desktop-201.png' if size[0]>600 else 'mobile-201.png')),full_page=True)
-  print('BROWSER PASS',size,'16 tabs, catalog pagination, privacy-scoped request details, settings, column toggles, route, progress. errors=',errors)
+  print('BROWSER PASS',size,'16 tabs, catalog pagination, user-opened request details, settings, column toggles, route, progress. errors=',errors)
   page.close()
  browser.close()

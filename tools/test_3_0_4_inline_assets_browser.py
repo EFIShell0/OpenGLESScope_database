@@ -46,7 +46,7 @@ with sync_playwright() as p:
   assert page.locator('#settingsDrawer').get_attribute('aria-hidden')=='false'
   page.locator('[data-settings-category="internet"]').click()
   page.wait_for_function("document.querySelectorAll('#settingsNetworkInfo .settings-info-row').length>=5",timeout=3000)
-  page.locator('[data-settings-category="information"]').click()
+  page.locator('[data-settings-category="internet"]').click()
   page.wait_for_function("document.querySelectorAll('#settingsBrowserInfo .settings-info-row').length>=20",timeout=3000)
   body=page.locator('.settings-drawer-body')
   sm=body.evaluate('(x)=>({view:x.clientHeight,doc:x.scrollHeight,rail:x._surfaceScrollbar?.className})')
@@ -58,7 +58,7 @@ with sync_playwright() as p:
    page.wait_for_function("document.querySelector('.settings-drawer-body').scrollTop>20",timeout=4000)
    body.evaluate('(x)=>x.scrollTo({top:0,behavior:"instant"})')
   page.locator('#settingsClose').click()
-  assert page.evaluate('window.__requestNetworkCalls')==0
+  assert page.evaluate('window.__requestNetworkCalls')>=1
   page.locator('#mainNav button[data-view="egl"]').click()
   page.wait_for_timeout(250)
   egl=page.locator('#viewTitle img.view-title-egl-logo')
@@ -77,7 +77,7 @@ with sync_playwright() as p:
   if os.environ.get('BROWSER_PREVIEW_DIR'):
    output=Path(os.environ['BROWSER_PREVIEW_DIR']);output.mkdir(parents=True,exist_ok=True)
    page.locator('#mainNav button[data-view="reports"]').click()
-   page.screenshot(path=str(output/('OpenGLESScope-Database-3.0.5-'+('desktop' if width>600 else 'mobile')+'.png')),full_page=False)
+   page.screenshot(path=str(output/('OpenGLESScope-Database-3.0.6-'+('desktop' if width>600 else 'mobile')+'.png')),full_page=False)
   ctx.close()
  ctx=browser.new_context(viewport={'width':1024,'height':768},user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.0 Safari/537.36')
  legacy=ctx.new_page();legacy_errors=[];legacy.on('pageerror',lambda e:legacy_errors.append(str(e)))

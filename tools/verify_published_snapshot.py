@@ -19,7 +19,7 @@ def fetch(id):
         raw=response.read(MAX_INDEX+1)
         if len(raw)>MAX_INDEX:raise RuntimeError('Published snapshot is oversized')
     payload=json.loads(raw.decode('utf-8'))
-    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.5' or not isinstance(payload.get('reports'),list):
+    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.6' or not isinstance(payload.get('reports'),list):
         raise RuntimeError('Published artifact is not current schema-2 release')
     return any(isinstance(row,dict) and row.get('id')==id for row in payload['reports'])
 
