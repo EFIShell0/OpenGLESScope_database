@@ -1,14 +1,23 @@
-# OpenGLESScope Database 2.0.5
+# OpenGLESScope Database 3.0.0
 
-## 2.0.5
+## 3.0.0
+
+### Added
+- VulkanScope Database 1.4.12 opening/release guard rebranded for OpenGLESScope, foreground-only 3-second live report synchronization, new-report toasts, connection-loss/restoration notices and bounded new-database update dialog.
+- First-visit privacy/cookie/local-storage disclosure with independent session-only and explicit persistent acknowledgement.
+- Same-origin, bounded, text-only local legal notice viewer and seven source-specific license documents, including the actual upstream OpenGLESScope application MIT notice (not a blanket Database license).
+- Browser regression of startup, modal, consent, navigation and privacy on 1440×900 desktop and 390×844 mobile.
+
 ### Changed
-- Ported the VulkanScope Database 1.4.12 shared UI shell and its original CSS/animation layers to OpenGLESScope branding.
-- Unified header, workspace hero, Settings, loading treatment, report navigation and mobile/desktop composition.
-- Preserved all 16 GL/EGL destinations, local registry catalog, honest evidence semantics and privacy-scoped network request.
-- Updated Worker release identity to 2.0.5 without altering report schema or compatibility floor; pinned Wrangler 4.146.0.
-### Fixed
-- Removed stale frontend asset release references and excluded deploy instructions from source ZIP.
+- Made VulkanScope reference layout geometry the first, SHA-locked common stylesheet with OpenGLESScope magenta color mapping, not the inherited VulkanScope red/maroon palette.
+- Reused reference header/navigation, Reports toolbar, Settings, content/card geometry and responsive transitions while retaining all 16 OpenGL ES/EGL views and official application icon artwork.
+- Updated frontend/Worker/release-bootstrap/staged Pages artifact version handshake to 3.0.0.
 
+### Fixed
+- Removed the former duplicated generic CSS layer that overrode reference control shapes.
+- Fixed stale asynchronous navigation and missing frontend version parameter in release-bootstrap checks.
+- License viewing from privacy disclosure returns to the notice rather than silently recording consent.
+- New uploads remain restricted to OpenGLESScope 2.2.22 (versionCode 2222); stored historical reports remain readable and unchanged.
 
 ## 2.0.2
 
@@ -38,13 +47,13 @@
 - Versioned Pages assets and Worker handshake, without changing canonical report storage or producer compatibility.
 
 
-## 2.0.5
+## 3.0.0
 - Fixed the stale 2.0.2 Worker compatibility checks left in the 2.0.3 frontend that incorrectly displayed Database unavailable on a valid 2.0.3 API.
 - Aligned GL/EGL visible trademarks and icon assets with OpenGLESScope 2.2.22 while keeping raw query fields and registry names exact.
 - Restricted new report submissions to OpenGLESScope 2.2.22 (versionCode 2222); already stored older reports remain readable.
 - Strengthened API release stamp and visual regression verification.
 
-## 2.0.5
+## 3.0.0
 - Replaced the inherited/duplicated common interface layer with the exact reference stylesheet as the first layer.
 - Unified report toolbar, navigation SVGs, hero hierarchy, filter placement and report back-control structure.
 - Reduced overflowing hero metadata into short metrics; original technical metadata remains in API.
