@@ -52,7 +52,7 @@
 - Global search covers GPU, vendor, device, driver, OpenGL ES, EGL and loaded technical report fields without scanning or executing raw report text as markup.
 - Vendor, GPU and OpenGL ES version filters operate before 50-row pagination.
 - Report detail tabs remain visible even when the selected category is empty.
-- Detail tabs include Summary, OpenGL ES, EGL, Extensions, Limits, Formats, Precision, EGL Configs, Display/HDR, Diagnostics and Raw report.
+- Detail tabs include Overview, OpenGL ES, EGL, Extensions, Limits, Formats, Precision, EGL Configs, Display/HDR, Diagnostics and Raw report.
 - Extension aggregates distinguish reported from not listed; not listed is not mislabeled unsupported.
 - Limit and diagnostic aggregates preserve Available, Unavailable, Not applicable and Unknown semantics.
 - Compare uses exact report values and does not synthesize missing values.
@@ -836,3 +836,11 @@
 - The fixed 3-pixel top-of-viewport page progress indicator uses a span as expected by the shared reference CSS. Progress appears only for genuinely scrollable pages and is keyboard-, reduced-motion- and viewport-safe.
 - View-specific global filters follow the canonical Hardware, runtime/driver, Platform, Producer, Submission, Evidence state and Display evidence family sequence, translated strictly to the GL/EGL schema. Unavailable or inapplicable controls are hidden and their stale values never filter other destinations; display filters never leak into non-display views. Unknown evidence stays Unknown.
 - Production and clean-archive gates cover report-index data integrity, snapshot behavior, Settings and filter interaction, local branded assets, Worker network-info contract and both desktop/mobile scroll progress. No D1 migration or producer-version change. No deployment instructions in ZIP.
+
+
+## Release 3.0.7 canonical detail, navigation and startup motion conformity
+- The first report-detail tab is Overview, using canonical grouped identity, application, Android device, GPU/driver, OpenGL ES/EGL and display-evidence cards. The public report route keeps `/Overview` and accepts the earlier Summary alias without retaining Summary as a visible tab. All submitted values, canonical TXT and existing eleven detail destinations remain accessible.
+- The report action group, SVG favorite artwork, labels and action feedback remain inside the detail hero with shared button geometry, while the additional canonical TXT export stays available. The Back button is immediately visible on direct, clicked and history-restored report navigation; it has focus-safe header clearance and returns to the prior reports scroll position.
+- Reference-duration 120 ms report exit and 210 ms report entry animation, existing 105/180 ms detail-tab motion and 90/150 ms workspace transitions use a single cancelable navigation lifecycle. Reduced-motion skips nonessential animations. Stale report loads and rapid route changes must never restore a superseded view.
+- Initial database progress reflects real report processing, closes through one canonical loading lifecycle, and never reopens on foreground three-second sync. The workspace shell and top header stay correctly sticky: clipping the horizontal overflow must not create a competing body scroll container. Android/mobile layout and OpenGLESScope magenta branding are preserved.
+- Release requires exact source geometry audit, static negative-mutation gates, real desktop and mobile Chromium overview, Back, sticky header, loader, tab, action, scroll restoration and prior comparison regression, and clean extracted ZIP quality verification. No report/Worker schema migration and no change to the 2.2.22/2222 submission gate.

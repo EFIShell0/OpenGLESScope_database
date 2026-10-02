@@ -23,7 +23,7 @@ with sync_playwright() as p:
   page.wait_for_selector('#detailTabBody .detail-section-intro',timeout=10000)
   detail_tabs=page.locator('#detailContent .detail-tabs [data-tab]')
   assert detail_tabs.count()==11
-  for tab in ['summary','opengles','egl','extensions','limits','formats','precision','eglconfigs','display','diagnostics','raw']:
+  for tab in ['overview','opengles','egl','extensions','limits','formats','precision','eglconfigs','display','diagnostics','raw']:
    page.locator(f'#detailContent .detail-tabs [data-tab="{tab}"]').click()
    assert page.locator('#detailTabBody .detail-section-intro').count()==1,(width,tab)
    assert page.locator('#detailTabBody .detail-evidence-panel').count()>=1,(width,tab)
@@ -64,6 +64,6 @@ with sync_playwright() as p:
   page.wait_for_function("document.querySelector('#newReportToast .new-report-toast-title')?.textContent==='1 new report added'",timeout=5000)
   assert 'New Live Reference GPU' in page.locator('#content').inner_text()
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.6 PARITY PASS',width,height,'5 hero metrics, 11 evidence tabs, A/B compare swap/filter/pin/minimize, 64th live report+toast')
+  print('CHROMIUM 3.0.7 PARITY PASS',width,height,'5 hero metrics, 11 evidence tabs, A/B compare swap/filter/pin/minimize, 64th live report+toast')
   ctx.close()
  browser.close()

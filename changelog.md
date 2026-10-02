@@ -1,4 +1,11 @@
-# OpenGLESScope Database 3.0.6
+# OpenGLESScope Database 3.0.7
+
+## 3.0.7
+- Replaced detail Summary with a grouped Overview matching the common report identity, producer, Android device, GPU/driver, GL/EGL and Display evidence hierarchy. Preserved all 11 detail destinations and accepted legacy Summary routes.
+- Moved Favorite, Share, Copy and canonical JSON/TXT actions into the detail hero, restored shared action-button SVG and spacing.
+- Restored visible accessible Back after report navigation, correct sticky header through root scroll clipping and prior Reports scroll position upon return.
+- Aligned cancelable report enter/exit and opening loader lifecycle with the common motion reference while honoring reduced motion.
+- Kept all existing evidence, producer admission, D1 reports, security controls and snapshot behavior unchanged.
 
 ## 3.0.6
 - Matched Settings Internet with reference-shaped detailed request-scoped network evidence (26 rows) and browser/runtime capability information (34 rows) in two sections; removed duplicate browser panel and extraneous network actions and Settings page-size control. Network details load only after Internet is opened, IPv4/IPv6 start mosaicked and all private observations clear on close.

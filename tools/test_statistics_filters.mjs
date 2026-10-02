@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
-const source=fs.readFileSync(new URL('../assets/app.v3006.js',import.meta.url),'utf8');
+const source=fs.readFileSync(new URL('../assets/app.v3007.js',import.meta.url),'utf8');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
-const css=fs.readFileSync(new URL('../assets/site.v3006.css',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../assets/site.v3007.css',import.meta.url),'utf8');
 for(const id of ['vendorFilter','gpuFilter','apiFilter','eglFilter','driverModeFilter','driverVersionFilter','androidFilter','deviceModelFilter','abiFilter','appVersionFilter','extensionTokenFilter','submissionAgeFilter','resolutionFilter','refreshRateFilter','wideColorFilter','hdrStateFilter','hdrTypeFilter','clearFilters'])assert.equal(html.includes(`id="${id}"`),true,`missing cohort filter ${id}`);
 for(const token of ['statisticsSliceLimit','statisticsExtensionScope','statisticsExtensionNamespace','statisticsExtensionMinShare','statisticsExtensionSearch','Extension enumeration ranking','Submission timeline','data-stat-filter','not device-population or market-share estimates'])assert.equal(source.includes(token),true,`missing Statistics token ${token}`);
 for(const token of ['extensionRowSearch','limitRowSearch','formatRowSearch','precisionRowSearch'])assert.equal(source.includes(token),true,`missing view search ${token}`);

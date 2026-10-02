@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='3.0.6',API=String(window.OPENGLESSCOPE_DATABASE_API||'').replace(/\/$/,''),$=id=>document.getElementById(id);
+const VERSION='3.0.7',API=String(window.OPENGLESSCOPE_DATABASE_API||'').replace(/\/$/,''),$=id=>document.getElementById(id);
 const reduced=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;
 const reachable=()=>navigator.onLine!==false;
 const semver=value=>/^\d+\.\d+\.\d+$/.test(String(value||''))?String(value).split('.').map(Number):null;

@@ -1,4 +1,11 @@
-# OpenGLESScope Database 3.0.6 build audit
+# OpenGLESScope Database 3.0.7 build audit
+
+## 3.0.7 Overview, action geometry, Back and startup regression
+- First report-detail destination uses Overview with shared grouped metadata hierarchy; all existing GL/EGL and Display evidence is retained without claiming unsupported fields. Existing Overview URLs remain canonical; earlier Summary alias remains readable.
+- Shared detail hero contains all user report actions including additional canonical TXT export. Favoriting uses the common SVG and visible state labels, independent of report-link activation.
+- Restored cancelable 120 ms detail exit/210 ms entry, 105/180 ms tab, 90/150 ms workspace transitions, initial loader closure and reduced-motion behavior.
+- Fixed accessible Back placement under the sticky header on mobile/desktop; prevented horizontal clipping from creating a non-sticky nested body scrollbar. Back returns to the previous report list scroll.
+- The release adds deterministic shell negative mutation checks and desktop/mobile Chromium regression; no API schema or D1 change.
 
 ## 3.0.6 Settings, filter and progress repair
 - Settings Internet now has 26 request-scoped observation rows and 34 local browser/runtime rows in the reference two-section layout. No network lookup before an explicit user visit to Internet; observed addresses start mosaicked and clear when Settings closes.
@@ -25,10 +32,10 @@
 - Static snapshot verification accepts the 3.0.3 release identity, preserving the separate accepted-report + Pages publication verification flow.
 
 
-- Database: 3.0.6
+- Database: 3.0.7
 - Current producer: OpenGLESScope 2.2.22 / 2222
 - Submission schema: 2. Technical report schema: 5. Normalizer: 16.
-- UI assets: `app.v3006.js`, `site.v3006.css` and `config.js?v=3006`.
+- UI assets: `app.v3007.js`, `site.v3007.css` and `config.js?v=3007`.
 - Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
 - Worker and Pages versions must match before deployment. Check the existing D1 migration list; migration 0004 is required only on databases that have not applied it. No historical payload rewrite.
 - Release checks: `python -B tools/quality_gate.py` and clean extracted repeat. Real Cloudflare deployment remains separate verification.
@@ -55,12 +62,12 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 ## 3.0.0 native theme/experience release
 - The shared reference's layout geometry is retained with OpenGLESScope #BA2A8D branding rather than VulkanScope red.
 - Adds native startup gate, bounded same-origin version checks, network status notices, 3-second live sync, new-report toast, privacy/local-storage disclosure and actual locally packaged third-party licenses.
-- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.6.
+- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.7.
 - Visual/browser checks must be distinguished from actual Cloudflare deployment, which is a separate operation.
 
 ## 3.0.0 final explicit experience regression
 - `python -B tools/test_3_0_0_live_browser.py`: actual inline runtime of all first-party shipped scripts, desktop and mobile, startup hold release, first-visit privacy, viewing and returning from genuine application MIT license without silently acknowledging, session-only consent, source-bound license viewer, seven legal cards, Settings transitions, all 16 destinations, and no unsolicited network address request; zero JavaScript page exceptions. Production Cloudflare is not simulated as proof of remote deployment.
-- Startup asset URLs include `?v=3006` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
+- Startup asset URLs include `?v=3007` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
 
 ## 3.0.3 publication and interaction verification
 - Actual Chromium at 1440x900 and 390x844: 63 submitted report summaries, five live count metrics, all eleven evidence tabs, reference Compare A/B/swap/search/pin/minimize, and a simulated 64th D1 report updating the count and toast without JavaScript errors.
@@ -69,7 +76,7 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 - This release enables automatic future upgrade checks in tabs running 3.0.3 onward. A tab that remains open on 3.0.2 uses the already-loaded old JavaScript and still needs its existing manual Update now action once to enter the new policy.
 - Quality gate is run on original and independently clean-extracted package. Browser tests use only mocked content, with no live D1 insert or claimed external Cloudflare deployment.
 
-## 3.0.6 parity repair and independent source review
+## 3.0.7 parity repair and independent source review
 - Fixed first-load database-loading class remaining set after loader dismissal, which had suppressed the transplanted reference scroll UI on every update.
 - Switched Settings Internet and Browser to card/grid row hierarchy rather than single-line/plain-paragraph summaries; network metadata requires the user to open Settings Internet and remains masked by default.
 - Used official white EGL v028 (pixel-white transparency), reference HDR10+ v1014, and exact reference green Android filter vector.
