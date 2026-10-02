@@ -7,7 +7,7 @@ out=(Path(sys.argv[1]) if len(sys.argv)>1 else root/'_site').resolve()
 if out.exists(): shutil.rmtree(out)
 out.mkdir(parents=True)
 files=['.nojekyll','index.html','config.js','report.schema.json','400.html','401.html','403.html','404.html','405.html','408.html','409.html','413.html','415.html','429.html','500.html','502.html','503.html','504.html','error.html']
-assets=['app.v3001.js','site.v3001.css','experience.v3001.js','browser-compat.v3001.js','release-bootstrap.v3001.js','scroll-system.v3001.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v030.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png']
+assets=['app.v3002.js','site.v3002.css','experience.v3002.js','browser-compat.v3002.js','release-bootstrap.v3002.js','scroll-system.v3002.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v030.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png']
 for group in ['gpu-vendors','hdr']:
     for p in sorted((root/'assets'/group).rglob('*')):
         if p.is_file(): assets.append(p.relative_to(root/'assets').as_posix())
@@ -27,8 +27,8 @@ for src in sorted((root/'data').glob('*.json')):
     shutil.copy2(src,out/'data'/src.name)
 import json
 marker=json.loads((out/'data/release.json').read_text())
-assert marker['databaseVersion']=='3.0.1' and marker['appAsset']=='assets/app.v3001.js' and marker['cacheKey']=='3001' and marker['releaseReady'] is False
-assert all((out/'assets'/asset).is_file() for asset in ['app.v3001.js','site.v3001.css','experience.v3001.js','browser-compat.v3001.js','release-bootstrap.v3001.js'])
+assert marker['databaseVersion']=='3.0.2' and marker['appAsset']=='assets/app.v3002.js' and marker['cacheKey']=='3002' and marker['releaseReady'] is False
+assert all((out/'assets'/asset).is_file() for asset in ['app.v3002.js','site.v3002.css','experience.v3002.js','browser-compat.v3002.js','release-bootstrap.v3002.js'])
 marker['releaseReady']=True
 (out/'data/release.json').write_text(json.dumps(marker,separators=(',',':'))+'\n')
 print(f'OpenGLESScope Database Pages artifact staged: {out}')

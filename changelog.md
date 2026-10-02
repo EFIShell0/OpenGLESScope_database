@@ -1,6 +1,6 @@
-# OpenGLESScope Database 3.0.1
+# OpenGLESScope Database 3.0.2
 
-## 3.0.1
+## 3.0.2
 
 ### Added
 - VulkanScope Database 1.4.12 opening/release guard rebranded for OpenGLESScope, foreground-only 3-second live report synchronization, new-report toasts, connection-loss/restoration notices and bounded new-database update dialog.
@@ -11,7 +11,7 @@
 ### Changed
 - Made VulkanScope reference layout geometry the first, SHA-locked common stylesheet with OpenGLESScope magenta color mapping, not the inherited VulkanScope red/maroon palette.
 - Reused reference header/navigation, Reports toolbar, Settings, content/card geometry and responsive transitions while retaining all 16 OpenGL ES/EGL views and official application icon artwork.
-- Updated frontend/Worker/release-bootstrap/staged Pages artifact version handshake to 3.0.1.
+- Updated frontend/Worker/release-bootstrap/staged Pages artifact version handshake to 3.0.2.
 
 ### Fixed
 - Removed the former duplicated generic CSS layer that overrode reference control shapes.
@@ -47,14 +47,20 @@
 - Versioned Pages assets and Worker handshake, without changing canonical report storage or producer compatibility.
 
 
-## 3.0.1
+## 3.0.2
 - Fixed the stale 2.0.2 Worker compatibility checks left in the 2.0.3 frontend that incorrectly displayed Database unavailable on a valid 2.0.3 API.
 - Aligned GL/EGL visible trademarks and icon assets with OpenGLESScope 2.2.22 while keeping raw query fields and registry names exact.
 - Restricted new report submissions to OpenGLESScope 2.2.22 (versionCode 2222); already stored older reports remain readable.
 - Strengthened API release stamp and visual regression verification.
 
-## 3.0.1
+## 3.0.2
 - Replaced the inherited/duplicated common interface layer with the exact reference stylesheet as the first layer.
 - Unified report toolbar, navigation SVGs, hero hierarchy, filter placement and report back-control structure.
 - Reduced overflowing hero metadata into short metrics; original technical metadata remains in API.
 - Kept OpenGL® ES™ / EGL™ labels and the exact 2.2.22 (versionCode 2222) new-report submission gate.
+
+### 3.0.2
+- Restored reference-style collapsible report columns, exact report ID copy and report-row keyboard/button separation.
+- Rebuilt Devices and Versions aggregation with interactive cohort selection, charts and bounded report-count tables.
+- Synchronized offline/checking/unavailable/restored banners, live report notifications and Settings network state without automatic IP queries.
+- Preserved historical report reads and the strict OpenGLESScope 2.2.22/versionCode 2222 submission boundary.

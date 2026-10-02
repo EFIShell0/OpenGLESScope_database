@@ -787,7 +787,7 @@
 - GitHub snapshot secret and production D1 content must not be embedded in ZIP. DEPLOY.md, DEPLOY_<version>.md and equivalent deployment documents must never ship; commands only in chat.
 
 
-## Database 3.0.1 canonical interaction and semantic-color parity
+## Database 3.0.2 canonical interaction and semantic-color parity
 - Adopt the actual VulkanScope Database 1.4.12 viewport and surface scrollbar algorithms, including thumb dragging, keyboard navigation, arrow endpoints, dynamic content updates and reduced motion. Never hide native root scrollbars unless the custom viewport scrollbar is mounted.
 - The canonical shared CSS geometry and matching non-API SVG path shapes are immutable; only OpenGLESScope brand/accent colors and GL/EGL-specific evidence labels/artwork may differ. Semantic error, unsupported, warning, success and neutral colors follow the VulkanScope reference, not brand pink.
 - Keep all long evidence tables bounded to 10, 25 or 50 visible rows with validated numeric pagination and explicit total counts; never discard or infer report evidence.
@@ -795,3 +795,11 @@
 - Existing D1 migrations and stored historical reports remain untouched. New submissions require exactly OpenGLESScope 2.2.22 / versionCode 2222. Any GL/EGL field must remain backed by submitted evidence.
 - Run the negative static source-reference checks, Chrome desktop and mobile scrollbar interactions, Worker contract and full quality gate on the original source and clean-extracted deterministic package.
 - Never include any DEPLOY*.md document inside a release ZIP.
+
+## Release 3.0.2 interface equivalence and interaction safety
+- The reference Reports table and GL/EGL adaptation preserve collapsible Submitted, Vendor and directly reported EGL API columns, exact SHA-256 ID copy, favorites, bounded page sizing and invalid page rejection.
+- Devices and Versions show the reference-style chart, selectable aggregation dimension, cohort report counts, and bounded 10/25/50-row tables; missing GL/EGL evidence stays Unknown.
+- Network banners use the reference offline, checking, unavailable, restored and automatic retraction lifecycle. Successful Worker probes, not the browser online flag alone, establish Database reachability.
+- Connection state updates Internet Settings without querying IP details. Request-visible network information remains explicit opt-in and never enters report payloads or D1.
+- First-party brand colors may differ from the reference, while semantic success, warning, failure, unknown and neutral colors retain their distinct roles.
+- New cross-page interaction regression tests cover both desktop and mobile layouts, report row action isolation, control geometry and coherent release/Worker handshake.
