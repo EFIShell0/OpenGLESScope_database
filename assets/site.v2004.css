@@ -1277,3 +1277,18 @@ body{background:radial-gradient(circle at 12% -10%,rgba(186,42,141,.16),transpar
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 #metrics .metric .value{overflow-wrap:anywhere}#metrics .metric:nth-child(n+5) .value{font-size:clamp(12px,1vw,15px);line-height:1.33}#metrics .metric:nth-child(n+5){min-width:0}
+
+
+:root{--accent:#ba2a8d;--accent2:#f06bc7}
+.hero-v127-brand-heading{display:flex;align-items:center;flex-wrap:wrap;gap:.18em .32em;line-height:1.12}
+.hero-v127-brand-heading .official-gles-art{width:clamp(150px,21vw,238px);height:auto;aspect-ratio:3/1;object-fit:contain;flex:0 0 auto;vertical-align:middle}
+.hero-v127-brand-heading .brand-heading-continuation{white-space:normal;min-width:0;letter-spacing:-.045em}
+.hero-v127 .hero-v127-kicker-row .eyebrow{letter-spacing:.105em}
+.hero-v127 .metric{min-width:0;overflow:hidden;overflow-wrap:anywhere}
+.hero-v127 .metric .value{overflow-wrap:anywhere;word-break:normal;font-size:clamp(14px,1.07vw,20px)}
+.hero-v127 .metric:nth-child(n+5) .value{font-size:13px;line-height:1.45;letter-spacing:0;font-weight:700}
+.nav-gles-logo{width:30px;height:10px;object-fit:contain;flex:0 0 30px}
+.nav-egl-logo{width:20px;height:12px;object-fit:contain;flex:0 0 20px}
+.view-title-gles-logo{width:64px;height:22px;object-fit:contain;flex:0 0 64px}
+@media(max-width:760px){.hero-v127-brand-heading{gap:8px}.hero-v127-brand-heading .official-gles-art{width:clamp(142px,55vw,196px)}.hero-v127 .metric:nth-child(n+5) .value{font-size:12px}}
+@media(max-width:390px){.hero-v127-brand-heading .brand-heading-continuation{font-size:clamp(28px,9vw,38px)}}

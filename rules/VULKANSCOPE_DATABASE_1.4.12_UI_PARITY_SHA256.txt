@@ -1,2 +1,2 @@
 VulkanScope Database 1.4.12 assets/site.v1412.css SHA-256: bd5957461701439a7655c652b4e560cb84b7cc0163f202a257e019c2c468181b
-OpenGLESScope Database 2.0.3 includes the complete byte-identical common stylesheet block inside assets/site.v2003.css.
+OpenGLESScope Database 2.0.4 includes the complete byte-identical common stylesheet block inside assets/site.v2004.css.
