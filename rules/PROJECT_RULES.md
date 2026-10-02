@@ -751,6 +751,13 @@
 - Method restriction, cross-origin denial and not-persisted behavior are release-blocking.
 
 
-## 2.0.2 Wrangler security maintenance
-- The current project-local Wrangler dependency is pinned to 4.146.0. Historical release pin records remain unchanged.
-- Dependency audit and all release gates must pass before deployment.
+## Release 2.0.3 exact VulkanScope 1.4.12 shared UI shell contract
+- Base the common HTML/CSS/SVG chrome on the actual VulkanScope Database 1.4.12 release, not visual imitation. Preserve identical structural classes, breakpoints, focus and transition rules for header/navigation, hero-v127, Settings categories, database loading, progress, destructive confirmation, and footer.
+- Preserve OpenGLESScope GL/EGL brand identity, authoritative registry, evidence state classes, 16 API-appropriate workspaces, current report identifiers and API schema. Do not render Vulkan-specific fields or fabricated runtime evidence.
+- GL/EGL-specific CSS must precede the exact frozen VulkanScope common CSS; only a bounded tail may adapt accents and existing GL/EGL controls. The common CSS block SHA-256 is a release-blocking invariant.
+- Browser checks must cover desktop and mobile navigation, all Settings categories, registry pagination, safe regional preferences, explicit-only network diagnostics, report rendering and console-error absence.
+- Dependency maintenance inherits the verified Wrangler 4.146.0 exact pin, but no new lockfile may be fabricated from an offline install. npm audit and authenticated Cloudflare deployment remain separately required live gates.
+- Snapshot GitHub token is a remote Cloudflare Secret, never ZIP material. The D1 chunk migration and existing reports must be preserved.
+- Do not place DEPLOY.md, DEPLOY_<version>.md or equivalent instructions inside distribution ZIP files. Provide deployment commands only in the conversation.
+
+- Before publication, run both `python -B tools/test_2_0_3_browser.py` and `python -B tools/test_2_0_3_full_browser_regression.py` with a local Playwright Chromium. Both desktop and mobile passes are release evidence.

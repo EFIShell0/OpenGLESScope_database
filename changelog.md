@@ -1,4 +1,14 @@
-# OpenGLESScope Database 2.0.2
+# OpenGLESScope Database 2.0.3
+
+## 2.0.3
+### Changed
+- Ported the VulkanScope Database 1.4.12 shared UI shell and its original CSS/animation layers to OpenGLESScope branding.
+- Unified header, workspace hero, Settings, loading treatment, report navigation and mobile/desktop composition.
+- Preserved all 16 GL/EGL destinations, local registry catalog, honest evidence semantics and privacy-scoped network request.
+- Updated Worker release identity to 2.0.3 without altering report schema or compatibility floor; pinned Wrangler 4.146.0.
+### Fixed
+- Removed stale frontend asset release references and excluded deploy instructions from source ZIP.
+
 
 ## 2.0.2
 

@@ -2,11 +2,13 @@ from pathlib import Path
 import hashlib,tempfile,zipfile,sys
 ROOT=Path(__file__).resolve().parents[1]
 EXCLUDED={'.git','__pycache__','node_modules','.wrangler','_site'}
+LOCAL_CHECKOUT_ONLY={'.gitattributes','worker/package-lock.json','rules/0.2.6_OPENGLESSCOPE_0.3.3_FULL_DATABASE_AUDIT.md'}
 def package_files(root):
     out=[]
     for p in root.rglob('*'):
         if not p.is_file(): continue
         rel=p.relative_to(root)
+        if rel.as_posix() in LOCAL_CHECKOUT_ONLY: continue
         if any(part in EXCLUDED for part in rel.parts): continue
         if p.suffix in {'.pyc','.pyo'}: continue
         out.append(rel.as_posix())

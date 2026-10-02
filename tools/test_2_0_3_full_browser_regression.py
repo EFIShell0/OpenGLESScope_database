@@ -4,16 +4,17 @@ import tempfile
 import json
 from playwright.sync_api import sync_playwright
 r=Path(__file__).resolve().parents[1]
-health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'2.0.2','compatibleProducer':'OpenGLESScope 0.1.17 through 2.2.22'}
-index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'2.0.2','currentProducer':'OpenGLESScope 2.2.22','reports':[],'nextCursor':None}
-sync={'databaseReleaseVersion':'2.0.2','workerReleaseVersion':'2.0.2','reportCount':0,'latestReportId':'','latestSubmittedAt':'','syncToken':'0::'}
+health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'2.0.3','compatibleProducer':'OpenGLESScope 0.1.17 through 2.2.22'}
+index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'2.0.3','currentProducer':'OpenGLESScope 2.2.22','reports':[],'nextCursor':None}
+sync={'databaseReleaseVersion':'2.0.3','workerReleaseVersion':'2.0.3','reportCount':0,'latestReportId':'','latestSubmittedAt':'','syncToken':'0::'}
 import re
 html=(r/'index.html').read_text()
-html=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>','',html)
-html=html.replace('<link rel="stylesheet" href="./assets/site.v2002.css">','<style>'+(r/'assets/site.v2002.css').read_text()+'</style>')
+html=re.sub(r'<meta[^>]*http-equiv="Content-Security-Policy"[^>]*>','',html)
+html=re.sub(r'<link\b[^>]*href="[^"]*site\.v2003\.css"[^>]*>',lambda x:'<style>'+(r/'assets/site.v2003.css').read_text()+'</style>',html)
 mock_script="""<script>window.OPENGLESSCOPE_DATABASE_API='https://openglesscope-database-api.openglesscope.workers.dev';window.__requestNetworkCalls=0;window.fetch=async function(input){const u=String(input);let x;if(u.includes('/v1/network-info')){window.__requestNetworkCalls++;x=MOCK_NETWORK;}else if(u.includes('/v1/health'))x=MOCK_HEALTH;else if(u.includes('/v1/sync'))x=MOCK_SYNC;else if(u.includes('/v1/reports'))x=MOCK_INDEX;else if(u.includes('registry-catalog'))x=MOCK_CATALOG;else if(u.includes('data/index.json'))x=MOCK_INDEX;else x={};return new Response(JSON.stringify(x),{status:200,headers:{'content-type':'application/json'}})}</script>"""
 mock_script=mock_script.replace('MOCK_NETWORK',json.dumps({'networkInfoVersion':1,'accessFamily':'IPv6','activeAddress':'2001:db8::42','ipv4':{'address':'','status':'not_observed'},'ipv6':{'address':'2001:db8::42','status':'observed'},'country':'TR','region':'Istanbul','city':'Istanbul','timezone':'Europe/Istanbul','colo':'IST','asOrganization':'Test Network'})).replace('MOCK_HEALTH',json.dumps(health)).replace('MOCK_INDEX',json.dumps(index)).replace('MOCK_SYNC',json.dumps(sync)).replace('MOCK_CATALOG',(r/'data/registry-catalog.v2000.json').read_text())
-html=html.replace('<script src="./config.js?v=2002"></script>',mock_script).replace('<script src="./assets/app.v2002.js" defer></script>','<script>'+(r/'assets/app.v2002.js').read_text()+'</script>')
+html,n=re.subn(r'<script\b[^>]*src="[^"]*config\.js[^"]*"[^>]*>\s*</script>',lambda x:mock_script,html);assert n==1,n
+html,n=re.subn(r'<script\b[^>]*src="[^"]*app\.v2003\.js[^"]*"[^>]*>\s*</script>',lambda x:'<script>'+(r/'assets/app.v2003.js').read_text()+'</script>',html);assert n==1,n
 with sync_playwright() as p:
  browser=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox','--disable-gpu'])
  for size in [(1440,900),(390,844)]:
@@ -57,8 +58,8 @@ with sync_playwright() as p:
   page.locator('#settingsRegionalTimeZone').evaluate('(el)=>{el.value="UTC";el.dispatchEvent(new Event("change",{bubbles:true}))}')
   page.locator('#settingsRegionalSeason').evaluate('(el)=>{el.value="standard";el.dispatchEvent(new Event("change",{bubbles:true}))}')
   assert 'standard display' in page.locator('#settingsRegionalPreview').inner_text()
-  page.locator('#settingsSubmittedDefault').check(force=True)
-  page.locator('#settingsVendorDefault').check(force=True)
+  page.locator('label:has(#settingsSubmittedDefault)').click();assert page.locator('#settingsSubmittedDefault').is_checked()
+  page.locator('label:has(#settingsVendorDefault)').click();assert page.locator('#settingsVendorDefault').is_checked()
   page.locator('[data-settings-category="internet"]').click()
   assert page.evaluate('window.__requestNetworkCalls')==0
   page.locator('#settingsRequestNetwork').click()

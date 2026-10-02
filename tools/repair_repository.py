@@ -9,8 +9,8 @@ g=parser.add_mutually_exclusive_group(required=True)
 g.add_argument('--apply',action='store_true')
 g.add_argument('--check',action='store_true')
 args=parser.parse_args()
-current_app='app.v2002.js'
-current_css='site.v2002.css'
+current_app='app.v2003.js'
+current_css='site.v2003.css'
 workflow_template=(root/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 issues=[]
 for p in (root/'assets').glob('app.v*.js'):
@@ -37,12 +37,12 @@ if args.apply:
         else: p.unlink(missing_ok=True)
     workflow_dir.mkdir(parents=True,exist_ok=True)
     pages.write_text(workflow_template,encoding='utf-8')
-    print('OpenGLESScope Database 2.0.2 repository repair: APPLIED')
+    print('OpenGLESScope Database 2.0.3 repository repair: APPLIED')
     sys.exit(0)
 if issues or workflow_wrong or transient:
-    print('OpenGLESScope Database 2.0.2 repository repair: CHANGES REQUIRED')
+    print('OpenGLESScope Database 2.0.3 repository repair: CHANGES REQUIRED')
     for p in issues: print(p.relative_to(root))
     for p in transient: print(p.relative_to(root))
     if workflow_wrong: print('.github/workflows/pages.yml')
     sys.exit(1)
-print('OpenGLESScope Database 2.0.2 repository repair: CLEAN')
+print('OpenGLESScope Database 2.0.3 repository repair: CLEAN')
