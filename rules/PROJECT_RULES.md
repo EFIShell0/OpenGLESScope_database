@@ -921,3 +921,14 @@
 ## Release 3.0.18 — one accessible search-clear action
 - An input with an explicitly rendered search-clear control MUST NOT receive a duplicate automatically enhanced clear control. This is required in desktop, portrait and landscape widths and after workspace re-entry.
 - Preserve the existing native cancel suppression, search-input focus, registry filtering, submission gate 3.0.1/3001, canonical evidence, and snapshot security.
+
+## Release 3.0.20 paired producer floor
+- New POST submissions accept only exact OpenGLESScope 3.0.2 / versionCode 3002. Earlier and future versions are rejected, including 3.0.1; all stored historical reports remain GET-readable without alteration.
+- User-facing compatibility notice in the producer application is the exact VulkanScope 3.0.12 warning with branding substitution only.
+- No D1 schema changes, destructive migrations, fabricated GL/EGL evidence or snapshot policy regressions are permitted.
+
+## Release 3.0.20 — exact producer 3.0.3 metric presentation pairing
+- New POST submissions accept only OpenGLESScope 3.0.3 / versionCode 3003, schema 2 and technicalReport schema 5. Older and future app versions are forbidden from POST even when older schema evidence is parseable for historical read-only reports.
+- Previously accepted 3.0.2/3002 and other historic payloads remain GET-readable and unmodified. No D1 migration, evidence-name inference, renderer rewriting or canonical report mutation.
+- Display summary producer baseline and cache-bootstrap identity advance to 3.0.3/3003, while the database release identity and cache-busted filenames advance independently to 3.0.20/v3020.
+- Application 3.0.3 uses the shared responsive accent metric-card grid for capability/filter/pager counts. Database does not reinterpret totals, manufacture vendor or feature names or backfill historical cards.

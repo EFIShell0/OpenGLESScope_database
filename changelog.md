@@ -1,13 +1,24 @@
-# OpenGLESScope Database 3.0.18
+# OpenGLESScope Database 3.0.20
+
+- Changed: Exact new submission producer OpenGLESScope 3.0.3 / versionCode 3003, schema 2 / technicalReport schema 5.
+- Preserved: Earlier reports read-only, normalizer 16, D1 schema, snapshot integrity, published cache and existing GL/EGL evidence.
+- Changed: Paired release metadata and published cache asset version v3020 for the application's responsive capability metric presentation.
+
+# OpenGLESScope Database 3.0.20
+
+- Changed: New POST requests require exact OpenGLESScope 3.0.2 / versionCode 3002.
+- Fixed: Version metadata and quality gates aligned with the paired application; existing historical reports remain readable.
+
+# OpenGLESScope Database 3.0.20
 
 - Fixed: Encyclopedia search now shows exactly one custom clear (X) button in portrait, landscape and desktop. The shared enhancement does not inject a second clear action where one is already provided.
-- Preserved: registry entries, fast/focus-safe search, 3.0.1/3001 submission requirement, historical reads, Worker and snapshot contracts.
+- Preserved: registry entries, fast/focus-safe search, 3.0.2/3002 submission requirement, historical reads, Worker and snapshot contracts.
 
 # OpenGLESScope Database 3.0.17
 
 - Fixed: ANGLE presentation detects explicitly reported physical GPU family/models across all shipped GPU vendor artwork, not only Qualcomm; misleading software/unknown icons are prevented. Canonical raw renderer/vendor evidence remains unchanged.
 - Added: EGL APIs display-by-default toggle beside Submitted/GPU vendor in Preferences; selection is persisted only with Remember on this device enabled.
-- Changed: New POST requires exact OpenGLESScope 3.0.1 / versionCode 3001; 3.0.0 and older/newer are rejected. Historical reports remain readable.
+- Changed: New POST requires exact OpenGLESScope 3.0.2 / versionCode 3002; 3.0.0 and older/newer are rejected. Historical reports remain readable.
 - Preserved: 250 country codes/flags, date/time settings, 5,261 registry symbols, existing D1 migrations and snapshot verification.
 
 # OpenGLESScope Database 3.0.16
@@ -145,7 +156,7 @@
 - Reworked Reports table, main destinations, connection messages, statistics presentation and data-specific per-tab structure.
 - Preserved source-locked common viewport/inner scrollbar behavior, neutral semantic colors and table paging with OpenGLESScope-specific visuals.
 
-## 3.0.1
+## 3.0.2
 - Restored reference viewport and inner scrollbar interactions, scrollbar keyboard/drag controls, bounded 10/25/50 evidence pagination and responsive table overflow.
 
 ## 3.0.0

@@ -1,14 +1,16 @@
-# OpenGLESScope Database 3.0.18 build audit
+# OpenGLESScope Database 3.0.20 build audit
 
-- Database: 3.0.18. Current producer: OpenGLESScope 3.0.1 / 3001. Technical report schema 5; normalizer 16; no D1 migrations.
-- Current frontend: `app.v3018.js`, `site.v3018.css` and `config.js?v=3018`.
+- Database: 3.0.20
+- Current producer: OpenGLESScope 3.0.3 / 3003
+- Normalizer: 16; technical report schema 5; no D1 migrations.
+- Current frontend: `app.v3020.js`, `site.v3020.css` and `config.js?v=3020`.
 - Added evidence-bound multi-family ANGLE identity matching and official bundled GPU logo selection. Driver-supplied raw text and stored report hashes remain unchanged. SwiftShader, missing/multiple signatures and unavailable brand assets never generate invented artwork.
 - Settings adds EGL APIs default expansion next to Submitted and GPU vendor. Opt-in persistence restores all three and never stores full report payloads.
-- Existing historical reports remain readable; only OpenGLESScope 3.0.1/3001 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
+- Existing historical reports remain readable; only OpenGLESScope 3.0.3/3003 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
 
-## 3.0.18 encyclopedia single clear action
+## 3.0.20 encyclopedia single clear action
 - Prevent duplicate X buttons: encyclopedia owns #registrySearchClear; the shared search enhancer skips any search input whose immediate field container already owns a clear control. The custom clear remains focus safe; native search cancel is hidden by existing shared CSS.
-- Desktop, narrow portrait and landscape browser regression confirms one visible and one DOM clear button after typing and after route re-entry. Worker, stored reports, 3.0.1 producer acceptance and D1 schema are unchanged.
+- Desktop, narrow portrait and landscape browser regression confirms one visible and one DOM clear button after typing and after route re-entry. Worker, stored reports, 3.0.2 producer acceptance and D1 schema are unchanged.
 
 ## Historical 3.0.16 regional selection and registry workspace
 - Cross-checked the complete 250 ISO country/bundled-flag asset names, flag bytes and country-to-primary-IANA time-zone data against the immutable shared reference; country or runtime data was not fabricated.
@@ -95,7 +97,7 @@
 
 
 - Database: 3.0.17
-- Current producer: OpenGLESScope 3.0.1 / 3001
+- Current producer: OpenGLESScope 3.0.2 / 3002
 - Submission schema: 2. Technical report schema: 5. Normalizer: 16.
 - UI assets: `app.v3017.js`, `site.v3017.css` and `config.js?v=3017`.
 - Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
@@ -155,3 +157,6 @@ Information notice deduplication; no healthy release-transition connection banne
 - Exact new POST: OpenGLESScope 3.0.0 / versionCode 3000; schema 2, technicalReport 5, normalizer 16. Old D1 reports remain readable.
 - Six overview cards, including current producer baseline and compatible-producer policy.
 - Partner Android source release: OpenGLESScope 3.0.0. GL_VENDOR and GL_RENDERER are retained unmodified in accepted evidence.
+
+## Release 3.0.20 admission and immutable notice parity
+- Exact current producer is OpenGLESScope 3.0.2/3002; the old 3.0.1/3001 remains historical GET-only, never accepted through POST. Database release is 3.0.20. Application warning matches VulkanScope sentence with brand substitution.
