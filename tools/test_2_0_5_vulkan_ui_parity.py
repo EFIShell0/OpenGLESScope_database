@@ -4,8 +4,8 @@ from html.parser import HTMLParser
 import hashlib,re
 root=Path(__file__).resolve().parents[1]
 html=(root/'index.html').read_text(encoding='utf-8')
-css=(root/'assets/site.v3017.css').read_text(encoding='utf-8')
-app=(root/'assets/app.v3017.js').read_text(encoding='utf-8')
+css=(root/'assets/site.v3018.css').read_text(encoding='utf-8')
+app=(root/'assets/app.v3018.js').read_text(encoding='utf-8')
 reference=(root/'rules/SHARED_UI_1_4_12_REFERENCE.css').read_text(encoding='utf-8')
 source_hash,brand_hash=(root/'rules/SHARED_UI_BASE_SHA256.txt').read_text().splitlines()
 assert hashlib.sha256(reference.encode()).hexdigest()==source_hash
@@ -35,7 +35,7 @@ def check(h,c):
         assert name in x.classes,name
     for name in ['mainNav','navScrollLeft','navScrollRight','settingsButton','settingsDrawer','settingsBackdrop','settingsClose','favoriteItems','rememberDevice','settingsSubmittedDefault','settingsVendorDefault','settingsRegionalMode','settingsRegionalCountry','settingsRegionalDateFormat','settingsRegionalClock','settingsRegionalTimeZone','settingsRegionalSeason','settingsRegionalPreview','settingsNetworkInfo','settingsBrowserInfo','globalSearch','globalSearchClear','metrics','databaseLoading','contentView','filters','detailView','detailBack','viewportScrollbarThumb']:
         assert name in x.ids,name
-    assert 'app.v3017.js' in h and 'site.v3017.css' in h and 'config.js?v=3017' in h
+    assert 'app.v3018.js' in h and 'site.v3018.css' in h and 'config.js?v=3018' in h
     assert 'vulkanscope_logo_horizontal.png' not in h
     for source in ['.settings-drawer','.hero-v127','.nav-button','.settings-toggle','.viewport-scrollbar','@media(prefers-reduced-motion:reduce)']:
         assert source in c,source
@@ -62,4 +62,4 @@ for label,badh,badc in [
 assert "const NAV=[" in app
 assert all(x in app for x in ['renderReports','renderEncyclopedia','renderGlOverview','renderEglOverview','updateInternetPanel','fetchRequestNetworkInfo'])
 assert not list(root.glob('DEPLOY*.md')),'deploy markdown is forbidden inside this release'
-print('OpenGLESScope Database 3.0.17 order-sensitive VulkanScope 1.4.12 shared UI / GL-EGL semantics / negative-mutation gate: ALL PASS')
+print('OpenGLESScope Database 3.0.18 order-sensitive VulkanScope 1.4.12 shared UI / GL-EGL semantics / negative-mutation gate: ALL PASS')

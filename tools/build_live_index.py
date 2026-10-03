@@ -19,7 +19,7 @@ ALLOWED = ('id', 'submitted_at', 'schema_version', 'gpu_name', 'vendor', 'opengl
            'egl_version', 'manufacturer', 'model', 'application_version', 'application_version_code')
 
 def fetch(url):
-    req = urllib.request.Request(url, headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-3.0.17-snapshot'})
+    req = urllib.request.Request(url, headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-3.0.18-snapshot'})
     with urllib.request.urlopen(req, timeout=25) as response:
         if int(response.headers.get('content-length') or 0) > MAX_RESPONSE:
             raise RuntimeError('Oversized index response')
@@ -43,7 +43,7 @@ def build(api, expected):
             seen_cursors.add(key)
             params.update(beforeSubmittedAt=key[0], beforeId=key[1])
         page = fetch(api + '/v1/reports?' + urllib.parse.urlencode(params))
-        if page.get('schemaVersion') != 2 or page.get('databaseVersion') != '3.0.17' or page.get('currentProducer') != 'OpenGLESScope 3.0.1' or page.get('normalizerVersion') != 16 or not isinstance(page.get('reports'), list):
+        if page.get('schemaVersion') != 2 or page.get('databaseVersion') != '3.0.18' or page.get('currentProducer') != 'OpenGLESScope 3.0.1' or page.get('normalizerVersion') != 16 or not isinstance(page.get('reports'), list):
             raise ValueError('Incompatible report index schema')
         for source in page['reports']:
             if not isinstance(source, dict) or set(source) - set(ALLOWED) or not ID.fullmatch(str(source.get('id', ''))):
@@ -61,7 +61,7 @@ def build(api, expected):
             raise ValueError('Non-advancing report cursor')
     if expected and expected not in seen_ids:
         raise ValueError('Expected accepted report is not yet present in authoritative Worker list')
-    return {'schemaVersion': 2, 'databaseVersion': '3.0.17', 'normalizerVersion': 16,
+    return {'schemaVersion': 2, 'databaseVersion': '3.0.18', 'normalizerVersion': 16,
             'currentProducer': 'OpenGLESScope 3.0.1', 'reports': rows,
             'source': 'authoritative-worker-summary-snapshot', 'reportCount': len(rows)}
 

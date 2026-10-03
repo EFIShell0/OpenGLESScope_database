@@ -917,3 +917,7 @@
 - Original GL_VENDOR / GL_RENDERER and canonical report JSON/TXT are not rewritten; the derived display identity may normalize the current Google LLC company name without altering the driver-supplied Google Inc. text.
 - The EGL APIs report-table disclosure has a matching accessible Settings toggle beside column defaults; consent-based persistence restores it and clearing saved settings removes it.
 - Only OpenGLESScope 3.0.1 / versionCode 3001 may create a new report. All historic records remain readable, with no D1 migration or synthetic GPU identity backfill.
+
+## Release 3.0.18 — one accessible search-clear action
+- An input with an explicitly rendered search-clear control MUST NOT receive a duplicate automatically enhanced clear control. This is required in desktop, portrait and landscape widths and after workspace re-entry.
+- Preserve the existing native cancel suppression, search-input focus, registry filtering, submission gate 3.0.1/3001, canonical evidence, and snapshot security.

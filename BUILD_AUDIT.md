@@ -1,10 +1,14 @@
-# OpenGLESScope Database 3.0.17 build audit
+# OpenGLESScope Database 3.0.18 build audit
 
-- Database: 3.0.17. Current producer: OpenGLESScope 3.0.1 / 3001. Technical report schema 5; normalizer 16; no D1 migrations.
-- Current frontend: `app.v3017.js`, `site.v3017.css` and `config.js?v=3017`.
+- Database: 3.0.18. Current producer: OpenGLESScope 3.0.1 / 3001. Technical report schema 5; normalizer 16; no D1 migrations.
+- Current frontend: `app.v3018.js`, `site.v3018.css` and `config.js?v=3018`.
 - Added evidence-bound multi-family ANGLE identity matching and official bundled GPU logo selection. Driver-supplied raw text and stored report hashes remain unchanged. SwiftShader, missing/multiple signatures and unavailable brand assets never generate invented artwork.
 - Settings adds EGL APIs default expansion next to Submitted and GPU vendor. Opt-in persistence restores all three and never stores full report payloads.
 - Existing historical reports remain readable; only OpenGLESScope 3.0.1/3001 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
+
+## 3.0.18 encyclopedia single clear action
+- Prevent duplicate X buttons: encyclopedia owns #registrySearchClear; the shared search enhancer skips any search input whose immediate field container already owns a clear control. The custom clear remains focus safe; native search cancel is hidden by existing shared CSS.
+- Desktop, narrow portrait and landscape browser regression confirms one visible and one DOM clear button after typing and after route re-entry. Worker, stored reports, 3.0.1 producer acceptance and D1 schema are unchanged.
 
 ## Historical 3.0.16 regional selection and registry workspace
 - Cross-checked the complete 250 ISO country/bundled-flag asset names, flag bytes and country-to-primary-IANA time-zone data against the immutable shared reference; country or runtime data was not fabricated.

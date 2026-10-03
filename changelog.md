@@ -1,3 +1,8 @@
+# OpenGLESScope Database 3.0.18
+
+- Fixed: Encyclopedia search now shows exactly one custom clear (X) button in portrait, landscape and desktop. The shared enhancement does not inject a second clear action where one is already provided.
+- Preserved: registry entries, fast/focus-safe search, 3.0.1/3001 submission requirement, historical reads, Worker and snapshot contracts.
+
 # OpenGLESScope Database 3.0.17
 
 - Fixed: ANGLE presentation detects explicitly reported physical GPU family/models across all shipped GPU vendor artwork, not only Qualcomm; misleading software/unknown icons are prevented. Canonical raw renderer/vendor evidence remains unchanged.
