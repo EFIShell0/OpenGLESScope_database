@@ -1,3 +1,10 @@
+# OpenGLESScope Database 3.0.22
+
+- Fixed: OpenGL ES 3.2 native combined robustness provenance is checked against its actual two GL diagnostics instead of an invented combined diagnostic name; complete valid reports are no longer rejected with HTTP 400 for this reason.
+- Security: The `GL_CONTEXT_FLAGS` value, robust-access bit and collected diagnostics must agree; forged or missing evidence remains rejected.
+- Unchanged: Exact OpenGLESScope 3.0.4 / versionCode 3004 POST policy; stored historical report reads, schema 2 / technicalReport schema 5, D1 and snapshot contracts.
+- Changed: Versioned Pages assets and release handshake v3022.
+
 # OpenGLESScope Database 3.0.21
 
 - Changed: Only complete OpenGLESScope 3.0.4 / versionCode 3004 submissions are accepted; older reports remain readable.

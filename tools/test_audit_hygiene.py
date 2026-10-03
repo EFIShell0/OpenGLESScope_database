@@ -17,7 +17,7 @@ def run(args,ok=True,contains=None):
     return out
 
 out=run([python,str(audit),'--source-tree',str(root)])
-if 'OpenGLESScope Database audit tool 3.0.21' not in out: raise SystemExit('audit version fingerprint missing')
+if 'OpenGLESScope Database audit tool 3.0.22' not in out: raise SystemExit('audit version fingerprint missing')
 run([python,str(repair),'--check'])
 stale=root/'assets/app.v0000.js'
 try:

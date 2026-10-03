@@ -1,9 +1,9 @@
-# OpenGLESScope Database 3.0.21 build audit
+# OpenGLESScope Database 3.0.22 build audit
 
-- Database: 3.0.21
+- Database: 3.0.22
 - Current producer: OpenGLESScope 3.0.4 / 3004
 - Normalizer: 16; technical report schema 5; no D1 migrations.
-- Current frontend: `app.v3021.js`, `site.v3021.css` and `config.js?v=3021`.
+- Current frontend: `app.v3022.js`, `site.v3022.css` and `config.js?v=3022`.
 - Added evidence-bound multi-family ANGLE identity matching and official bundled GPU logo selection. Driver-supplied raw text and stored report hashes remain unchanged. SwiftShader, missing/multiple signatures and unavailable brand assets never generate invented artwork.
 - Settings adds EGL APIs default expansion next to Submitted and GPU vendor. Opt-in persistence restores all three and never stores full report payloads.
 - Existing historical reports remain readable; only OpenGLESScope 3.0.4/3004 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
@@ -161,7 +161,15 @@ Information notice deduplication; no healthy release-transition connection banne
 ## Release 3.0.20 admission and immutable notice parity
 - Exact current producer is OpenGLESScope 3.0.2/3002; the old 3.0.1/3001 remains historical GET-only, never accepted through POST. Database release is 3.0.20. Application warning matches VulkanScope sentence with brand substitution.
 
-## Release 3.0.21 / OpenGLESScope 3.0.4 pairing
+## Release 3.0.22 / OpenGLESScope 3.0.4 pairing
 - New POST requires exact OpenGLESScope 3.0.4 / versionCode 3004; prior 3.0.3 and all older releases remain historical read-only.
 - Database uses unchanged schema 2 / technicalReport 5 / normalizer 16, does not delete/update existing reports and retains verified snapshot and Pages publication semantics.
 - Only application UI terminal failure presentation changed; incomplete reports remain invalid submissions.
+
+## 3.0.22 HTTP 400 regression
+
+- Reproduced old Worker HTTP 400 with the actual OpenGL ES 3.2 native robust-access provenance string.
+- Corrected Worker mapping to the real GL_CONTEXT_FLAGS and GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT diagnostics.
+- Strictly rejects forged/missing diagnostic evidence and robust-access value contradicting the numeric context flag.
+- No changes to producer floor (3.0.4/3004), canonical submitted GL/EGL evidence, D1 schema, report IDs, or stored report reads.
+

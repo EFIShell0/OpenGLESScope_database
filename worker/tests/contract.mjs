@@ -106,9 +106,24 @@ function makePayload(version='3.0.4',versionCode=3004,header='current'){
 const db=new DB(),env={DB:db,ALLOWED_ORIGIN:'https://efishell0.github.io'};
 async function call(path,method='GET',body=null,headers={}){const init={method,headers:{origin:'https://efishell0.github.io',...headers}};if(body!==null)init.body=typeof body==='string'?body:JSON.stringify(body);return worker.fetch(new Request('https://api.example'+path,init),env)}
 async function expect(name,response,status){if(response.status!==status)throw new Error(`${name}: expected ${status}, got ${response.status} ${await response.text()}`);console.log('PASS',name,status);return response}
-let r=await call('/v1/health');await expect('health',r,200);const h=await r.json();if(h.databaseVersion!=='3.0.21'||!h.compatibleProducer.includes('3.0.4 (versionCode 3004)')||h.currentProducer!=='OpenGLESScope 3.0.4'||h.normalizerVersion!==16||h.technicalReportSchema!==5||!h.publishedOpenGlesSpec||!h.publishedGlslEsSpec||!h.publishedEglSpec)throw new Error('health metadata mismatch');
+let r=await call('/v1/health');await expect('health',r,200);const h=await r.json();if(h.databaseVersion!=='3.0.22'||!h.compatibleProducer.includes('3.0.4 (versionCode 3004)')||h.currentProducer!=='OpenGLESScope 3.0.4'||h.normalizerVersion!==16||h.technicalReportSchema!==5||!h.publishedOpenGlesSpec||!h.publishedGlslEsSpec||!h.publishedEglSpec)throw new Error('health metadata mismatch');
 if(h.snapshotAutomation?.configured!==false||h.snapshotAutomation?.mode!=='async-github-actions-workflow-dispatch')throw new Error('snapshot configuration disclosure mismatch');
 r=await call('/v1/reports','POST',makePayload(),{'content-type':'application/json; charset=utf-8'});await expect('current 3.0.4 schema-5 submission',r,201);const accepted=await r.json();
+const nativeRobust=makePayload();
+nativeRobust.technicalReport.glRuntime.contextFlags='0x00000000 (no context flag bits set)';
+nativeRobust.technicalReport.glRuntime.robustAccess=false;
+nativeRobust.technicalReport.glRuntime.robustAccessQuery='GL_CONTEXT_FLAGS / GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT';
+let nativeResult=await worker.fetch(new Request('https://api.example/v1/reports',{method:'POST',headers:{origin:'https://efishell0.github.io','content-type':'application/json'},body:JSON.stringify(nativeRobust)}),{...env,DB:new DB()});
+await expect('accept actual GLES 3.2 native composite robust provenance',nativeResult,201);
+const forgedRobust=structuredClone(nativeRobust);
+forgedRobust.technicalReport.glRuntime.robustAccess=true;
+nativeResult=await worker.fetch(new Request('https://api.example/v1/reports',{method:'POST',headers:{origin:'https://efishell0.github.io','content-type':'application/json'},body:JSON.stringify(forgedRobust)}),{...env,DB:new DB()});
+await expect('reject forged robust-access bit contradicting GL_CONTEXT_FLAGS',nativeResult,400);
+const missingBit=structuredClone(nativeRobust);
+missingBit.technicalReport.queryDiagnostics=missingBit.technicalReport.queryDiagnostics.filter(x=>x.name!=='GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT');
+nativeResult=await worker.fetch(new Request('https://api.example/v1/reports',{method:'POST',headers:{origin:'https://efishell0.github.io','content-type':'application/json'},body:JSON.stringify(missingBit)}),{...env,DB:new DB()});
+await expect('reject composite robust provenance without collected bit diagnostic',nativeResult,400);
+
 const storedHistoric=makePayload('2.2.21',2221);
 const canonicalHistoric=v=>v===null||typeof v!=='object'?JSON.stringify(v):Array.isArray(v)?'['+v.map(canonicalHistoric).join(',')+']':'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canonicalHistoric(v[k])).join(',')+'}';
 const historicJson=canonicalHistoric(storedHistoric),historicId=createHash('sha256').update(historicJson).digest('hex');
@@ -228,7 +243,7 @@ r=await call('/v1/health','POST','{}',{'content-type':'application/json'});await
 r=await call('/v1/reports','OPTIONS');await expect('preflight',r,204);if(r.headers.get('x-content-type-options')!=='nosniff'||r.headers.get('x-frame-options')!=='DENY'||!r.headers.get('content-security-policy'))throw new Error('preflight security headers mismatch');
 const large='x'.repeat(2*1024*1024+1);r=await call('/v1/reports','POST',large,{'content-type':'application/json'});await expect('stream body bound',r,413);
 
-r=await call('/v1/sync');await expect('public current sync handshake',r,200);const sync=await r.json();if(sync.databaseReleaseVersion!=='3.0.21'||sync.reportCount!==db.rows.size||!/^[0-9a-f]{64}$/.test(sync.latestReportId)||!sync.latestSubmittedAt||sync.syncToken!==`${sync.reportCount}:${sync.latestSubmittedAt}:${sync.latestReportId}`)throw new Error('sync report count or deterministic identity mismatch');
+r=await call('/v1/sync');await expect('public current sync handshake',r,200);const sync=await r.json();if(sync.databaseReleaseVersion!=='3.0.22'||sync.reportCount!==db.rows.size||!/^[0-9a-f]{64}$/.test(sync.latestReportId)||!sync.latestSubmittedAt||sync.syncToken!==`${sync.reportCount}:${sync.latestSubmittedAt}:${sync.latestReportId}`)throw new Error('sync report count or deterministic identity mismatch');
 const blankEnv={DB:new DB(),ALLOWED_ORIGIN:'https://efishell0.github.io'};r=await worker.fetch(new Request('https://api.example/v1/sync'),blankEnv);await expect('empty database sync',r,200);const blankSync=await r.json();if(blankSync.reportCount!==0||blankSync.latestReportId!==''||blankSync.latestSubmittedAt!==''||blankSync.syncToken!=='0::')throw new Error('empty sync should not invent a report');
 for(const [v,code] of [['2.2.2',2202],['2.2.11',2211],['2.2.21',2221]]){r=await call('/v1/reports','POST',makePayload(v,code),{'content-type':'application/json'});await expect('block previous exact producer '+v,r,403)}
 r=await call('/v1/reports','POST',makePayload('2.2.11',2210),{'content-type':'application/json'});await expect('reject released producer wrong versionCode',r,400);

@@ -10,12 +10,12 @@ g.add_argument('--apply',action='store_true')
 g.add_argument('--check',action='store_true')
 args=parser.parse_args()
 current_assets={
-    'app':'app.v3021.js',
-    'site':'site.v3021.css',
-    'browser-compat':'browser-compat.v3021.js',
-    'experience':'experience.v3021.js',
-    'release-bootstrap':'release-bootstrap.v3021.js',
-    'scroll-system':'scroll-system.v3021.js'
+    'app':'app.v3022.js',
+    'site':'site.v3022.css',
+    'browser-compat':'browser-compat.v3022.js',
+    'experience':'experience.v3022.js',
+    'release-bootstrap':'release-bootstrap.v3022.js',
+    'scroll-system':'scroll-system.v3022.js'
 }
 workflow_template=(root/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 issues=[]
@@ -43,12 +43,12 @@ if args.apply:
         else: p.unlink(missing_ok=True)
     workflow_dir.mkdir(parents=True,exist_ok=True)
     pages.write_bytes((root/'tools/pages.workflow.yml').read_bytes())
-    print('OpenGLESScope Database 3.0.21 repository repair: APPLIED')
+    print('OpenGLESScope Database 3.0.22 repository repair: APPLIED')
     sys.exit(0)
 if issues or workflow_wrong or transient:
-    print('OpenGLESScope Database 3.0.21 repository repair: CHANGES REQUIRED')
+    print('OpenGLESScope Database 3.0.22 repository repair: CHANGES REQUIRED')
     for p in issues: print(p.relative_to(root))
     for p in transient: print(p.relative_to(root))
     if workflow_wrong: print('.github/workflows/pages.yml')
     sys.exit(1)
-print('OpenGLESScope Database 3.0.21 repository repair: CLEAN')
+print('OpenGLESScope Database 3.0.22 repository repair: CLEAN')

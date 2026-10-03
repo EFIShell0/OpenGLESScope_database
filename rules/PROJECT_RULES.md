@@ -18,6 +18,7 @@
 - Missing extension or runtime-format tokens are shown as not listed/unknown rather than inferred unsupported.
 - A queried scalar value is available even when its value is zero or false unless the field is itself a support boolean.
 - Query diagnostics are authoritative for Available, Unavailable and Not applicable state.
+- OpenGL ES 3.2 combined robust-access provenance resolves to the real GL_CONTEXT_FLAGS and GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT diagnostics; it must not require a fabricated combined diagnostic name, and the reported boolean must agree with the GL context flag bit 0x4.
 - The frontend has no third-party JavaScript, analytics, remote fonts, advertisements or remote presentation dependencies.
 - Production frontend and Worker API use HTTPS.
 - Content Security Policy allows only same-origin resources and the configured OpenGLESScope Worker API.
@@ -31,7 +32,7 @@
 
 ## Submission and Worker
 - Application identity is OpenGLESScope with package com.efishell.openglesscope.
-- Application and database versions are independent. New report POST requires exactly OpenGLESScope 3.0.1, versionCode 3001, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
+- Application and database versions are independent. New report POST requires exactly OpenGLESScope 3.0.4, versionCode 3004, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
 - Public web URL is https://efishell0.github.io/OpenGLESScope_database/.
 - API base is https://openglesscope-database-api.openglesscope.workers.dev.
 - Request body is bounded to 2 MiB and is never truncated.

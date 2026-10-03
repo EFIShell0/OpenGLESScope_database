@@ -59,6 +59,6 @@ with sync_playwright() as p:
   assert any('GL_MAX_TEXTURE_SIZE' in t for t in page.locator('.registry-entry h3').all_text_contents())
   if width<500:assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 3'),(width,page.evaluate('[document.documentElement.scrollWidth,innerWidth]'))
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.21 REGION + FLAG + MENU WHEEL/DRAG + ENCYCLOPEDIA PASS',width,height,flush=True)
+  print('CHROMIUM 3.0.22 REGION + FLAG + MENU WHEEL/DRAG + ENCYCLOPEDIA PASS',width,height,flush=True)
   ctx.close()
  browser.close()
