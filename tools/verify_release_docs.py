@@ -1,10 +1,10 @@
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 b=(ROOT/'BUILD_AUDIT.md').read_text();c=(ROOT/'changelog.md').read_text();r=(ROOT/'rules/PROJECT_RULES.md').read_text()
-for token in ['# OpenGLESScope Database 3.0.25 build audit','- Database: 3.0.25','- Current producer: OpenGLESScope 3.0.5 / 3005','Normalizer: 16','app.v3025.js`, `site.v3025.css` and `config.js?v=3025']:
+for token in ['# OpenGLESScope Database 3.0.26 build audit','- Database: 3.0.26','- Current producer: OpenGLESScope 3.0.6 / 3006','Normalizer: 16','app.v3026.js`, `site.v3026.css` and `config.js?v=3026']:
     assert token in b, token
-assert c.startswith('# OpenGLESScope Database 3.0.25')
+assert c.startswith('# OpenGLESScope Database 3.0.26')
 assert '## Release 2.0.2 canonical report and snapshot parity' in r
 assert (ROOT/'rules/VULKANSCOPE_DATABASE_1.4.12_PROJECT_RULES_REFERENCE.md').is_file()
 assert (ROOT/'rules/vulkanscope_database_1_4_12_rule_applicability.json').is_file()
-print('OpenGLESScope Database 3.0.25 release docs: PASS')
+print('OpenGLESScope Database 3.0.26 release docs: PASS')

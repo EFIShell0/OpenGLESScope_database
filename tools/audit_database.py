@@ -14,12 +14,12 @@ parser.add_argument('--artifact-tree',type=Path)
 parser.add_argument('--require-preload',action='store_true',help='Refuse to publish Pages without an exhaustive verified report cache')
 parser.add_argument('--version',action='store_true')
 args=parser.parse_args()
-AUDIT_VERSION='3.0.25'
+AUDIT_VERSION='3.0.26'
 print(f'OpenGLESScope Database audit tool {AUDIT_VERSION}')
 if args.version: sys.exit(0)
 
 public_files={'.nojekyll','index.html','config.js','report.schema.json','400.html','401.html','403.html','404.html','405.html','408.html','409.html','413.html','415.html','429.html','500.html','502.html','503.html','504.html','error.html'}
-public_assets={'app.v3025.js','site.v3025.css','experience.v3025.js','browser-compat.v3025.js','release-bootstrap.v3025.js','scroll-system.v3025.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png','gpu-vendors/gpu_vendor_amd.png','gpu-vendors/gpu_vendor_arm.png','gpu-vendors/gpu_vendor_broadcom.png','gpu-vendors/gpu_vendor_huawei.png','gpu-vendors/gpu_vendor_imagination.png','gpu-vendors/gpu_vendor_intel.png','gpu-vendors/gpu_vendor_nvidia.png','gpu-vendors/gpu_vendor_qualcomm.png','gpu-vendors/gpu_vendor_samsung.png','gpu-vendors/gpu_vendor_unknown.png','gpu-vendors/gpu_vendor_vivante.png','gpu-vendors/gpu_vendor_vsi.png','hdr/dolby_vision.png','hdr/dolby_vision_2.png','hdr/hdr10.svg','hdr/hdr10_plus.png','hdr/hdr10_plus_v1014.png','hdr/hdr10_plus_advanced.png','hdr/hdr_vivid.webp'}
+public_assets={'app.v3026.js','site.v3026.css','experience.v3026.js','browser-compat.v3026.js','release-bootstrap.v3026.js','scroll-system.v3026.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png','gpu-vendors/gpu_vendor_amd.png','gpu-vendors/gpu_vendor_arm.png','gpu-vendors/gpu_vendor_broadcom.png','gpu-vendors/gpu_vendor_huawei.png','gpu-vendors/gpu_vendor_imagination.png','gpu-vendors/gpu_vendor_intel.png','gpu-vendors/gpu_vendor_nvidia.png','gpu-vendors/gpu_vendor_qualcomm.png','gpu-vendors/gpu_vendor_samsung.png','gpu-vendors/gpu_vendor_unknown.png','gpu-vendors/gpu_vendor_vivante.png','gpu-vendors/gpu_vendor_vsi.png','hdr/dolby_vision.png','hdr/dolby_vision_2.png','hdr/hdr10.svg','hdr/hdr10_plus.png','hdr/hdr10_plus_v1014.png','hdr/hdr10_plus_advanced.png','hdr/hdr_vivid.webp'}
 
 public_assets.update("country-flags/"+p.name for p in (Path(__file__).resolve().parents[1]/"assets/country-flags").glob("*.png"))
 
@@ -74,8 +74,8 @@ def audit_artifact(root):
     if idx.is_file():
         body=idx.read_text(encoding='utf-8')
         marker=json.loads((root/'data/release.json').read_text(encoding='utf-8'))
-        if marker.get('releaseReady') is not True or marker.get('databaseVersion')!='3.0.25': errors.append('release marker not validated')
-        for token in ['OpenGLESScope Database <strong>3.0.25</strong>','site.v3025.css','app.v3025.js','config.js?v=3025','experience.v3025.js','release-bootstrap.v3025.js','scroll-system.v3025.js','browser-compat.v3025.js']:
+        if marker.get('releaseReady') is not True or marker.get('databaseVersion')!='3.0.26': errors.append('release marker not validated')
+        for token in ['OpenGLESScope Database <strong>3.0.26</strong>','site.v3026.css','app.v3026.js','config.js?v=3026','experience.v3026.js','release-bootstrap.v3026.js','scroll-system.v3026.js','browser-compat.v3026.js']:
             if token not in body: errors.append(f'Pages artifact current reference missing {token}')
     preload=data/'preload'
     if args.require_preload and not (preload/'manifest.json').is_file(): errors.append('published report cache is missing: data/preload/manifest.json')
@@ -83,7 +83,7 @@ def audit_artifact(root):
         try:
             assert preload.is_dir() and not preload.is_symlink(), 'preload location is not a directory'
             manifest=json.loads((preload/'manifest.json').read_bytes())
-            assert manifest.get('schemaVersion')==1 and manifest.get('databaseVersion')=='3.0.25', 'preload version mismatch'
+            assert manifest.get('schemaVersion')==1 and manifest.get('databaseVersion')=='3.0.26', 'preload version mismatch'
             assert manifest.get('sourceSchemaVersion')==2 and manifest.get('normalizerVersion')==16, 'preload schema mismatch'
             summaries=manifest.get('reports'); chunks=manifest.get('chunks')
             count=manifest.get('reportCount')
@@ -112,14 +112,14 @@ def audit_artifact(root):
             assert count==len(observed), 'preload missing report bodies'
             assert {p.name for p in preload.iterdir()}==permitted, 'extra unvalidated preload artifacts'
             published=json.loads((data/'index.json').read_bytes())
-            assert published.get('databaseVersion')=='3.0.25' and published.get('reports')==summaries, 'preload manifest must match published authoritative index'
+            assert published.get('databaseVersion')=='3.0.26' and published.get('reports')==summaries, 'preload manifest must match published authoritative index'
             assert published.get('reportCount',len(published['reports']))==count, 'preload must include the entire published report count'
         except (AssertionError,KeyError,TypeError,ValueError,OSError) as exc:
             errors.append(f'invalid Pages public-report preload: {exc}')
     errors.extend(local_ref_errors(root))
     if errors:
         print('\n'.join(errors)); sys.exit(1)
-    print('OpenGLESScope Database 3.0.25 Pages artifact audit: PASS')
+    print('OpenGLESScope Database 3.0.26 Pages artifact audit: PASS')
     sys.exit(0)
 
 if args.artifact_tree: audit_artifact(args.artifact_tree)
@@ -129,12 +129,12 @@ def check(cond,msg):
     if not cond: errors.append(msg)
 def read(rel): return (root/rel).read_text(encoding='utf-8')
 
-for rel in ['index.html','assets/app.v3025.js','assets/site.v3025.css','worker/src/index.js','worker/package.json','worker/wrangler.jsonc','report.schema.json','data/index.json','rules/PROJECT_RULES.md','tools/pages.workflow.yml','.github/workflows/pages.yml','tools/test_statistics_filters.mjs','tools/test_ui_parity.mjs']:
+for rel in ['index.html','assets/app.v3026.js','assets/site.v3026.css','worker/src/index.js','worker/package.json','worker/wrangler.jsonc','report.schema.json','data/index.json','rules/PROJECT_RULES.md','tools/pages.workflow.yml','.github/workflows/pages.yml','tools/test_statistics_filters.mjs','tools/test_ui_parity.mjs']:
     check((root/rel).is_file(),f'missing source file {rel}')
 if errors:
     print('\n'.join(errors)); sys.exit(1)
 check(json.loads(read('data/release.json')).get('releaseReady') is False,'source release marker must be unpublished')
-index=read('index.html'); app=read('assets/app.v3025.js'); css=read('assets/site.v3025.css'); worker=read('worker/src/index.js'); rules=read('rules/PROJECT_RULES.md'); workflow=read('.github/workflows/pages.yml'); template=read('tools/pages.workflow.yml'); build_index=read('tools/build_index.py')
+index=read('index.html'); app=read('assets/app.v3026.js'); css=read('assets/site.v3026.css'); worker=read('worker/src/index.js'); rules=read('rules/PROJECT_RULES.md'); workflow=read('.github/workflows/pages.yml'); template=read('tools/pages.workflow.yml'); build_index=read('tools/build_index.py')
 workflow_dir=root/'.github/workflows'
 workflows=sorted(p.name for p in workflow_dir.iterdir() if p.is_file() and p.suffix.lower() in {'.yml','.yaml'})
 check(workflows==['pages.yml'],f'exactly one GitHub Actions workflow is permitted; remove stale workflows: {workflows}')
@@ -150,8 +150,8 @@ if shared.is_file() and shared_map.is_file():
     check(hashlib.sha256(shared.read_bytes()).hexdigest()==mapping.get('sourceSha256'),'shared rules reference hash mismatch')
     check(mapping.get('headingCount')==116 and len(mapping.get('headings',[]))==116,'shared rules must map all 116 reference sections')
 check('## Release 3.0.9 complete shared-rule adoption' in rules and 'source zip and source-tree' in rules.lower(),'OpenGL ES/EGL-compatible shared rules and cache privacy missing')
-check('OpenGLESScope Database <strong>3.0.25</strong>' in index,'index version')
-check('site.v3025.css' in index and 'app.v3025.js' in index and 'config.js?v=3025' in index,'2.0.0 cache-busted asset refs')
+check('OpenGLESScope Database <strong>3.0.26</strong>' in index,'index version')
+check('site.v3026.css' in index and 'app.v3026.js' in index and 'config.js?v=3026' in index,'2.0.0 cache-busted asset refs')
 check("connect-src 'self' https://openglesscope-database-api.openglesscope.workers.dev" in index,'CSP API pin')
 check('Common evidence only' in app and 'Cross-producer comparison' in app,'compare producer/common-evidence controls')
 for token in ['Common fields','One-sided fields','Visible differences','Unknown / Not reported','av!==bv||ac!==bc','compareStickySentinel','compareMinimizeToggle','swapCompare','compare-overview','compare-filter-controls']:
@@ -188,16 +188,16 @@ check(all(token in app for token in ['renderDevices()','renderVersions()','rende
 check(all(token in index for token in ['id="settingsDrawer"','id="pageScrollControls"','id="viewportScrollbar"','id="databaseLoading"','id="heroWorkspaceTitle"']),'2.0.0 index interface contract')
 
 check('.notice{' in css and '.notice strong{' in css,'cross-producer notice style')
-check("const DATABASE_VERSION='3.0.25'" in worker,'worker database version')
-check("currentProducer:'OpenGLESScope 3.0.5'" in worker,'worker current producer')
+check("const DATABASE_VERSION='3.0.26'" in worker,'worker database version')
+check("currentProducer:'OpenGLESScope 3.0.6'" in worker,'worker current producer')
 check("p.application.versionCode!==2200+Number(p.application.version.split('.')[2])" in worker,'worker current producer versionCode gate')
 check("'/v1/sync'" in worker and 'snapshotDispatchConfigured' in worker and 'dispatchSnapshotRefresh' in worker,'sync/snapshot Worker path')
 check('MAX_BODY=2*1024*1024' in worker and 'MAX_REPORT_TEXT=2*1024*1024' in worker,'worker body/report bounds')
 check("schemaVersion:2" in worker and "technicalReportSchema:5" in worker,'worker schema contract')
-check('New report submissions require OpenGLESScope 3.0.5' in worker,'worker exact producer restriction')
+check('New report submissions require OpenGLESScope 3.0.6' in worker,'worker exact producer restriction')
 check('TECH_KEYS_V3' in worker and 'INTERNAL_FORMAT_KEYS' in worker and 'validInternalFormat' in worker and 'EGL_RUNTIME_KEYS_V4' in worker and 'validEglRuntimeV4' in worker,'worker technical report 2 EGL runtime validation')
 check('recordableAndroid' in worker and 'framebufferTargetAndroid' in worker and 'colorComponentTypeExt' in worker,'worker EGL config extension validation')
-check("p.application.version!=='3.0.5'||p.application.versionCode!==3005" in worker,'exact producer and versionCode gate')
+check("p.application.version!=='3.0.6'||p.application.versionCode!==3006" in worker,'exact producer and versionCode gate')
 check('EGL runtime' in app and 'recordableAndroid' in app and 'unavailableAttributes' in app,'frontend EGL runtime/config detail coverage')
 check(not any(x in app for x in ['0x5143','0x13B5','0x10DE','0x8086','0x1002','0x1010','0x14E4','0x19E5']),'frontend must not fabricate PCI/Vulkan-style vendor ids')
 check('hasSensitive' in worker and 'stable(p)' in worker and 'sha(canonical)' in worker,'worker sensitive/canonical hash handling')
@@ -253,17 +253,17 @@ check(not any(p.is_dir() and p.name.lower()=='fastlane' for p in root.rglob('*')
 check(not (root/'release.md').exists(),'root release.md forbidden')
 app_assets=sorted(p.name for p in (root/'assets').glob('app.v*.js'))
 css_assets=sorted(p.name for p in (root/'assets').glob('site.v*.css'))
-check(app_assets==['app.v3025.js'],f'exactly one versioned frontend app asset is permitted: {app_assets}')
-check(css_assets==['site.v3025.css'],f'exactly one versioned frontend css asset is permitted: {css_assets}')
+check(app_assets==['app.v3026.js'],f'exactly one versioned frontend app asset is permitted: {app_assets}')
+check(css_assets==['site.v3026.css'],f'exactly one versioned frontend css asset is permitted: {css_assets}')
 static=json.loads(read('data/index.json'))
-check(static.get('databaseVersion')=='3.0.25','static databaseVersion')
+check(static.get('databaseVersion')=='3.0.26','static databaseVersion')
 check(static.get('normalizerVersion')==16,'static normalizerVersion')
-check(static.get('currentProducer')=='OpenGLESScope 3.0.5','static currentProducer')
+check(static.get('currentProducer')=='OpenGLESScope 3.0.6','static currentProducer')
 check(static.get('registryAuditDate')=='2026-09-30','static registry audit date')
-check('obj["databaseVersion"]="3.0.25"' in build_index,'static index builder database version')
-check('obj["currentProducer"]="OpenGLESScope 3.0.5"' in build_index,'static index builder current producer')
+check('obj["databaseVersion"]="3.0.26"' in build_index,'static index builder database version')
+check('obj["currentProducer"]="OpenGLESScope 3.0.6"' in build_index,'static index builder current producer')
 pkg=json.loads(read('worker/package.json'))
-check(pkg.get('version')=='3.0.25','worker package version')
+check(pkg.get('version')=='3.0.26','worker package version')
 check(pkg.get('devDependencies',{}).get('wrangler')=='4.146.0','wrangler pin')
 wr=json.loads(read('worker/wrangler.jsonc'))
 check(wr.get('compatibility_date')=='2026-08-23','Cloudflare accepted compatibility date pin')
@@ -310,10 +310,10 @@ for forbidden in ['.gradle','build','__pycache__','.idea','node_modules','.wrang
     if found: errors.append(f'transient source entries {forbidden}: {found[:5]}')
 node=shutil.which('node')
 if node:
-    for rel in ['assets/app.v3025.js','worker/src/index.js','worker/tests/contract.mjs','tools/test_routes.mjs','tools/test_compare_contract.mjs','tools/test_statistics_filters.mjs','tools/test_ui_parity.mjs']:
+    for rel in ['assets/app.v3026.js','worker/src/index.js','worker/tests/contract.mjs','tools/test_routes.mjs','tools/test_compare_contract.mjs','tools/test_statistics_filters.mjs','tools/test_ui_parity.mjs']:
         r=subprocess.run([node,'--check',str(root/rel)],capture_output=True,text=True)
         if r.returncode: errors.append(f'node syntax {rel}: {r.stderr.strip()}')
 if errors:
     print('\n'.join(errors)); sys.exit(1)
-print('OpenGLESScope Database 3.0.25 source audit: PASS')
-print('producer=OpenGLESScope 3.0.5/3005 schema=2 technicalReport=5 normalizer=16')
+print('OpenGLESScope Database 3.0.26 source audit: PASS')
+print('producer=OpenGLESScope 3.0.6/3006 schema=2 technicalReport=5 normalizer=16')

@@ -1,7 +1,7 @@
 from pathlib import Path
 import subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[1]
-app=(ROOT/'assets/app.v3025.js').read_text(encoding='utf-8')
+app=(ROOT/'assets/app.v3026.js').read_text(encoding='utf-8')
 workflow=(ROOT/'.github/workflows/pages.yml').read_text(encoding='utf-8')
 template=(ROOT/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 audit=(ROOT/'tools/audit_database.py').read_text(encoding='utf-8')
@@ -28,4 +28,4 @@ with tempfile.TemporaryDirectory(prefix='ogs24-optional-cache-test-') as td:
     assert run.returncode==0,run.stdout+run.stderr
     failed=subprocess.run([sys.executable,'-B',str(ROOT/'tools/audit_database.py'),'--artifact-tree',td,'--require-preload'],cwd=ROOT,capture_output=True,text=True)
     assert failed.returncode!=0 and 'published report cache is missing' in failed.stdout,failed.stdout+failed.stderr
-print('3.0.25 mandatory published cache, atomic cache-first synchronization, regression source contract: PASS')
+print('3.0.26 mandatory published cache, atomic cache-first synchronization, regression source contract: PASS')

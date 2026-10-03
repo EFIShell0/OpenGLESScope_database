@@ -1,3 +1,12 @@
+# OpenGLESScope Database 3.0.26
+
+### Changed
+- Pair new report submission strictly with OpenGLESScope 3.0.6 / 3006, keeping historical reports readable.
+- Advance versioned frontend assets and release metadata without altering D1 structure or snapshot/cache-first method.
+
+### Fixed
+- Prevent HTTP 403 producer mismatch for fully valid 3.0.6 native reports after the paired Worker is deployed. Preserve the full canonical TXT/JSON and all native GL/EGL diagnostics.
+
 # OpenGLESScope Database 3.0.25
 
 - Fixed HTTP 400 TXT_JSON_CONSISTENCY caused by mismatch between app-generated EGL-config key=value rows and old synthetic Worker fixture.

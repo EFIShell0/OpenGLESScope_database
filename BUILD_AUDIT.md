@@ -1,3 +1,13 @@
+# OpenGLESScope Database 3.0.26 build audit
+
+- Database: 3.0.26
+- Current producer: OpenGLESScope 3.0.6 / 3006
+- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3026.js`, `site.v3026.css` and `config.js?v=3026` represent the current asset generation.
+- Existing pre-3.0.26 obsolete tools/*.py sources are quarantined outside the checkout during repair rather than silently deleted; versioned assets follow existing safe cleanup.
+- New POST requires EXACT producer 3.0.6/3006, retaining historical producer evidence recognition of 3.0.5/3005 for already stored reports without rewriting any stored report, report ID or source fields.
+- Report ingestion contract and native GL/EGL diagnostic identifiers unchanged. Bounded indexed repeated raw format strings remain legal while extension/identity and provenance checks remain strict. Existing cache-first preloads, atomic snapshot generation, D1 schema, security and UI behavior inherited from 3.0.25; legacy asset references fully rotated.
+- Does not claim a production Cloudflare deployment, live snapshot publication or Android device test; use corresponding verification commands and publish Worker before using 3.0.6 app submissions.
+
 # OpenGLESScope Database 3.0.25 build audit
 
 ## 3.0.25 mandatory complete published public cache

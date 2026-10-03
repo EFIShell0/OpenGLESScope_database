@@ -48,6 +48,6 @@ with sync_playwright() as p:
   page.wait_for_timeout(200)
   assert page.evaluate('Math.abs(window.scrollY-'+str(before)+')')<35,(width,before,page.evaluate('window.scrollY'))
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.25 OVERVIEW / BACK / HERO ACTIONS / STARTUP / ROUTE SCROLL PASS',width,height,'11 tabs, six sections, correct sticky header')
+  print('CHROMIUM 3.0.26 OVERVIEW / BACK / HERO ACTIONS / STARTUP / ROUTE SCROLL PASS',width,height,'11 tabs, six sections, correct sticky header')
   context.close()
  browser.close()

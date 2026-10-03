@@ -954,3 +954,12 @@
 - `reportText` must use the actual Android `reportText()` / `eglConfigAnalysisValue()` encoding, not fixture-invented field delimiters. Required pbuffer evidence has eight distinct named query rows and preserved compact summary; config rows are counted and checked in order, using exact `recordableAndroid=`, `framebufferTargetAndroid=`, `colorComponentTypeExt=` and `unavailableAttributes=` keys. Zero EGL configs require zero fabricated config rows.
 - The schema/enum/diagnostic and TXT/JSON integrity gates must remain strict, and reject missing/forged fields with non-identifying bounded diagnostic codes. Timer diagnostics use real native names `Query counter bits: GL_TIME_ELAPSED_EXT` and `Query counter bits: GL_TIMESTAMP_EXT`.
 - Release-blocking test verifies true source/fixture parity, accepted canonical TXT, rejected missing pbuffer rows, rejected incorrect config delimiters and rejected wrong counts. Preserve Database 3.0.24 cache-first publication and complete snapshot hash checks.
+
+
+## Release 3.0.26 new producer gate and historical evidence integrity
+- A NEW report POST requires the exact signed OpenGLESScope application identity 3.0.6 / 3006; prior/future producer versions must not pass as current. Existing stored historical report payloads, metadata, IDs and snapshots are preserved for reads.
+- Preserve strict complete technicalReport 5, canonical native TXT/JSON, legal GL/EGL query names, actual numeric values, bounded raw driver format evidence, source identity, privacy, security and schema2/normalizer16. Do not infer or fabricate GPU manufacturer or missing capability.
+- Carry forward Database 3.0.25 complete published preload/cache-first and atomic incremental refresh; Pages and Worker use matching 3.0.26 source/assets. Existing D1 records must never be migrated or rewritten just because the release identifier changes.
+- Release blockers: full offline Worker tests (including banned 3.0.5 POST and accepted 3.0.6 POST), previous negative mutations, source quality gate, pages staging audit, exact package manifest, schema lock, snapshot security. Live Cloudflare deploy is separate from a source release.
+
+- Repair must identify obsolete Python sources in tools/ not present in the official source manifest, fail on --check, and quarantine (not delete) them outside the checkout on --apply. Dotfiles, local settings and secrets are not arbitrary cleanup targets.

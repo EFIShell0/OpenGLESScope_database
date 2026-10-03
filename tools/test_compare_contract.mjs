@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
-const source=fs.readFileSync(new URL('../assets/app.v3025.js',import.meta.url),'utf8');
-const css=fs.readFileSync(new URL('../assets/site.v3025.css',import.meta.url),'utf8');
+const source=fs.readFileSync(new URL('../assets/app.v3026.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../assets/site.v3026.css',import.meta.url),'utf8');
 const extract=name=>{const a=source.indexOf(`function ${name}`);if(a<0)throw new Error(`missing ${name}`);const start=source.indexOf('{',a);let depth=0,quote=null,escape=false;for(let i=start;i<source.length;i++){const c=source[i];if(quote){if(escape)escape=false;else if(c==='\\')escape=true;else if(c===quote)quote=null;continue}if(c==='"'||c==="'"||c==='`'){quote=c;continue}if(c==='{')depth++;else if(c==='}'&&--depth===0)return source.slice(a,i+1)}throw new Error(`unterminated ${name}`)};
 const context={Map,Object,Array,String,JSON,normalized:p=>p.technicalReport||{},diagnosticIndex:n=>new Map((n.diagnostics||[]).map(x=>[x.name,x])),reportPlatform:p=>p.application?.applicationAbi||'Unknown',reportSupportedAbis:p=>(p.application?.supportedDeviceAbis||[]).join(', '),precisionDiagKey:k=>k.replace(' / ','/')} ;
 vm.createContext(context);

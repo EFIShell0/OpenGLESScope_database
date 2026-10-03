@@ -10,29 +10,29 @@ spec.loader.exec_module(module)
 a='a'*64
 b='b'*64
 summary=lambda id,time:{'id':id,'submitted_at':time,'schema_version':2,'gpu_name':'GL fixture','vendor':'fixture','opengles_version':'OpenGL ES 3.2','egl_version':'1.5','manufacturer':'fixture','model':'fixture','application_version':'2.2.22','application_version_code':2222}
-first={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[summary(a,'2026-10-01T12:00:00.000Z')],'nextCursor':{'submittedAt':'2026-10-01T12:00:00.000Z','id':a}}
-second={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[summary(b,'2026-09-30T12:00:00.000Z')],'nextCursor':None}
+first={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[summary(a,'2026-10-01T12:00:00.000Z')],'nextCursor':{'submittedAt':'2026-10-01T12:00:00.000Z','id':a}}
+second={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[summary(b,'2026-09-30T12:00:00.000Z')],'nextCursor':None}
 with patch.object(module,'fetch',side_effect=[first,second]) as fetch:
     result=module.build('https://test.example',b)
     assert result['reportCount']==2
     assert [r['id'] for r in result['reports']]==[a,b]
     assert result['normalizerVersion']==16
-    assert result['databaseVersion']=='3.0.25'
+    assert result['databaseVersion']=='3.0.26'
     assert 'beforeSubmittedAt=' in fetch.call_args.args[0]
     assert list(result['reports'][0])==[x for x in module.ALLOWED if x in first['reports'][0]]
-with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[summary(a,'now')],'nextCursor':None}):
+with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[summary(a,'now')],'nextCursor':None}):
     try: module.build('https://test.example',b)
     except ValueError as e: assert 'Expected accepted report' in str(e)
     else: raise AssertionError('missing trigger ID must abort snapshot')
-with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[dict(summary(a,'now'),token='private')],'nextCursor':None}):
+with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[dict(summary(a,'now'),token='private')],'nextCursor':None}):
     try: module.build('https://test.example','')
     except ValueError as e: assert 'private report summary' in str(e)
     else: raise AssertionError('unreviewed summary keys must fail')
-with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[summary(a,'now'),summary(a,'now')],'nextCursor':None}):
+with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[summary(a,'now'),summary(a,'now')],'nextCursor':None}):
     try: module.build('https://test.example','')
     except ValueError as e: assert 'Duplicate' in str(e)
     else: raise AssertionError('duplicate IDs must fail')
-with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.25','currentProducer':'OpenGLESScope 3.0.5','normalizerVersion':16,'reports':[summary(a,'now')],'nextCursor':{'submittedAt':'now','id':a}}):
+with patch.object(module,'fetch',return_value={'schemaVersion':2,'databaseVersion':'3.0.26','currentProducer':'OpenGLESScope 3.0.6','normalizerVersion':16,'reports':[summary(a,'now')],'nextCursor':{'submittedAt':'now','id':a}}):
     try: module.build('https://test.example','')
     except ValueError as e: assert 'repeated Worker cursor' in str(e) or 'Duplicate' in str(e)
     else: raise AssertionError('cursor replay must fail')
