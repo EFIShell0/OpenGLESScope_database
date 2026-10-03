@@ -1,9 +1,9 @@
 from pathlib import Path
 import re
 r=Path(__file__).resolve().parents[1]
-app=(r/'assets/app.v3012.js').read_text()
-css=(r/'assets/site.v3012.css').read_text()
-experience=(r/'assets/experience.v3012.js').read_text()
+app=(r/'assets/app.v3013.js').read_text()
+css=(r/'assets/site.v3013.css').read_text()
+experience=(r/'assets/experience.v3013.js').read_text()
 html=(r/'index.html').read_text()
 assert "overview:['REPORT OVERVIEW','Overview'" in app
 assert "detailWorkspace(state.detailTab,detailStats(p,n,state.detailTab)" in app
@@ -12,14 +12,14 @@ assert 'detail-overview-grid' in section and 'el.innerHTML=body;return;' in sect
 assert 'detail-overview-report-id' in section and 'word-break:break-all' in css
 assert 'detailReturnScroll=Math.max(0,window.scrollY||0)' in app
 assert 'rememberRouteScroll(detailReturnRoute)' in app
-assert 'routeScrollPositions.has(returnTo)' in app
+assert 'routeScrollPositions.set(returnTo,target)' in app
 assert "k==='opengles'?glEsLogo('nav-gles-logo')" in app
 assert "k==='egl'?eglLogo('nav-egl-logo')" in app
 assert '.nav-button .nav-gles-logo' in css and '.nav-button .nav-egl-logo' in css
 assert 'OpenGL® ES™' in app+html and 'EGL™' in app+html
 assert "isVerifiedOffline:()=>state.health?.offlineSnapshot===true" in app
-assert "else if(window.__OGS30__?.isVerifiedOffline?.()){interrupted=true;banner('checking')}" in experience
+assert "else if(window.__OGS30__?.isVerifiedOffline?.()){interrupted=true;banner('checking')}else{markOnline();void sync(true)}" in experience
 for term in ['preloadJson','SHA-256','seedPreloadedReports','cachedReportLoads','async function ensureAllDetails','openglesscope:release-transition']:
  assert term in (app+experience),term
 assert (r/'tools/pages.workflow.yml').read_bytes()==(r/'.github/workflows/pages.yml').read_bytes()
-print('3.0.12 Overview, Back, white official logos, consistent GL/EGL labels and offline snapshot contract: PASS')
+print('3.0.13 Overview, Back, white official logos, consistent GL/EGL labels and offline snapshot contract: PASS')

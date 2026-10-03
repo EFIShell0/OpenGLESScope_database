@@ -1,9 +1,9 @@
 from pathlib import Path
 import re
 root=Path(__file__).resolve().parents[1]
-app=(root/'assets/app.v3012.js').read_text(encoding='utf8')
+app=(root/'assets/app.v3013.js').read_text(encoding='utf8')
 html=(root/'index.html').read_text(encoding='utf8')
-css=(root/'assets/site.v3012.css').read_text(encoding='utf8')
+css=(root/'assets/site.v3013.css').read_text(encoding='utf8')
 parts={
  'overview tab':"const TABS=[['overview','Overview']",
  'overview route':"DETAIL_ROUTE={overview:'Overview'",
@@ -16,7 +16,7 @@ parts={
  'display evidence':'Display evidence',
  'grouped cards':'detail-overview-section',
  'hero action placement':'''</div>`;$('#detailContent').innerHTML=hero+`<div class="detail-actions"''',
- 'canonical TXT export':'id="downloadRawReport"',
+ 'canonical TXT export in Raw tab':'id="downloadRawTabReport"',
  'favorite SVG':'function detailFavoriteMarkup(active)',
  'favorite icon state':'favoriteButton.innerHTML=detailFavoriteMarkup(favorites.has(p.id))',
  'report motion':'function animateReportViewIn(el,token)',
@@ -24,7 +24,7 @@ parts={
  'report entrance':'duration:210,easing:\'cubic-bezier(.2,.8,.2,1)\'',
  'back align':'function syncDetailBackTop(align=false)',
  'back focus':'back.focus({preventScroll:true})',
- 'back restoration':'restoreRouteScroll(returnTo)',
+ 'back restoration':'routeScrollPositions.set(returnTo,target)',
  'back source route':'rememberRouteScroll(detailReturnRoute)',
  'direct Overview without TXT fallback':'el.innerHTML=body;return;}if(state.detailTab',
  'async guard':'detailRequest!==renderGeneration||token!==reportViewTransitionToken||state.detailId!==id',
@@ -47,4 +47,4 @@ assert not re.search(r'detailTab\s*:\s*[\'\"]summary[\'\"]',app)
 for label,mutation in [('obsolete Overview label',app.replace("[['overview','Overview']","[['overview','Summary']",1)),('lost favorite SVG',app.replace('function detailFavoriteMarkup(active)','function detailFavoriteMarkupMissing(active)',1)),('missing Back offset',app.replace('function syncDetailBackTop(align=false)','function syncDetailBackTopMissing(align=false)',1))]:
  key={'obsolete Overview label':"const TABS=[['overview','Overview']",'lost favorite SVG':'function detailFavoriteMarkup(active)','missing Back offset':'function syncDetailBackTop(align=false)'}[label]
  assert key not in mutation,label
-print('OpenGLESScope Database 3.0.12 Overview, action, Back, loader and navigation source gates: PASS')
+print('OpenGLESScope Database 3.0.13 Overview, action, Back, loader and navigation source gates: PASS')

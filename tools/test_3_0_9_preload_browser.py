@@ -17,9 +17,9 @@ for i in range(7):
     row={'id':rid,'submitted_at':f'2026-10-02T10:{i:02d}:00.000Z','schema_version':2,'gpu_name':f'Cached GPU {i+1}','vendor':'Qualcomm','manufacturer':'Test Vendor','model':f'Device {i+1}','opengles_version':'OpenGL ES 3.2','egl_version':'1.5','application_version':'2.2.22','application_version_code':2222}
     summaries.append(row)
     details[rid]={**row,'submittedAt':row['submitted_at'],'gpu':{'name':row['gpu_name'],'vendor':'Qualcomm'},'device':{'manufacturer':'Test Vendor','model':row['model'],'androidRelease':'15'},'application':{'version':'2.2.22','versionCode':2222},'driver':{'mode':'System','version':'1.0'},'opengles':{'version':'OpenGL ES 3.2','extensions':[]},'egl':{'initializedVersion':'1.5','vendor':'Test Vendor','extensions':[]},'technicalReport':{'limits':[],'extensions':[],'eglExtensions':[],'eglClientExtensions':[],'compressedFormats':[],'shaderBinaryFormats':[],'programBinaryFormats':[],'precision':[],'queryDiagnostics':[],'eglConfigs':[],'display':{}},'reportText':'PUBLIC TEST REPORT'}
-index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.12','currentProducer':'OpenGLESScope 2.2.22','reports':summaries,'nextCursor':None}
-sync={'databaseReleaseVersion':'3.0.12','workerReleaseVersion':'3.0.12','reportCount':7,'latestReportId':summaries[0]['id'],'latestSubmittedAt':summaries[0]['submitted_at'],'syncToken':'7:mock'}
-health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'3.0.12'}
+index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.13','currentProducer':'OpenGLESScope 2.2.22','reports':summaries,'nextCursor':None}
+sync={'databaseReleaseVersion':'3.0.13','workerReleaseVersion':'3.0.13','reportCount':7,'latestReportId':summaries[0]['id'],'latestSubmittedAt':summaries[0]['submitted_at'],'syncToken':'7:mock'}
+health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 2.2.22','databaseVersion':'3.0.13'}
 def payload(url):
     path=urllib.parse.urlsplit(url).path
     if path=='/v1/reports':return index
@@ -91,12 +91,12 @@ def test():
                         window.fetch=async input=>{
                           const url=String(input);let payload;
                           if(url.includes('data/preload/manifest.json'))return new Response(MANIFEST,{status:200,headers:{'content-type':'application/json'}});
-                          if(url.includes('data/preload/reports.'))return new Response(CORRUPT?broken:original,{status:200,headers:{'content-type':'application/json'}});
+                          if(url.includes('data/preload/reports.')){await new Promise(resolve=>setTimeout(resolve,180));return new Response(CORRUPT?broken:original,{status:200,headers:{'content-type':'application/json'}});}
                           if(/\/v1\/reports\/[a-f0-9]{64}/.test(url)){
                            window.__detailCalls++;
                            const id=url.match(/\/v1\/reports\/([a-f0-9]{64})/)[1];payload=DETAILS[id]||{};
                           } else if(url.includes('/v1/reports?'))payload=INDEX;
-                          else if(url.includes('/v1/health'))payload=HEALTH;
+                          else if(url.includes('/v1/health')){if(!CORRUPT)await new Promise(resolve=>setTimeout(resolve,4000));payload=HEALTH;}
                           else if(url.includes('/v1/sync'))payload=SYNC;
                           else if(url.includes('/v1/network-info'))payload={networkInfoVersion:1};
                           else if(url.includes('data/registry-catalog'))payload=CATALOG;
@@ -113,7 +113,13 @@ def test():
                     assert html!=ns['html']
                     page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
                     page.set_content(html,wait_until='domcontentloaded',timeout=30000)
-                    page.wait_for_function("document.body.classList.contains('startup-layout-ready')",timeout=30000)
+                    if not corrupt:
+                        page.wait_for_function("document.querySelector('#databaseLoadingDetail')?.textContent.includes('Preparing 7 cached reports')",timeout=5000)
+                        assert page.locator('#databaseLoading').is_visible()
+                        page.wait_for_function("document.body.classList.contains('startup-layout-ready')",timeout=2800)
+                        assert page.locator('#networkStatusShell').get_attribute('data-state')=='checking'
+                    else:
+                        page.wait_for_function("document.body.classList.contains('startup-layout-ready')",timeout=30000)
                     assert page.locator('#privacyNotice').count()==0
                     assert page.locator('#content .reports-table tbody tr').count()==7
                     calls=page.evaluate('window.__detailCalls')
@@ -130,7 +136,7 @@ def test():
                     page.locator('#extensionRowSearch').fill('GL_EXT')
                     assert page.locator('.og-search-clear').filter(visible=True).count()>=1
                     assert not errors,errors
-                    print('CHROMIUM 3.0.12 PRELOAD',width,height,'corrupt=',corrupt,'detail API calls=',calls,'search X and filtered views PASS')
+                    print('CHROMIUM 3.0.13 PRELOAD',width,height,'corrupt=',corrupt,'detail API calls=',calls,'cache-first before delayed Worker, explicit progress, search X and filtered views PASS')
                     context.close()
                 browser.close()
         finally:

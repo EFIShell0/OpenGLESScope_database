@@ -1,3 +1,16 @@
+# OpenGLESScope Database 3.0.13
+
+### Fixed
+- Restore report-list scroll and route when closing detail rather than moving the viewport to the Back control.
+- Show only the Download JSON shortcut in Overview; canonical TXT is available in the Raw tab.
+- Match the shared Information and Favorites card layout, with source-backed dependency/version details and the full independent-project notice.
+- Restore semantic icons to all applicable filter families and size coverage percentages consistently on mobile and desktop.
+- Use a verified preload snapshot as the first rendered report set before non-blocking live reconciliation; only changed or absent report details are fetched.
+
+### Changed
+- Maintain the strict OpenGLESScope 2.2.22 / versionCode 2222 submission gate, schema 2 / technical schema 5 and immutable historical report data.
+- Use OpenGL ES/EGL evidence-specific labels without importing unrelated graphics API capability fields or fabricated device information.
+
 # OpenGLESScope Database 3.0.12
 
 ### Fixed
