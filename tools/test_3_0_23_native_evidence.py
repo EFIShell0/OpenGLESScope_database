@@ -13,4 +13,4 @@ for fake in ('GL_TIME_ELAPSED_EXT_QUERY_COUNTER_BITS','GL_TIMESTAMP_EXT_QUERY_CO
  assert fake not in line,'Native provenance regressed to invented identifier: '+fake
 assert 'TIMER_QUERY_PROVENANCE' in w and 'errorCode:code' in w
 assert 'real native timer query names accepted' in t and 'reject fabricated timer diagnostic identifiers' in t
-print('3.0.24 native timer evidence and safe failure taxonomy: PASS')
+print('3.0.25 native timer evidence and safe failure taxonomy: PASS')

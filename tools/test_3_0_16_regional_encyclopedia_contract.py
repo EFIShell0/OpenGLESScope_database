@@ -1,8 +1,8 @@
 from pathlib import Path
 import re,hashlib,json
 R=Path(__file__).resolve().parents[1]
-a=(R/'assets/app.v3024.js').read_text(encoding='utf-8')
-c=(R/'assets/site.v3024.css').read_text(encoding='utf-8')
+a=(R/'assets/app.v3025.js').read_text(encoding='utf-8')
+c=(R/'assets/site.v3025.css').read_text(encoding='utf-8')
 h=(R/'index.html').read_text(encoding='utf-8')
 assert 'const COUNTRY_CODE_SET=new Set(COUNTRY_CODES)' in a
 codes=re.search(r"const COUNTRY_CODES=Object.freeze\('([^']+)'\.split\(','\)\)",a).group(1).split(',')
@@ -23,5 +23,5 @@ for name in ['encyclopedia-workspace-head','encyclopedia-stat-strip','encycloped
 assert len(json.loads((R/'data/registry-catalog.v2000.json').read_text(encoding='utf-8'))['entries'])==5261
 assert "const size=24,pages=Math.max(1,Math.ceil(matches.length/size))" in a
 assert 'new TextDecoder(\'utf-8\',{fatal:true})' in a
-assert (R/'data/release.json').read_text(encoding='utf-8').find('"databaseVersion":"3.0.24"')>=0
-print('3.0.24 region/country flags, viewport-safe menu, and reference encyclopedia contract: PASS (250 countries, 5,261 real registry entries)')
+assert (R/'data/release.json').read_text(encoding='utf-8').find('"databaseVersion":"3.0.25"')>=0
+print('3.0.25 region/country flags, viewport-safe menu, and reference encyclopedia contract: PASS (250 countries, 5,261 real registry entries)')

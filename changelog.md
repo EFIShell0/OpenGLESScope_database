@@ -1,29 +1,35 @@
-# OpenGLESScope Database 3.0.24
+# OpenGLESScope Database 3.0.25
+
+- Fixed HTTP 400 TXT_JSON_CONSISTENCY caused by mismatch between app-generated EGL-config key=value rows and old synthetic Worker fixture.
+- Matched canonical eight named Pbuffer query evidence lines from OpenGLESScope 3.0.5 with schema-v5 JSON.
+- Added source-derived and negative HTTP contract tests; preserved secure validation, cache-first Pages and historical read-only reports.
+
+# OpenGLESScope Database 3.0.25
 
 - Fixed: published cache-first loading; verified report chunks are rendered before the live Worker responds and unchanged live report IDs make no detail API calls.
 - Fixed: live synchronization is atomic and fetches only genuinely new/changed report bodies; on failure the verified cached dataset remains available.
 - Changed: both GitHub Pages publication modes now require a full, SHA-256-verified public cache. Post-deploy verification audits the actual published manifest and every chunk.
 - Changed: transient public report fetches during cache construction retry, but incomplete/malformed reports still abort publication.
-- Preserved: OpenGLESScope 3.0.4/3004-only POST, all 3.0.23 HTTP-400 validation fixes, D1 schema, historical report reads and security semantics.
+- Preserved: OpenGLESScope 3.0.5/3004-only POST, all 3.0.23 HTTP-400 validation fixes, D1 schema, historical report reads and security semantics.
 
 # OpenGLESScope Database 3.0.23
 
 - Fixed: Native `GL_EXT_disjoint_timer_query` evidence uses the collector's actual descriptive names. The old Worker invented two `GL_*_QUERY_COUNTER_BITS` identifiers and rejected legitimate reports with HTTP 400 whenever the extension was present.
 - Tests: Real native timer-query names must produce HTTP 201; fabricated names and missing provenance must return HTTP 400. Cross-source/registry audit prevents recurrence.
 - Added: Bounded, value-free `errorCode` classification for schema HTTP 400 responses so future device-specific failures can be identified without exposing report contents.
-- Unchanged: Only OpenGLESScope 3.0.4 / 3004 may POST, schema 2/technicalReport 5, historic read access, D1 storage and snapshot security.
+- Unchanged: Only OpenGLESScope 3.0.5 / 3004 may POST, schema 2/technicalReport 5, historic read access, D1 storage and snapshot security.
 - Changed: Pages and Worker release v3023.
 
 # OpenGLESScope Database 3.0.22
 
 - Fixed: OpenGL ES 3.2 native combined robustness provenance is checked against its actual two GL diagnostics instead of an invented combined diagnostic name; complete valid reports are no longer rejected with HTTP 400 for this reason.
 - Security: The `GL_CONTEXT_FLAGS` value, robust-access bit and collected diagnostics must agree; forged or missing evidence remains rejected.
-- Unchanged: Exact OpenGLESScope 3.0.4 / versionCode 3004 POST policy; stored historical report reads, schema 2 / technicalReport schema 5, D1 and snapshot contracts.
+- Unchanged: Exact OpenGLESScope 3.0.5 / versionCode 3005 POST policy; stored historical report reads, schema 2 / technicalReport schema 5, D1 and snapshot contracts.
 - Changed: Versioned Pages assets and release handshake v3022.
 
 # OpenGLESScope Database 3.0.21
 
-- Changed: Only complete OpenGLESScope 3.0.4 / versionCode 3004 submissions are accepted; older reports remain readable.
+- Changed: Only complete OpenGLESScope 3.0.5 / versionCode 3005 submissions are accepted; older reports remain readable.
 - Changed: Worker, frontend assets and deterministic Pages release marker v3021.
 - Unchanged: D1 schema, normalizer 16, technicalReport schema 5 and existing report storage/snapshot contracts.
 

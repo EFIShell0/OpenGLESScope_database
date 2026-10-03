@@ -1,10 +1,10 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-const app=readFileSync(new URL('../assets/app.v3024.js',import.meta.url),'utf8');
-const css=readFileSync(new URL('../assets/site.v3024.css',import.meta.url),'utf8');
+const app=readFileSync(new URL('../assets/app.v3025.js',import.meta.url),'utf8');
+const css=readFileSync(new URL('../assets/site.v3025.css',import.meta.url),'utf8');
 const enhancement=app.slice(app.indexOf('function enhanceSearchClear('),app.indexOf('const searchEnhancementObserver='));
 assert.ok(enhancement.includes("input.parentElement?.querySelector(':scope > .search-clear-button')"),'existing clear must prevent enhancement');
 assert.equal((app.match(/id="registrySearchClear"/g)||[]).length,1,'encyclopedia authors one clear');
 assert.ok(app.includes("clear=$('#registrySearchClear')"),"clear handler must be retained");
 assert.match(css,/input\[type="search"\]::-webkit-search-cancel-button\{[^}]*display:none/);
-console.log('3.0.24 encyclopedia single-X source contract: PASS');
+console.log('3.0.25 encyclopedia single-X source contract: PASS');

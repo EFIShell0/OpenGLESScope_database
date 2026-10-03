@@ -32,7 +32,7 @@
 
 ## Submission and Worker
 - Application identity is OpenGLESScope with package com.efishell.openglesscope.
-- Application and database versions are independent. New report POST requires exactly OpenGLESScope 3.0.4, versionCode 3004, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
+- Application and database versions are independent. New report POST requires exactly OpenGLESScope 3.0.5, versionCode 3005, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
 - Public web URL is https://efishell0.github.io/OpenGLESScope_database/.
 - API base is https://openglesscope-database-api.openglesscope.workers.dev.
 - Request body is bounded to 2 MiB and is never truncated.
@@ -934,16 +934,23 @@
 - Display summary producer baseline and cache-bootstrap identity advance to 3.0.3/3003, while the database release identity and cache-busted filenames advance independently to 3.0.20/v3020.
 - Application 3.0.3 uses the shared responsive accent metric-card grid for capability/filter/pager counts. Database does not reinterpret totals, manufacture vendor or feature names or backfill historical cards.
 
-## 3.0.24 native evidence identity and rejection diagnostic contract
+## 3.0.25 native evidence identity and rejection diagnostic contract
 - `GL_EXT_disjoint_timer_query` emits `Query counter bits: GL_TIME_ELAPSED_EXT` and `Query counter bits: GL_TIMESTAMP_EXT`, exactly matching the application native collector; fabricated GL_* enum-like suffixes are forbidden in Worker requirements and positive fixtures.
 - Every new query-enforcement rule must be covered by a native-label positive case and a forged/missing-evidence negative case.
 - The HTTP 400 response may carry only a bounded non-sensitive validation category, never raw device data, tokens, TXT fragments, IP addresses, report fields or identifying strings.
-- New-report producer remains exact OpenGLESScope 3.0.4 / 3004; historical reports remain readable, D1 and snapshot semantics unchanged.
+- New-report producer remains exact OpenGLESScope 3.0.5 / 3004; historical reports remain readable, D1 and snapshot semantics unchanged.
 
-## Database 3.0.24 — mandatory VulkanScope-style cache-first publication
+## Database 3.0.25 — mandatory VulkanScope-style cache-first publication
 - The published Pages artifact MUST contain a complete authoritative `data/preload/manifest.json` and every content-addressed report chunk; source ZIPs do not contain live public report bodies.
 - On Pages release and snapshot-refresh, fail publication if the authoritative report cache is absent, incomplete, checksum-invalid, timestamp-inconsistent, or mismatched with the published index. Do not silently fall back to a report-by-report initial-load release.
 - On startup display explicit **Preparing current database / Preparing N cached reports** progress, verify every chunk with SHA-256, and render the verified snapshot before awaiting live Worker health.
 - Compare the live report index with verified cached report identifiers and server-authored timestamps; fetch ONLY missing or changed report bodies. If synchronization fails, preserve the complete previous verified snapshot atomically.
 - Never label live report-by-report fallback as cached loading. Never treat a malformed or absent cache as an empty report database; retain the HTTP/error state.
-- The current application POST gate is OpenGLESScope 3.0.4 / 3004 and must not change for this cache-only release.
+- The current application POST gate is OpenGLESScope 3.0.5 / 3004 and must not change for this cache-only release.
+
+
+## OpenGLESScope Database 3.0.25 — canonical producer TXT/JSON (release-blocking)
+- New POST accepts only OpenGLESScope 3.0.5/versionCode 3005, schema 2 and technicalReport 5. Historical accepted records remain readable; D1 and snapshot semantics are unchanged.
+- `reportText` must use the actual Android `reportText()` / `eglConfigAnalysisValue()` encoding, not fixture-invented field delimiters. Required pbuffer evidence has eight distinct named query rows and preserved compact summary; config rows are counted and checked in order, using exact `recordableAndroid=`, `framebufferTargetAndroid=`, `colorComponentTypeExt=` and `unavailableAttributes=` keys. Zero EGL configs require zero fabricated config rows.
+- The schema/enum/diagnostic and TXT/JSON integrity gates must remain strict, and reject missing/forged fields with non-identifying bounded diagnostic codes. Timer diagnostics use real native names `Query counter bits: GL_TIME_ELAPSED_EXT` and `Query counter bits: GL_TIMESTAMP_EXT`.
+- Release-blocking test verifies true source/fixture parity, accepted canonical TXT, rejected missing pbuffer rows, rejected incorrect config delimiters and rejected wrong counts. Preserve Database 3.0.24 cache-first publication and complete snapshot hash checks.

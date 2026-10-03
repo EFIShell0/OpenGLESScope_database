@@ -48,6 +48,6 @@ with sync_playwright() as playwright:
         page.wait_for_timeout(110)
         assert abs(page.evaluate('window.scrollY')-y)<50,(width,y,page.evaluate('window.scrollY'))
         assert not errors,(width,errors)
-        print('OVERVIEW 3.0.24 BROWSER PASS',width,height,'6 cards, canonical 64-digit ID, Back scroll, white navigation logos, no Raw TXT fallback')
+        print('OVERVIEW 3.0.25 BROWSER PASS',width,height,'6 cards, canonical 64-digit ID, Back scroll, white navigation logos, no Raw TXT fallback')
         context.close()
     browser.close()

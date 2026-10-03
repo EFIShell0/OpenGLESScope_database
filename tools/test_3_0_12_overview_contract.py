@@ -1,9 +1,9 @@
 from pathlib import Path
 import re
 r=Path(__file__).resolve().parents[1]
-app=(r/'assets/app.v3024.js').read_text()
-css=(r/'assets/site.v3024.css').read_text()
-experience=(r/'assets/experience.v3024.js').read_text()
+app=(r/'assets/app.v3025.js').read_text()
+css=(r/'assets/site.v3025.css').read_text()
+experience=(r/'assets/experience.v3025.js').read_text()
 html=(r/'index.html').read_text()
 assert "overview:['REPORT OVERVIEW','Overview'" in app
 assert "detailWorkspace(state.detailTab,detailStats(p,n,state.detailTab)" in app
@@ -22,4 +22,4 @@ assert "else if(window.__OGS30__?.isVerifiedOffline?.()){interrupted=true;banner
 for term in ['preloadJson','SHA-256','seedPreloadedReports','cachedReportLoads','async function ensureAllDetails','openglesscope:release-transition']:
  assert term in (app+experience),term
 assert (r/'tools/pages.workflow.yml').read_bytes()==(r/'.github/workflows/pages.yml').read_bytes()
-print('3.0.24 Overview, Back, white official logos, consistent GL/EGL labels and offline snapshot contract: PASS')
+print('3.0.25 Overview, Back, white official logos, consistent GL/EGL labels and offline snapshot contract: PASS')

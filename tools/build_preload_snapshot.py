@@ -23,7 +23,7 @@ def canonical(value):
 
 def get_report(api, item):
     rid = item['id']
-    request = urllib.request.Request(api + '/v1/reports/' + urllib.parse.quote(rid), headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-preload/3.0.24'})
+    request = urllib.request.Request(api + '/v1/reports/' + urllib.parse.quote(rid), headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-preload/3.0.25'})
     last_error = None
     for attempt in range(4):
         try:
@@ -52,7 +52,7 @@ def build(api, output, expected='', workers=4):
         raise ValueError('HTTPS API required except localhost fixtures')
     snapshot = fetch_index(api, expected)
     index = snapshot['reports']
-    if len(index) > MAX_REPORTS or snapshot['schemaVersion'] != 2 or snapshot['databaseVersion'] != '3.0.24':
+    if len(index) > MAX_REPORTS or snapshot['schemaVersion'] != 2 or snapshot['databaseVersion'] != '3.0.25':
         raise RuntimeError('Incompatible report-index preload')
     payloads = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(8, workers))) as pool:
@@ -82,7 +82,7 @@ def build(api, output, expected='', workers=4):
         else:
             group = candidate
     flush(group)
-    manifest = {'schemaVersion': 1, 'databaseVersion': '3.0.24', 'sourceSchemaVersion': 2,
+    manifest = {'schemaVersion': 1, 'databaseVersion': '3.0.25', 'sourceSchemaVersion': 2,
                 'normalizerVersion': 16, 'generatedAt': dt.datetime.now(dt.timezone.utc).isoformat().replace('+00:00', 'Z'),
                 'reportCount': len(index), 'generationMode': 'authoritative-public-report-preload',
                 'triggerReportId': expected or None, 'reports': index, 'chunks': chunks}

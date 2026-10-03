@@ -18,7 +18,7 @@ with sync_playwright() as p:
   notice=page.locator('#settingsInformation')
   assert 'not affiliated with the Khronos Group' in notice.inner_text()
   assert 'official Khronos Group project' in notice.inner_text()
-  assert '3.0.24' in notice.inner_text()
+  assert '3.0.25' in notice.inner_text()
   assert '0 third-party runtime libraries' in notice.inner_text()
   assert 'Wrangler 4.146.0' in notice.inner_text()
   assert notice.locator('.settings-release-summary>div').count()==3
@@ -38,6 +38,6 @@ with sync_playwright() as p:
   page.locator('#favoriteItems .settings-favorite-remove').click()
   assert 'No favorite reports yet.' in page.locator('#favoriteItems').inner_text()
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.24 INFORMATION / KHRONOS / LICENSES / FAVORITES PASS',width,height)
+  print('CHROMIUM 3.0.25 INFORMATION / KHRONOS / LICENSES / FAVORITES PASS',width,height)
   context.close()
  browser.close()

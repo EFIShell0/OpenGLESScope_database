@@ -1,9 +1,9 @@
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-a=(R/'assets/app.v3024.js').read_text(encoding='utf-8')
-e=(R/'assets/experience.v3024.js').read_text(encoding='utf-8')
+a=(R/'assets/app.v3025.js').read_text(encoding='utf-8')
+e=(R/'assets/experience.v3025.js').read_text(encoding='utf-8')
 h=(R/'index.html').read_text(encoding='utf-8')
-c=(R/'assets/site.v3024.css').read_text(encoding='utf-8')
+c=(R/'assets/site.v3025.css').read_text(encoding='utf-8')
 message='Release, runtime and dependency information for this OpenGLESScope Database build.'
 assert h.count(message)==0 and e.count(message)==1
 assert "next==='checking'&&reachable()" in e
@@ -16,4 +16,4 @@ assert 'renderEncyclopedia.ticket=0' in a
 assert 'OpenGL® ES™ / EGL™' in a
 assert 'const displayBrand=value=>' in a and "put('Driver','Mode',p.driver?.mode)" in a and "esc(displayBrand(p.driver?.mode||'Reported driver'))" in a
 assert "put('OpenGL ES','GL_RENDERER',p.gpu?.name)" in a
-print('3.0.24 Information, publication banner, Back, responsive registry, stable search and branding: PASS')
+print('3.0.25 Information, publication banner, Back, responsive registry, stable search and branding: PASS')

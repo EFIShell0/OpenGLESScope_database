@@ -1,26 +1,26 @@
-# OpenGLESScope Database 3.0.24 build audit
+# OpenGLESScope Database 3.0.25 build audit
 
-## 3.0.24 mandatory complete published public cache
+## 3.0.25 mandatory complete published public cache
 - Compared the local preload construction/initialization path with VulkanScope Database 1.4.12: the previous Pages artifact audit did not require `data/preload` to exist and a failed browser preload silently triggered individual Worker report downloads.
 - Both Pages publication jobs now fail unless the complete `data/preload/manifest.json` and each checksum-verified, count-verified, timestamp-matched report chunk are staged; verify the exact published cache after deployment.
 - Browser initialization renders verified cached reports first and atomically synchronizes only missing/changed live report bodies; failed live reconciliation never discards the prior verified snapshot.
 - 73 cached reports / 73 live reports: zero detail API requests. 73 cached / 75 live: exactly two new detail API requests, checked in desktop and mobile Chromium using SHA-verified release chunks.
 - Source ZIPs contain only public source and an empty offline summary stub; live public report bodies are produced solely by the publication workflow.
-- Retained OpenGLESScope 3.0.4/3004 POST gate, schema 2/technicalReport 5, D1, 3.0.23 native timer query validation and categorized HTTP 400 errors.
+- Retained OpenGLESScope 3.0.5/3005 POST gate, schema 2/technicalReport 5, D1, 3.0.23 native timer query validation and categorized HTTP 400 errors.
 
 ## 3.0.23 native/query validator parity and HTTP 400 incident
-- Reproduced 400 using a schema-5 OpenGLESScope 3.0.4 report with native descriptive timer-query names; after correcting TIMER_LIMITS the same specimen returned 201 Accepted.
+- Reproduced 400 using a schema-5 OpenGLESScope 3.0.5 report with native descriptive timer-query names; after correcting TIMER_LIMITS the same specimen returned 201 Accepted.
 - The previous Worker and test fixture both used invented GL_*_QUERY_COUNTER_BITS diagnostic identifiers, directly contradicting the application native collector and its canonical-name rule.
 - Added positive/negative native-label regression, safe categorized HTTP 400 diagnostics and immutable full-payload/security checks.
 - No producer-floor, historical-read, D1, snapshot, cache or technicalReport schema changes.
 
-- Database: 3.0.24
-- Current producer: OpenGLESScope 3.0.4 / 3004
+- Database: 3.0.25
+- Current producer: OpenGLESScope 3.0.5 / 3005
 - Normalizer: 16; technical report schema 5; no D1 migrations.
-- Current frontend: `app.v3024.js`, `site.v3024.css` and `config.js?v=3024`.
+- Current frontend: `app.v3025.js`, `site.v3025.css` and `config.js?v=3025`.
 - Added evidence-bound multi-family ANGLE identity matching and official bundled GPU logo selection. Driver-supplied raw text and stored report hashes remain unchanged. SwiftShader, missing/multiple signatures and unavailable brand assets never generate invented artwork.
 - Settings adds EGL APIs default expansion next to Submitted and GPU vendor. Opt-in persistence restores all three and never stores full report payloads.
-- Existing historical reports remain readable; only OpenGLESScope 3.0.4/3004 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
+- Existing historical reports remain readable; only OpenGLESScope 3.0.5/3005 is authorized for new POST. All security, quality, reproducibility, page staging, release handshake and report tests are release-blocking.
 
 ## 3.0.20 encyclopedia single clear action
 - Prevent duplicate X buttons: encyclopedia owns #registrySearchClear; the shared search enhancer skips any search input whose immediate field container already owns a clear control. The custom clear remains focus safe; native search cancel is hidden by existing shared CSS.
@@ -175,15 +175,21 @@ Information notice deduplication; no healthy release-transition connection banne
 ## Release 3.0.20 admission and immutable notice parity
 - Exact current producer is OpenGLESScope 3.0.2/3002; the old 3.0.1/3001 remains historical GET-only, never accepted through POST. Database release is 3.0.20. Application warning matches VulkanScope sentence with brand substitution.
 
-## Release 3.0.24 / OpenGLESScope 3.0.4 pairing
-- New POST requires exact OpenGLESScope 3.0.4 / versionCode 3004; prior 3.0.3 and all older releases remain historical read-only.
+## Release 3.0.25 / OpenGLESScope 3.0.5 pairing
+- New POST requires exact OpenGLESScope 3.0.5 / versionCode 3005; prior 3.0.3 and all older releases remain historical read-only.
 - Database uses unchanged schema 2 / technicalReport 5 / normalizer 16, does not delete/update existing reports and retains verified snapshot and Pages publication semantics.
 - Only application UI terminal failure presentation changed; incomplete reports remain invalid submissions.
 
-## 3.0.24 HTTP 400 regression
+## 3.0.25 HTTP 400 regression
 
 - Reproduced old Worker HTTP 400 with the actual OpenGL ES 3.2 native robust-access provenance string.
 - Corrected Worker mapping to the real GL_CONTEXT_FLAGS and GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT diagnostics.
 - Strictly rejects forged/missing diagnostic evidence and robust-access value contradicting the numeric context flag.
 - No changes to producer floor (3.0.4/3004), canonical submitted GL/EGL evidence, D1 schema, report IDs, or stored report reads.
 
+
+
+## 3.0.25 TXT/JSON canonical Android serializer cross-check
+- Exact current POST app OpenGLESScope 3.0.5/3005 (schema 2 / technicalReport 5).
+- New tests prove real EGL `key=value` and eight explicit pbuffer evidence rows. The previous fixture's `key value` and app's single-line Pbuffer form independently reproduced HTTP 400.
+- Negative tests retain TXT header/row count validation, fake-name prevention, D1/snapshot security, and 3.0.24 full preload/cache publication.
