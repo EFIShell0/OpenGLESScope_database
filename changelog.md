@@ -1,3 +1,9 @@
+# OpenGLESScope Database 3.0.21
+
+- Changed: Only complete OpenGLESScope 3.0.4 / versionCode 3004 submissions are accepted; older reports remain readable.
+- Changed: Worker, frontend assets and deterministic Pages release marker v3021.
+- Unchanged: D1 schema, normalizer 16, technicalReport schema 5 and existing report storage/snapshot contracts.
+
 # OpenGLESScope Database 3.0.20
 
 - Changed: Exact new submission producer OpenGLESScope 3.0.3 / versionCode 3003, schema 2 / technicalReport schema 5.

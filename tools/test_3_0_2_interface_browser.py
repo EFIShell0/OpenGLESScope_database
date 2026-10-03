@@ -9,14 +9,14 @@ for i in range(63):
  id=f'{i+1:064x}'
  rows.append({'id':id,'submitted_at':f'2026-10-02T10:{i%60:02d}:00.000Z','gpu_name':f'Test GPU {i+1}','vendor':['Qualcomm','Arm','Imagination'][i%3],'manufacturer':'Reference Manufacturer','model':f'Model {i%7}','opengles_version':'OpenGL ES 3.2','egl_version':'1.5','application_version':'2.2.22','application_version_code':2222,'android_release':'15','driver_version':f'{i+1}.0','driver_mode':'System'})
 row_map={x['id']:{**x,'gpu':{'name':x['gpu_name'],'vendor':x['vendor']},'device':{'manufacturer':x['manufacturer'],'model':x['model'],'androidRelease':'15'},'application':{'version':'2.2.22','versionCode':2222},'driver':{'mode':'System','version':x['driver_version']},'opengles':{'version':'OpenGL ES 3.2','glslVersion':'OpenGL ES GLSL ES 3.20','extensions':[]},'egl':{'initializedVersion':'1.5','clientApis':'OpenGL_ES','vendor':'EGL Vendor','extensions':[],'clientExtensions':[]},'technicalReport':{'limits':[],'extensions':[],'eglExtensions':[],'eglClientExtensions':[],'compressedFormats':[],'shaderBinaryFormats':[],'programBinaryFormats':[],'precision':[],'queryDiagnostics':[],'eglConfigs':[{'EGL_CONFIG_ID':7,'EGL_RED_SIZE':8,'EGL_GREEN_SIZE':8,'EGL_BLUE_SIZE':8,'EGL_SAMPLES':4}],'display':{}},'reportText':'OpenGL ES test report'} for x in rows}
-seed={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.20','currentProducer':'OpenGLESScope 3.0.3','reports':rows,'nextCursor':None}
-head={'databaseReleaseVersion':'3.0.20','workerReleaseVersion':'3.0.20','reportCount':len(rows),'latestReportId':rows[0]['id'],'latestSubmittedAt':rows[0]['submitted_at'],'syncToken':'63:seed'}
+seed={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.21','currentProducer':'OpenGLESScope 3.0.4','reports':rows,'nextCursor':None}
+head={'databaseReleaseVersion':'3.0.21','workerReleaseVersion':'3.0.21','reportCount':len(rows),'latestReportId':rows[0]['id'],'latestSubmittedAt':rows[0]['submitted_at'],'syncToken':'63:seed'}
 seed_js=r"""<script>(()=>{const previous=window.fetch,seed=SEED,detail=DETAIL,sync=SYNC;window.fetch=async function(input,options){const u=String(input);if(/\/v1\/reports\/[a-f0-9]{64}(?:\?|$)/.test(u)){const id=u.match(/\/v1\/reports\/([a-f0-9]{64})/)[1];return new Response(JSON.stringify(detail[id]||{}),{status:detail[id]?200:404,headers:{'content-type':'application/json'}})}if(u.includes('/v1/reports?'))return new Response(JSON.stringify(seed),{status:200,headers:{'content-type':'application/json'}});if(u.includes('/v1/sync'))return new Response(JSON.stringify(sync),{status:200,headers:{'content-type':'application/json'}});return previous(input,options)}})();</script>""".replace('SEED',json.dumps(seed)).replace('DETAIL',json.dumps(row_map)).replace('SYNC',json.dumps(head))
-app_source=(root/'assets/app.v3020.js').read_text()
+app_source=(root/'assets/app.v3021.js').read_text()
 needle='<script>'+app_source+'</script>'
 assert needle in html
 html=html.replace(needle,seed_js+needle,1)
-for name in ['scroll-system.v3020.js']:
+for name in ['scroll-system.v3021.js']:
  content='<script>'+(root/'assets'/name).read_text()+'</script>'
  html,n=re.subn(r'<script\b[^>]*src="[^"]*'+re.escape(name)+r'(?:\?[^"]*)?"[^>]*>\s*</script>',lambda _:content,html)
  assert n==1,(name,n)

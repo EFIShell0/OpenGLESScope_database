@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-const script=fs.readFileSync('assets/app.v3020.js','utf8');
+const script=fs.readFileSync('assets/app.v3021.js','utf8');
 const html=fs.readFileSync('index.html','utf8');
 const segment=script.slice(script.indexOf('const OGS_GPU_SIGNATURES='),script.indexOf('const summaryGpuLogoCell='));
 assert.ok(segment.startsWith('const OGS_GPU_SIGNATURES='),'GPU matcher must be present');
@@ -39,4 +39,4 @@ assert.match(script,/regional\.eglApisExpanded=data\.regional\?\.eglApisExpanded
 assert.match(script,/\['settingsEglApisDefault','eglApisExpanded'\]/);
 assert.match(script,/disclosure\(8,'typeToggle','EGL APIs','eglApisExpanded'/);
 assert.ok(script.includes("$('#settingsEglApisDefault').checked=regional.eglApisExpanded"));
-console.log('3.0.20 multi-brand ANGLE + raw GPU report evidence + EGL APIs settings: PASS');
+console.log('3.0.21 multi-brand ANGLE + raw GPU report evidence + EGL APIs settings: PASS');

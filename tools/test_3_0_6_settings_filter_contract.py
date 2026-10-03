@@ -4,10 +4,10 @@ from hashlib import sha256
 import re
 root=Path(__file__).resolve().parents[1]
 html=(root/'index.html').read_text(encoding='utf-8')
-app=(root/'assets/app.v3020.js').read_text(encoding='utf-8')
-style=(root/'assets/site.v3020.css').read_text(encoding='utf-8')
+app=(root/'assets/app.v3021.js').read_text(encoding='utf-8')
+style=(root/'assets/site.v3021.css').read_text(encoding='utf-8')
 worker=(root/'worker/src/index.js').read_text(encoding='utf-8')
-experience=(root/'assets/experience.v3020.js').read_text(encoding='utf-8')
+experience=(root/'assets/experience.v3021.js').read_text(encoding='utf-8')
 class Reader(HTMLParser):
  def __init__(self): super().__init__();self.ids=[];self.tag='';self.path=[];self.settings=[];self.internet_sections=[]
  def handle_starttag(self,tag,attrs):
@@ -46,4 +46,4 @@ for key in ['pseudoIPv4','continent','httpProtocol','tlsVersion','tlsCipher','cl
 network_handler=worker[worker.index('const requestNetworkInfo=request=>'):worker.index('\nconst canonicalBytes=')]
 assert 'env.DB' not in network_handler and 'reportText' not in network_handler
 assert (root/'assets/hdr/hdr10_plus_v1014.png').is_file()
-print('OpenGLESScope Database 3.0.20 shared Internet/Browser settings, 250 local country flags, scoped filter visibility, progress and green Android: PASS')
+print('OpenGLESScope Database 3.0.21 shared Internet/Browser settings, 250 local country flags, scoped filter visibility, progress and green Android: PASS')

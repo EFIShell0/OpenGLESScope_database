@@ -52,11 +52,11 @@ with sync_playwright() as p:
   page.wait_for_timeout(160)
   assert not page.locator('#detailView').is_visible(),'Selected text activated report'
   page.evaluate('window.getSelection().removeAllRanges()')
-  page.evaluate("() => {window.__OGS30__?.getCount?.(); const original=window.fetch;window.fetch=async(url,opts)=>{if(String(url).includes('/v1/sync'))return new Response(JSON.stringify({databaseReleaseVersion:'3.0.20',reportCount:63,latestReportId:document.querySelector('.report-row').dataset.id,latestSubmittedAt:'2026-10-02T10:00:00.000Z',syncToken:'63:transition'}),{status:200,headers:{'content-type':'application/json'}});return original(url,opts)}}")
+  page.evaluate("() => {window.__OGS30__?.getCount?.(); const original=window.fetch;window.fetch=async(url,opts)=>{if(String(url).includes('/v1/sync'))return new Response(JSON.stringify({databaseReleaseVersion:'3.0.21',reportCount:63,latestReportId:document.querySelector('.report-row').dataset.id,latestSubmittedAt:'2026-10-02T10:00:00.000Z',syncToken:'63:transition'}),{status:200,headers:{'content-type':'application/json'}});return original(url,opts)}}")
   assert page.evaluate('window.__OGS30__.refreshLive()') is False
   page.wait_for_function("document.querySelector('#networkStatusShell')?.dataset.state==='checking'",timeout=3000)
   assert not page.locator('#databaseUpdateModal').is_visible()
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.20 PASS',width,height,'canonical TXT and JSON downloads, route scroll return, selection guard, staged Worker release banner, zero errors',flush=True)
+  print('CHROMIUM 3.0.21 PASS',width,height,'canonical TXT and JSON downloads, route scroll return, selection guard, staged Worker release banner, zero errors',flush=True)
   context.close()
  browser.close()
