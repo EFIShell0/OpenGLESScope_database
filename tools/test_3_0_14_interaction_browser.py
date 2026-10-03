@@ -33,6 +33,6 @@ with sync_playwright() as playwright:
   assert search.input_value()=='EGL_' and page.evaluate('document.activeElement?.id')=='registrySearch'
   assert 0<page.locator('.registry-entry').count()<=24
   assert not errors,(w,errors)
-  print('CHROMIUM 3.0.26 INFORMATION / TRANSIENT STATUS / REGISTRY SEARCH PASS',w,h)
+  print('CHROMIUM 3.0.27 INFORMATION / TRANSIENT STATUS / REGISTRY SEARCH PASS',w,h)
   ctx.close()
  browser.close()

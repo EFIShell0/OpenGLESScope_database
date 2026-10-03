@@ -1,11 +1,20 @@
-# OpenGLESScope Database 3.0.26
+# OpenGLESScope Database 3.0.27
+
+### Fixed
+- Display explicitly reported and unambiguous GPU models/artwork inside Android Emulator OpenGL ES Translator as well as ANGLE across recognized GPU families; retain neutral artwork for conflicting, unknown and software renderers.
+- Keep raw GL_VENDOR/GL_RENDERER and all historical reports unchanged.
 
 ### Changed
-- Pair new report submission strictly with OpenGLESScope 3.0.6 / 3006, keeping historical reports readable.
+- Pair current-only report submission with OpenGLESScope 3.0.7 / 3007; advance matching Pages/Worker assets while retaining SHA-256 cache-first and existing D1 structure.
+
+# OpenGLESScope Database 3.0.27
+
+### Changed
+- Pair new report submission strictly with OpenGLESScope 3.0.7 / 3007, keeping historical reports readable.
 - Advance versioned frontend assets and release metadata without altering D1 structure or snapshot/cache-first method.
 
 ### Fixed
-- Prevent HTTP 403 producer mismatch for fully valid 3.0.6 native reports after the paired Worker is deployed. Preserve the full canonical TXT/JSON and all native GL/EGL diagnostics.
+- Prevent HTTP 403 producer mismatch for fully valid 3.0.7 native reports after the paired Worker is deployed. Preserve the full canonical TXT/JSON and all native GL/EGL diagnostics.
 
 # OpenGLESScope Database 3.0.25
 
@@ -151,7 +160,7 @@
 - Aligned cancelable report enter/exit and opening loader lifecycle with the common motion reference while honoring reduced motion.
 - Kept all existing evidence, producer admission, D1 reports, security controls and snapshot behavior unchanged.
 
-## 3.0.6
+## 3.0.7
 - Matched Settings Internet with reference-shaped detailed request-scoped network evidence (26 rows) and browser/runtime capability information (34 rows) in two sections; removed duplicate browser panel and extraneous network actions and Settings page-size control. Network details load only after Internet is opened, IPv4/IPv6 start mosaicked and all private observations clear on close.
 - Scoped visible filter families and active values by destination. Removed irrelevant cross-tab filter options, isolated display evidence filters and retained GL/EGL-specific queries only where applicable.
 - Restored top-of-page navigation progress by matching its actual HTML element to the shared visual and scroll contracts. Removed the extra Android icon size override; preserved the identical official green SVG.

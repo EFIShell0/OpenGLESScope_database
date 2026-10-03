@@ -53,6 +53,6 @@ with sync_playwright() as p:
    if view=='display':assert controls==required,controls
    if view=='encyclopedia':assert not controls,controls
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.26 SETTINGS / FILTERS / PROGRESS PASS',width,height,'26 request rows, 34 browser rows, 250 bundled country flags, no duplicate Browser panel, per-tab filters')
+  print('CHROMIUM 3.0.27 SETTINGS / FILTERS / PROGRESS PASS',width,height,'26 request rows, 34 browser rows, 250 bundled country flags, no duplicate Browser panel, per-tab filters')
   context.close()
  browser.close()

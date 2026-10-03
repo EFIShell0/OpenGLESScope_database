@@ -4,9 +4,9 @@ root=Path(__file__).resolve().parents[1]
 data=root/"data"/"index.json"
 obj=json.loads(data.read_text(encoding="utf-8"))
 if obj.get("schemaVersion")!=2 or not isinstance(obj.get("reports"),list): raise SystemExit("Invalid static index")
-obj["databaseVersion"]="3.0.26"
+obj["databaseVersion"]="3.0.27"
 obj["normalizerVersion"]=16
-obj["currentProducer"]="OpenGLESScope 3.0.6"
+obj["currentProducer"]="OpenGLESScope 3.0.7"
 obj["publishedOpenGlesSpec"]="OpenGL ES 3.2 (May 5, 2022)"
 obj["publishedGlslEsSpec"]="GLSL ES 3.20, specification revision 8 (August 14, 2023)"
 obj["publishedEglSpec"]="EGL 1.5 (August 27, 2014)"

@@ -1,12 +1,18 @@
-# OpenGLESScope Database 3.0.26 build audit
+# OpenGLESScope Database 3.0.27 build audit
 
-- Database: 3.0.26
-- Current producer: OpenGLESScope 3.0.6 / 3006
-- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3026.js`, `site.v3026.css` and `config.js?v=3026` represent the current asset generation.
-- Existing pre-3.0.26 obsolete tools/*.py sources are quarantined outside the checkout during repair rather than silently deleted; versioned assets follow existing safe cleanup.
-- New POST requires EXACT producer 3.0.6/3006, retaining historical producer evidence recognition of 3.0.5/3005 for already stored reports without rewriting any stored report, report ID or source fields.
+- Paired new-report producer OpenGLESScope 3.0.7 / 3007. No schema, normalizer, D1, snapshot, cache-first, canonical GL/EGL query or report JSON/TXT changes.
+- UI recognizes both ANGLE and Android Emulator OpenGL ES Translator as translation layers for unambiguous model-only presentation, cross-family manufacturer logos from existing bundled assets, and neutral software/ambiguity fallbacks. Raw report evidence is preserved; old stored data remains readable and never backfilled.
+- Verified through current source/Worker contract, independent presentation fixture, negative mutation, complete Pages staging and package manifest/reproducibility gates. Live Worker and GitHub Pages publication NOT EXECUTED by this source release.
+
+# OpenGLESScope Database 3.0.27 build audit
+
+- Database: 3.0.27
+- Current producer: OpenGLESScope 3.0.7 / 3007
+- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3027.js`, `site.v3027.css` and `config.js?v=3027` represent the current asset generation.
+- Existing pre-3.0.27 obsolete tools/*.py sources are quarantined outside the checkout during repair rather than silently deleted; versioned assets follow existing safe cleanup.
+- New POST requires EXACT producer 3.0.7/3007, retaining historical producer evidence recognition of 3.0.5/3005 for already stored reports without rewriting any stored report, report ID or source fields.
 - Report ingestion contract and native GL/EGL diagnostic identifiers unchanged. Bounded indexed repeated raw format strings remain legal while extension/identity and provenance checks remain strict. Existing cache-first preloads, atomic snapshot generation, D1 schema, security and UI behavior inherited from 3.0.25; legacy asset references fully rotated.
-- Does not claim a production Cloudflare deployment, live snapshot publication or Android device test; use corresponding verification commands and publish Worker before using 3.0.6 app submissions.
+- Does not claim a production Cloudflare deployment, live snapshot publication or Android device test; use corresponding verification commands and publish Worker before using 3.0.7 app submissions.
 
 # OpenGLESScope Database 3.0.25 build audit
 
@@ -95,7 +101,7 @@
 - Fixed accessible Back placement under the sticky header on mobile/desktop; prevented horizontal clipping from creating a non-sticky nested body scrollbar. Back returns to the previous report list scroll.
 - The release adds deterministic shell negative mutation checks and desktop/mobile Chromium regression; no API schema or D1 change.
 
-## 3.0.6 Settings, filter and progress repair
+## 3.0.7 Settings, filter and progress repair
 - Settings Internet now has 26 request-scoped observation rows and 34 local browser/runtime rows in the reference two-section layout. No network lookup before an explicit user visit to Internet; observed addresses start mosaicked and clear when Settings closes.
 - Removed legacy duplicate Browser Information injected into Information, extra Internet actions and Settings page-size selector; bundled 250 first-party country flags, with source and Pages auditing of the exact inventory.
 - Per-view GL/EGL filter applicability and grouped control families prevent other tabs receiving irrelevant or stale state; Android artwork bytes match reference, with no overriding size rule.

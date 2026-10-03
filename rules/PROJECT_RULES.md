@@ -963,3 +963,8 @@
 - Release blockers: full offline Worker tests (including banned 3.0.5 POST and accepted 3.0.6 POST), previous negative mutations, source quality gate, pages staging audit, exact package manifest, schema lock, snapshot security. Live Cloudflare deploy is separate from a source release.
 
 - Repair must identify obsolete Python sources in tools/ not present in the official source manifest, fail on --check, and quarantine (not delete) them outside the checkout on --apply. Dotfiles, local settings and secrets are not arbitrary cleanup targets.
+
+## Release 3.0.27 — OpenGLESScope 3.0.7 pairing and evidence-only translator identity
+- NEW POST is permitted only for the exact OpenGLESScope application 3.0.7 / versionCode 3007. Earlier and future producer versions are not silently upgraded; previously stored rows and historical GET remain unchanged. D1, schema 2, technicalReport 5, normalizer 16, canonical report TXT/JSON and full SHA-256 verified cache-first publication are unchanged.
+- ANGLE and Android Emulator OpenGL ES Translator are translation layers, never GPU vendors. Where reported `GL_RENDERER` explicitly contains exactly one recognized unambiguous non-software GPU family/model, the listing/detail may present its exact model substring and the existing corresponding bundled official vendor artwork. Software/conflicting/unknown families and models with missing artwork remain neutral. `GL_VENDOR`, `GL_RENDERER`, complete structured evidence and historical records must not be rewritten or backfilled for branding.
+- Lock app/database mapping with executable multi-family and negative regression tests. No new GL/EGL query, symbolic name, runtime support result or physical vendor/device ID may be inferred from renderer marketing strings.

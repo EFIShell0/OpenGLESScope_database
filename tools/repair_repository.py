@@ -11,12 +11,12 @@ g.add_argument('--apply',action='store_true')
 g.add_argument('--check',action='store_true')
 args=parser.parse_args()
 current_assets={
-    'app':'app.v3026.js',
-    'site':'site.v3026.css',
-    'browser-compat':'browser-compat.v3026.js',
-    'experience':'experience.v3026.js',
-    'release-bootstrap':'release-bootstrap.v3026.js',
-    'scroll-system':'scroll-system.v3026.js'
+    'app':'app.v3027.js',
+    'site':'site.v3027.css',
+    'browser-compat':'browser-compat.v3027.js',
+    'experience':'experience.v3027.js',
+    'release-bootstrap':'release-bootstrap.v3027.js',
+    'scroll-system':'scroll-system.v3027.js'
 }
 workflow_template=(root/'tools/pages.workflow.yml').read_text(encoding='utf-8')
 issues=[]
@@ -40,7 +40,7 @@ for rel in ['README.md','release.md']:
     if p.exists(): transient.append(p)
 if args.apply:
     if stale_tool_sources:
-        quarantine=root.parent/('OpenGLESScope_database_3.0.26_stale_tools_'+datetime.now().strftime('%Y%m%d_%H%M%S'))
+        quarantine=root.parent/('OpenGLESScope_database_3.0.27_stale_tools_'+datetime.now().strftime('%Y%m%d_%H%M%S'))
         for p in stale_tool_sources:
             dest=quarantine/p.relative_to(root)
             dest.parent.mkdir(parents=True,exist_ok=True)
@@ -54,13 +54,13 @@ if args.apply:
         else: p.unlink(missing_ok=True)
     workflow_dir.mkdir(parents=True,exist_ok=True)
     pages.write_bytes((root/'tools/pages.workflow.yml').read_bytes())
-    print('OpenGLESScope Database 3.0.26 repository repair: APPLIED')
+    print('OpenGLESScope Database 3.0.27 repository repair: APPLIED')
     sys.exit(0)
 if issues or workflow_wrong or transient or stale_tool_sources:
-    print('OpenGLESScope Database 3.0.26 repository repair: CHANGES REQUIRED')
+    print('OpenGLESScope Database 3.0.27 repository repair: CHANGES REQUIRED')
     for p in issues: print(p.relative_to(root))
     for p in stale_tool_sources: print(p.relative_to(root))
     for p in transient: print(p.relative_to(root))
     if workflow_wrong: print('.github/workflows/pages.yml')
     sys.exit(1)
-print('OpenGLESScope Database 3.0.26 repository repair: CLEAN')
+print('OpenGLESScope Database 3.0.27 repository repair: CLEAN')

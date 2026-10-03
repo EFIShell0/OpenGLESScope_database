@@ -31,11 +31,11 @@ for i in range(75):
         'reportText':'PUBLIC VERIFICATION SNAPSHOT\n'+('RUNTIME ONLY '+str(i)+'\n')*4300}
 
 health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,
-        'currentProducer':'OpenGLESScope 3.0.6','databaseVersion':'3.0.26'}
-def idx(n):return {'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.26',
-                   'currentProducer':'OpenGLESScope 3.0.6','reports':all_summaries[:n],
+        'currentProducer':'OpenGLESScope 3.0.7','databaseVersion':'3.0.27'}
+def idx(n):return {'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.27',
+                   'currentProducer':'OpenGLESScope 3.0.7','reports':all_summaries[:n],
                    'nextCursor':None}
-def sync(n):return {'databaseReleaseVersion':'3.0.26','workerReleaseVersion':'3.0.26',
+def sync(n):return {'databaseReleaseVersion':'3.0.27','workerReleaseVersion':'3.0.27',
                     'reportCount':n,'latestReportId':all_summaries[n-1]['id'],
                     'latestSubmittedAt':all_summaries[n-1]['submitted_at'],'syncToken':f'{n}:test'}
 class Handler(SimpleHTTPRequestHandler):
