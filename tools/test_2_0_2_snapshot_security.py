@@ -24,4 +24,4 @@ for label,changed in [('no integrity',worker.replace('await sha(storedPayload)!=
     try:gate(workflow,changed)
     except AssertionError:pass
     else:raise AssertionError(label+' mutation passed')
-print('OpenGLESScope Database 3.0.14 snapshot/storage positive-negative security gates: PASS')
+print('OpenGLESScope Database 3.0.17 snapshot/storage positive-negative security gates: PASS')

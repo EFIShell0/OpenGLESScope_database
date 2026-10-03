@@ -31,7 +31,7 @@
 
 ## Submission and Worker
 - Application identity is OpenGLESScope with package com.efishell.openglesscope.
-- Application and database versions are independent. New report POST requires exactly OpenGLESScope 2.2.22, versionCode 2222, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
+- Application and database versions are independent. New report POST requires exactly OpenGLESScope 3.0.1, versionCode 3001, schema 2, technicalReport schema 5; older and future producers are forbidden from submitting. Earlier canonical reports remain read-only and must never be deleted, recast, or hidden. Database release version is independent of producer version.
 - Public web URL is https://efishell0.github.io/OpenGLESScope_database/.
 - API base is https://openglesscope-database-api.openglesscope.workers.dev.
 - Request body is bounded to 2 MiB and is never truncated.
@@ -889,7 +889,7 @@
 - A physical GPU logo is selected only if an explicit known hardware vendor/model appears in submitted evidence; software renderer names do not inherit hardware branding.
 - Overview keys and values use the same shared kv .k and kv .v typography and accessible long-value wrapping as the reference.
 
-## Release 3.0.14 cache-first and report presentation parity
+## Release 3.0.15 cache-first and report presentation parity
 - Do not block display of a complete hash-verified published preload on a live index request. Show the current verified cache with an explicit progress bar first, then reconcile new report IDs against the live authoritative index without rerequesting unchanged report bodies.
 - Do not use stale or unverified preload data; preserve integrity, identity and server-authored timestamp checks and a safe read-only offline state. No report body is written to opt-in favorites/preferences storage.
 - Preserve the originating main view, table page and scroll position when returning from detail, including when opened from Favorites. Avoid forced viewport scrolling to an in-detail navigation button.
@@ -898,9 +898,22 @@
 - Filter icons reflect the selected OpenGL ES/EGL/device/filter category; percent tracks size consistently across viewport widths and preserve the distinction between reported, not listed, unavailable, not applicable and unknown.
 - The latest accepted producer is OpenGLESScope 2.2.22 / versionCode 2222. Accept older complete reports as historical reads and do not invent schema fields or mutate D1 historical data.
 
-## Release 3.0.14 interaction integrity
+## Release 3.0.15 interaction integrity
 - The Information section shows one release/dependency explanation and one distinct Khronos independence notice; duplicate information copy is forbidden.
 - A healthy browser connection during a Worker/Pages release transition must not show a false disconnection/reconnection banner. Genuine offline and repeatedly unreachable API conditions remain distinguishable.
 - Report Back remains in normal document flow and never overlays sticky detail tabs or table content. Route restoration retains the prior report list position.
 - Registry search updates its result list and pager without replacing or blurring the active search input. Pagination remains bounded to 50 visible symbol cards.
 - Display-only trademark symbols may be applied to UI headings and labels, but canonical submitted GL_VENDOR, GL_RENDERER, driver mode and registry identifiers retain their exact original bytes.
+
+## Release 3.0.15 — OpenGLESScope 3.0.0 integration
+- Current accepted new-report producer is exactly OpenGLESScope 3.0.0 / versionCode 3000; POST from versions below 3.0.0 is forbidden and future versions need a separate explicit audit.
+- Schema 2, technicalReport schema 5, normalizer 16 and existing D1 migrations remain unchanged. Prior historical reports stay readable and no stored hash, payload or timestamp is rewritten.
+- ANGLE is a graphics API translation layer. A Qualcomm/Adreno presentation is allowed only where GL_RENDERER explicitly contains Qualcomm and an Adreno model; raw GL_VENDOR/GL_RENDERER are authoritative and unchanged in stored report data. Google LLC is a presentation-only update from historic Google Inc.
+- The six-card hero mirrors the common reference grid, adding Compatible producers alongside producer/query baseline while presenting only truthful OpenGL ES/EGL metadata.
+- Submission lock, current-only producer, error feedback and snapshot workflow are release-gated by exact positive and negative tests.
+
+## Release 3.0.17 — multi-family ANGLE provenance and EGL API preference
+- Database and application render explicit ANGLE-reported physical GPU model/family separately from the translation layer and report the same bundled official GPU artwork; software/ambiguous renderers remain Unknown, not inferred. Apple and VeriSilicon have no distinct verified bundled artwork and remains Unknown-logo while its reported model is retained.
+- Original GL_VENDOR / GL_RENDERER and canonical report JSON/TXT are not rewritten; the derived display identity may normalize the current Google LLC company name without altering the driver-supplied Google Inc. text.
+- The EGL APIs report-table disclosure has a matching accessible Settings toggle beside column defaults; consent-based persistence restores it and clearing saved settings removes it.
+- Only OpenGLESScope 3.0.1 / versionCode 3001 may create a new report. All historic records remain readable, with no D1 migration or synthetic GPU identity backfill.

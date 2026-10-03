@@ -1,3 +1,23 @@
+# OpenGLESScope Database 3.0.17
+
+- Fixed: ANGLE presentation detects explicitly reported physical GPU family/models across all shipped GPU vendor artwork, not only Qualcomm; misleading software/unknown icons are prevented. Canonical raw renderer/vendor evidence remains unchanged.
+- Added: EGL APIs display-by-default toggle beside Submitted/GPU vendor in Preferences; selection is persisted only with Remember on this device enabled.
+- Changed: New POST requires exact OpenGLESScope 3.0.1 / versionCode 3001; 3.0.0 and older/newer are rejected. Historical reports remain readable.
+- Preserved: 250 country codes/flags, date/time settings, 5,261 registry symbols, existing D1 migrations and snapshot verification.
+
+# OpenGLESScope Database 3.0.16
+
+### Regional preferences and encyclopedia parity
+- Fixed: Automatic country presentation identifies the browser/system locale region by country name and ISO two-letter code; no IP-based location is inferred.
+- Fixed: The 250 existing local country flags, full country labels/codes, and regional time-zone/date preview are displayed in the selection controls.
+- Fixed: Wheel-scrolling and pointer-drag/release inside an open country selector no longer dismiss the menu.
+- Changed: The GL/EGL Encyclopedia adopts the shared reference workspace, verified catalog statistics, search, category navigation and 24-entry card pagination, using all 5,261 authentic local registry entries. Registry presence never implies runtime support.
+- Preserved: 3.0.0 / versionCode 3000 new-submission gate, previously accepted reports, canonical runtime evidence, Worker and D1 schema, and existing preload/snapshot integrity.
+
+- Changed: New uploads require exact OpenGLESScope 3.0.0 / versionCode 3000; old uploaded reports remain readable.
+- Changed: Overview displays six VulkanScope-layout metrics, including Compatible producers for the new OpenGL ES/EGL acceptance policy.
+- Preserved: D1 schema, historical canonical evidence, bounded snapshot/cache, normalizer 16.
+
 # OpenGLESScope Database 3.0.14
 
 ### Fixed

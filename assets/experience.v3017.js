@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='3.0.14',API=String(window.OPENGLESSCOPE_DATABASE_API||'').replace(/\/$/,''),$=id=>document.getElementById(id);
+const VERSION='3.0.17',API=String(window.OPENGLESSCOPE_DATABASE_API||'').replace(/\/$/,''),$=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const reduced=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;
 const reachable=()=>navigator.onLine!==false;
@@ -21,7 +21,7 @@ function navigatePublishedRelease(version){if(releaseNavigationPending||!newer(v
 async function releases(){if(releaseBusy||!reachable()||document.hidden)return;releaseBusy=true;try{const m=JSON.parse(await localText(`./data/release.json?_release=${Date.now()}`,8192));if(newer(m?.databaseVersion,VERSION)&&await published(m))navigatePublishedRelease(m.databaseVersion)}catch{}finally{releaseBusy=false}}
 const legalFiles=Object.freeze({'Node.js':'nodejs.md','Python':'python.md','Cloudflare workerd':'workerd.md','Wrangler':'wrangler.md','esbuild':'esbuild.md','sharp':'sharp.md','OpenGLESScope application':'openglesscope-application-mit.md'});
 const legalInv=[
- ['OpenGLESScope Database frontend','Browser runtime','First-party project code','3.0.14','Vanilla HTML, CSS and JavaScript. No third-party frontend framework, analytics library, advertising scripts, remote fonts or remote presentation dependencies.','This release'],
+ ['OpenGLESScope Database frontend','Browser runtime','First-party project code','3.0.17','Vanilla HTML, CSS and JavaScript. No third-party frontend framework, analytics library, advertising scripts, remote fonts or remote presentation dependencies.','This release'],
  ['OpenGLESScope application','Upstream application source','MIT','2.2.22','Application source license. This notice alone does not grant a blanket license for independent Database content.','licenses/openglesscope-application-mit.md'],
  ['Wrangler','Development / deployment','MIT and bundled notices','4.146.0','Direct development dependency used to validate, develop and deploy the Cloudflare Worker; not served by GitHub Pages.','worker/package.json'],
  ['esbuild','Toolchain component','MIT','Transitive / not pinned here','Build helper referenced by the local upstream license; its exact installed transitive version is not asserted.','licenses/esbuild.md'],

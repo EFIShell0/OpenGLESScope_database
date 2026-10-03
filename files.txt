@@ -17,9 +17,9 @@
 504.html
 BUILD_AUDIT.md
 SECURITY.md
-assets/app.v3014.js
+assets/app.v3017.js
 assets/apple-touch-icon-v017.png
-assets/browser-compat.v3014.js
+assets/browser-compat.v3017.js
 assets/country-flags/ad.png
 assets/country-flags/ae.png
 assets/country-flags/af.png
@@ -272,7 +272,7 @@ assets/country-flags/zm.png
 assets/country-flags/zw.png
 assets/egl-logo-v027.png
 assets/egl-logo-white-v028.png
-assets/experience.v3014.js
+assets/experience.v3017.js
 assets/favicon-v017.ico
 assets/favicon-v017.png
 assets/gpu-vendors/gpu_vendor_amd.png
@@ -296,9 +296,9 @@ assets/hdr/hdr10_plus_v1014.png
 assets/hdr/hdr_vivid.webp
 assets/opengles-gl-es-v030.png
 assets/openglesscope_logo_horizontal-v017.png
-assets/release-bootstrap.v3014.js
-assets/scroll-system.v3014.js
-assets/site.v3014.css
+assets/release-bootstrap.v3017.js
+assets/scroll-system.v3017.js
+assets/site.v3017.css
 changelog.md
 config.js
 data/index.json
@@ -410,6 +410,10 @@ tools/test_3_0_13_behavior_contract.py
 tools/test_3_0_13_information_favorites_browser.py
 tools/test_3_0_14_interaction_browser.py
 tools/test_3_0_14_parity_contract.py
+tools/test_3_0_15_pairing_contract.py
+tools/test_3_0_16_regional_encyclopedia_browser.py
+tools/test_3_0_16_regional_encyclopedia_contract.py
+tools/test_3_0_17_angle_egl.mjs
 tools/test_3_0_1_scroll_browser.py
 tools/test_3_0_1_scroll_parity.py
 tools/test_3_0_2_interface_browser.py

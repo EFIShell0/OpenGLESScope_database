@@ -26,13 +26,13 @@ with sync_playwright() as playwright:
   page.wait_for_selector('#registrySearch',timeout=10000)
   search=page.locator('#registrySearch');search.fill('GL_');page.wait_for_timeout(230)
   assert search.input_value()=='GL_' and page.evaluate('document.activeElement?.id')=='registrySearch'
-  assert page.locator('.registry-entry').count()==50
+  assert page.locator('.registry-entry').count()==24
   assert page.locator('.registry-workspace.encyclopedia-workspace').count()==1
   assert page.locator('.registry-list.encyclopedia-grid').count()==1
   search.fill('EGL_');page.wait_for_timeout(230)
   assert search.input_value()=='EGL_' and page.evaluate('document.activeElement?.id')=='registrySearch'
-  assert 0<page.locator('.registry-entry').count()<=50
+  assert 0<page.locator('.registry-entry').count()<=24
   assert not errors,(w,errors)
-  print('CHROMIUM 3.0.14 INFORMATION / TRANSIENT STATUS / REGISTRY SEARCH PASS',w,h)
+  print('CHROMIUM 3.0.17 INFORMATION / TRANSIENT STATUS / REGISTRY SEARCH PASS',w,h)
   ctx.close()
  browser.close()
