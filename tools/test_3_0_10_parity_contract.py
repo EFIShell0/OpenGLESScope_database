@@ -2,11 +2,11 @@
 from pathlib import Path
 import re
 root=Path(__file__).resolve().parents[1]
-app=(root/'assets/app.v3023.js').read_text()
-css=(root/'assets/site.v3023.css').read_text()
-ux=(root/'assets/experience.v3023.js').read_text()
+app=(root/'assets/app.v3024.js').read_text()
+css=(root/'assets/site.v3024.css').read_text()
+ux=(root/'assets/experience.v3024.js').read_text()
 html=(root/'index.html').read_text()
-compat=(root/'assets/browser-compat.v3023.js').read_text()
+compat=(root/'assets/browser-compat.v3024.js').read_text()
 ref_compat=(root/'rules/SHARED_BROWSER_COMPAT_1_4_12_REFERENCE.js').read_text()
 assert compat.replace('OPENGLESSCOPE','VULKANSCOPE').replace('OpenGLESScope','VulkanScope')==ref_compat, 'Unsupported-browser algorithm differs from reference'
 assert 'id="browserCompatibilityGate"' in html and 'Chromium 84+ · Firefox 86+ · Safari 14.1+' in html
@@ -23,4 +23,4 @@ assert '.custom-select-menu.is-searchable .custom-select-scroll' in css and '.og
 assert '@media(max-width:760px)' in css and '@media(max-width:430px)' in css and '@media(prefers-reduced-motion:reduce)' in css
 assert all(x in app for x in ['[10,25,50]','renderPrecision()','renderEncyclopedia()','bindCohort('])
 assert 'CURRENT_PRODUCER' not in ux
-print('OpenGLESScope Database 3.0.23 compatibility, complete filter pager, reduced-motion, opt-in storage negative contract: PASS')
+print('OpenGLESScope Database 3.0.24 compatibility, complete filter pager, reduced-motion, opt-in storage negative contract: PASS')

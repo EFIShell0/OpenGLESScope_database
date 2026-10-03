@@ -1,3 +1,11 @@
+# OpenGLESScope Database 3.0.24
+
+- Fixed: published cache-first loading; verified report chunks are rendered before the live Worker responds and unchanged live report IDs make no detail API calls.
+- Fixed: live synchronization is atomic and fetches only genuinely new/changed report bodies; on failure the verified cached dataset remains available.
+- Changed: both GitHub Pages publication modes now require a full, SHA-256-verified public cache. Post-deploy verification audits the actual published manifest and every chunk.
+- Changed: transient public report fetches during cache construction retry, but incomplete/malformed reports still abort publication.
+- Preserved: OpenGLESScope 3.0.4/3004-only POST, all 3.0.23 HTTP-400 validation fixes, D1 schema, historical report reads and security semantics.
+
 # OpenGLESScope Database 3.0.23
 
 - Fixed: Native `GL_EXT_disjoint_timer_query` evidence uses the collector's actual descriptive names. The old Worker invented two `GL_*_QUERY_COUNTER_BITS` identifiers and rejected legitimate reports with HTTP 400 whenever the extension was present.

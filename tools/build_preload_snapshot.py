@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -22,26 +23,36 @@ def canonical(value):
 
 def get_report(api, item):
     rid = item['id']
-    request = urllib.request.Request(api + '/v1/reports/' + urllib.parse.quote(rid), headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-preload/3.0.23'})
-    with urllib.request.urlopen(request, timeout=25) as response:
-        if int(response.headers.get('content-length') or 0) > MAX_RESPONSE:
-            raise RuntimeError('Oversized public report')
-        raw = response.read(MAX_RESPONSE + 1)
-    if len(raw) > MAX_RESPONSE:
-        raise RuntimeError('Oversized public report')
-    payload = json.loads(raw.decode('utf-8'))
-    if not isinstance(payload, dict) or payload.get('id') != rid or payload.get('submittedAt') != item.get('submitted_at'):
-        raise RuntimeError('Report identity or authoritative submission timestamp mismatch: ' + rid)
-    if payload.get('collectionStatus') == 'incomplete':
-        raise RuntimeError('Incomplete report cannot be preloaded')
-    return payload
+    request = urllib.request.Request(api + '/v1/reports/' + urllib.parse.quote(rid), headers={'Accept': 'application/json', 'User-Agent': 'OpenGLESScope-Database-preload/3.0.24'})
+    last_error = None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                if int(response.headers.get('content-length') or 0) > MAX_RESPONSE:
+                    raise RuntimeError('Oversized public report')
+                raw = response.read(MAX_RESPONSE + 1)
+            if len(raw) > MAX_RESPONSE:
+                raise RuntimeError('Oversized public report')
+            payload = json.loads(raw.decode('utf-8'))
+            if not isinstance(payload, dict) or payload.get('id') != rid or payload.get('submittedAt') != item.get('submitted_at'):
+                raise RuntimeError('Report identity or authoritative submission timestamp mismatch')
+            if payload.get('collectionStatus') == 'incomplete':
+                raise RuntimeError('Incomplete report cannot be preloaded')
+            return payload
+        except (urllib.error.URLError, TimeoutError, OSError, UnicodeError, ValueError, RuntimeError) as error:
+            last_error = error
+            if isinstance(error, RuntimeError):
+                break
+            if attempt < 3:
+                time.sleep(0.5 * (attempt + 1))
+    raise RuntimeError('Unable to verify authoritative public report for cache: ' + type(last_error).__name__)
 
 def build(api, output, expected='', workers=4):
     if not (api.startswith('https://') or api.startswith('http://127.0.0.1:')):
         raise ValueError('HTTPS API required except localhost fixtures')
     snapshot = fetch_index(api, expected)
     index = snapshot['reports']
-    if len(index) > MAX_REPORTS or snapshot['schemaVersion'] != 2 or snapshot['databaseVersion'] != '3.0.23':
+    if len(index) > MAX_REPORTS or snapshot['schemaVersion'] != 2 or snapshot['databaseVersion'] != '3.0.24':
         raise RuntimeError('Incompatible report-index preload')
     payloads = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(8, workers))) as pool:
@@ -71,7 +82,7 @@ def build(api, output, expected='', workers=4):
         else:
             group = candidate
     flush(group)
-    manifest = {'schemaVersion': 1, 'databaseVersion': '3.0.23', 'sourceSchemaVersion': 2,
+    manifest = {'schemaVersion': 1, 'databaseVersion': '3.0.24', 'sourceSchemaVersion': 2,
                 'normalizerVersion': 16, 'generatedAt': dt.datetime.now(dt.timezone.utc).isoformat().replace('+00:00', 'Z'),
                 'reportCount': len(index), 'generationMode': 'authoritative-public-report-preload',
                 'triggerReportId': expected or None, 'reports': index, 'chunks': chunks}
@@ -99,7 +110,7 @@ def main():
             manifest = build(a.api.rstrip('/'), output, a.expect_report_id, a.workers)
             print('Verified public report preload:', manifest['reportCount'], 'reports in', len(manifest['chunks']), 'chunks')
             return
-        except (ValueError, RuntimeError) as exc:
+        except (ValueError, RuntimeError, urllib.error.URLError, TimeoutError, OSError) as exc:
             if attempt + 1 >= max(1,min(12,a.expect_attempts)):
                 raise
             time.sleep(max(.25,min(10,a.expect_delay)))
