@@ -1,6 +1,6 @@
-# OpenGLESScope Database 3.0.13 build audit
+# OpenGLESScope Database 3.0.14 build audit
 
-## 3.0.13 cached startup and presentation parity
+## 3.0.14 cached startup and presentation parity
 - Verified public Pages cache is loaded and rendered before non-blocking live Worker reconciliation; hash-based preload integrity is unchanged. Incremental fetch requests only missing/updated report bodies, preserving the zero extra-detail-request path when cache and live index match.
 - Detail Back restores its originating main view and saved scroll offset; it no longer forcibly scrolls to the Back button.
 - Information uses separately declared dependency versions and source-specific license notices. Local upstream trademarks and the canonical producer data are preserved without newly inferred facts.
@@ -8,9 +8,9 @@
 - Semantic filter icons, Favorites card structure and extension coverage widths are aligned with the shared reference.
 - Current producer OpenGLESScope 2.2.22 / versionCode 2222, report schema 2, technical schema 5 and normalizer 16 are unchanged.
 
-# OpenGLESScope Database 3.0.13 build audit
+# OpenGLESScope Database 3.0.14 build audit
 
-## 3.0.13 ANGLE identity, source-preserving vendor display, restored trademarks and typography
+## 3.0.14 ANGLE identity, source-preserving vendor display, restored trademarks and typography
 - The old ANGLE blanket GPU-logo unknown fallback now recognizes explicitly reported hardware such as Adreno/Qualcomm, while software drivers remain unknown.
 - Report hero shows a bounded extracted ANGLE hardware model plus an explicitly labeled backend chip; original GL_RENDERER and GL_VENDOR remain exact in Overview and OpenGL ES.
 - Legacy Google Inc. is modernized only as a presentation label to Google LLC; D1 summary filtering and raw source fields remain unchanged.
@@ -77,10 +77,10 @@
 - Static snapshot verification accepts the 3.0.3 release identity, preserving the separate accepted-report + Pages publication verification flow.
 
 
-- Database: 3.0.13
+- Database: 3.0.14
 - Current producer: OpenGLESScope 2.2.22 / 2222
 - Submission schema: 2. Technical report schema: 5. Normalizer: 16.
-- UI assets: `app.v3013.js`, `site.v3013.css` and `config.js?v=3013`.
+- UI assets: `app.v3014.js`, `site.v3014.css` and `config.js?v=3014`.
 - Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
 - Worker and Pages versions must match before deployment. Check the existing D1 migration list; migration 0004 is required only on databases that have not applied it. No historical payload rewrite.
 - Release checks: `python -B tools/quality_gate.py` and clean extracted repeat. Real Cloudflare deployment remains separate verification.
@@ -107,12 +107,12 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 ## 3.0.0 native theme/experience release
 - The shared reference's layout geometry is retained with OpenGLESScope #BA2A8D branding rather than VulkanScope red.
 - Adds native startup gate, bounded same-origin version checks, network status notices, 3-second live sync, new-report toast, privacy/local-storage disclosure and actual locally packaged third-party licenses.
-- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.13.
+- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.14.
 - Visual/browser checks must be distinguished from actual Cloudflare deployment, which is a separate operation.
 
 ## 3.0.0 final explicit experience regression
 - `python -B tools/test_3_0_0_live_browser.py`: actual inline runtime of all first-party shipped scripts, desktop and mobile, startup hold release, first-visit privacy, viewing and returning from genuine application MIT license without silently acknowledging, session-only consent, source-bound license viewer, seven legal cards, Settings transitions, all 16 destinations, and no unsolicited network address request; zero JavaScript page exceptions. Production Cloudflare is not simulated as proof of remote deployment.
-- Startup asset URLs include `?v=3013` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
+- Startup asset URLs include `?v=3014` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
 
 ## 3.0.3 publication and interaction verification
 - Actual Chromium at 1440x900 and 390x844: 63 submitted report summaries, five live count metrics, all eleven evidence tabs, reference Compare A/B/swap/search/pin/minimize, and a simulated 64th D1 report updating the count and toast without JavaScript errors.
@@ -130,3 +130,6 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 
 - All fourteen HTTP status documents retain the 1.4.12 error page geometry, independent OpenGLESScope links and strict scriptless CSP; the Browser compatibility script is source-locked except brand text.
 - Restricted storage API access no longer raises a Settings Information exception; optional Chromium regression checks actual natural overflow with 15 report summaries and correctly loaded first-party inline PNG/CSS/JS at two viewport sizes.
+
+## 3.0.14 targeted checks
+Information notice deduplication; no healthy release-transition connection banner; normal-flow report Back; registry input/pagination focus continuity; exact raw report preservation; deterministic source and workflow byte parity.

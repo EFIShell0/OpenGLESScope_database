@@ -1,4 +1,4 @@
-# OpenGLESScope Database 3.0.13
+# OpenGLESScope Database 3.0.14
 
 ### Fixed
 - Restore report-list scroll and route when closing detail rather than moving the viewport to the Back control.
@@ -171,3 +171,9 @@
 - Rebuilt Devices and Versions aggregation with interactive cohort selection, charts and bounded report-count tables.
 - Synchronized offline/checking/unavailable/restored banners, live report notifications and Settings network state without automatic IP queries.
 - Preserved historical report reads and the strict OpenGLESScope 2.2.22/versionCode 2222 submission boundary.
+
+### 3.0.14
+- Fixed duplicate Information notices, transient release-check banners and moving Back control.
+- Aligned registry cards and search zone with shared workspace components; preserved focus and used bounded incremental result repaint.
+- Restored display-only trademark presentation in driver/registry labels.
+- Fixed Windows workflow repair to preserve exact source bytes.

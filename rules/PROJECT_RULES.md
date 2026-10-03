@@ -889,7 +889,7 @@
 - A physical GPU logo is selected only if an explicit known hardware vendor/model appears in submitted evidence; software renderer names do not inherit hardware branding.
 - Overview keys and values use the same shared kv .k and kv .v typography and accessible long-value wrapping as the reference.
 
-## Release 3.0.13 cache-first and report presentation parity
+## Release 3.0.14 cache-first and report presentation parity
 - Do not block display of a complete hash-verified published preload on a live index request. Show the current verified cache with an explicit progress bar first, then reconcile new report IDs against the live authoritative index without rerequesting unchanged report bodies.
 - Do not use stale or unverified preload data; preserve integrity, identity and server-authored timestamp checks and a safe read-only offline state. No report body is written to opt-in favorites/preferences storage.
 - Preserve the originating main view, table page and scroll position when returning from detail, including when opened from Favorites. Avoid forced viewport scrolling to an in-detail navigation button.
@@ -897,3 +897,10 @@
 - Information and Favorites must use shared dependency inventory and card styles with source-backed, qualified version text. Never invent transitive dependency versions, application capabilities, HDR status or vendor/model data.
 - Filter icons reflect the selected OpenGL ES/EGL/device/filter category; percent tracks size consistently across viewport widths and preserve the distinction between reported, not listed, unavailable, not applicable and unknown.
 - The latest accepted producer is OpenGLESScope 2.2.22 / versionCode 2222. Accept older complete reports as historical reads and do not invent schema fields or mutate D1 historical data.
+
+## Release 3.0.14 interaction integrity
+- The Information section shows one release/dependency explanation and one distinct Khronos independence notice; duplicate information copy is forbidden.
+- A healthy browser connection during a Worker/Pages release transition must not show a false disconnection/reconnection banner. Genuine offline and repeatedly unreachable API conditions remain distinguishable.
+- Report Back remains in normal document flow and never overlays sticky detail tabs or table content. Route restoration retains the prior report list position.
+- Registry search updates its result list and pager without replacing or blurring the active search input. Pagination remains bounded to 50 visible symbol cards.
+- Display-only trademark symbols may be applied to UI headings and labels, but canonical submitted GL_VENDOR, GL_RENDERER, driver mode and registry identifiers retain their exact original bytes.
