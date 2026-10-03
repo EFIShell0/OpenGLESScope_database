@@ -1,4 +1,46 @@
-# OpenGLESScope Database 3.0.6 build audit
+# OpenGLESScope Database 3.0.12 build audit
+
+## 3.0.12 ANGLE identity, source-preserving vendor display, restored trademarks and typography
+- The old ANGLE blanket GPU-logo unknown fallback now recognizes explicitly reported hardware such as Adreno/Qualcomm, while software drivers remain unknown.
+- Report hero shows a bounded extracted ANGLE hardware model plus an explicitly labeled backend chip; original GL_RENDERER and GL_VENDOR remain exact in Overview and OpenGL ES.
+- Legacy Google Inc. is modernized only as a presentation label to Google LLC; D1 summary filtering and raw source fields remain unchanged.
+- Trademarked navigation, hero, metrics and identity labels are restored exactly from 3.0.10.
+- Overview values regain the reference kv .v monospaced typography and safe overflow, and long driver/GL version metadata is abbreviated only in hero identity cards. Chromium checks at 1440/390/320 widths exercise the submitted ANGLE/Adreno 710 string, raw-evidence parity, software fallback and registered branding.
+
+## 3.0.11 Overview, branding and verified publication parity
+- The raw-content display regression stemmed from `DETAIL_GL_META` containing `summary` but not `overview`, with an accidental fallback to the Raw TXT workspace. Overview now renders the reference six-card identity grid directly, including a fully wrapping 64-character report ID.
+- Detail back navigation preserves the originating reports route and scroll, cancels superseded detail loads, and removes duplicate top-scroll scheduling.
+- Official bundled white GL|ES and EGL logo assets replace generic primary-navigation SVG artwork; visible names consistently use OpenGL ES / EGL. Common user-authored OpenGL ES / EGL vocabulary and Overview sublabels are normalized; original driver strings, registry names, raw TXT and license declarations remain exact.
+- Startup derived from verified offline snapshot does not display live connectivity until the first successful authoritative Worker synchronization. Existing bounded cache hash checks, three-second sync, async snapshot workflow and staged Pages/Worker handshake are retained.
+- No D1 migration, historical report mutation, new producer acceptance, external media dependency or live deployment is part of this release.
+
+
+## 3.0.11 reference parity, verified report preload, legal cards and search animation
+- All 116 headings of the original VulkanScope Database 1.4.12 engineering-rule reference are present, SHA256-pinned and normatively adapted to OpenGLESScope's real OpenGL ES/EGL schema; no Vulkan-only fake capability is introduced.
+- Information/License uses the same seven responsive settings-library cards, legal status badges, source-bound accessible license viewer, privacy card and summary metrics as the reference presentation.
+- The source ZIP and source static `data/index.json` remain report-summary-only. Release/snapshot Pages workflows build an indexed, size-limited and SHA256-verified cache only from authoritative already-public Worker report GET responses, then overwrite the published summary index with the same authoritative generation to avoid races.
+- Startup loads the verified Pages cache concurrently with live Worker summaries, displays actual cache progress and only GETs reports missing from that cache. Invalid cached reports are rejected and refetched; an offline read-only fallback cannot impersonate live D1.
+- Search/filter cards animate the shared narrow loading sweep and expose accessible dynamic clear X controls; keyboard/touch/reduced-motion are respected.
+- Synthetic Pages manifest+chunk hash audit passed; deliberate one-byte chunk corruption is rejected. Chromium 1440x900 and 390x844 verified seven cached reports with zero redundant detail GETs; corrupt cache triggered seven safe Worker detail GETs, with search clear and dynamic views working and no script errors.
+- No Cloudflare/GitHub production deployment, D1 migration, report deletion or producer-gate change was performed in source work.
+
+## 3.0.11 live release, shader precision, filters and regional controls
+- Independent health probe suppresses speculative outage labels during Worker/publication transitions; actual offline retains its own banner.
+- All enhanced filter menus preserve native select authority, search the complete option set, page at fifty with direct entry and clear query.
+- Shader Precision supports All shader stages (Vertex and Fragment only), precision-type filtering, search and bounded direct paging.
+- Time display exposes country/zone, standard/daylight offsets, seasonal state and canonical original ISO on submitted disclosure.
+- Per-page motion respects reduced motion; the existing live foreground three-second update and D1 snapshot dispatch are preserved.
+- Desktop and mobile Chromium 3.0.11 regression exercises twelve GL precision query types, stage/type/search filters, complete 50-item country-option paging and the regional DST preview.
+- A mocked newer healthy Worker remains Checking even when an independent successful connection event arrives; a transient index failure cannot impersonate an Internet outage.
+- No production service deployment or live submission was performed in this source build.
+
+
+## 3.0.7 Overview, action geometry, Back and startup regression
+- First report-detail destination uses Overview with shared grouped metadata hierarchy; all existing GL/EGL and Display evidence is retained without claiming unsupported fields. Existing Overview URLs remain canonical; earlier Summary alias remains readable.
+- Shared detail hero contains all user report actions including additional canonical TXT export. Favoriting uses the common SVG and visible state labels, independent of report-link activation.
+- Restored cancelable 120 ms detail exit/210 ms entry, 105/180 ms tab, 90/150 ms workspace transitions, initial loader closure and reduced-motion behavior.
+- Fixed accessible Back placement under the sticky header on mobile/desktop; prevented horizontal clipping from creating a non-sticky nested body scrollbar. Back returns to the previous report list scroll.
+- The release adds deterministic shell negative mutation checks and desktop/mobile Chromium regression; no API schema or D1 change.
 
 ## 3.0.6 Settings, filter and progress repair
 - Settings Internet now has 26 request-scoped observation rows and 34 local browser/runtime rows in the reference two-section layout. No network lookup before an explicit user visit to Internet; observed addresses start mosaicked and clear when Settings closes.
@@ -25,10 +67,10 @@
 - Static snapshot verification accepts the 3.0.3 release identity, preserving the separate accepted-report + Pages publication verification flow.
 
 
-- Database: 3.0.6
+- Database: 3.0.12
 - Current producer: OpenGLESScope 2.2.22 / 2222
 - Submission schema: 2. Technical report schema: 5. Normalizer: 16.
-- UI assets: `app.v3006.js`, `site.v3006.css` and `config.js?v=3006`.
+- UI assets: `app.v3012.js`, `site.v3012.css` and `config.js?v=3012`.
 - Locked registry catalog: 5,261 OpenGL ES/EGL reference entries. Reference presence is not runtime support.
 - Worker and Pages versions must match before deployment. Check the existing D1 migration list; migration 0004 is required only on databases that have not applied it. No historical payload rewrite.
 - Release checks: `python -B tools/quality_gate.py` and clean extracted repeat. Real Cloudflare deployment remains separate verification.
@@ -55,12 +97,12 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 ## 3.0.0 native theme/experience release
 - The shared reference's layout geometry is retained with OpenGLESScope #BA2A8D branding rather than VulkanScope red.
 - Adds native startup gate, bounded same-origin version checks, network status notices, 3-second live sync, new-report toast, privacy/local-storage disclosure and actual locally packaged third-party licenses.
-- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.6.
+- Existing Worker D1 and exact current producer contract remain unchanged beyond database release identity 3.0.12.
 - Visual/browser checks must be distinguished from actual Cloudflare deployment, which is a separate operation.
 
 ## 3.0.0 final explicit experience regression
 - `python -B tools/test_3_0_0_live_browser.py`: actual inline runtime of all first-party shipped scripts, desktop and mobile, startup hold release, first-visit privacy, viewing and returning from genuine application MIT license without silently acknowledging, session-only consent, source-bound license viewer, seven legal cards, Settings transitions, all 16 destinations, and no unsolicited network address request; zero JavaScript page exceptions. Production Cloudflare is not simulated as proof of remote deployment.
-- Startup asset URLs include `?v=3006` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
+- Startup asset URLs include `?v=3012` consistently in index and release-bootstrap; the source marker remains fail-closed (`releaseReady:false`) until `build_pages_artifact.py` stages and audits the complete `releaseReady:true` Pages artifact.
 
 ## 3.0.3 publication and interaction verification
 - Actual Chromium at 1440x900 and 390x844: 63 submitted report summaries, five live count metrics, all eleven evidence tabs, reference Compare A/B/swap/search/pin/minimize, and a simulated 64th D1 report updating the count and toast without JavaScript errors.
@@ -69,7 +111,7 @@ The original release archive has no `worker/package-lock.json`, `.gitattributes`
 - This release enables automatic future upgrade checks in tabs running 3.0.3 onward. A tab that remains open on 3.0.2 uses the already-loaded old JavaScript and still needs its existing manual Update now action once to enter the new policy.
 - Quality gate is run on original and independently clean-extracted package. Browser tests use only mocked content, with no live D1 insert or claimed external Cloudflare deployment.
 
-## 3.0.6 parity repair and independent source review
+## 3.0.7 parity repair and independent source review
 - Fixed first-load database-loading class remaining set after loader dismissal, which had suppressed the transplanted reference scroll UI on every update.
 - Switched Settings Internet and Browser to card/grid row hierarchy rather than single-line/plain-paragraph summaries; network metadata requires the user to open Settings Internet and remains masked by default.
 - Used official white EGL v028 (pixel-white transparency), reference HDR10+ v1014, and exact reference green Android filter vector.

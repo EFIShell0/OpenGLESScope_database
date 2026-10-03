@@ -5,583 +5,583 @@
   "headings": [
     {
       "heading": "Release 0.34.9 Compare / Portability density",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.0 full database audit",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.1 dominant coverage emphasis",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.2 full-audit hardening",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.3 dominant coverage background containment",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.4 Cloudflare account isolation",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.5 Windows account-verifier reliability",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.6 Vulkan brand-surface parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.7 producer/database full audit",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.8 exact Properties / Limits semantics",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.35.9 Display & HDR / ABI / home-metric parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.0 luminance-unit typography parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.2 VulkanScope 0.34.2 complete-report parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.2 Host Image Copy promoted-core comparison parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.3 technical-differences compare filter",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.5 VulkanScope 0.35.1 complete-report contract",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.36.5 Cloudflare compatibility-date deploy correctness",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.37.0 VulkanScope 0.41.0 trends and permalink requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.37.1 queue, Vulkan Video and query-state semantics",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.38.0 statistics / hash routing / VulkanScope 0.41.4 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.0 filter architecture and interactive statistics requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.1 VulkanScope 0.41.5 compatibility hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.2 CI checkout and Pages artifact hygiene requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.3 GitHub Actions / source-audit hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.4 tracked-source audit / repository repair requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.5 cross-producer comparison / VulkanScope 0.41.7 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.6 Image Format Properties2 tuple-state / VulkanScope 0.41.8 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.7 Image Format Properties2 query-outcome separation / VulkanScope 0.41.9 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.8 Image Format Properties2 complete tuple-state / VulkanScope 0.41.10 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.9 / VulkanScope 0.41.11 reporting-state requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.10 / VulkanScope 0.41.12 canonical format-token submission requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.11 / VulkanScope 0.41.12 query-group unavailable submission requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.12 / VulkanScope 0.41.32 / Vulkan 1.4.361 compatibility requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.13 Windows UTF-8 deterministic tooling requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.13 Windows UTF-8 deterministic tooling requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.14 existing-repository / generated-index regression-gate requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.15 / VulkanScope 0.41.40 report-text identity compatibility requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.16 / VulkanScope 0.41.41 historical Compare identity requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.17 / VulkanScope 0.41.42 Surface evidence-state Compare requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.18 / VulkanScope 0.41.43 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.19 / VulkanScope 0.41.44 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.20 / VulkanScope 0.41.45 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.21 / VulkanScope 0.41.46 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.22 / VulkanScope 0.80.8 loading, producer-floor, canonical-device-type and page-scroll requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.23 / VulkanScope 0.80.9 producer-floor and Vulkan Encyclopedia requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.24 / VulkanScope 0.80.10 / Vulkan 1.4.362 requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.24 GitHub Actions overlay-repair hotfix",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.25 loading / Encyclopedia UI coherence requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.26 / VulkanScope 0.80.12 submission-diagnostics requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 0.39.27 exact producer registry-baseline string requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.0 / VulkanScope 1.0.0 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.1 full security, specification, correctness and Surface evidence requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.2 / VulkanScope 1.0.2 producer-baseline requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.3 / VulkanScope 1.0.15 preloaded UI and compatibility requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.4 Windows/toolchain/release hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.5 stale optional-lock overlay hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.6 CI / deterministic Encyclopedia / npm-audit hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.7 Windows checkout / npm subprocess hardening requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.8 tagged-checkout / strict-package boundary requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.9 live-report consistency / Reports identity / low-coverage / producer-floor requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.10 Reports render-array hotfix requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.11 GitHub Actions command-boundary hotfix requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.12 Reports visual/navigation UI requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.13 Reports disclosure animation / high-coverage color-spray requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.14 Reports/data-presentation integrity requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.15 Versions/motion/loading/overlay requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.16 live synchronization / modal-details / Versions parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.17 coverage-glow / Versions identity / paged evidence-modal parity",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.18 bounded modal selector / Android brand color / Devices statistics / full audit",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.19 dominant coverage glow / release-ready publication requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.20 release-state handshake / refresh-loop recovery / Pages publication repair",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.21 foreground live-report reconciliation / sync-head requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.22 atomic current-set / local preferences / network-observation / selection-safety requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.23 live connectivity / Settings privacy / report interaction requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.24 regional time / country identity / Compare workspace requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.0.25 live network observation / local flags / coherent controls / Surface and Encyclopedia workspace requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.0 submission floor / workspace / Settings clarity requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.1 comparison tracking / temporal integrity / confirmation / report-detail requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.2 GitHub Release retry hardening / inherited 1.2.1 UI integrity requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.3 browser compatibility / English presentation / endpoint motion / mobile overflow requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.4 CI generated-index verification / bounded GPU-device report-table requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.5 root-scrollbar endpoint / complete motion requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.6 cross-browser viewport-scrollbar / report-detail workspace requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.7 compare follow-rail / adaptive hero / viewport endpoint requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.8 Compare fixed-follow reliability requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.9 browser-gate / Reports filters / Compare minimization / local-scrollbar requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.10 non-Reports mobile filters / Compare version-emphasis requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.11 Compare mobile identity-flow requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.12 searchable-filter and overlay-layer requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.13 filter-pagination / Compare-direction / full-UI audit requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.14 direct-page-jump / Browser-information requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.2.15 Information / report-JSON-export requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.0 Vulkan® presentation / license-reading / full-audit requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.1 startup-freshness / filter-integrity / inline-license / live-report-notification requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.2 cache-convergence / pointer-integrity / pagination / information-notice requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.3 Compare-direction / symmetric-motion requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.4 filter-scrollbar / Compare-chevron requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.5 Submitted time-zone wrapping requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.6 report-detail evidence-workspace / Raw-report download requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.7 browser brand-mark requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.8 filter / regional-mode / browser-cleanup requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.9 regional-control fit / country-profile / filter-gutter requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.3.10 country-selector search / pagination requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.0 submission floor / Settings order / address mosaic / startup-filter requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.1 independent address controls / hard startup-filter hold requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.2 stable startup layout / address privacy presentation requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.3 startup-loader isolation / address-fit requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.4 viewport-scroll / page-progress containing-block requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.5 action-only address reveal / filter-search clear requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.6 VulkanScope 1.4.3 new-submission floor requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.7 producer-floor metadata coherence requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.8 VulkanScope 2.0.6 compatibility and submission-floor requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.9 profile-detail / temporal-preview / live-startup / loader-polish requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.10 profile-readability / single-stage-loader / submitted-seasonal-time requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.11 VulkanScope 3.0.2 compatibility and submission-floor requirements",
-      "applicability": "historical_methodology_reference",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "applicability": "adapted",
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     },
     {
       "heading": "Release 1.4.12 VulkanScope 3.0.12 floor and asynchronous snapshot-refresh requirements",
       "applicability": "adapted",
-      "interpretation": "Apply the API-neutral control and preserve GL/EGL semantics; Vulkan producer/schema rules never govern OpenGLESScope."
+      "interpretation": "Normative: adopt the applicable reference security, UI, lifecycle, caching, quality and release controls; translate API-specific Vulkan concepts only into true OpenGL ES/EGL evidence. Do not invent unsupported queries, fields, profiles, registry capabilities, brands or producer/schema changes."
     }
   ]
 }

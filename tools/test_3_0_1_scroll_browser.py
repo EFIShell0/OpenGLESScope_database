@@ -4,7 +4,7 @@ import re
 root=Path(__file__).resolve().parents[1]
 source=(root/'tools/test_3_0_0_live_browser.py').read_text()
 exec(source.split('with sync_playwright() as p:')[0],globals())
-for name in ['scroll-system.v3006.js']:
+for name in ['scroll-system.v3012.js']:
  content='<script>'+(root/'assets'/name).read_text()+'</script>'
  html,n=re.subn(r'<script\b[^>]*src="[^\"]*'+re.escape(name)+r'(?:\?[^\"]*)?"[^>]*>\s*</script>',lambda _:content,html)
  assert n==1,(name,n)
@@ -15,7 +15,7 @@ with sync_playwright() as p:
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.set_content(html,wait_until='domcontentloaded',timeout=20000)
   page.wait_for_function("document.body.classList.contains('startup-layout-ready')",timeout=16000)
-  page.locator('#privacySessionOnly').click(timeout=6000)
+  assert page.locator('#privacyNotice').count()==0
   page.evaluate("""() => {
     const block=document.createElement('section'); block.id='scrollProbe';block.style.minHeight='1900px';
     block.textContent='Viewport scrollbar height probe';document.querySelector('#content').appendChild(block);

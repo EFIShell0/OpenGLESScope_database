@@ -60,6 +60,7 @@ jobs:
       - name: Refresh authoritative live index
         run: |
           python tools/build_live_index.py _site/data/index.json
+          python tools/build_preload_snapshot.py _site/data/preload
           python tools/audit_database.py --artifact-tree _site
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -127,6 +128,7 @@ jobs:
             if [ "$attempt" -lt 8 ]; then sleep 2; fi
           done
           [ "$ready" -eq 1 ] || { echo "Accepted report is not in authoritative Worker list" >&2; exit 1; }
+          python tools/build_preload_snapshot.py _site/data/preload --expect-report-id "$REPORT_ID"
           python tools/audit_database.py --artifact-tree _site
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

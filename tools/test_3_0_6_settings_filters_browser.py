@@ -24,7 +24,7 @@ with sync_playwright() as p:
   page.set_content(html,wait_until='domcontentloaded',timeout=25000)
   page.wait_for_function("document.body.classList.contains('startup-layout-ready')",timeout=20000)
   assert page.evaluate('window.__requestNetworkCalls')==0
-  page.locator('#privacySessionOnly').click()
+  assert page.locator('#privacyNotice').count()==0
   page.wait_for_function("document.querySelector('#content .reports-table tbody')?.rows.length===25",timeout=10000)
   page.wait_for_function("document.querySelector('#pageProgress')?.classList.contains('is-scrollable')",timeout=6000)
   progress=page.evaluate("() => ({tag:document.querySelector('#pageProgressBar').tagName,fill:getComputedStyle(document.querySelector('#pageProgressBar')).backgroundImage})")
@@ -53,6 +53,6 @@ with sync_playwright() as p:
    if view=='display':assert controls==required,controls
    if view=='encyclopedia':assert not controls,controls
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.6 SETTINGS / FILTERS / PROGRESS PASS',width,height,'26 request rows, 34 browser rows, 250 bundled country flags, no duplicate Browser panel, per-tab filters')
+  print('CHROMIUM 3.0.12 SETTINGS / FILTERS / PROGRESS PASS',width,height,'26 request rows, 34 browser rows, 250 bundled country flags, no duplicate Browser panel, per-tab filters')
   context.close()
  browser.close()

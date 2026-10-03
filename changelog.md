@@ -1,4 +1,62 @@
-# OpenGLESScope Database 3.0.6
+# OpenGLESScope Database 3.0.12
+
+### Fixed
+- Restored the 3.0.10 OpenGL® ES™ and EGL™ trademarked visible labels without editing original runtime evidence or technical symbols.
+- Aligned Overview key/value fonts and long-value wrapping with the shared reference card styles.
+- Recognize an explicitly reported physical GPU inside ANGLE GL_RENDERER for hardware badges, preserving Unknown for unresolved/software rendering.
+- Keep raw GL_VENDOR, GL_RENDERER and exact full GL_VERSION accessible alongside a readable GPU heading and separate ANGLE/Vulkan-backend labels.
+
+### Changed
+- Present exact legacy Google Inc. runtime vendor as Google LLC only in user-facing derived labels, without changing canonical report values.
+- Existing privacy, cache, submission gates, D1 schema, snapshots and network lifecycle remain unchanged.
+
+# OpenGLESScope Database 3.0.11
+
+### Fixed
+- Report Overview uses the same native six-card reference layout, never the Raw TXT workspace fallback, and shows the complete SHA-256 identity with safe wrapping.
+- The report Back control restores the report listing and saved scroll position without a duplicate page-reset race.
+- Normalized visible OpenGL ES and EGL labels while preserving canonical runtime symbols, registry tokens and submitted text.
+- A verified offline preload no longer announces live connectivity until the Worker responds successfully.
+
+### Changed
+- Primary OpenGL ES and EGL navigation uses the packaged official white GL|ES and EGL artwork, responsively aligned.
+- First-party versioned frontend and Worker release stamps advance together; existing D1/report schema, accepted producer and snapshot integrity stay unchanged.
+
+# OpenGLESScope Database 3.0.10
+
+- Changed: reference-style stable 50-option custom filters, full-option search and clear, numeric Go paging, keyboard cross-page handling, disabled states and focus-safe responsive mobile menus.
+- Changed: report, cohort, precision and registry page inputs use shared validated numeric Go behavior.
+- Changed: removed repeated cookie/privacy prompt to match VulkanScope; clear first-party privacy and storage policy remains visible under Settings Information.
+- Fixed: explicit Remember on this device is the only gate to persisted preferences/favorites; previous explicit opt-ins migrate safely; increased bounded favorite capacity to reference 500.
+- Verified: reference browser compatibility logic/card retained under OpenGLESScope branding and existing D1/report/cache/producer contracts unchanged.
+
+# OpenGLESScope Database 3.0.9
+
+## Added
+- Paged searchable custom filters with direct page input and clearing in every enhanced filter.
+- Shader Precision stage/type/search filters, bounded rows, complete reported evidence and direct paging.
+- Seasonal/standard/daylight regional date and time preview plus server-authored submitted disclosure.
+
+## Changed
+- Live Worker/snapshot transitions show Checking until an independent health probe confirms the API state; foreground sync remains authoritative.
+- Common control geometry, page entrance animation and shared interface wording remain consistent with the OpenGLESScope schema.
+
+## Fixed
+- Eliminated false unavailable banners for recoverable release transitions and failed detail fetches.
+- Removed silent truncation of custom filter options after fifty results.
+- Preserved search caret and focus across async filtered-view render.
+- No D1 schema migration and no change to the exact OpenGLESScope 2.2.22 / 2222 admission gate.
+
+---
+
+# OpenGLESScope Database 3.0.7
+
+## 3.0.7
+- Replaced detail Summary with a grouped Overview matching the common report identity, producer, Android device, GPU/driver, GL/EGL and Display evidence hierarchy. Preserved all 11 detail destinations and accepted legacy Summary routes.
+- Moved Favorite, Share, Copy and canonical JSON/TXT actions into the detail hero, restored shared action-button SVG and spacing.
+- Restored visible accessible Back after report navigation, correct sticky header through root scroll clipping and prior Reports scroll position upon return.
+- Aligned cancelable report enter/exit and opening loader lifecycle with the common motion reference while honoring reduced motion.
+- Kept all existing evidence, producer admission, D1 reports, security controls and snapshot behavior unchanged.
 
 ## 3.0.6
 - Matched Settings Internet with reference-shaped detailed request-scoped network evidence (26 rows) and browser/runtime capability information (34 rows) in two sections; removed duplicate browser panel and extraneous network actions and Settings page-size control. Network details load only after Internet is opened, IPv4/IPv6 start mosaicked and all private observations clear on close.
