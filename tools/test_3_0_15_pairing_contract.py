@@ -2,11 +2,11 @@ from pathlib import Path
 import json,re
 R=Path(__file__).resolve().parents[1]
 w=(R/'worker/src/index.js').read_text(encoding='utf-8')
-a=(R/'assets/app.v3022.js').read_text(encoding='utf-8')
+a=(R/'assets/app.v3023.js').read_text(encoding='utf-8')
 h=(R/'index.html').read_text(encoding='utf-8')
 release=json.loads((R/'data/release.json').read_text(encoding='utf-8'))
-assert release=={'schemaVersion':2,'databaseVersion':'3.0.22','releaseReady':False,'appAsset':'assets/app.v3022.js','cacheKey':'3022'}
-assert "const DATABASE_VERSION='3.0.22'" in w and "const NORMALIZER_VERSION=16" in w
+assert release=={'schemaVersion':2,'databaseVersion':'3.0.23','releaseReady':False,'appAsset':'assets/app.v3023.js','cacheKey':'3023'}
+assert "const DATABASE_VERSION='3.0.23'" in w and "const NORMALIZER_VERSION=16" in w
 assert "p.application.version!=='3.0.4'||p.application.versionCode!==3004" in w
 assert 'requiredVersionCode:3004},403' in w
 assert "(p.application.version==='3.0.0'&&p.application.versionCode===3000)" in w
@@ -20,7 +20,7 @@ assert "compatibleProducer:'OpenGLESScope 3.0.4 (versionCode 3004) for new submi
 assert 'OpenGLESScope 3.0.4' in a
 assert "+metric('Producer/query baseline',baseline)+metric('Compatible producers',state.health?.compatibleProducer" in a
 assert a.count("metric('Compatible producers'")==1
-assert '.hero-v127 .metrics{margin-top:0!important;grid-template-columns:repeat(6,minmax(0,1fr))' in (R/'assets/site.v3022.css').read_text(encoding='utf-8')
-assert 'site.v3022.css' in h and 'app.v3022.js' in h
+assert '.hero-v127 .metrics{margin-top:0!important;grid-template-columns:repeat(6,minmax(0,1fr))' in (R/'assets/site.v3023.css').read_text(encoding='utf-8')
+assert 'site.v3023.css' in h and 'app.v3023.js' in h
 assert sorted(x.name for x in (R/'worker/migrations').glob('*.sql'))==['0001_init.sql','0002_report_cursor_index.sql','0003_application_version_summary.sql','0004_payload_chunks.sql']
-print('3.0.22 exact producer floor, six hero cards, historical reads, D1 stability and app pairing: PASS')
+print('3.0.23 exact producer floor, six hero cards, historical reads, D1 stability and app pairing: PASS')

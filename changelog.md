@@ -1,3 +1,11 @@
+# OpenGLESScope Database 3.0.23
+
+- Fixed: Native `GL_EXT_disjoint_timer_query` evidence uses the collector's actual descriptive names. The old Worker invented two `GL_*_QUERY_COUNTER_BITS` identifiers and rejected legitimate reports with HTTP 400 whenever the extension was present.
+- Tests: Real native timer-query names must produce HTTP 201; fabricated names and missing provenance must return HTTP 400. Cross-source/registry audit prevents recurrence.
+- Added: Bounded, value-free `errorCode` classification for schema HTTP 400 responses so future device-specific failures can be identified without exposing report contents.
+- Unchanged: Only OpenGLESScope 3.0.4 / 3004 may POST, schema 2/technicalReport 5, historic read access, D1 storage and snapshot security.
+- Changed: Pages and Worker release v3023.
+
 # OpenGLESScope Database 3.0.22
 
 - Fixed: OpenGL ES 3.2 native combined robustness provenance is checked against its actual two GL diagnostics instead of an invented combined diagnostic name; complete valid reports are no longer rejected with HTTP 400 for this reason.

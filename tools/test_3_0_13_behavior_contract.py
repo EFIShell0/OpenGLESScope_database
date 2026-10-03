@@ -1,8 +1,8 @@
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-a=(ROOT/'assets/app.v3022.js').read_text(encoding='utf-8')
-e=(ROOT/'assets/experience.v3022.js').read_text(encoding='utf-8')
-c=(ROOT/'assets/site.v3022.css').read_text(encoding='utf-8')
+a=(ROOT/'assets/app.v3023.js').read_text(encoding='utf-8')
+e=(ROOT/'assets/experience.v3023.js').read_text(encoding='utf-8')
+c=(ROOT/'assets/site.v3023.css').read_text(encoding='utf-8')
 h=(ROOT/'index.html').read_text(encoding='utf-8')
 assert "const cached=await preloadPromise;if(cached&&cached.manifest.reportCount>0)" in a
 assert "state.details=new Map(cached.details)" in a and "finishStartup();announceLive(`Verified cache:" in a
@@ -26,4 +26,4 @@ for x in ['extensionTokenFilter','driverModeFilter','gpuFilter','resolutionFilte
  assert x in a
 assert '.coverage-stack{min-width:0;width:100%' in c
 assert "packageVersion" not in a
-print('3.0.22 cache-first, navigation, favorites, information, filter and TXT parity: PASS')
+print('3.0.23 cache-first, navigation, favorites, information, filter and TXT parity: PASS')

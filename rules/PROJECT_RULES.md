@@ -933,3 +933,9 @@
 - Previously accepted 3.0.2/3002 and other historic payloads remain GET-readable and unmodified. No D1 migration, evidence-name inference, renderer rewriting or canonical report mutation.
 - Display summary producer baseline and cache-bootstrap identity advance to 3.0.3/3003, while the database release identity and cache-busted filenames advance independently to 3.0.20/v3020.
 - Application 3.0.3 uses the shared responsive accent metric-card grid for capability/filter/pager counts. Database does not reinterpret totals, manufacture vendor or feature names or backfill historical cards.
+
+## 3.0.23 native evidence identity and rejection diagnostic contract
+- `GL_EXT_disjoint_timer_query` emits `Query counter bits: GL_TIME_ELAPSED_EXT` and `Query counter bits: GL_TIMESTAMP_EXT`, exactly matching the application native collector; fabricated GL_* enum-like suffixes are forbidden in Worker requirements and positive fixtures.
+- Every new query-enforcement rule must be covered by a native-label positive case and a forged/missing-evidence negative case.
+- The HTTP 400 response may carry only a bounded non-sensitive validation category, never raw device data, tokens, TXT fragments, IP addresses, report fields or identifying strings.
+- New-report producer remains exact OpenGLESScope 3.0.4 / 3004; historical reports remain readable, D1 and snapshot semantics unchanged.

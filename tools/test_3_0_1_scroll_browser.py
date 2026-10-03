@@ -4,7 +4,7 @@ import re
 root=Path(__file__).resolve().parents[1]
 source=(root/'tools/test_3_0_0_live_browser.py').read_text()
 exec(source.split('with sync_playwright() as p:')[0],globals())
-for name in ['scroll-system.v3022.js']:
+for name in ['scroll-system.v3023.js']:
  content='<script>'+(root/'assets'/name).read_text()+'</script>'
  html,n=re.subn(r'<script\b[^>]*src="[^\"]*'+re.escape(name)+r'(?:\?[^\"]*)?"[^>]*>\s*</script>',lambda _:content,html)
  assert n==1,(name,n)

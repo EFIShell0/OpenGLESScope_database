@@ -17,9 +17,9 @@ for i in range(7):
     row={'id':rid,'submitted_at':f'2026-10-02T10:{i:02d}:00.000Z','schema_version':2,'gpu_name':f'Cached GPU {i+1}','vendor':'Qualcomm','manufacturer':'Test Vendor','model':f'Device {i+1}','opengles_version':'OpenGL ES 3.2','egl_version':'1.5','application_version':'2.2.22','application_version_code':2222}
     summaries.append(row)
     details[rid]={**row,'submittedAt':row['submitted_at'],'gpu':{'name':row['gpu_name'],'vendor':'Qualcomm'},'device':{'manufacturer':'Test Vendor','model':row['model'],'androidRelease':'15'},'application':{'version':'2.2.22','versionCode':2222},'driver':{'mode':'System','version':'1.0'},'opengles':{'version':'OpenGL ES 3.2','extensions':[]},'egl':{'initializedVersion':'1.5','vendor':'Test Vendor','extensions':[]},'technicalReport':{'limits':[],'extensions':[],'eglExtensions':[],'eglClientExtensions':[],'compressedFormats':[],'shaderBinaryFormats':[],'programBinaryFormats':[],'precision':[],'queryDiagnostics':[],'eglConfigs':[],'display':{}},'reportText':'PUBLIC TEST REPORT'}
-index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.22','currentProducer':'OpenGLESScope 3.0.4','reports':summaries,'nextCursor':None}
-sync={'databaseReleaseVersion':'3.0.22','workerReleaseVersion':'3.0.22','reportCount':7,'latestReportId':summaries[0]['id'],'latestSubmittedAt':summaries[0]['submitted_at'],'syncToken':'7:mock'}
-health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 3.0.4','databaseVersion':'3.0.22'}
+index={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.23','currentProducer':'OpenGLESScope 3.0.4','reports':summaries,'nextCursor':None}
+sync={'databaseReleaseVersion':'3.0.23','workerReleaseVersion':'3.0.23','reportCount':7,'latestReportId':summaries[0]['id'],'latestSubmittedAt':summaries[0]['submitted_at'],'syncToken':'7:mock'}
+health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,'currentProducer':'OpenGLESScope 3.0.4','databaseVersion':'3.0.23'}
 def payload(url):
     path=urllib.parse.urlsplit(url).path
     if path=='/v1/reports':return index
@@ -136,7 +136,7 @@ def test():
                     page.locator('#extensionRowSearch').fill('GL_EXT')
                     assert page.locator('.og-search-clear').filter(visible=True).count()>=1
                     assert not errors,errors
-                    print('CHROMIUM 3.0.22 PRELOAD',width,height,'corrupt=',corrupt,'detail API calls=',calls,'cache-first before delayed Worker, explicit progress, search X and filtered views PASS')
+                    print('CHROMIUM 3.0.23 PRELOAD',width,height,'corrupt=',corrupt,'detail API calls=',calls,'cache-first before delayed Worker, explicit progress, search X and filtered views PASS')
                     context.close()
                 browser.close()
         finally:
