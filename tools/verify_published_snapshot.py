@@ -22,7 +22,7 @@ def fetch(id):
         raw=response.read(MAX_INDEX+1)
         if len(raw)>MAX_INDEX:raise RuntimeError('Published snapshot is oversized')
     payload=json.loads(raw.decode('utf-8'))
-    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.27' or not isinstance(payload.get('reports'),list):
+    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.28' or not isinstance(payload.get('reports'),list):
         raise RuntimeError('Published artifact is not current schema-2 release')
     return any(isinstance(row,dict) and row.get('id')==id for row in payload['reports'])
 
@@ -31,7 +31,7 @@ def verify_preload(attempts=12, interval=3):
     base=PUBLISHED.rsplit('/index.json',1)[0]
     last='unavailable'
     def bounded_json(url, max_bytes=4*1024*1024):
-        request=urllib.request.Request(url,headers={'Accept':'application/json','Cache-Control':'no-cache','User-Agent':'OpenGLESScope-Database-published-cache-verifier/3.0.27'})
+        request=urllib.request.Request(url,headers={'Accept':'application/json','Cache-Control':'no-cache','User-Agent':'OpenGLESScope-Database-published-cache-verifier/3.0.28'})
         with urllib.request.urlopen(request,timeout=25) as response:
             raw=response.read(max_bytes+1)
         if len(raw)>max_bytes:raise RuntimeError('Published cache object exceeds size budget')
@@ -41,7 +41,7 @@ def verify_preload(attempts=12, interval=3):
             nonce=int(time.time()*1000)
             _,index=bounded_json(PUBLISHED+'?preload-audit='+str(nonce),64*1024*1024)
             _,manifest=bounded_json(base+'/preload/manifest.json?preload-audit='+str(nonce),8*1024*1024)
-            if index.get('databaseVersion')!='3.0.27' or manifest.get('databaseVersion')!='3.0.27':
+            if index.get('databaseVersion')!='3.0.28' or manifest.get('databaseVersion')!='3.0.28':
                 raise RuntimeError('Published index/cache release mismatch')
             summaries=index.get('reports'); cached=manifest.get('reports'); parts=manifest.get('chunks')
             if not isinstance(summaries,list) or not isinstance(cached,list) or not isinstance(parts,list) or summaries!=cached:

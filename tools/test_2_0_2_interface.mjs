@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const r=new URL('../',import.meta.url),get=n=>fs.readFileSync(new URL(n,r),'utf8');
-const scroll=get('assets/scroll-system.v3027.js'),app=get('assets/app.v3027.js'),css=get('assets/site.v3027.css'),html=get('index.html'),registry=JSON.parse(get('data/registry-catalog.v2000.json'));
+const scroll=get('assets/scroll-system.v3028.js'),app=get('assets/app.v3028.js'),css=get('assets/site.v3028.css'),html=get('index.html'),registry=JSON.parse(get('data/registry-catalog.v2000.json'));
 const nav=app.match(/const NAV=\[(.+?)\];const ICON_PATHS=/s);assert.ok(nav);
 const unique=[...nav[1].matchAll(/\['([^']+)','([^']+)'\]/g)].map(x=>x[1]);
 assert.equal(unique.length,16);assert.equal(new Set(unique).size,16);
@@ -16,10 +16,10 @@ assert.ok(app.includes('size=24,pages=Math.max(1,Math.ceil(matches.length/size))
 for(const id of ['settingsRegionalMode','settingsRegionalCountry','settingsRegionalTimeZone','settingsRegionalDateFormat','settingsRegionalClock','settingsRegionalSeason','settingsRegionalPreview','settingsSubmittedDefault','settingsVendorDefault','pageProgress','pageProgressBar'])assert.ok(html.includes(`id="${id}"`),id);
 for(const token of ['COUNTRY_CODES=Object.freeze','COUNTRY_PRIMARY_TIME_ZONES=Object.freeze','REGIONAL_COUNTRIES','regionalDate','syncRegionalControls','initRegionalControls','custom-select-search','matches.slice(start,start+50)','aria-valuenow','aria-current'])assert.ok(app.includes(token),token);
 assert.ok(css.includes('.custom-select-search-label'));assert.ok(css.includes('.custom-select-hint'));assert.ok(css.includes('.page-progress'));
-assert.ok(html.includes('app.v3027.js')&&html.includes('site.v3027.css'));
+assert.ok(html.includes('app.v3028.js')&&html.includes('site.v3028.css'));
 
 assert.ok(app.includes('Catalog presence does not establish runtime availability'));
 assert.ok(app.includes('Date.parse(row.submitted_at||row.submittedAt||'));assert.ok(app.includes('registryLoading'));assert.ok(app.includes('new TextDecoder(\'utf-8\',{fatal:true})'));assert.ok(app.includes('1800000'));assert.ok(app.includes("persistUiSettings()"));assert.ok(app.includes("if(rememberDevice)"));
 assert.ok(html.includes("connect-src 'self' https://openglesscope-database-api.openglesscope.workers.dev"));
 assert.ok(!css.includes('@import'));assert.ok(!/https?:\/\//.test(css));
-console.log('OpenGLESScope Database 3.0.27 interface, registry, privacy and responsive static tests: ALL PASS');
+console.log('OpenGLESScope Database 3.0.28 interface, registry, privacy and responsive static tests: ALL PASS');

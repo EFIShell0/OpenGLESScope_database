@@ -55,13 +55,13 @@ with sync_playwright() as p:
   wrap.locator('.custom-select-search-clear').click()
   assert wrap.locator('.custom-select-option').count()==50
   page.locator('#settingsClose').click()
-  page.evaluate("""() => {window.__previousWorkerFetch=window.fetch;window.fetch=async (input,opts)=>String(input).includes('/v1/health?_probe=')?new Response(JSON.stringify({status:'ok',databaseVersion:'3.0.27'}),{status:200,headers:{'content-type':'application/json'}}):window.__previousWorkerFetch(input,opts)}""")
+  page.evaluate("""() => {window.__previousWorkerFetch=window.fetch;window.fetch=async (input,opts)=>String(input).includes('/v1/health?_probe=')?new Response(JSON.stringify({status:'ok',databaseVersion:'3.0.28'}),{status:200,headers:{'content-type':'application/json'}}):window.__previousWorkerFetch(input,opts)}""")
   page.evaluate("document.dispatchEvent(new Event('openglesscope:connection-error'))")
   page.wait_for_function("document.querySelector('#networkStatusShell')?.dataset.state==='checking'",timeout=7000)
   page.evaluate("document.dispatchEvent(new Event('openglesscope:connection-ok'))")
   page.wait_for_timeout(100)
   assert page.locator('#networkStatusShell').get_attribute('data-state')=='checking'
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.27 SHADER/FILTER/TIME PASS',width,height,'12 queried GL precision types; 50/page full native filter; regional offsets')
+  print('CHROMIUM 3.0.28 SHADER/FILTER/TIME PASS',width,height,'12 queried GL precision types; 50/page full native filter; regional offsets')
   ctx.close()
  browser.close()

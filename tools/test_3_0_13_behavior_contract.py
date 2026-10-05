@@ -1,14 +1,15 @@
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-a=(ROOT/'assets/app.v3027.js').read_text(encoding='utf-8')
-e=(ROOT/'assets/experience.v3027.js').read_text(encoding='utf-8')
-c=(ROOT/'assets/site.v3027.css').read_text(encoding='utf-8')
+a=(ROOT/'assets/app.v3028.js').read_text(encoding='utf-8')
+e=(ROOT/'assets/experience.v3028.js').read_text(encoding='utf-8')
+c=(ROOT/'assets/site.v3028.css').read_text(encoding='utf-8')
 h=(ROOT/'index.html').read_text(encoding='utf-8')
 assert "const cached=await preloadPromise;if(cached&&cached.manifest.reportCount>0)" in a
 assert "state.details=new Map(cached.details)" in a and "finishStartup();announceLive(`Verified cache:" in a
 assert "await loadLiveAtomically();" in a
 assert "Preparing ${manifest.reportCount} cached reports" in a
-assert "else if(window.__OGS30__?.isVerifiedOffline?.()){interrupted=true;banner('checking')}else{markOnline();void sync(true)}" in e
+assert "if(!reachable()){interrupted=true;banner('offline')}else{markOnline();void sync(true)}" in e
+assert "else if(window.__OGS30__?.isVerifiedOffline?.()){interrupted=true;banner('checking')}" not in e
 assert "history.replaceState({view:state.view},'',returnTo)" in a
 assert "window.scrollTo({top:target,left:0,behavior:'instant'})" in a
 assert "back.focus({preventScroll:true})" in a and "back.scrollIntoView({block:'start',behavior:'instant'})" in a
@@ -26,4 +27,4 @@ for x in ['extensionTokenFilter','driverModeFilter','gpuFilter','resolutionFilte
  assert x in a
 assert '.coverage-stack{min-width:0;width:100%' in c
 assert "packageVersion" not in a
-print('3.0.27 cache-first, navigation, favorites, information, filter and TXT parity: PASS')
+print('3.0.28 cache-first, navigation, favorites, information, filter and TXT parity: PASS')

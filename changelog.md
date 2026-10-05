@@ -1,3 +1,12 @@
+# OpenGLESScope Database 3.0.28
+
+### Fixed
+- Do not show **Connection restored** on an ordinary page load merely because a verified cache-first snapshot was rendered before the live Worker probe completed.
+- Restore the VulkanScope Database 1.4.12 network-banner mobile geometry by removing OpenGLESScope-only late overrides that displaced the banner on narrow screens.
+
+### Changed
+- Real reconnects now keep the canonical offline → checking → restored lifecycle; successful Worker reachability remains authoritative. OpenGLESScope 3.0.7 / 3007, D1, schema 2, technicalReport 5, normalizer 16 and cache-first snapshot semantics are unchanged.
+
 # OpenGLESScope Database 3.0.27
 
 ### Fixed

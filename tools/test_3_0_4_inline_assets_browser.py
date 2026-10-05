@@ -77,7 +77,7 @@ with sync_playwright() as p:
   if os.environ.get('BROWSER_PREVIEW_DIR'):
    output=Path(os.environ['BROWSER_PREVIEW_DIR']);output.mkdir(parents=True,exist_ok=True)
    page.locator('#mainNav button[data-view="reports"]').click()
-   page.screenshot(path=str(output/('OpenGLESScope-Database-3.0.27-'+('desktop' if width>600 else 'mobile')+'.png')),full_page=False)
+   page.screenshot(path=str(output/('OpenGLESScope-Database-3.0.28-'+('desktop' if width>600 else 'mobile')+'.png')),full_page=False)
   ctx.close()
  ctx=browser.new_context(viewport={'width':1024,'height':768},user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.0 Safari/537.36')
  legacy=ctx.new_page();legacy_errors=[];legacy.on('pageerror',lambda e:legacy_errors.append(str(e)))

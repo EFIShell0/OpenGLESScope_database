@@ -3,7 +3,7 @@ import re
 R=Path(__file__).resolve().parents[1]
 w=(R/'worker/src/index.js').read_text(encoding='utf-8')
 t=(R/'worker/tests/contract.mjs').read_text(encoding='utf-8')
-assert "const DATABASE_VERSION='3.0.27'" in w
+assert "const DATABASE_VERSION='3.0.28'" in w
 assert "p.application.version!=='3.0.7'||p.application.versionCode!==3007" in w
 assert "function makePayload(version='3.0.7',versionCode=3007" in t
 assert 'validCurrentConfigText(text,p.technicalReport?.eglConfigs)' in w
@@ -19,4 +19,4 @@ for native in ('Query counter bits: GL_TIME_ELAPSED_EXT','Query counter bits: GL
  assert native in w and native in t
 for case in ('accept 3.0.7 Android canonical TXT','reject absent app pbuffer evidence fields','reject synthetic non-native EGL config separator','accept legitimately empty EGL-config enumeration','reject forged EGL-config header count'):
  assert case in t
-print('3.0.27 canonical app TXT/JSON + GL/EGL native labels: PASS')
+print('3.0.28 canonical app TXT/JSON + GL/EGL native labels: PASS')

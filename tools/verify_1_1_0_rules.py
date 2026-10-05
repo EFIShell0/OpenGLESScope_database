@@ -13,9 +13,9 @@ assert all(x['applicability'] in {'adopted','adapted','historical_methodology_re
 rules=(root/'rules/PROJECT_RULES.md').read_text(encoding='utf-8')
 for phrase in ['## Release 1.1.0 VulkanScope Database 1.4.12 methodology adaptation','exact semantic-version/versionCode binding','SNAPSHOT_GITHUB_TOKEN','GET /v1/sync','fatal UTF-8 validation','clean-extract full-gate']:
     assert phrase in rules,phrase
-app=(root/'assets/app.v3027.js').read_text(encoding='utf-8')
+app=(root/'assets/app.v3028.js').read_text(encoding='utf-8')
 html=(root/'index.html').read_text(encoding='utf-8')
-css=(root/'assets/site.v3027.css').read_text(encoding='utf-8')
+css=(root/'assets/site.v3028.css').read_text(encoding='utf-8')
 for term in ['refreshLive','announceLive','aria-busy','/v1/sync','loadSnapshotFallback','Offline public snapshot','out.length>100000','offlineSnapshot','Incompatible Worker report index']:
     assert term in app
 for term in ['id="refreshLive"','aria-live="polite" id="liveStatus" role="status"','type="button"']:

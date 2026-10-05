@@ -1,9 +1,9 @@
 from pathlib import Path
 import re
 root=Path(__file__).resolve().parents[1]
-app=(root/'assets/app.v3027.js').read_text(encoding='utf8')
+app=(root/'assets/app.v3028.js').read_text(encoding='utf8')
 html=(root/'index.html').read_text(encoding='utf8')
-css=(root/'assets/site.v3027.css').read_text(encoding='utf8')
+css=(root/'assets/site.v3028.css').read_text(encoding='utf8')
 parts={
  'overview tab':"const TABS=[['overview','Overview']",
  'overview route':"DETAIL_ROUTE={overview:'Overview'",
@@ -47,4 +47,4 @@ assert not re.search(r'detailTab\s*:\s*[\'\"]summary[\'\"]',app)
 for label,mutation in [('obsolete Overview label',app.replace("[['overview','Overview']","[['overview','Summary']",1)),('lost favorite SVG',app.replace('function detailFavoriteMarkup(active)','function detailFavoriteMarkupMissing(active)',1)),('missing Back offset',app.replace('function syncDetailBackTop(align=false)','function syncDetailBackTopMissing(align=false)',1))]:
  key={'obsolete Overview label':"const TABS=[['overview','Overview']",'lost favorite SVG':'function detailFavoriteMarkup(active)','missing Back offset':'function syncDetailBackTop(align=false)'}[label]
  assert key not in mutation,label
-print('OpenGLESScope Database 3.0.27 Overview, action, Back, loader and navigation source gates: PASS')
+print('OpenGLESScope Database 3.0.28 Overview, action, Back, loader and navigation source gates: PASS')

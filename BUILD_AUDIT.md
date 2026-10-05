@@ -1,18 +1,18 @@
-# OpenGLESScope Database 3.0.27 build audit
+# OpenGLESScope Database 3.0.28 build audit
 
+- Database: 3.0.28
+- Current producer: OpenGLESScope 3.0.7 / 3007
+- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3028.js`, `site.v3028.css` and `config.js?v=3028` represent the current asset generation.
+- Fixed the false reconnect banner at normal startup: rendering a SHA-256 verified cache-first snapshot is no longer classified as a network interruption. A restored banner is entered only after an actual offline/error state and a later successful reachability probe.
+- Restored the frozen VulkanScope Database 1.4.12 shared mobile network-banner geometry. OpenGLESScope-specific tail CSS no longer overrides `.network-status-shell.is-visible` or `.network-status-banner`; the reference 760 px and 470 px breakpoints remain authoritative.
+- Real browser reconnect continues to present checking and then restored; Worker/API success, not `navigator.onLine` alone, establishes live Database reachability.
+- No D1 migration, report rewrite, producer-floor change, snapshot-format change, GL/EGL evidence change or security relaxation. Historical reports remain read-only compatible.
+- Release-blocking source audit, Worker contract, network-banner parity regression, Pages staging audit, package manifest and deterministic ZIP checks apply. Live Cloudflare/GitHub Pages deployment is not claimed by this source build.
+
+## Historical 3.0.27 pairing audit
 - Paired new-report producer OpenGLESScope 3.0.7 / 3007. No schema, normalizer, D1, snapshot, cache-first, canonical GL/EGL query or report JSON/TXT changes.
 - UI recognizes both ANGLE and Android Emulator OpenGL ES Translator as translation layers for unambiguous model-only presentation, cross-family manufacturer logos from existing bundled assets, and neutral software/ambiguity fallbacks. Raw report evidence is preserved; old stored data remains readable and never backfilled.
-- Verified through current source/Worker contract, independent presentation fixture, negative mutation, complete Pages staging and package manifest/reproducibility gates. Live Worker and GitHub Pages publication NOT EXECUTED by this source release.
-
-# OpenGLESScope Database 3.0.27 build audit
-
-- Database: 3.0.27
-- Current producer: OpenGLESScope 3.0.7 / 3007
-- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3027.js`, `site.v3027.css` and `config.js?v=3027` represent the current asset generation.
-- Existing pre-3.0.27 obsolete tools/*.py sources are quarantined outside the checkout during repair rather than silently deleted; versioned assets follow existing safe cleanup.
-- New POST requires EXACT producer 3.0.7/3007, retaining historical producer evidence recognition of 3.0.5/3005 for already stored reports without rewriting any stored report, report ID or source fields.
-- Report ingestion contract and native GL/EGL diagnostic identifiers unchanged. Bounded indexed repeated raw format strings remain legal while extension/identity and provenance checks remain strict. Existing cache-first preloads, atomic snapshot generation, D1 schema, security and UI behavior inherited from 3.0.25; legacy asset references fully rotated.
-- Does not claim a production Cloudflare deployment, live snapshot publication or Android device test; use corresponding verification commands and publish Worker before using 3.0.7 app submissions.
+- Current assets for that historical release were `app.v3027.js`, `site.v3027.css` and `config.js?v=3027`.
 
 # OpenGLESScope Database 3.0.25 build audit
 
