@@ -1,10 +1,10 @@
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
-js=(ROOT/'assets/experience.v3028.js').read_text()
-css=(ROOT/'assets/site.v3028.css').read_text()
-ref=(ROOT/'rules/SHARED_UI_1_4_12_REFERENCE.css').read_text()
-rules=(ROOT/'rules/PROJECT_RULES.md').read_text()
+js=(ROOT/'assets/experience.v3030.js').read_text(encoding='utf-8')
+css=(ROOT/'assets/site.v3030.css').read_text(encoding='utf-8')
+ref=(ROOT/'rules/SHARED_UI_1_4_12_REFERENCE.css').read_text(encoding='utf-8')
+rules=(ROOT/'rules/PROJECT_RULES.md').read_text(encoding='utf-8')
 
 def fail(msg):
     print('test_3_0_28_network_banner_parity: FAIL\n - '+msg)

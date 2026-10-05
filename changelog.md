@@ -1,3 +1,21 @@
+# OpenGLESScope Database 3.0.30
+
+### Fixed
+- Match every enhanced filter/dropdown chevron to the exact VulkanScope Database 1.4.12 symmetric downward shape; remove the malformed sideways/skewed OpenGLESScope path.
+- Read release/test source files explicitly as UTF-8 so Windows cp1252 does not crash `quality_gate.py` on valid browser assets.
+
+### Preserved
+- Keep the 3.0.29 SHA-256 cache-first loader, preload/snapshot behavior, network-banner lifecycle, D1 schema, report evidence and OpenGLESScope 3.0.7 / 3007 submission gate unchanged.
+
+# OpenGLESScope Database 3.0.29
+
+### Fixed
+- Restore release-safe cache-first publication after the 3.0.28 deployment was allowed to continue despite a failed source quality gate; stale versioned assets must be repaired before Worker deploy or Git push.
+- Keep the 3.0.27 SHA-256 verified cache/preload implementation byte-identical apart from the Database version constant while retaining the 3.0.28 network-banner startup and mobile-layout fixes.
+
+### Changed
+- Add a release-blocking cache-preservation/preflight regression. OpenGLESScope 3.0.7 / 3007, D1, schema 2, technicalReport 5, normalizer 16 and public preload format remain unchanged.
+
 # OpenGLESScope Database 3.0.28
 
 ### Fixed

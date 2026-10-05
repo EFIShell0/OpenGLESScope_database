@@ -4,8 +4,8 @@ R=Path(__file__).resolve().parents[1]
 w=(R/'worker/src/index.js').read_text(encoding='utf-8')
 g=(R/'worker/tests/contract.mjs').read_text(encoding='utf-8')
 release=json.loads((R/'data/release.json').read_text(encoding='utf-8'))
-assert release=={'schemaVersion':2,'databaseVersion':'3.0.28','releaseReady':False,'appAsset':'assets/app.v3028.js','cacheKey':'3028'}
-assert "const DATABASE_VERSION='3.0.28'" in w
+assert release=={'schemaVersion':2,'databaseVersion':'3.0.30','releaseReady':False,'appAsset':'assets/app.v3030.js','cacheKey':'3030'}
+assert "const DATABASE_VERSION='3.0.30'" in w
 assert "p.application.version!=='3.0.7'||p.application.versionCode!==3007" in w
 assert 'requiredVersionCode:3007},403' in w
 assert "currentProducer:'OpenGLESScope 3.0.7'" in w
@@ -14,4 +14,4 @@ for v,code in [('3.0.0',3000),('3.0.1',3001),('3.0.2',3002),('3.0.3',3003),('3.0
 assert "function makePayload(version='3.0.7',versionCode=3007" in g
 assert 'reject complete previous 3.0.3 on 3.0.4 POST gate' in g
 assert 'DELETE FROM reports' not in w and 'UPDATE reports SET' not in w
-print('Database 3.0.28 exact current-only 3.0.7/3007 POST, historical-read contract: PASS')
+print('Database 3.0.30 exact current-only 3.0.7/3007 POST, historical-read contract: PASS')

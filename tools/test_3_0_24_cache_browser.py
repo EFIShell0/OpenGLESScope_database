@@ -31,11 +31,11 @@ for i in range(75):
         'reportText':'PUBLIC VERIFICATION SNAPSHOT\n'+('RUNTIME ONLY '+str(i)+'\n')*4300}
 
 health={'status':'ok','schemaVersion':2,'technicalReportSchema':5,'normalizerVersion':16,
-        'currentProducer':'OpenGLESScope 3.0.7','databaseVersion':'3.0.28'}
-def idx(n):return {'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.28',
+        'currentProducer':'OpenGLESScope 3.0.7','databaseVersion':'3.0.30'}
+def idx(n):return {'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.30',
                    'currentProducer':'OpenGLESScope 3.0.7','reports':all_summaries[:n],
                    'nextCursor':None}
-def sync(n):return {'databaseReleaseVersion':'3.0.28','workerReleaseVersion':'3.0.28',
+def sync(n):return {'databaseReleaseVersion':'3.0.30','workerReleaseVersion':'3.0.30',
                     'reportCount':n,'latestReportId':all_summaries[n-1]['id'],
                     'latestSubmittedAt':all_summaries[n-1]['submitted_at'],'syncToken':f'{n}:test'}
 class Handler(SimpleHTTPRequestHandler):
@@ -124,9 +124,9 @@ def run():
                     })();</script>"""
                     defs=[('MOCK_CHUNKS',chunks),('MOCK_MANIFEST',manifest),('MOCK_INDEX',idx(n)),
                           ('MOCK_DETAILS',all_details),('MOCK_HEALTH',health),('MOCK_SYNC',sync(n)),
-                          ('MOCK_RELEASE',json.loads((stage/'data/release.json').read_text())),
-                          ('MOCK_CATALOG',json.loads((ROOT/'data/registry-catalog.v2000.json').read_text())),
-                          ('MOCK_NOTICE',(ROOT/'licenses/openglesscope-application-mit.md').read_text())]
+                          ('MOCK_RELEASE',json.loads((stage/'data/release.json').read_text(encoding='utf-8'))),
+                          ('MOCK_CATALOG',json.loads((ROOT/'data/registry-catalog.v2000.json').read_text(encoding='utf-8'))),
+                          ('MOCK_NOTICE',(ROOT/'licenses/openglesscope-application-mit.md').read_text(encoding='utf-8'))]
                     for key,value in defs:injected=injected.replace(key,json.dumps(value,ensure_ascii=False))
                     html=ns['html'].replace(ns['mock'],injected)
                     assert html!=ns['html']

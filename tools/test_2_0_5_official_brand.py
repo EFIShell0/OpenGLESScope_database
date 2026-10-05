@@ -5,10 +5,10 @@ EXPECTED={'opengles-gl-es-v030.png':'70d46d2ae6ce8392f01afdf548c4d486406a163053d
 for name,digest in EXPECTED.items():
  p=r/'assets'/name
  assert p.is_file() and sha256(p.read_bytes()).hexdigest()==digest,'OpenGLESScope 3.0.0 official artwork mismatch: '+name
-h=(r/'index.html').read_text()
+h=(r/'index.html').read_text(encoding='utf-8')
 assert 'aria-label="OpenGL® ES™ Hardware Database"' in h
 assert '<h1 aria-label="OpenGL® ES™ Hardware Database" class="hero-v127-brand-heading">OpenGL® ES™ Hardware Database</h1>' in h
-js=(r/'assets/app.v3028.js').read_text()
+js=(r/'assets/app.v3030.js').read_text(encoding='utf-8')
 assert "['opengles','OpenGL® ES™']" in js and "['egl','EGL™']" in js
 assert 'src="./assets/opengles-gl-es-v030.png"' in js and 'src="./assets/egl-logo-white-v028.png"' in js
 assert 'OPENGL® ES™ / EGL™ CAPABILITY INTELLIGENCE' in h

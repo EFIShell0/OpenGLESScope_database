@@ -21,7 +21,7 @@ def make_zip(root,dest):
 def fail(msg): print('verify_package_reproducibility: FAIL\n - '+msg);sys.exit(1)
 manifest=ROOT/'files.txt'
 if not manifest.is_file(): fail('files.txt package manifest missing')
-expected=[x for x in manifest.read_text().splitlines() if x];actual=package_files(ROOT)
+expected=[x for x in manifest.read_text(encoding='utf-8').splitlines() if x];actual=package_files(ROOT)
 if expected!=actual: fail('files.txt does not exactly match clean source package')
 if len(expected)!=len(set(expected)): fail('files.txt contains duplicates')
 with tempfile.TemporaryDirectory(prefix='oglesdb-repro-') as td:

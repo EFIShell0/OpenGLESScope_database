@@ -2,10 +2,10 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 import re
 root=Path(__file__).resolve().parents[1]
-source=(root/'tools/test_3_0_0_live_browser.py').read_text()
+source=(root/'tools/test_3_0_0_live_browser.py').read_text(encoding='utf-8')
 exec(source.split('with sync_playwright() as p:')[0],globals())
-for name in ['scroll-system.v3028.js']:
- content='<script>'+(root/'assets'/name).read_text()+'</script>'
+for name in ['scroll-system.v3030.js']:
+ content='<script>'+(root/'assets'/name).read_text(encoding='utf-8')+'</script>'
  html,n=re.subn(r'<script\b[^>]*src="[^\"]*'+re.escape(name)+r'(?:\?[^\"]*)?"[^>]*>\s*</script>',lambda _:content,html)
  assert n==1,(name,n)
 with sync_playwright() as p:

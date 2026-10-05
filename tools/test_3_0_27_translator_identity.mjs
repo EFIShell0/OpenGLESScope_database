@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-const script=fs.readFileSync('assets/app.v3028.js','utf8');
+const script=fs.readFileSync('assets/app.v3030.js','utf8');
 const segment=script.slice(script.indexOf('const OGS_GPU_SIGNATURES='),script.indexOf('const summaryGpuLogoCell='));
 assert.ok(segment.startsWith('const OGS_GPU_SIGNATURES='));
 const fixture=`const OGS_VENDOR_NAMES=[];const implementationLayerText=()=>false;const esc=x=>x;${segment};({gpuIdentity,gpuLogoKey,explicitGpuSignature,translationLayer})`;
@@ -56,4 +56,4 @@ for(const mutation of [segment.replace('OGS_EMULATOR_PREFIX.test(raw)','false'),
  const software='Android Emulator OpenGL ES Translator (SwiftShader NVIDIA GeForce RTX 3050 Ti Laptop GPU)';
  assert.ok(candidate.gpuIdentity('Google Inc.',probe).gpu!==values.gpuIdentity('Google Inc.',probe).gpu||candidate.gpuLogoKey('Google Inc.',ambiguous)!==values.gpuLogoKey('Google Inc.',ambiguous)||candidate.gpuIdentity('Google Inc.',software).gpu!==values.gpuIdentity('Google Inc.',software).gpu);
 }
-console.log('3.0.28 Database translator models/logos/raw evidence + negative mutation: PASS');
+console.log('3.0.30 Database translator models/logos/raw evidence + negative mutation: PASS');

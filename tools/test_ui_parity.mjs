@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-const app=fs.readFileSync(new URL('../assets/app.v3028.js',import.meta.url),'utf8');
-const css=fs.readFileSync(new URL('../assets/site.v3028.css',import.meta.url),'utf8');
+const app=fs.readFileSync(new URL('../assets/app.v3030.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../assets/site.v3030.css',import.meta.url),'utf8');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const need=(hay,needle,label=needle)=>assert.equal(hay.includes(needle),true,`missing ${label}`);
-for(const token of ['site.v3028.css','app.v3028.js','config.js?v=3028'])need(html,token);
+for(const token of ['site.v3030.css','app.v3030.js','config.js?v=3030'])need(html,token);
 const expected=fs.readFileSync(new URL('../rules/SHARED_UI_BASE_SHA256.txt',import.meta.url),'utf8').trim().split(/\r?\n/)[1];
 const canonicalBase=css.slice(0,css.indexOf('\n\n.not-applicable'));
 assert.equal(createHash('sha256').update(canonicalBase).digest('hex'),expected,'VulkanScope base with OpenGLESScope official color mapping must be FIRST and SHA-pinned');
@@ -16,4 +16,4 @@ assert.equal(html.includes('<div class="filter-bar-heading">'),false,'legacy ext
 assert.equal(html.includes('class="live-strip" hidden'),true,'live status must not distort reference hero');
 assert.equal(css.includes('@import'),false,'remote CSS imports forbidden');
 assert.equal(/https?:\/\//.test(css),false,'remote CSS resources forbidden');
-console.log('OpenGLESScope Database 3.0.28 canonical shared UI, no legacy overrides, and component structure: ALL PASS');
+console.log('OpenGLESScope Database 3.0.30 canonical shared UI, no legacy overrides, and component structure: ALL PASS');

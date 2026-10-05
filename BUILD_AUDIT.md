@@ -1,8 +1,19 @@
-# OpenGLESScope Database 3.0.28 build audit
+# OpenGLESScope Database 3.0.30 build audit
 
-- Database: 3.0.28
+- Database: 3.0.30
 - Current producer: OpenGLESScope 3.0.7 / 3007
-- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3028.js`, `site.v3028.css` and `config.js?v=3028` represent the current asset generation.
+- Normalizer: 16, schema 2 and technicalReport 5 unchanged; current browser generation is `app.v3030.js`, `site.v3030.css` and `config.js?v=3030`.
+- Filter custom-select chevron now uses the exact VulkanScope Database 1.4.12 downward path `M6 9l6 6 6-6`; the malformed OpenGLESScope path `M6 9l6 6-6 6` is forbidden. Existing open-state 180-degree rotation, dimensions, focus, keyboard and reduced-motion behavior remain unchanged.
+- Python release/test tooling now reads UTF-8 explicitly so Windows code pages such as cp1252 cannot fail on valid UTF-8 assets. This is tooling-only and does not alter cache/preload, Worker storage, D1, report schema or report evidence.
+- The 3.0.29 SHA-256 verified cache-first loader, network lifecycle fix and OpenGLESScope 3.0.7 / 3007 POST gate remain unchanged.
+
+# OpenGLESScope Database 3.0.29 build audit
+
+- Database: 3.0.29
+- Recovery: 3.0.28 was deployed after a local source quality-gate failure; stale v3027 assets/transient directories prevented a clean matching Pages publication path. 3.0.29 makes this a release-blocking preflight condition.
+- Cache preservation: after normalizing only `DATABASE_VERSION`, `app.v3029.js` is byte-identical to the shipped 3.0.27 cache-first application asset (SHA-256 `34089760a8cecbe4e2cce3450c3833392911ca6427e53108cdfbd0a9060d736f`).
+- Current producer: OpenGLESScope 3.0.7 / 3007
+- Normalizer: 16, schema 2 and technicalReport 5 (unchanged); app.v3029.js`, `site.v3029.css` and `config.js?v=3029` represent the current asset generation.
 - Fixed the false reconnect banner at normal startup: rendering a SHA-256 verified cache-first snapshot is no longer classified as a network interruption. A restored banner is entered only after an actual offline/error state and a later successful reachability probe.
 - Restored the frozen VulkanScope Database 1.4.12 shared mobile network-banner geometry. OpenGLESScope-specific tail CSS no longer overrides `.network-status-shell.is-visible` or `.network-status-banner`; the reference 760 px and 470 px breakpoints remain authoritative.
 - Real browser reconnect continues to present checking and then restored; Worker/API success, not `navigator.onLine` alone, establishes live Database reachability.

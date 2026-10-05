@@ -7,7 +7,7 @@ out=(Path(sys.argv[1]) if len(sys.argv)>1 else root/'_site').resolve()
 if out.exists(): shutil.rmtree(out)
 out.mkdir(parents=True)
 files=['.nojekyll','index.html','config.js','report.schema.json','400.html','401.html','403.html','404.html','405.html','408.html','409.html','413.html','415.html','429.html','500.html','502.html','503.html','504.html','error.html']
-assets=['app.v3028.js','site.v3028.css','experience.v3028.js','browser-compat.v3028.js','release-bootstrap.v3028.js','scroll-system.v3028.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v028.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png']
+assets=['app.v3030.js','site.v3030.css','experience.v3030.js','browser-compat.v3030.js','release-bootstrap.v3030.js','scroll-system.v3030.js','apple-touch-icon-v017.png','favicon-v017.ico','favicon-v017.png','egl-logo-v027.png','egl-logo-white-v028.png','egl-logo-white-v028.png','opengles-gl-es-v030.png','openglesscope_logo_horizontal-v017.png']
 for group in ['gpu-vendors','hdr','country-flags']:
     for p in sorted((root/'assets'/group).rglob('*')):
         if p.is_file(): assets.append(p.relative_to(root/'assets').as_posix())
@@ -26,9 +26,9 @@ for name in ['openglesscope-application-mit.md','nodejs.md','python.md','workerd
 for src in sorted((root/'data').glob('*.json')):
     shutil.copy2(src,out/'data'/src.name)
 import json
-marker=json.loads((out/'data/release.json').read_text())
-assert marker['databaseVersion']=='3.0.28' and marker['appAsset']=='assets/app.v3028.js' and marker['cacheKey']=='3028' and marker['releaseReady'] is False
-assert all((out/'assets'/asset).is_file() for asset in ['app.v3028.js','site.v3028.css','experience.v3028.js','browser-compat.v3028.js','release-bootstrap.v3028.js'])
+marker=json.loads((out/'data/release.json').read_text(encoding='utf-8'))
+assert marker['databaseVersion']=='3.0.30' and marker['appAsset']=='assets/app.v3030.js' and marker['cacheKey']=='3030' and marker['releaseReady'] is False
+assert all((out/'assets'/asset).is_file() for asset in ['app.v3030.js','site.v3030.css','experience.v3030.js','browser-compat.v3030.js','release-bootstrap.v3030.js'])
 marker['releaseReady']=True
-(out/'data/release.json').write_text(json.dumps(marker,separators=(',',':'))+'\n')
+(out/'data/release.json').write_text(json.dumps(marker,separators=(',',':'))+'\n',encoding='utf-8')
 print(f'OpenGLESScope Database Pages artifact staged: {out}')

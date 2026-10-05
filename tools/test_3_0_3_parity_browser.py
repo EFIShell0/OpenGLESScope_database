@@ -68,6 +68,6 @@ with sync_playwright() as p:
   page.wait_for_function("document.querySelector('#newReportToast .new-report-toast-title')?.textContent==='1 new report added'",timeout=5000)
   assert 'New Live Reference GPU' in page.locator('#content').inner_text()
   assert not errors,(width,errors)
-  print('CHROMIUM 3.0.28 PARITY PASS',width,height,'6 hero metrics, 11 evidence tabs, A/B compare swap/filter/pin/minimize, 64th live report+toast')
+  print('CHROMIUM 3.0.30 PARITY PASS',width,height,'6 hero metrics, 11 evidence tabs, A/B compare swap/filter/pin/minimize, 64th live report+toast')
   ctx.close()
  browser.close()
