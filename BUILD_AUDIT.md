@@ -1,15 +1,15 @@
-# OpenGLESScope Database 3.0.31 build audit
+# OpenGLESScope Database 3.0.32 build audit
 
 - Technical parity: Extensions, Limits, Formats and Shader Precision now share reference-style compact filters, semantic counts, exact percentages and seven-pixel fill bars.
 - Corrects query-state coloring and the format internal-evidence summary, including zero/false values and non-inferred unavailable states.
 - No backend or input schema migration; cache-first preload, publication marker, D1, historical GET, report JSON/TXT and producer 3.0.7/3007 submission gate remain unchanged.
-- Frontend browser assets and release marker are versioned as v3031; offline or live deployment is not claimed by this source audit.
+- Frontend browser assets and release marker are versioned as v3032; offline or live deployment is not claimed by this source audit.
 
 # OpenGLESScope Database 3.0.30 build audit
 
-- Database: 3.0.31
+- Database: 3.0.32
 - Current producer: OpenGLESScope 3.0.7 / 3007
-- Normalizer: 16, schema 2 and technicalReport 5 unchanged; current browser generation is `app.v3031.js`, `site.v3031.css` and `config.js?v=3031`.
+- Normalizer: 16, schema 2 and technicalReport 5 unchanged; current browser generation is `app.v3032.js`, `site.v3032.css` and `config.js?v=3032`.
 - Filter custom-select chevron now uses the exact VulkanScope Database 1.4.12 downward path `M6 9l6 6 6-6`; the malformed OpenGLESScope path `M6 9l6 6-6 6` is forbidden. Existing open-state 180-degree rotation, dimensions, focus, keyboard and reduced-motion behavior remain unchanged.
 - Python release/test tooling now reads UTF-8 explicitly so Windows code pages such as cp1252 cannot fail on valid UTF-8 assets. This is tooling-only and does not alter cache/preload, Worker storage, D1, report schema or report evidence.
 - The 3.0.29 SHA-256 verified cache-first loader, network lifecycle fix and OpenGLESScope 3.0.7 / 3007 POST gate remain unchanged.

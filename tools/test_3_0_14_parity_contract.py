@@ -1,9 +1,9 @@
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-a=(R/'assets/app.v3031.js').read_text(encoding='utf-8')
-e=(R/'assets/experience.v3031.js').read_text(encoding='utf-8')
+a=(R/'assets/app.v3032.js').read_text(encoding='utf-8')
+e=(R/'assets/experience.v3032.js').read_text(encoding='utf-8')
 h=(R/'index.html').read_text(encoding='utf-8')
-c=(R/'assets/site.v3031.css').read_text(encoding='utf-8')
+c=(R/'assets/site.v3032.css').read_text(encoding='utf-8')
 message='Release, runtime and dependency information for this OpenGLESScope Database build.'
 assert h.count(message)==0 and e.count(message)==1
 assert "const show=!!copy;" in e and "next==='checking'&&reachable()" not in e
@@ -15,5 +15,5 @@ assert "fresh.focus({preventScroll:true});try{fresh.setSelectionRange" in a
 assert 'renderEncyclopedia.ticket=0' in a
 assert 'OpenGL® ES™ / EGL™' in a
 assert 'const displayBrand=value=>' in a and "put('Driver','Mode',p.driver?.mode)" in a and "esc(displayBrand(p.driver?.mode||'Reported driver'))" in a
-assert "put('OpenGL ES','GL_RENDERER',p.gpu?.name)" in a
-print('3.0.31 Information, publication banner, Back, responsive registry, stable search and branding: PASS')
+assert "put('OpenGL® ES™','GL_RENDERER',p.gpu?.name)" in a
+print('3.0.32 Information, publication banner, Back, responsive registry, stable search and branding: PASS')

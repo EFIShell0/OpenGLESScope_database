@@ -1,4 +1,4 @@
-# OpenGLESScope Database 3.0.31
+# OpenGLESScope Database 3.0.32
 
 ### Changed
 - Align Extensions, Limits, Formats and Shader Precision with the compact filter, query state, percentage-meter and scrollable table layout used by the shared UI reference.
@@ -11,7 +11,7 @@
 ### Preserved
 - Preserve the SHA-256 verified offline preload/cache implementation, Worker D1/report contracts, report JSON/TXT, historical reads and exact OpenGLESScope 3.0.7 / 3007 submission gate.
 
-# OpenGLESScope Database 3.0.31
+# OpenGLESScope Database 3.0.32
 
 ### Fixed
 - Match every enhanced filter/dropdown chevron to the exact VulkanScope Database 1.4.12 symmetric downward shape; remove the malformed sideways/skewed OpenGLESScope path.

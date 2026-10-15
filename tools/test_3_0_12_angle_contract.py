@@ -1,6 +1,6 @@
 from pathlib import Path
 r=Path(__file__).resolve().parents[1]
-s=(r/'assets/app.v3031.js').read_text(encoding='utf-8')
+s=(r/'assets/app.v3032.js').read_text(encoding='utf-8')
 h=(r/'index.html').read_text(encoding='utf-8')
 assert 'gpuIdentity=(vendor,renderer)' in s
 assert "rawVendor.replace(/^Google Inc\\.(?=\\s|$)/i,'Google LLC')" in s
@@ -13,4 +13,4 @@ assert "['ANGLE backend',gpuIdentity" in s
 assert 'OpenGL® ES™' in s+h and 'EGL™' in s+h
 assert 'GL_RENDERER' in s and 'GL_VENDOR' in s
 assert 'ANGLE display labels are derived' in s
-print('3.0.31 ANGLE/branding source contract: PASS')
+print('3.0.32 ANGLE/branding source contract: PASS')

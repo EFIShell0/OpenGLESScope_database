@@ -68,12 +68,13 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
-          include-hidden-files: true
       - name: Deploy validated release
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify published complete cache after release
-        run: python tools/verify_published_snapshot.py --verify-preload
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: python tools/verify_published_snapshot.py --base-url "$PAGE_URL" --attempts 24 --delay 5 --verify-preload
   snapshot-refresh:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'snapshot' }}
     runs-on: ubuntu-latest
@@ -138,12 +139,12 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
-          include-hidden-files: true
       - name: Deploy refreshed snapshot
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify published accepted report
         shell: bash
         env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           REPORT_ID: ${{ inputs.report_id }}
-        run: python tools/verify_published_snapshot.py --expect-report-id "$REPORT_ID" --verify-preload
+        run: python tools/verify_published_snapshot.py --base-url "$PAGE_URL" --attempts 24 --delay 5 --expect-report-id "$REPORT_ID" --verify-preload

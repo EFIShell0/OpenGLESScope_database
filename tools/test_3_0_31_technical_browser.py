@@ -19,8 +19,8 @@ report[rows[1]['id']]['technicalReport'].update({
  'extensions':[], 'compressedFormats':[], 'limits':[], 'precision':[],
  'queryDiagnostics':[{'name':'GL_EXTENSIONS','status':'Available'},{'name':'compressedFormats','status':'Available'},{'name':'GL_MAX_TEXTURE_SIZE','status':'Unavailable'},{'name':'GL_VERTEX_SHADER/GL_HIGH_FLOAT','status':'Unavailable'}]
 })
-seed={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.31','currentProducer':'OpenGLESScope 3.0.7','reports':rows,'nextCursor':None}
-head={'databaseReleaseVersion':'3.0.31','workerReleaseVersion':'3.0.31','reportCount':2,'latestReportId':rows[0]['id'],'latestSubmittedAt':rows[0]['submitted_at'],'syncToken':'2:probe'}
+seed={'schemaVersion':2,'normalizerVersion':16,'databaseVersion':'3.0.32','currentProducer':'OpenGLESScope 3.0.7','reports':rows,'nextCursor':None}
+head={'databaseReleaseVersion':'3.0.32','workerReleaseVersion':'3.0.32','reportCount':2,'latestReportId':rows[0]['id'],'latestSubmittedAt':rows[0]['submitted_at'],'syncToken':'2:probe'}
 seed_js=r'''<script>(()=>{const previous=window.fetch,seed=SEED,detail=DETAIL,sync=SYNC;window.fetch=async function(input,options){const u=String(input);if(/\/v1\/reports\/[a-f0-9]{64}(?:\?|$)/.test(u)){const id=u.match(/\/v1\/reports\/([a-f0-9]{64})/)[1];return new Response(JSON.stringify(detail[id]||{}),{status:detail[id]?200:404,headers:{'content-type':'application/json'}})}if(u.includes('/v1/reports?'))return new Response(JSON.stringify(seed),{status:200,headers:{'content-type':'application/json'}});if(u.includes('/v1/sync'))return new Response(JSON.stringify(sync),{status:200,headers:{'content-type':'application/json'}});return previous(input,options)}})();</script>'''.replace('SEED',json.dumps(seed)).replace('DETAIL',json.dumps(report)).replace('SYNC',json.dumps(head))
 html=ns['html'].replace(ns['seed_js'],seed_js)
 with sync_playwright() as pw:
@@ -50,5 +50,5 @@ with sync_playwright() as pw:
    assert not errors,(width,view,errors)
   assert page.locator('#precisionNext').is_disabled()
   context.close()
-  print('CHROMIUM 3.0.31 TECHNICAL PARITY PASS',width,height)
+  print('CHROMIUM 3.0.32 TECHNICAL PARITY PASS',width,height)
  browser.close()

@@ -1,9 +1,9 @@
 from pathlib import Path
 import hashlib,sys
 ROOT=Path(__file__).resolve().parents[1]
-app=(ROOT/'assets/app.v3031.js').read_text(encoding='utf-8')
-experience=(ROOT/'assets/experience.v3031.js').read_text(encoding='utf-8')
-css=(ROOT/'assets/site.v3031.css').read_text(encoding='utf-8')
+app=(ROOT/'assets/app.v3032.js').read_text(encoding='utf-8')
+experience=(ROOT/'assets/experience.v3032.js').read_text(encoding='utf-8')
+css=(ROOT/'assets/site.v3032.css').read_text(encoding='utf-8')
 rules=(ROOT/'rules/PROJECT_RULES.md').read_text(encoding='utf-8')
 repair=(ROOT/'tools/repair_repository.py').read_text(encoding='utf-8')
 
@@ -14,7 +14,7 @@ def require(ok,msg):
     if not ok: fail(msg)
 
 cache=app[app.index('async function preloadJson'):app.index('async function ensureAllDetails')]
-expected='c5bcb4e7fe67693066072e82b5e1247a744e80fb03fd0b1728042155f54b2d3e'
+expected='54383f3b3f069c1f6f0d5e7e8d1ee93f62bf10a398513b57c9ac49481e24e5ae'
 require(hashlib.sha256(cache.encode()).hexdigest()==expected,'cache-first preload and index implementation differs from preserved baseline')
 for token in [
     "manifest=await preloadJson('./data/preload/manifest.json','no-cache')",
@@ -27,6 +27,6 @@ for token in [
 ready=experience[experience.find("document.addEventListener('openglesscope:ready'"):experience.find("document.addEventListener('openglesscope:new-reports'")]
 require('isVerifiedOffline' not in ready,'verified cache startup must not arm reconnect state')
 require('max-height:150px' not in css,'late mobile banner override returned')
-require("'app':'app.v3031.js'" in repair and "'site':'site.v3031.css'" in repair,'repair tool must recognize only current v3031 browser assets')
+require("'app':'app.v3032.js'" in repair and "'site':'site.v3032.css'" in repair,'repair tool must recognize only current v3032 browser assets')
 require('## Release 3.0.29 — cache-preservation and release-preflight recovery' in rules,'3.0.29 release rule missing')
 print('test_3_0_29_cache_release_integrity: PASS')

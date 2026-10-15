@@ -7,10 +7,12 @@ import re
 import sys
 import time
 import urllib.request
+import urllib.error
 from urllib.parse import urlencode
 
 ID=re.compile(r'^[0-9a-f]{64}$')
-PUBLISHED='https://efishell0.github.io/OpenGLESScope_database/data/index.json'
+DEFAULT_BASE='https://efishell0.github.io/OpenGLESScope_database/'
+PUBLISHED=DEFAULT_BASE.rstrip('/')+'/data/index.json'
 MAX_INDEX=64*1024*1024
 
 def fetch(id):
@@ -22,26 +24,30 @@ def fetch(id):
         raw=response.read(MAX_INDEX+1)
         if len(raw)>MAX_INDEX:raise RuntimeError('Published snapshot is oversized')
     payload=json.loads(raw.decode('utf-8'))
-    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.31' or not isinstance(payload.get('reports'),list):
+    if not isinstance(payload,dict) or payload.get('schemaVersion')!=2 or payload.get('databaseVersion')!='3.0.32' or not isinstance(payload.get('reports'),list):
         raise RuntimeError('Published artifact is not current schema-2 release')
     return any(isinstance(row,dict) and row.get('id')==id for row in payload['reports'])
 
-def verify_preload(attempts=12, interval=3):
+def verify_preload(attempts=24, interval=5, base_url=DEFAULT_BASE):
     """Verify the *published* authoritative cache, not merely the source tree or index."""
-    base=PUBLISHED.rsplit('/index.json',1)[0]
+    base=base_url.rstrip('/')+'/data'
+    index_url=base+'/index.json'
     last='unavailable'
     def bounded_json(url, max_bytes=4*1024*1024):
-        request=urllib.request.Request(url,headers={'Accept':'application/json','Cache-Control':'no-cache','User-Agent':'OpenGLESScope-Database-published-cache-verifier/3.0.31'})
-        with urllib.request.urlopen(request,timeout=25) as response:
-            raw=response.read(max_bytes+1)
+        request=urllib.request.Request(url,headers={'Accept':'application/json','Cache-Control':'no-cache','User-Agent':'OpenGLESScope-Database-published-cache-verifier/3.0.32'})
+        try:
+            with urllib.request.urlopen(request,timeout=25) as response:
+                raw=response.read(max_bytes+1)
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f'HTTP {exc.code} at {url.split("?",1)[0]}') from exc
         if len(raw)>max_bytes:raise RuntimeError('Published cache object exceeds size budget')
         return raw,json.loads(raw.decode('utf-8'))
     for attempt in range(max(1,attempts)):
         try:
             nonce=int(time.time()*1000)
-            _,index=bounded_json(PUBLISHED+'?preload-audit='+str(nonce),64*1024*1024)
+            _,index=bounded_json(index_url+'?preload-audit='+str(nonce),64*1024*1024)
             _,manifest=bounded_json(base+'/preload/manifest.json?preload-audit='+str(nonce),8*1024*1024)
-            if index.get('databaseVersion')!='3.0.31' or manifest.get('databaseVersion')!='3.0.31':
+            if index.get('databaseVersion')!='3.0.32' or manifest.get('databaseVersion')!='3.0.32':
                 raise RuntimeError('Published index/cache release mismatch')
             summaries=index.get('reports'); cached=manifest.get('reports'); parts=manifest.get('chunks')
             if not isinstance(summaries,list) or not isinstance(cached,list) or not isinstance(parts,list) or summaries!=cached:
@@ -74,7 +80,7 @@ def verify_preload(attempts=12, interval=3):
             if attempt+1<max(1,attempts):time.sleep(interval)
     raise RuntimeError('Published cache verification failed: '+last)
 
-def verify(id,attempts=12,interval=10):
+def verify(id,attempts=24,interval=5,base_url=DEFAULT_BASE):
     if not ID.fullmatch(id):raise ValueError('Expected a lowercase 64-hex report ID')
     last=''
     for n in range(attempts):
@@ -89,9 +95,14 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--expect-report-id',default='')
     parser.add_argument('--verify-preload',action='store_true')
+    parser.add_argument('--base-url',default=DEFAULT_BASE)
+    parser.add_argument('--attempts',type=int,default=24)
+    parser.add_argument('--delay',type=float,default=5)
     args=parser.parse_args()
     if not args.expect_report_id and not args.verify_preload: parser.error('expected report ID or --verify-preload required')
     if args.expect_report_id:
-        verify(args.expect_report_id)
+        if not args.base_url.rstrip('/')+'/'==DEFAULT_BASE:
+            PUBLISHED=args.base_url.rstrip('/')+'/data/index.json'
+        verify(args.expect_report_id,max(1,min(36,args.attempts)),max(.5,min(10,args.delay)),args.base_url)
         print('Published Pages snapshot contains the exact accepted report ID: PASS')
-    if args.verify_preload:verify_preload()
+    if args.verify_preload:verify_preload(min(36,max(1,args.attempts)),max(.5,min(10,args.delay)),args.base_url)

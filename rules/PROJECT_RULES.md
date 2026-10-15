@@ -998,3 +998,11 @@
 - A zero/false queried value remains an available value, and every percentage uses only the number of loaded, filtered reports.
 - No API, D1, report-schema, producer-version admission, offline cache, preload snapshot or canonical TXT changes are introduced.
 - Every affected display source is cache-busted with the v3031 asset generation and release metadata.
+
+## Release 3.0.32 — published cache-first repair and official branding
+- The published SHA-256 verified snapshot is authoritative for bootstrapping full reports, including empty valid report sets. A missing or invalid preload must NOT trigger full per-report Worker fan-out.
+- Offline publication fallback may show summaries with explicit incomplete-data labeling, but must never infer absent report details or claim a complete live dataset.
+- Only a bounded incremental change (at most four report bodies) can be reconciled from Worker between snapshot builds. Larger changes wait for the next verified Pages snapshot.
+- Release and report-snapshot workflows validate the Pages artifact using the actual deployed page URL, with bounded propagation retries and explicit failing-path diagnostics. Both retain full SHA-256 checking and exact index/snapshot/report identity validation.
+- Official display marks are OpenGL® ES™, EGL™, Khronos® Group. Preserve exact raw GL_VERSION, EGL_* constants, and report bytes unchanged.
+- Keep VulkanScope-aligned technical tables, compact coverage bar measurements, UI behavior, stable public interfaces and existing rejection rules.
