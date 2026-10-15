@@ -1,4 +1,17 @@
-# OpenGLESScope Database 3.0.30
+# OpenGLESScope Database 3.0.31
+
+### Changed
+- Align Extensions, Limits, Formats and Shader Precision with the compact filter, query state, percentage-meter and scrollable table layout used by the shared UI reference.
+- Present report-backed state totals in separate semantic cells with identical seven-pixel progress-meter geometry and percentage precision across the four categories.
+
+### Fixed
+- Correct Not applicable coverage class mapping, preserve exact Not listed vs Unknown vs Unavailable extension/format evidence, and keep format internal-query availability independent of filtered search results.
+- Keep keyboard filters, 50-row Shader Precision pagination, state-specific colors and narrow-screen horizontal table navigation available.
+
+### Preserved
+- Preserve the SHA-256 verified offline preload/cache implementation, Worker D1/report contracts, report JSON/TXT, historical reads and exact OpenGLESScope 3.0.7 / 3007 submission gate.
+
+# OpenGLESScope Database 3.0.31
 
 ### Fixed
 - Match every enhanced filter/dropdown chevron to the exact VulkanScope Database 1.4.12 symmetric downward shape; remove the malformed sideways/skewed OpenGLESScope path.

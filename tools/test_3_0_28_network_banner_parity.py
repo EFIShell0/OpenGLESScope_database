@@ -1,8 +1,8 @@
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
-js=(ROOT/'assets/experience.v3030.js').read_text(encoding='utf-8')
-css=(ROOT/'assets/site.v3030.css').read_text(encoding='utf-8')
+js=(ROOT/'assets/experience.v3031.js').read_text(encoding='utf-8')
+css=(ROOT/'assets/site.v3031.css').read_text(encoding='utf-8')
 ref=(ROOT/'rules/SHARED_UI_1_4_12_REFERENCE.css').read_text(encoding='utf-8')
 rules=(ROOT/'rules/PROJECT_RULES.md').read_text(encoding='utf-8')
 

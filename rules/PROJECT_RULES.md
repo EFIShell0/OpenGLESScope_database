@@ -990,3 +990,11 @@
 - The chevron correction is presentation-only. It MUST NOT change the authoritative hidden native `<select>`, selected values, filter families, option ordering, search/paging, keyboard/listbox semantics, focus handling, cache-first loading or report state.
 - Python quality/release tooling MUST decode repository text as UTF-8 explicitly rather than depending on the Windows process code page. A valid UTF-8 asset must not fail `quality_gate.py` under cp1252 defaults.
 - Release is blocked by the 3.0.30 chevron parity regression, existing 3.0.29 cache-preservation regression, full Worker/source/Pages/package gates and a clean-extract repair check.
+
+## Release 3.0.31 — Technical coverage and presentation parity
+- Extensions, Limits, Formats and Shader Precision use the common compact filter layout and the same horizontal scrollable report table presentation.
+- Technical state counts, percentages, seven-pixel coverage meters, visual rank and responsive geometry follow one shared rendering contract.
+- Exact query results remain authoritative. Not listed is not unsupported, and missing diagnostics cannot become inferred availability.
+- A zero/false queried value remains an available value, and every percentage uses only the number of loaded, filtered reports.
+- No API, D1, report-schema, producer-version admission, offline cache, preload snapshot or canonical TXT changes are introduced.
+- Every affected display source is cache-busted with the v3031 asset generation and release metadata.
